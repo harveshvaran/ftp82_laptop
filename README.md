@@ -32,5 +32,12 @@ This week, you should learn the following topics. Online courses, tutorials and 
   * Run database/database.dml to populate the employee table
   * Run 'SELECT * from EMPLOYEE' in the query tab. 5 rows will be returned.
 
-
+# Week #1: Workshop #2 - Build/Run the skeleton rest service
+  * Pre-Reqs
+    * Apache Tomcat installed on the desktop
+  * Open DbConnection.java and change the connection string, username, password
+  * ```mvn checkstyle:checkstyle```
+  * ```mvn package```
+  * ```cp target/ftpxx-0.0.1-SNAPSHOT.war /path/to/apache-tomcat-9.0.0.M22/webapps/ftpxx.war```
+  * ```curl http://localhost:8080/ftpxx/api/employees```
 

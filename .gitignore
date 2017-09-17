@@ -1,0 +1,10 @@
+target
+.DS_Store
+.classpath
+.project
+.settings
+.metadata
+.vscode
+node_modules
+*.js
+*.js.map
