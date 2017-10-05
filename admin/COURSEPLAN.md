@@ -1,293 +1,71 @@
 # Course Plan
 
-## Week 1
+## Week #1 Goals
 
-### Day 1
+  1. To get a running application from a source repository in git by following step-by-step instructions. The components and technologies will be explained
+  in the weeks to come, but here we just get the basic application up and running.
 
-#### Classes
+### Concrete demo-able deliverables
 
-   * Course Overview: Structure, Three-Tier systems, Application overview, Technologies
-   * Agile/Jira Overview: Scrum, Product/Sprint backlog, User Stories, Tasks, Bugs, Task breakdown
-   * Git Overview: Source code control systems, Git commands: clone, checkout -b, add, commit, push, review request, review, merge, delete branch, fetch -p
+  * Build, and deploy a skeletal application in a development tomcat server + development MySQL/RDS.
 
-#### Workshop 
+  * Demo the build/deployment: Insert a few rows via SQL/Workbench, show that the new rows appear via all the mechanisms below; delete the rows, show that the rows
+  do not appear any longer
+    * Database via Mysql Workbench
+    * Java code via cli
+    * REST application war via Curl
+    * UI application via browser
 
-### Day 2
+## Week #2 Goals
 
-#### Classes
+### Concrete demo-able deliverables
 
-#### Workshop 
+  1. Design a database schema given the requirements
+  1. Add other attributes of the Employee java class
+  1. Change mapper to map the columns of EMPLOYEE table to Employee class
+  1. Cli to output other Employee attributes
 
-### Day 3
+## Week #3 Goals
 
-#### Classes
+### Concrete demo-able deliverables
 
-#### Workshop 
+  1. Junit/Jmockit based tests for Employee class
 
-### Day 4
+## Week #4 Goals
 
-#### Classes
+### Concrete demo-able deliverables
 
-#### Workshop 
+  1. All other classes + JDBI
+  1. Cli implemented for all the functionality
 
-### Day 5
+## Week #5 Goals
 
-#### Classes
+### Concrete demo-able deliverables
 
-#### Workshop 
+  1. REST for Employee class to return all attributes
+  1. RestAssured Tests for the Employee APIs
 
-## Week 2
+## Week #6 Goals
 
-### Day 1
+### Concrete demo-able deliverables
 
-#### Classes
+  1. REST for all the classes
+  1. RestAssured Tests for all the APIs
 
-#### Workshop 
+## Week #7 Goals
 
-### Day 2
+### Concrete demo-able deliverables
 
-#### Classes
+  1. Angular UI for the employee list
 
-#### Workshop 
+## Week #8 Goals
 
-### Day 3
+### Concrete demo-able deliverables
 
-#### Classes
+  1. Angular UI for all the functionality
 
-#### Workshop 
+## Week #9 Goals
 
-### Day 4
+### Concrete demo-able deliverables
 
-#### Classes
-
-#### Workshop 
-
-### Day 5
-
-#### Classes
-
-#### Workshop 
-
-## Week 3
-
-### Day 1
-
-#### Classes
-
-#### Workshop 
-
-### Day 2
-
-#### Classes
-
-#### Workshop 
-
-### Day 3
-
-#### Classes
-
-#### Workshop 
-
-### Day 4
-
-#### Classes
-
-#### Workshop 
-
-### Day 5
-
-#### Classes
-
-#### Workshop 
-
-## Week 4
-
-### Day 1
-
-#### Classes
-
-#### Workshop 
-
-### Day 2
-
-#### Classes
-
-#### Workshop 
-
-### Day 3
-
-#### Classes
-
-#### Workshop 
-
-### Day 4
-
-#### Classes
-
-#### Workshop 
-
-### Day 5
-
-#### Classes
-
-#### Workshop 
-
-## Week 5
-
-### Day 1
-
-#### Classes
-
-#### Workshop 
-
-### Day 2
-
-#### Classes
-
-#### Workshop 
-
-### Day 3
-
-#### Classes
-
-#### Workshop 
-
-### Day 4
-
-#### Classes
-
-#### Workshop 
-
-### Day 5
-
-#### Classes
-
-#### Workshop 
-
-## Week 6
-
-### Day 1
-
-#### Classes
-
-#### Workshop 
-
-### Day 2
-
-#### Classes
-
-#### Workshop 
-
-### Day 3
-
-#### Classes
-
-#### Workshop 
-
-### Day 4
-
-#### Classes
-
-#### Workshop 
-
-### Day 5
-
-#### Classes
-
-#### Workshop 
-
-## Week 7
-
-### Day 1
-
-#### Classes
-
-#### Workshop 
-
-### Day 2
-
-#### Classes
-
-#### Workshop 
-
-### Day 3
-
-#### Classes
-
-#### Workshop 
-
-### Day 4
-
-#### Classes
-
-#### Workshop 
-
-### Day 5
-
-#### Classes
-
-#### Workshop 
-
-## Week 8
-
-### Day 1
-
-#### Classes
-
-#### Workshop 
-
-### Day 2
-
-#### Classes
-
-#### Workshop 
-
-### Day 3
-
-#### Classes
-
-#### Workshop 
-
-### Day 4
-
-#### Classes
-
-#### Workshop 
-
-### Day 5
-
-#### Classes
-
-#### Workshop 
-
-## Week 9
-
-### Day 1
-
-#### Classes
-
-#### Workshop 
-
-### Day 2
-
-#### Classes
-
-#### Workshop 
-
-### Day 3
-
-#### Classes
-
-#### Workshop 
-
-### Day 4
-
-#### Classes
-
-#### Workshop 
-
-### Day 5
-
-#### Classes
-
-#### Workshop 
+  1. Selenium Tests

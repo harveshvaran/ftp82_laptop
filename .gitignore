@@ -5,6 +5,5 @@ target
 .settings
 .metadata
 .vscode
-node_modules
 *.js
 *.js.map
