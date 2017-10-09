@@ -5,7 +5,20 @@
 ### clone
   * ```git clone git@github.com:HexaInnovLab/ftp-xx.git```
 
-##
+### reset
+
+## checkout/branch
+
+## stash
+
+## file actions
+
+  * Checkout a previous version
+    * `git checkout <commit> <filename>`
+  * Undo changes in staging
+    * `git reset HEAD <filename>`
+  * Discard changes in workspace
+    * `git checkout -- <filename>`
 
 # maven
 
@@ -29,3 +42,13 @@
 
   * Copy the war file to the webapps folder
     * ```cp target/<some>.war /path/to/apache-tomcat-9.0.0.M22/webapps/ftpxx.war```
+
+# angular
+
+  * To serve from the working directory
+    * ng serve --open
+
+# Angular/Augury
+
+  * ng is the angular instance
+  * ng.probe($0).componentInstance where $0 is the selected component in the Elements tab

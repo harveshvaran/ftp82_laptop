@@ -7,3 +7,7 @@ This directory contains a skeletal Angular application for the leave managment s
   * node -v
   * npm -v
   * ng -v
+
+# running locally
+
+  * `ng serve --open`  

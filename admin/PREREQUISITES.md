@@ -5,8 +5,8 @@
   * Maven
   * Tomcat
   * Cygwin w/ Curl
-  * Angular w/ dependencies
-  * Chrome
+  * Angular w/ dependencies: node, npm
+  * Chrome w/ Augury 4.4.4+ installed
 
 #### AWS - EC2
 
