@@ -1,10 +1,11 @@
 #### Desktop
 
+  * Gitbash
+  * Cygwin w/ Curl, Netstat
   * MySQL Workbench
   * Java JDK
   * Maven
   * Tomcat
-  * Cygwin w/ Curl
   * Angular w/ dependencies: node, npm
   * Chrome w/ Augury 4.4.4+ installed
 

@@ -3,7 +3,7 @@
 ## repository actions
 
 ### clone
-  * ```git clone git@github.com:HexaInnovLab/ftp-xx.git```
+  * ```git clone git@github.com:HexaInnovLab/ftpxx.git```
 
 ### reset
 

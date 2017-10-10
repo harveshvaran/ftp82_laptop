@@ -9,6 +9,7 @@
 
 ## Goals of the program
   * "Learning to learn"
+    * Git, Jira, Jenkins, MySQL, SQL, JDBI, Java, Junit, Jmockit, Jersey, Maven, REST, Json, RestAssured, Javascript, HTML, CSS, Angular 4, Karma/Jasmine, Selenium
   * Productivity hacks
     * google
     * command line (+ simple IDE)
@@ -52,8 +53,11 @@
 ## Git
   * workspace, staging, local, remote
 
+## Editors, Build systems vs IDE
 
-## IDE
+## Databases: concepts
+
+## Databases: SQL/DML
 
 # Workshop material
 
@@ -65,14 +69,14 @@
     * `git config --global user.name "<your name>"`
     * `git config --global user.email <your email>`
     * `git config --global -l`
-    * Open https://github.com/HexaInnovLab/ftp[nn]
+    * Open https://github.com/HexaInnovLab/ftpxx
       * look at source code organization
     * TBD: setup ssh keys
     * create projects folder
-    * `git clone git@github.com:HexaInnovLab/ftp[nn].git`
+    * `git clone git@github.com:HexaInnovLab/ftpxx.git`
     * `git status`
   * VS Code
-    * Open projects/ftp[nn]
+    * Open projects/ftpxx
     * Edit a file README-<username>.md
     * `git status`
     * `git add README-<username>.md`
@@ -81,7 +85,7 @@
     * `git log`
     * `git log --oneline`
     * `git push origin HEAD`
-    * Open https://github.com/HexaInnovLab/ftp[nn]
+    * Open https://github.com/HexaInnovLab/ftpxx
       * See the changes in 'master'
     * Edit README-<username>.md again
     * Redo the above
