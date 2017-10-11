@@ -7,6 +7,11 @@
     * Scores equally distributed
     * Gender distribution
   * Create Git repository for the 10 teams
+    * Go to github.com and create a repository for each team : ftp01 to ftp10
+    * `git clone --bare git@github.com:HexaInnovLab/ftp-fork-me.git ftpxx`
+    * `cd ftpxx`
+    * `git push --mirror git@github.com:HexaInnovLab/ftp01.git`
+    * `git push --mirror git@github.com:HexaInnovLab/ftp02.git` etc.
     * Add each team member to the team's git repository
   * Create Scrum teams corresponding to the 10 teams
     * Add each team member to the team's Jira group
