@@ -64,9 +64,11 @@
 # Workshop material
 
   * Command Line/Cygwin
-  * Command Line/Gitbash
+  * Command Line/Gitbash --  Open Gitbash
     
-    * `pwd`
+    * `pwd` -- Check and verify that the current working directory is C:\users\<employeeid>
+    * `mkdir workspace` -- We will create a sub-directory called workspace and put all the project materials there
+    * `cd workspace` -- change current working to workspace
     
   * Git (setup/checkout/clone/pull/push)
     * `git --version`
