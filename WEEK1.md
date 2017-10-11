@@ -47,7 +47,9 @@
      * delete branch   
 
 ## Unix command line basics
-
+  * pwd
+  * ls
+  * 
 ## Source code control systems
 
 ## Git
@@ -63,6 +65,9 @@
 
   * Command Line/Cygwin
   * Command Line/Gitbash
+    
+    * `pwd`
+    
   * Git (setup/checkout/clone/pull/push)
     * `git --version`
     * `git config --global -l`
