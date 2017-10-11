@@ -75,8 +75,9 @@
     * You will get a mail inviting you to the HexaInnovLab organization. Please join the organization.
     * Follow the instructions as in https://help.github.com/articles/connecting-to-github-with-ssh/
       * Skip "Checking for existing SSH keys" as this is a fresh installation
-      * Run the ssh-keygen command and save the private key in C:\users\<employeeid>\.ssh\id_rsa
-      * Skip "Adding your SSH key to the ssh-agent" section as we donot use ssh-agent
+      * Run the ssh-keygen command and save the private key in C:\users\<employeeid>\.ssh\id_rsa. *Do not* use a passphrase in step #4 - just press enter twice.
+      * Skip "Adding your SSH key to the ssh-agent" section as we do not use ssh-agent
+      * Follow the instructions as in "https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/" and "https://help.github.com/articles/testing-your-ssh-connection/" and test the setup
 
   * Command Line/Cygwin
   * Command Line/Gitbash --  Open Gitbash
@@ -84,9 +85,7 @@
     * `pwd` -- Check and verify that the current working directory is C:\users\<employeeid>
     * `mkdir workspace` -- We will create a sub-directory called workspace and put all the project materials there
     * `cd workspace` -- change current working to workspace
-    
-    
-    
+        
   * Git (setup/checkout/clone/pull/push)
     * `git --version`
     * `git config --global -l`
