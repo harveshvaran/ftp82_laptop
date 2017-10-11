@@ -15,8 +15,8 @@
     * Add each team member to the team's git repository
   * Create Scrum teams corresponding to the 10 teams
     * Add each team member to the team's Jira group
-    
-
+  * Jenkins jobs - 3 per team
+  * Databases - 3 per team
 
 ----- To be reviewed ---------
 
