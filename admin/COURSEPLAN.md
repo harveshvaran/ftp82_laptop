@@ -28,12 +28,17 @@
   1. Add other attributes of the Employee java class
   1. Change mapper to map the columns of EMPLOYEE table to Employee class
   1. Cli to output other Employee attributes
+  1. Git add/commit/push/github review and merge
+  1. Java basics and jdbi basics
+  1. Agile other topics
 
 ## Week #3 Goals
 
 ### Concrete demo-able deliverables
 
   1. Junit/Jmockit based tests for Employee class
+  1. 95% coverage in unit test job
+  1. check style PMD,CPD find bugs 
 
 ## Week #4 Goals
 
@@ -41,14 +46,14 @@
 
   1. All other classes + JDBI
   1. Cli implemented for all the functionality
-
+  
 ## Week #5 Goals
 
 ### Concrete demo-able deliverables
 
   1. REST for Employee class to return all attributes
   1. RestAssured Tests for the Employee APIs
-
+  
 ## Week #6 Goals
 
 ### Concrete demo-able deliverables
@@ -67,9 +72,12 @@
 ### Concrete demo-able deliverables
 
   1. Angular UI for all the functionality
-
+  1. Html,CSS,Typescript
+  
 ## Week #9 Goals
-
+   
 ### Concrete demo-able deliverables
 
   1. Selenium Tests
+  1. Jasmine
+  
