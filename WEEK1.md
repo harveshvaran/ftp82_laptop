@@ -94,12 +94,11 @@
     * `git config --global -l`
     * Open https://github.com/HexaInnovLab/ftpxx
       * look at source code organization
-    * TBD: setup ssh keys
-    * create projects folder
+    * create workspace folder
     * `git clone git@github.com:HexaInnovLab/ftpxx.git`
     * `git status`
   * VS Code
-    * Open projects/ftpxx
+    * Open c:\users\<emplpoyeeid>\workspace\ftpxx
     * Edit a file README-<username>.md
     * `git status`
     * `git add README-<username>.md`
