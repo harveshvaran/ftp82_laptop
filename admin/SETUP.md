@@ -17,30 +17,8 @@
     * Add each team member to the team's Jira group
     
 
-## Github
-  * Create a github account for each trainee
-  * Copy ftp-fork-me as ftp[nn] for each team
-  * Allow only members of team nn to work on repository ftp[nn]
 
 ----- To be reviewed ---------
-## Set up an AWS account
-
-Login to the hexaware-cto aws account with root credentials, go to organizations, and "create an account". Use "krishnakumar@hexaware-ftp<teamno>@gmail.com" as the email address. Login with <aws-account-id>.signin.aws.amazon.com, and click "login with root credentials", and click "forgot password". Login to the gmail account and click on the link to set the password for the account.
-Save the password in passpack.
-
-Create a "FTP" group with EC3/S3/RDS full access.
-
-### Create IAM users for each team member
-
-Create IAM users with hexaware id as id, add them to the "FTP" group. Send the credentials file via email.
-
-### Set the budget limit for the AWS Account
-
-Some usage needed before you can set the budget.
-
-## Setup Github
-
-
 
 ## Setup Jira
 
