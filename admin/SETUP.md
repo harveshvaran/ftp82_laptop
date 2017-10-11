@@ -1,5 +1,17 @@
 # This readme is for the administrators of the ftp program
 
+## Pre Nov-20th
+
+  * Sort the teams into 2 batches of 25, then into teams of 5 each
+    * CS/Non-CS folks
+    * Scores equally distributed
+    * Gender distribution
+  * Create Git repository for the 10 teams
+    * Add each team member to the team's git repository
+  * Create Scrum teams corresponding to the 10 teams
+    * Add each team member to the team's Jira group
+    
+
 ## Github
   * Create a github account for each trainee
   * Copy ftp-fork-me as ftp[nn] for each team

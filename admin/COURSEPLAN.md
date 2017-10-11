@@ -2,8 +2,10 @@
 
 ## Week #1 Goals
 
-  1. To get a running application from a source repository in git by following step-by-step instructions. The components and technologies will be explained
-  in the weeks to come, but here we just get the basic application up and running.
+  1. Git setup/checkout/clone
+  1. MySQL/DML + Workbench
+  1. Curl Basics
+  1. To get a running application from a source repository in git by following step-by-step instructions. The components and technologies will be explained in the weeks to come, but here we just get the basic application up and running.
 
 ### Concrete demo-able deliverables
 

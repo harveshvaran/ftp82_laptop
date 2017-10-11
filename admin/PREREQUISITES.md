@@ -2,12 +2,14 @@
 
   * Gitbash
   * Cygwin w/ Curl, Netstat
+  * MySQL Server
   * MySQL Workbench
   * Java JDK
   * Maven
   * Tomcat
   * Angular w/ dependencies: node, npm
   * Chrome w/ Augury 4.4.4+ installed
+  * VS Code
 
 #### AWS - EC2
 
@@ -16,14 +18,15 @@
 #### AWS - RDS
 
   * Database per team member
+  * Database per team
 
 #### Jenkins
 
-  * None
+  * 3 Jobs per team - Unit, Integration and Staging
 
 #### Git
 
-  * A skeletal repository which the trainee can clone, build and deploy to get a basic e2e application
+  * A skeletal repository which the trainee teams can clone, build and deploy to get a basic e2e application
 
 #### Jira
 
