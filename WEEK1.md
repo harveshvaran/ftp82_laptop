@@ -121,9 +121,7 @@
     * SELECT with predicates
     * UPDATE statements with predicates
     * DELETE statements with predicates
-    
-    
-  
+      
 
 # Reading material
 
