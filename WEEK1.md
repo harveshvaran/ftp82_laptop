@@ -106,7 +106,7 @@
 
   * Open MySQL Workbench
   * Ask the facilitator for the root password for the locally installed mysql server
-  * Setup a connection to localhost:3306, and use the password. You may have to change the password at this time.
+  * Setup a connection to localhost:3306, and use the password. You may have to change the password at this time.
   * Open the connection
   * `CREATE DATABASE FTPXX;` and click the lightning button
   * Open database/database.ddl in VS code
