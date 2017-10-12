@@ -61,7 +61,7 @@
 
 ## Databases: SQL/DML
 
-# Workshop material
+# Workshop material - Day #1 - Git/VS Code
   * Setting up git
     * Open "https://github.com/HexaInnovLab" in your browser
     * Click the signup on the top-right
@@ -96,23 +96,34 @@
       * look at source code organization
     * create workspace folder
     * `git clone git@github.com:HexaInnovLab/ftpxx.git`
+    * `cd ftpxx`
     * `git status`
   * VS Code
     * Open c:\users\<emplpoyeeid>\workspace\ftpxx
-    * Edit a file README-<username>.md
-    * `git status`
-    * `git add README-<username>.md`
-    * `git commit -m "<message>"`
-    * `git status`
-    * `git log`
-    * `git log --oneline`
-    * `git push origin HEAD`
-    * Open https://github.com/HexaInnovLab/ftpxx
-      * See the changes in 'master'
-    * Edit README-<username>.md again
-    * Redo the above
-    * `git rm README-<username>.md`   
-    * Redo the above
+    * Browse the directories to understand the repository structure
+
+# Workshop material - Day #2 - MySQL Workbench
+
+  * Open MySQL Workbench
+  * Ask the facilitator for the root password for the locally installed mysql server
+  * Setup a connection to localhost:3306, and use the password. You may have to change the password at this time.
+  * Open the connection
+  * `CREATE DATABASE FTPXX;` and click the lightning button
+  * Open database/database.ddl in VS code
+  * Copy the contents to Workbench
+  * Execute the ddl 
+  * Click the table icon against the EMPLOYEE table in the right-hand side schemas section 
+  * Open database/database.dml in VS code
+  * Copy the contents to Workbench
+  * Execute the dml 
+  * Click the table icon against the EMPLOYEE table in the right-hand side schemas section. You should see the data just inserted.
+  * Play around with
+    * SELECT with predicates
+    * UPDATE statements with predicates
+    * DELETE statements with predicates
+    
+    
+  
 
 # Reading material
 
