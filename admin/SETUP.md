@@ -21,6 +21,8 @@
     * Add each team member to the team's Jira group
   * Jenkins jobs - 3 per team
   * Databases - 3 per team
+    * DEV, Integration and Staging instances
+    * `CREATE DATABASE FTPXX;` -- XX from 01 to 10
 
 ----- To be reviewed ---------
 
