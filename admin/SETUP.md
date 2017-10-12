@@ -7,7 +7,11 @@
     * Scores equally distributed
     * Gender distribution
   * Create Git repository for the 10 teams
-    * Go to github.com and create a repository for each team : ftp01 to ftp10
+    * Make sure that ftp-fork-me does not have any branches
+    * Go to github.com
+      * delete any existing repositories: ftp01 to ftp10
+      * create a repository for each team : ftp01 to ftp10
+      * Add FTP-Admins as a group w/ R/W access to these repositories
     * `git clone --bare git@github.com:HexaInnovLab/ftp-fork-me.git ftpxx`
     * `cd ftpxx`
     * `git push --mirror git@github.com:HexaInnovLab/ftp01.git`
