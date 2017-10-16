@@ -121,6 +121,9 @@
     * SELECT with predicates
     * UPDATE statements with predicates
     * DELETE statements with predicates
+    
+  * Next, we will build and run the java code
+  * `mvn exec:java -Dexec.mainClass=com.hexaware.ftpxx.util.CliMain`
       
 
 # Reading material
