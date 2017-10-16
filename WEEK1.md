@@ -102,7 +102,7 @@
     * Open c:\users\<emplpoyeeid>\workspace\ftpxx
     * Browse the directories to understand the repository structure
 
-# Workshop material - Day #2 - MySQL Workbench
+# Workshop material - Day #2 - MySQL Workbench/Cli/Curl/Browser to interact w/ application
 
   * Open MySQL Workbench
   * Ask the facilitator for the root password for the locally installed mysql server
@@ -135,6 +135,16 @@
       * `tail -f logs/*`
       * `curl -vvv http://localhost:8080/ftpxx/api/employees | python -m json.tool`
       * `curl -vvv http://localhost:8080/ftpxx/api/employees/2000 | python -m json.tool`
+   * `cd ../../webui/lm-app/`
+   * `ng build --prod`
+   * `cp ../../restservice/leavemanager/target/ftpxx-0.0.1-SNAPSHOT.war ./ftpxx.war`
+   * `cd dist`
+   * `jar -uvf ../ftpxx.war *`
+   * `cd ..`
+   * `jar -tvf ftpxx.war`
+   * `cp ftpxx.war /path/to/tomcat/webapps/ftpxx.war`
+   * Notice that the tail terminal shows that the new version of the web application archive is now getting deployed
+   * 
       
 
 # Reading material
