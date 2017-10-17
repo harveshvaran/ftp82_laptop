@@ -12,6 +12,7 @@
   * Pull it to "In Progress"
   * `git checkout -b FTPXX-<TicketNumber>-DDL`
   * Edit Database.ddl for two tables: EMPLOYEE and LEAVE_HISTORY
+    * Use the "STANDARDS_AND_GUIDELINES.md" file for the naming conventions to be followed.
   * Edit Database.dml to insert data into the EMPLOYEE table; The LEAVE_HISTORY table can be blank to start with.
   * Run the ddls and dmls against your local mysql server
   * Push the changes to remote branch
