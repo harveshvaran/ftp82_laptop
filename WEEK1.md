@@ -136,7 +136,7 @@
       * `curl -vvv http://localhost:8080/ftpxx/api/employees | python -m json.tool`
       * `curl -vvv http://localhost:8080/ftpxx/api/employees/2000 | python -m json.tool`
    * `cd ../../webui/lm-app/`
-   * `ng build --prod`
+   * `ng build`
    * `cp ../../restservice/leavemanager/target/ftpxx-0.0.1-SNAPSHOT.war ./ftpxx.war`
    * `cd dist`
    * `jar -uvf ../ftpxx.war *`
@@ -144,7 +144,8 @@
    * `jar -tvf ftpxx.war`
    * `cp ftpxx.war /path/to/tomcat/webapps/ftpxx.war`
    * Notice that the tail terminal shows that the new version of the web application archive is now getting deployed
-   * 
+   * Open Chrome browser and navigate to http://localhost:8080/ftpxx/
+   * You should be able to see the employee ids as you have entered them in the local mysql database
       
 
 # Reading material
