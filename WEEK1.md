@@ -61,6 +61,17 @@
 
 ## Databases: SQL/DML
 
+## Agile basics
+  * Sprint, Kanban
+  * Product Backlog, Sprint Backlog
+    * Epics, User Stories, Tasks, Bug
+    * To Do, In Progress, Resolved, Accepted
+  * Sprint Rituals
+    * Planning
+    * Standup
+    * Review
+    * Retrospective
+  
 # Workshop material - Day #1 - Git/VS Code
   * Setting up git
     * Open "https://github.com/HexaInnovLab" in your browser
