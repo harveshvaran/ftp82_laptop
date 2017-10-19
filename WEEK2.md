@@ -35,4 +35,8 @@
          * Go back to VS code, edit the files and commit/push the files to the branch again
        * Once happy, click the "Create pull request" button after correcting the description, comment etc.
      * Ask your facilitator to review the pull request.
+     * The facilitator will and review and merge the pull request and delete the branch
+   * Once merged, go to jenkins (ask the facilitator for the url) and watch the jobs
+     * There will be a ftpxx-10-unit, a ftpxx-30-integration and a ftpxx-50-staging jobs in that tab. The unit job will be triggered (within 5 minutes of the merge) and it will execute the unit tests etc. It then will trigger the integration job which will perform black box tests on the package. Since we have done only DDL/DML changes, none of these tests should fail and you should get a green pipeline.
+     
   
