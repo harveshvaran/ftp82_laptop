@@ -11,6 +11,10 @@
     * `cd .ssh`
     * For each team, nn = 01 to 10
       * `ssh-keygen -t rsa -f jenkins_for_ftp..`
+    * Create 10 credentials in jenkins with names such as 'jenkins_for_ftpnn',
+      * Kind: "SSH Username with private key"
+      * Username:" "jenkins_for_ftpnn"
+      * Private key: "From a file on jenkins master"; "/var/lib/jenkins/.ssh/jenkins_for_ftpnn"
   * Create Git repository for the 10 teams
     * Make sure that ftp-fork-me does not have any branches
     * Go to github.com
