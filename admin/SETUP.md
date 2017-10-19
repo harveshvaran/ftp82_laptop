@@ -23,8 +23,9 @@
       * Add FTP-Admins as a group w/ R/W access to these repositories
     * `git clone --bare git@github.com:HexaInnovLab/ftp-fork-me.git ftpxx`
     * `cd ftpxx`
-    * `git push --mirror git@github.com:HexaInnovLab/ftp01.git`
-    * `git push --mirror git@github.com:HexaInnovLab/ftp02.git` etc.
+    * For each team, nn = 01 to 10
+      * `find . -type f -not -path '*/\.*' -exec sed -i '' -e 's/ftpxx/ftp01/g' {} \;'`
+      * `git push --mirror git@github.com:HexaInnovLab/ftpnn.git`
     * Add the .pub key from jenkins home/.ssh directory for this team as the repository's deploy key
     * Add each team member to the team's git repository
   * Create Scrum teams corresponding to the 10 teams
