@@ -20,6 +20,15 @@
   * Create Scrum teams corresponding to the 10 teams
     * Add each team member to the team's Jira group
   * Jenkins jobs - 3 per team
+    * FTPXX-10-UNIT
+    * FTPXX-30-INTEGRATION
+    * FTPXX-50-STAGING
+    * For each team, nn = 01 to 10
+      * Create a tab FTP<nn>
+      * Create New Item, for stage = 10-UNIT, 30-INTEGRATION, and 50-STAGING
+        * Free Style Project
+        * Copy from FTP<nn>-<stage>, "Add to current view" checked
+        * Change all xx to <nn> in the job fields  
   * Databases - 3 per team
     * DEV, Integration and Staging instances
     * `CREATE DATABASE FTPXX;` -- XX from 01 to 10
