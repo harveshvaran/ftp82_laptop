@@ -29,9 +29,15 @@
       * from the workspace
       * `git clone git@github.com:HexaInnovLab/ftpnn.git`
       * cd ftpnn
-      * `find . -type f -not -path '*/\.*' -not -path "*/node_modules/*" -exec sed -i '' -e 's/ftpxx/ftpnn/g' {} \; -exec sed -i '' -e 's/FTPXX/FTPnn/g' {} \;
+      * For windows
+        * use VS Code, find/replace in files to do the following: replacing ftpxx -> ftpnn, FTPXX -> FTPnn
+        * Rename directory restservice/leavemanager/src/main/java/com/hexaware/ftpxx/ to restservice/leavemanager/src/main/java/com/hexaware/ftpnn/
+      * For Mac OS
+        * `find . -type f -not -path '*/\.*' -not -path "*/node_modules/*" -exec sed -i '' -e 's/ftpxx/ftpnn/g' {} \; -exec sed -i '' -e 's/FTPXX/FTPnn/g' {} \;
 `
-      * `mv restservice/leavemanager/src/main/java/com/hexaware/ftpxx/ restservice/leavemanager/src/main/java/com/hexaware/ftp01/`
+        * `mv restservice/leavemanager/src/main/java/com/hexaware/ftpxx/ restservice/leavemanager/src/main/java/com/hexaware/ftpnn/`
+      * `git commit -a -m "replacing xx with the team number`
+      * `git push origin HEAD`
       
     * Add the .pub key from jenkins home/.ssh directory for this team as the repository's deploy key
     * Add each team member to the team's git repository
