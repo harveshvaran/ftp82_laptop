@@ -36,6 +36,7 @@
         * `find . -type f -not -path '*/\.*' -not -path "*/node_modules/*" -exec sed -i '' -e 's/ftpxx/ftpnn/g' {} \; -exec sed -i '' -e 's/FTPXX/FTPnn/g' {} \;
 `
         * `mv restservice/leavemanager/src/main/java/com/hexaware/ftpxx/ restservice/leavemanager/src/main/java/com/hexaware/ftpnn/`
+      * `git add restservice/leavemanager/src/main/java/com/hexaware/ftpnn/`
       * `git commit -a -m "replacing xx with the team number`
       * `git push origin HEAD`
       
