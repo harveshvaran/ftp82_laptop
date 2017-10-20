@@ -41,7 +41,7 @@
       * `git push origin HEAD`
       
     * Add the .pub key from jenkins home/.ssh directory for this team as the repository's deploy key
-    * Add each team member to the team's git repository
+    * [TBD: This has to be done on day1] Add each team member to the team's git repository
   * Create Scrum teams corresponding to the 10 teams
     * Add each team member to the team's Jira group    
   * Jenkins jobs - 3 per team
