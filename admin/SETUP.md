@@ -24,10 +24,15 @@
     * `git clone --bare git@github.com:HexaInnovLab/ftp-fork-me.git ftpxx`
     * `cd ftpxx`
     * For each team, nn = 01 to 10
+      * `git push --mirror git@github.com:HexaInnovLab/ftpnn.git`
+    * For each team, nn = 01 to 10
+      * from the workspace
+      * `git clone git@github.com:HexaInnovLab/ftpnn.git`
+      * cd ftpnn
       * `find . -type f -not -path '*/\.*' -not -path "*/node_modules/*" -exec sed -i '' -e 's/ftpxx/ftpnn/g' {} \;
 `
       * `mv restservice/leavemanager/src/main/java/com/hexaware/ftpxx/ restservice/leavemanager/src/main/java/com/hexaware/ftp01/`
-      * `git push --mirror git@github.com:HexaInnovLab/ftpnn.git`
+      
     * Add the .pub key from jenkins home/.ssh directory for this team as the repository's deploy key
     * Add each team member to the team's git repository
   * Create Scrum teams corresponding to the 10 teams
