@@ -76,24 +76,25 @@
   * Setting up git
     * Open "https://github.com/HexaInnovLab" in your browser
     * Click the signup on the top-right
-    * In the following instructions, <hexawareid> is the part preceding @hexaware.com in your email address
-    * your username is <hexawareid>-Hexaware, e.g., krishnakumar-Hexaware
+    * In the following instructions, {hexawareid} is the part preceding @hexaware.com in your email address
+    * your username is {hexawareid}-Hexaware, e.g., krishnakumar-Hexaware
     * Use hexaware email address as the email address
     * Select your own password
     * Tell the facilitator the username just created
     * You will get mail to verify your mail address; click the link to complete the verification
     * The facilitator will add you to the hexaware github organization and also give you access to the team's repository
     * You will get a mail inviting you to the HexaInnovLab organization. Please join the organization.
+    * Open https://github.com/HexaInnovLab/ftpnn, and look at the WEEK1.md
     * Follow the instructions as in https://help.github.com/articles/connecting-to-github-with-ssh/
       * Skip "Checking for existing SSH keys" as this is a fresh installation
-      * Run the ssh-keygen command and save the private key in C:\users\<employeeid>\.ssh\id_rsa. *Do not* use a passphrase in step #4 - just press enter twice.
+      * Run the ssh-keygen command and save the private key in C:\users\{employeeid}\.ssh\id_rsa. *Do not* use a passphrase in step #4 - just press enter twice.
       * Skip "Adding your SSH key to the ssh-agent" section as we do not use ssh-agent
       * Follow the instructions as in "https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/" and "https://help.github.com/articles/testing-your-ssh-connection/" and test the setup
 
   * Command Line/Cygwin
   * Command Line/Gitbash --  Open Gitbash
     
-    * `pwd` -- Check and verify that the current working directory is C:\users\<employeeid>
+    * `pwd` -- Check and verify that the current working directory is C:\users\{employeeid}
     * `mkdir workspace` -- We will create a sub-directory called workspace and put all the project materials there
     * `cd workspace` -- change current working to workspace
         
