@@ -106,11 +106,11 @@
     * Open https://github.com/HexaInnovLab/ftpxx
       * look at source code organization
     * Go back to gitbash and clone the project
-    * `git clone git@github.com:HexaInnovLab/ftpnn.git`
-    * `cd ftpnn`
+    * `git clone git@github.com:HexaInnovLab/ftpxx.git`
+    * `cd ftpxx`
     * `git status`
   * VS Code
-    * Open c:\users\<emplpoyeeid>\workspace\ftpxx
+    * Open c:\users\Hvuser\workspace\ftpxx
     * Browse the directories to understand the repository structure
 
 # Workshop material - Day #2 - MySQL Workbench/Cli/Curl/Browser to interact w/ application
