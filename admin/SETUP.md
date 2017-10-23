@@ -58,6 +58,9 @@
     * DEV, Integration and Staging instances
     * `CREATE DATABASE FTPXX;` -- XX from 01 to 10
 
+# Week #1 Day #1
+  * Go to https://github.com/orgs/HexaInnovLab/people, and click "Invite Member" and add them to the FTPnn team.
+
 ----- To be reviewed ---------
 
 ## Setup Jira
