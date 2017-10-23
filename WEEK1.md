@@ -74,7 +74,7 @@
   
 # Workshop material - Day #1 - Git/VS Code
   * Setting up git
-    * Open "https://github.com/HexaInnovLab" in your browser
+    * Open "https://github.com/HexaInnovLab" in your browser; bookmark this page in your browser
     * Click the signup on the top-right
     * In the following instructions, {hexawareid} is the part preceding @hexaware.com in your email address
     * your username is {hexawareid}-Hexaware, e.g., krishnakumar-Hexaware
@@ -87,28 +87,27 @@
     * Open https://github.com/HexaInnovLab/ftpnn, and look at the WEEK1.md
     * Follow the instructions as in https://help.github.com/articles/connecting-to-github-with-ssh/
       * Skip "Checking for existing SSH keys" as this is a fresh installation
-      * Run the ssh-keygen command and save the private key in C:\users\{employeeid}\.ssh\id_rsa. *Do not* use a passphrase in step #4 - just press enter twice.
+      * Run the ssh-keygen command and save the private key in C:\users\Hvuser\.ssh\id_rsa. *Do not* use a passphrase in step #4 - just press enter twice.
       * Skip "Adding your SSH key to the ssh-agent" section as we do not use ssh-agent
       * Follow the instructions as in "https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/" and "https://help.github.com/articles/testing-your-ssh-connection/" and test the setup
 
-  * Command Line/Cygwin
   * Command Line/Gitbash --  Open Gitbash
     
-    * `pwd` -- Check and verify that the current working directory is C:\users\{employeeid}
-    * `mkdir workspace` -- We will create a sub-directory called workspace and put all the project materials there
+    * `pwd` -- Check and verify that the current working directory is C:\users\Hvuser
     * `cd workspace` -- change current working to workspace
+    * `pwd` -- Check and verify that the current working directory is C:\users\Hvuser/workspace
         
   * Git (setup/checkout/clone/pull/push)
-    * `git --version`
-    * `git config --global -l`
+    * `git --version` // should be atleast 2.14+
+    * `git config --global -l` // should throw an error
     * `git config --global user.name "<your name>"`
     * `git config --global user.email <your email>`
     * `git config --global -l`
     * Open https://github.com/HexaInnovLab/ftpxx
       * look at source code organization
-    * create workspace folder
-    * `git clone git@github.com:HexaInnovLab/ftpxx.git`
-    * `cd ftpxx`
+    * Go back to gitbash and clone the project
+    * `git clone git@github.com:HexaInnovLab/ftpnn.git`
+    * `cd ftpnn`
     * `git status`
   * VS Code
     * Open c:\users\<emplpoyeeid>\workspace\ftpxx
