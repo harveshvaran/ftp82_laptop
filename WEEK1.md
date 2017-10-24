@@ -154,7 +154,7 @@
    * `jar -uvf ../ftpxx.war *`
    * `cd ..`
    * `jar -tvf ftpxx.war`
-   * `cp ftpxx.war /path/to/tomcat/webapps/ftpxx.war`
+   * `cp ftpxx.war /D/FTP/apache-tomcat-8.5.16-windows-x64/apache-tomcat-8.5.16/webapps/ftpxx.war`
    * Notice that the tail terminal shows that the new version of the web application archive is now getting deployed
    * Open Chrome browser and navigate to http://localhost:8080/ftpxx/
    * You should be able to see the employee ids as you have entered them in the local mysql database
