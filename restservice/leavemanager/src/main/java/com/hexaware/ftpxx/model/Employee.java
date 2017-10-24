@@ -15,11 +15,17 @@ public class Employee {
 
     @Override
     public final boolean equals(final Object obj) {
-        Employee emp = (Employee) obj;
-        if (Objects.equals(empId, emp.empId)) {
-            return true;
-        }
+      if (obj == null) {
         return false;
+      }
+      if (getClass() != obj.getClass()) {
+        return false;
+      }
+      Employee emp = (Employee) obj;
+      if (Objects.equals(empId, emp.empId)) {
+          return true;
+      }
+      return false;
     }
 
     @Override

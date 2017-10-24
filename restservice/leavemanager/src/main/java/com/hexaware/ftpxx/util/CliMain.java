@@ -9,7 +9,7 @@ import com.hexaware.ftpxx.persistence.EmployeeFactory;
  * application.
  */
 public class CliMain {
-  private Scanner option = new Scanner(System.in);
+  private Scanner option = new Scanner(System.in, "UTF-8");
 
   private void mainMenu() {
     System.out.println("Leave Management System");
