@@ -139,9 +139,9 @@
     * As expected, the cli displays only the employee id for the employee; we need to do some code changes before the other attributes such as name will start appearing in the cli. But before that we will test the application as a REST service.
   * Build the war file as follows:
     * `mvn package` -- This build a war (java web archive with the code for the REST service)
-    * `cp target/ftpxx-0.0.1-SNAPSHOT.war /path/to/tomcat/webapps/ftpxx.war`
+    * `cp target/ftpxx-0.0.1-SNAPSHOT.war /D/FTP/apache-tomcat-8.5.16-windows-x64/apache-tomcat-8.5.16/webapps/ftpxx.war`
     * start tomcat and tail its logs
-      * `cd path/to/tomcat`
+      * `cd D/FTP/apache-tomcat-8.5.16-windows-x64/apache-tomcat-8.5.16`
       * `rm -rf logs/*`
       * `./bin/startup.sh`
       * `tail -f logs/*`
