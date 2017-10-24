@@ -109,23 +109,21 @@
     * `git clone git@github.com:HexaInnovLab/ftpxx.git`
     * `cd ftpxx`
     * `git status`
-  * VS Code
-    * Open c:\users\Hvuser\workspace\ftpxx
+  * open Visual Studio Code
+    * Open folder c:\users\Hvuser\workspace\ftpxx
     * Browse the directories to understand the repository structure
 
 # Workshop material - Day #2 - MySQL Workbench/Cli/Curl/Browser to interact w/ application
 
   * Open MySQL Workbench
-  * Ask the facilitator for the root password for the locally installed mysql server
-  * Setup a connection to localhost:3306, and use the password. You may have to change the password at this time.
   * Open the connection
   * `CREATE DATABASE FTPXX;` and click the lightning button
   * Open database/database.ddl in VS code
-  * Copy the contents to Workbench
+  * Copy the entire contents to MySQL Workbench
   * Execute the ddl 
-  * Click the table icon against the EMPLOYEE table in the right-hand side schemas section 
+  * Click the table icon against the EMPLOYEE table in the right-hand side schemas section
   * Open database/database.dml in VS code
-  * Copy the contents to Workbench
+  * Copy the contents to MySQL Workbench
   * Execute the dml 
   * Click the table icon against the EMPLOYEE table in the right-hand side schemas section. You should see the data just inserted.
   * Play around with
@@ -134,6 +132,8 @@
     * DELETE statements with predicates
     
   * Next, we will build and run the java code
+  * go to gitbash
+  * `cd restservice/leavemanager`
   * `mvn exec:java -Dexec.mainClass=com.hexaware.ftpxx.util.CliMain`
     * As expected, the cli displays only the employee id for the employee; we need to do some code changes before the other attributes such as name will start appearing in the cli. But before that we will test the application as a REST service.
   * Build the war file as follows:
