@@ -134,6 +134,7 @@
   * Next, we will build and run the java code
   * go to gitbash
   * `cd restservice/leavemanager`
+  * ` mvn compile`
   * `mvn exec:java -Dexec.mainClass=com.hexaware.ftpxx.util.CliMain`
     * As expected, the cli displays only the employee id for the employee; we need to do some code changes before the other attributes such as name will start appearing in the cli. But before that we will test the application as a REST service.
   * Build the war file as follows:
