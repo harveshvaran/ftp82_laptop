@@ -1,6 +1,7 @@
 package com.hexaware.ftpxx.util;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -37,6 +38,9 @@ public class EmployeeRest {
     @Produces(MediaType.APPLICATION_JSON)
     public final Employee employeeListById(@PathParam("id") final int id) {
         final Employee empl = EmployeeFactory.listById(id);
+        if (empl == null) {
+            throw new NotFoundException("No such Employee ID: " + id);
+        }
         return empl;
     }
 }
