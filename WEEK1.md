@@ -118,6 +118,8 @@
   * Open MySQL Workbench
   * Open the connection
   * `CREATE DATABASE FTPXX;` and click the lightning button
+  * `CREATE USER 'FTPXX'@'%' IDENTIFIED BY 'FTPXX';`
+  * `GRANT ALL ON FTPXX.* TO 'FTPXX'@'%';`
   * Open database/database.ddl in VS code
   * Copy the entire contents to MySQL Workbench
   * Execute the ddl 
