@@ -55,8 +55,10 @@
         * Copy from FTPnn-{stage}, "Add to current view" checked
         * Change all xx to nn in the job fields  
   * Databases - 3 per team
-    * DEV, Integration and Staging instances
+    * Integration and Staging instances
     * `CREATE DATABASE FTPXX;` -- XX from 01 to 10
+    * `CREATE USER 'FTPXX'@'*' IDENTIFIED BY 'FTPXX';`
+    * `GRANT ALL ON FTPXX.* TO 'FTPXX'@'*';`
 
 # Week #1 Day #1
   * Go to https://github.com/orgs/HexaInnovLab/people, and click "Invite Member" and add them to the FTPnn team.
