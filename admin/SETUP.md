@@ -57,8 +57,8 @@
   * Databases - 3 per team
     * Integration and Staging instances
     * `CREATE DATABASE FTPXX;` -- XX from 01 to 10
-    * `CREATE USER 'FTPXX'@'*' IDENTIFIED BY 'FTPXX';`
-    * `GRANT ALL ON FTPXX.* TO 'FTPXX'@'*';`
+    * `CREATE USER 'FTPXX'@'%' IDENTIFIED BY 'FTPXX';`
+    * `GRANT ALL ON FTPXX.* TO 'FTPXX'@'%';`
 
 # Week #1 Day #1
   * Go to https://github.com/orgs/HexaInnovLab/people, and click "Invite Member" and add them to the FTPnn team.
