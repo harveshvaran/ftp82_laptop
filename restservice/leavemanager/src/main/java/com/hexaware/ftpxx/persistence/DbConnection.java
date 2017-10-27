@@ -13,9 +13,11 @@ public class DbConnection {
     public final DBI getConnect() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            //FIXME: Make this parametrized, with default
-            DBI dbi = new DBI("jdbc:mysql://staging-rds.csgmpwijurve.us-east-1.rds.amazonaws.com:3306/FTP01_DEV",
-                "FTP01_DEV", "FTP01_DEV");
+            String dbc = System.getenv("DB_CONNECTION");
+            if (dbc == null || dbc.equals("")) {
+                dbc = "localhost:3306";
+            }
+            DBI dbi = new DBI("jdbc:mysql://" + dbc + "/FTPXX", "FTPXX", "FTPXX");
             dbi.setSQLLog(new PrintStreamLog());
             return dbi;
         } catch (ClassNotFoundException e) {
