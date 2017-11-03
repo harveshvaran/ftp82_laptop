@@ -116,6 +116,7 @@
 # Workshop material - Day #2 - MySQL Workbench/Cli/Curl/Browser to interact w/ application
 
   * Open MySQL Workbench
+    * Mac OS: `export PATH=$PATH:/Applications/MySQLWorkbench.app/Contents/MacOS` and then you can use the command line
   * Open the connection
   * `CREATE DATABASE FTPXX;` and click the lightning button
   * `CREATE USER 'FTPXX'@'localhost' IDENTIFIED BY 'FTPXX';`
