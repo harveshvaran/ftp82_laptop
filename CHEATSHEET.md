@@ -23,6 +23,7 @@
 # maven
 
 ## check style
+  * ```mvn -Dcheckstyle.consoleOutput=true checkstyle:check```
   * ```mvn checkstyle:checkstyle```
   * ```open target/site/checkstyle.html```
 
