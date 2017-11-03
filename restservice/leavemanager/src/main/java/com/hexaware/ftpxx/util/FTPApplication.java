@@ -14,21 +14,21 @@ import javax.ws.rs.container.ContainerResponseFilter;
  */
 class CORSFilter implements ContainerResponseFilter {
 
-    /**
-     * This method adds the necessary headers so that
-     * cross-origin requests are accepted.
-     * @param request the request object
-     * @param response the response object
-     */
-    public void filter(final ContainerRequestContext request,
-    final ContainerResponseContext response) {
-        response.getHeaders().add("Access-Control-Allow-Origin", "*");
-        response.getHeaders().add("Access-Control-Allow-Headers",
-                "origin, content-type, accept, authorization");
-        response.getHeaders().add("Access-Control-Allow-Credentials", "true");
-        response.getHeaders().add("Access-Control-Allow-Methods",
-                "GET, POST, PUT, DELETE, OPTIONS, HEAD");
-    }
+  /**
+   * This method adds the necessary headers so that
+   * cross-origin requests are accepted.
+   * @param request the request object
+   * @param response the response object
+   */
+  public void filter(final ContainerRequestContext request,
+      final ContainerResponseContext response) {
+    response.getHeaders().add("Access-Control-Allow-Origin", "*");
+    response.getHeaders().add("Access-Control-Allow-Headers",
+            "origin, content-type, accept, authorization");
+    response.getHeaders().add("Access-Control-Allow-Credentials", "true");
+    response.getHeaders().add("Access-Control-Allow-Methods",
+            "GET, POST, PUT, DELETE, OPTIONS, HEAD");
+  }
 }
 
 /**
@@ -36,16 +36,15 @@ class CORSFilter implements ContainerResponseFilter {
  */
 @ApplicationPath("/")
 public class FTPApplication extends ResourceConfig {
-
-    /**
-     * This method register the packages for REST classes
-     * and the filter for CORS.
-     */
-    public FTPApplication() {
-        // Register resources and providers using package-scanning.
-        packages("com.hexaware.ftpxx.util");
-        register(new CORSFilter());
-        // Enable Tracing support.
-        property(ServerProperties.TRACING, "ALL");
-    }
+  /**
+   * This method register the packages for REST classes
+   * and the filter for CORS.
+   */
+  public FTPApplication() {
+    // Register resources and providers using package-scanning.
+    packages("com.hexaware.ftpxx.util");
+    register(new CORSFilter());
+    // Enable Tracing support.
+    property(ServerProperties.TRACING, "ALL");
+  }
 }

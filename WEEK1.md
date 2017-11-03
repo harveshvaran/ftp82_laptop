@@ -49,7 +49,9 @@
 ## Unix command line basics
   * pwd
   * ls
-  * 
+  * cd
+  * mkdir
+  
 ## Source code control systems
 
 ## Git
@@ -116,7 +118,7 @@
 # Workshop material - Day #2 - MySQL Workbench/Cli/Curl/Browser to interact w/ application
 
   * Open MySQL Workbench
-  * Open the connection
+  * Open the localhost connection
   * `CREATE DATABASE FTPXX;` and click the lightning button
   * `CREATE USER 'FTPXX'@'localhost' IDENTIFIED BY 'FTPXX';`
   * `GRANT ALL ON FTPXX.* TO 'FTPXX'@'localhost';`

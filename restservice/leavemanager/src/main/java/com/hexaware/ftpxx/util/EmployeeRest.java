@@ -16,31 +16,31 @@ import com.hexaware.ftpxx.model.Employee;
 @Path("/employees")
 public class EmployeeRest {
 
-    /**
-     * Returns a list of all the employees.
-     * @return a list of all the employees
-     */
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public final Employee[] employeesList() {
-        System.out.println("Employees List");
-        final Employee[] employees = EmployeeFactory.listAll();
-        return employees;
-    }
+  /**
+   * Returns a list of all the employees.
+   * @return a list of all the employees
+   */
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+  public final Employee[] employeesList() {
+    System.out.println("Employees List");
+    final Employee[] employees = EmployeeFactory.listAll();
+    return employees;
+  }
 
-    /**
-     * Returns a specific employee's details.
-     * @param id the id of the employee
-     * @return the employee details
-     */
-    @GET
-    @Path("{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public final Employee employeeListById(@PathParam("id") final int id) {
-        final Employee empl = EmployeeFactory.listById(id);
-        if (empl == null) {
-            throw new NotFoundException("No such Employee ID: " + id);
-        }
-        return empl;
+  /**
+   * Returns a specific employee's details.
+   * @param id the id of the employee
+   * @return the employee details
+   */
+  @GET
+  @Path("{id}")
+  @Produces(MediaType.APPLICATION_JSON)
+  public final Employee employeeListById(@PathParam("id") final int id) {
+    final Employee empl = EmployeeFactory.listById(id);
+    if (empl == null) {
+      throw new NotFoundException("No such Employee ID: " + id);
     }
+    return empl;
+  }
 }

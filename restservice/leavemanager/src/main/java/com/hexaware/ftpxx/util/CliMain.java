@@ -22,14 +22,22 @@ public class CliMain {
     mainMenuDetails(menuOption);
   }
   private void mainMenuDetails(final int selectedOption) {
-    if (selectedOption == 1) {
-      listEmployeesDetails();
-    } else if (selectedOption == 2) {
-      listEmployeeDetail();
+    switch (selectedOption) {
+      case 1:
+        listEmployeesDetails();
+        break;
+      case 2:
+        listEmployeeDetail();
+        break;
+      case 3:
+        return;
+      default:
+        System.out.println("Choose either 1, 2 or 3");
     }
+    mainMenu();
   }
   private void listEmployeeDetail() {
-    System.out.println("Enter Your Employee Id");
+    System.out.println("Enter an Employee Id");
     int empId = option.nextInt();
     Employee employee = EmployeeFactory.listById(empId);
     System.out.println(employee.getEmpId());
@@ -37,7 +45,7 @@ public class CliMain {
   private void listEmployeesDetails() {
     Employee[] employee = EmployeeFactory.listAll();
     for (Employee e : employee) {
-        System.out.println(e.getEmpId());
+      System.out.println(e.getEmpId());
     }
   }
   /**
@@ -45,7 +53,7 @@ public class CliMain {
    * @param ar the list of arguments
    */
   public static void main(final String[] ar) {
-      final CliMain mainObj = new CliMain();
-      mainObj.mainMenu();
+    final CliMain mainObj = new CliMain();
+    mainObj.mainMenu();
   }
 }
