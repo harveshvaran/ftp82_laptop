@@ -49,7 +49,10 @@
 
 ## Must-Read
 
-  * https://www.youtube.com/watch?v=KhzGSHNhnbI
+  * Typescript
+    * Promises: https://basarat.gitbooks.io/typescript/docs/promise.html
+  * Angular Intro
+    * https://www.youtube.com/watch?v=KhzGSHNhnbI
 
 ## Nice-To-Read
 
