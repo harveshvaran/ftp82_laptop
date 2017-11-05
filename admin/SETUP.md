@@ -38,7 +38,8 @@
   * Staging and Integration ec2 instances
     * Use the instructions in JENKINS.md to spin up the instances, stop iptables, yum install and install jdk
     * Install tomcat
-      * As root, in /root wget, tar -xvzf and startup.sh
+      * As centos, in /home/centos, wget "http://www-us.apache.org/dist/tomcat/tomcat-8/v8.5.23/bin/apache-tomcat-8.5.23.tar.gz", "tar -xvzf apache-tomcat-8.5.23"
+      * Edit bin/startup.sh, add "export DB_CONNECTION=...:3306"
   * Jenkins jobs - 3 per team
     * FTPXX-10-UNIT
     * FTPXX-30-INTEGRATION
