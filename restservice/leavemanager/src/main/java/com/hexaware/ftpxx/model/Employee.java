@@ -38,12 +38,6 @@ public class Employee {
   }
 
   /**
-   * default constructor Employee.
-   */
-  public Employee() {
-  }
-
-  /**
    * @param argEmpId to initialize employee id.
    */
   public Employee(final int argEmpId) {

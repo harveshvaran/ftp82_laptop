@@ -99,7 +99,7 @@
               <coverage-output>html</coverage-output>
               <coverage-metrics>all</coverage-metrics>
               <coverage-classes>loaded</coverage-classes>
-              <coverage-check>25</coverage-check>
+              <coverage-check>85</coverage-check>
             </systemPropertyVariables>
           </configuration>
         </plugin>

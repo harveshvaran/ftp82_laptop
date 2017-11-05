@@ -29,7 +29,8 @@ public class CliMain {
         listEmployeeDetail();
         break;
       case 3:
-        return;
+        // halt since normal exit throws a stacktrace due to jdbc threads not responding
+        Runtime.getRuntime().halt(0);
       default:
         System.out.println("Choose either 1, 2 or 3");
     }
@@ -39,7 +40,11 @@ public class CliMain {
     System.out.println("Enter an Employee Id");
     int empId = option.nextInt();
     Employee employee = Employee.listById(empId);
-    System.out.println(employee.getEmpId());
+    if (employee == null) {
+      System.out.println("Sorry, No such employee");
+    } else {
+      System.out.println(employee.getEmpId());
+    }
   }
   private void listEmployeesDetails() {
     Employee[] employee = Employee.listAll();
