@@ -1,16 +1,16 @@
 import { TestBed, async } from '@angular/core/testing';
 import { Http } from '@angular/http';
-import { MockBackend } from '@angular/http/testing'
+import { MockBackend } from '@angular/http/testing';
 
 import { AppComponent } from './app.component';
 
-import { Employee } from './employee'
-import { EmployeeService } from './employee.service'
+import { Employee } from './employee';
+import { EmployeeService } from './employee.service';
 
 class MockEmployeeService {
   getEmployees(): Promise<Employee[]> {
-    console.log("Mock getEmployees called");
-    return Promise.resolve([new Employee(1000), new Employee(2000)])
+    console.log('Mock getEmployees called');
+    return Promise.resolve([new Employee(1000), new Employee(2000)]);
   }
 }
 

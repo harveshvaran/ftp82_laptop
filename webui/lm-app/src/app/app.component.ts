@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
 
   getEmployees(): void {
       this.employeeService.getEmployees().then(employees => {
-        console.log("getEmployees promise resolved : " + employees.length);
+        console.log('getEmployees promise resolved : ' + employees.length);
         this.employees = employees;
       }
     );
