@@ -1,5 +1,8 @@
 # Instructions on how to setup jenkins on an aws instance
   * Spin up an ec2 instance (TBD: elaborate these steps)
+    * AMI: CentOS Linux 6 x86_64 HVM EBS 1704_01 (ami-23285c35)
+    * SG: 80/443/8080/8443/22
+    * ...
   * `service iptables stop`
   * `service ip6tables stop`
   * install some pre-requisites
