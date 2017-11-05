@@ -51,6 +51,7 @@
         </executions>
         <configuration>
             <failsOnError>true</failsOnError>
+            <includeTestSourceDirectory>true</includeTestSourceDirectory>
             <configLocation>checkstyle.xml</configLocation>
         </configuration>
       </plugin>

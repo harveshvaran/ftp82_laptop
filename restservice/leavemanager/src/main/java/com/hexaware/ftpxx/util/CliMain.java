@@ -2,7 +2,6 @@ package com.hexaware.ftpxx.util;
 import java.util.Scanner;
 
 import com.hexaware.ftpxx.model.Employee;
-import com.hexaware.ftpxx.persistence.EmployeeFactory;
 
 /**
  * Class CliMain provides the command line interface to the leavemanagement
@@ -39,11 +38,11 @@ public class CliMain {
   private void listEmployeeDetail() {
     System.out.println("Enter an Employee Id");
     int empId = option.nextInt();
-    Employee employee = EmployeeFactory.listById(empId);
+    Employee employee = Employee.listById(empId);
     System.out.println(employee.getEmpId());
   }
   private void listEmployeesDetails() {
-    Employee[] employee = EmployeeFactory.listAll();
+    Employee[] employee = Employee.listAll();
     for (Employee e : employee) {
       System.out.println(e.getEmpId());
     }

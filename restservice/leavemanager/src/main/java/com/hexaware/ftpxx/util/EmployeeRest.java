@@ -7,7 +7,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.hexaware.ftpxx.persistence.EmployeeFactory;
 import com.hexaware.ftpxx.model.Employee;
 
 /**
@@ -24,7 +23,7 @@ public class EmployeeRest {
   @Produces(MediaType.APPLICATION_JSON)
   public final Employee[] employeesList() {
     System.out.println("Employees List");
-    final Employee[] employees = EmployeeFactory.listAll();
+    final Employee[] employees = Employee.listAll();
     return employees;
   }
 
@@ -37,7 +36,7 @@ public class EmployeeRest {
   @Path("{id}")
   @Produces(MediaType.APPLICATION_JSON)
   public final Employee employeeListById(@PathParam("id") final int id) {
-    final Employee empl = EmployeeFactory.listById(id);
+    final Employee empl = Employee.listById(id);
     if (empl == null) {
       throw new NotFoundException("No such Employee ID: " + id);
     }
