@@ -57,6 +57,9 @@
     * ng lint --type-check
   * Generate new component
     * ng g component components/{name}
+  * Generate new service
+    * ng g service services/{name}
+
 
 # Angular/Augury
 
