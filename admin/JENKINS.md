@@ -14,6 +14,11 @@
     * `yum install jenkins`
     * `service jenkins start`
     * open http://jenkins-hostname:8080/ in your browser
+  * Install ng
+    * `curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -`
+    * `sudo yum -y install nodejs`
+    * `sudo npm install -g @angular/cli` -- goes into a loop? break it, and rerun the command
+    
     
 
     
