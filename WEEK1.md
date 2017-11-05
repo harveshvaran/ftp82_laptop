@@ -119,7 +119,7 @@
 
   * Open MySQL Workbench
   * Open the localhost connection
-    * Mac OS: `export PATH=$PATH:/Applications/MySQLWorkbench.app/Contents/MacOS` and then you can use the command line
+    * Mac OS: `export PATH=$PATH:/Applications/MySQLWorkbench.app/Contents/MacOS` and then you can use the command line `mysql -u root -p hexawareftpdev`
   * `CREATE DATABASE FTPXX;` and click the lightning button
   * `CREATE USER 'FTPXX'@'localhost' IDENTIFIED BY 'FTPXX';`
   * `GRANT ALL ON FTPXX.* TO 'FTPXX'@'localhost';`
@@ -135,6 +135,7 @@
     * SELECT with predicates
     * UPDATE statements with predicates
     * DELETE statements with predicates
+    * At the end of all the playing around, leave the database with 5 records with ids (1000, 2001
     
   * Next, we will build and run the java code
   * go to gitbash, ensure you are in workspace/ftpxx
