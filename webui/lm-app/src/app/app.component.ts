@@ -15,7 +15,11 @@ export class AppComponent implements OnInit {
   employees: Employee[];
 
   getEmployees(): void {
-      this.employeeService.getEmployees().then(employees => this.employees = employees);
+      this.employeeService.getEmployees().then(employees => {
+        console.log("getEmployees promise resolved : " + employees.length);
+        this.employees = employees;
+      }
+    );
   }
 
   ngOnInit(): void {

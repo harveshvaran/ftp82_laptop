@@ -4,4 +4,7 @@ export class Employee {
     email: String;
     phoneNumber: number;
     mgrId: number;
+    constructor(id: number) {
+      this.empId = id;
+    }
 }
