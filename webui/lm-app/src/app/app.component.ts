@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from './employee.service';
-import { Employee } from "./employee";
+import { Employee } from './employee';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +8,12 @@ import { Employee } from "./employee";
   styleUrls: ['./app.component.css'],
   providers: [ EmployeeService ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   constructor(private employeeService: EmployeeService) { }
 
   title = 'Leave Management Application';
-  employees: Employee[]
-  
+  employees: Employee[];
+
   getEmployees(): void {
       this.employeeService.getEmployees().then(employees => this.employees = employees);
   }

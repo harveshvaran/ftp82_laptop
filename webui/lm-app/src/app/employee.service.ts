@@ -1,10 +1,10 @@
-import { Employee } from "./employee";
+import { Employee } from './employee';
 
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/toPromise';
 
-import { Http } from "@angular/http";
-import { Injectable } from "@angular/core";
+import { Http } from '@angular/http';
+import { Injectable } from '@angular/core';
 
 
 @Injectable()
@@ -12,9 +12,9 @@ export class EmployeeService {
     constructor(private http: Http) {
     }
 
-    getEmployees() : Promise<Employee[]> {
-        console.log("getEmployees called on employee.service")
-        return this.http.get("http://localhost:8080/ftpxx/api/employees")
+    getEmployees(): Promise<Employee[]> {
+        console.log('getEmployees called on employee.service');
+        return this.http.get('http://localhost:8080/ftpxx/api/employees')
         .toPromise()
         .then(response => response.json() as Employee[])
         .catch(this.handleError);

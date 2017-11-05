@@ -3,5 +3,5 @@ export class Employee {
     name: String;
     email: String;
     phoneNumber: number;
-    mgrId:number;
+    mgrId: number;
 }
