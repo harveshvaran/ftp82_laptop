@@ -155,6 +155,7 @@
       * `curl -vvv http://localhost:8080/ftpxx/api/employees | python -m json.tool`
       * `curl -vvv http://localhost:8080/ftpxx/api/employees/2000 | python -m json.tool`
    * `cd ../../webui/lm-app/`
+   * `npm install`
    * `ng build`
    * `cp ../../restservice/leavemanager/target/ftpxx-0.0.1-SNAPSHOT.war ./ftpxx.war`
    * `cd dist`
