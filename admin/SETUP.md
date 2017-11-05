@@ -34,7 +34,11 @@
     * Add the .pub key from jenkins home/.ssh directory for this team as the repository's deploy key
     * [TBD: This has to be done on day1] Add each team member to the team's git repository
   * Create Scrum teams corresponding to the 10 teams
-    * Add each team member to the team's Jira group    
+    * Add each team member to the team's Jira group 
+  * Staging and Integration ec2 instances
+    * Use the instructions in JENKINS.md to spin up the instances, stop iptables, yum install and install jdk
+    * Install tomcat
+      * As root, in /root wget, tar -xvzf and startup.sh
   * Jenkins jobs - 3 per team
     * FTPXX-10-UNIT
     * FTPXX-30-INTEGRATION
