@@ -48,6 +48,15 @@
 
   * To serve from the working directory
     * ng serve --open
+  * Build
+    * ng build
+  * Unit Test
+    * ng test
+    * npm test
+  * Lint/Style check
+    * ng lint --type-check
+  * Generate new component
+    * ng g component components/{name}
 
 # Angular/Augury
 
