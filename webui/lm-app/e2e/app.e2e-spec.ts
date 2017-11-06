@@ -15,14 +15,14 @@ describe('lm-app App', () => {
   });
 
   it('should display 5 IDs', () => {
-    var expected = new Set();
-    expected.add("1000");
-    expected.add("2000");
-    expected.add("2001");
-    expected.add("3000");
-    expected.add("3001");
+    const expected = new Set();
+    expected.add('1000');
+    expected.add('2000');
+    expected.add('2001');
+    expected.add('3000');
+    expected.add('3001');
     page.navigateTo();
-    var rows = page.getRows();
+    const rows = page.getRows();
     expect(rows.count()).toBe(5);
     rows.each(function(row, index) {
       row.all(by.tagName('td')).first().getText().then(t => {

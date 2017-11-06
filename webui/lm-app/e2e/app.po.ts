@@ -10,7 +10,7 @@ export class AppPage {
   }
 
   getRows() {
-    var tbody = element(by.tagName('tbody'));
+    const tbody = element(by.tagName('tbody'));
     return tbody.all(by.tagName('tr'));
   }
 }
