@@ -28,5 +28,11 @@ exports.config = {
       project: 'e2e/tsconfig.e2e.json'
     });
     jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
+    var jasmineReporters = require('jasmine-reporters');
+    var junitReporter = new jasmineReporters.JUnitXmlReporter({
+      savePath: 'output/',
+      consolidateAll: false
+    });
+    jasmine.getEnv().addReporter(junitReporter);
   }
 };
