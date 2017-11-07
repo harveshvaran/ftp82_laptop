@@ -27,6 +27,8 @@
     * ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
     * rm -rf awscli-bundle awscli-bundle.zip    
   * Configure AWS CLI (as jenkins)
-    * 
+  * Install webdriver
+    * `npm install -g webdriver-manager`
+    * `webdriver-manager update`
     
   
