@@ -51,6 +51,7 @@
   * ls
   * cd
   * mkdir
+  * Curl
   
 ## Source code control systems
 
