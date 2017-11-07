@@ -27,8 +27,13 @@
     * ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
     * rm -rf awscli-bundle awscli-bundle.zip    
   * Configure AWS CLI (as jenkins)
-  * Install webdriver
-    * `npm install -g webdriver-manager`
-    * `webdriver-manager update`
+  
+  # Spin up a selenium server
+  * Windows server
+    * Turn off Enhanced Security
+    * Turn off windows firewall (Control Panel, Network, ...)
+    * https://letmedothat.wordpress.com/2014/12/27/pratractor-getting-started/
+    * 
+
     
   
