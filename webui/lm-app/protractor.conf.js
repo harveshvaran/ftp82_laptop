@@ -14,7 +14,8 @@ exports.config = {
       args: [ "--headless" ]
     }
   },
-  directConnect: true,
+  directConnect: false,
+  seleniumAddress: 'http://ec2-52-207-244-88.compute-1.amazonaws.com:4444/wd/hub',
   baseUrl: 'http://localhost:8080/',
   framework: 'jasmine',
   jasmineNodeOpts: {
