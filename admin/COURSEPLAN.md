@@ -3,15 +3,15 @@
 ## Week #1 Learning Goals
 
   1. Git
-    1. setup/clone
+     1. setup/clone
   1. Databases
-    1. MySQL/DML + Workbench
+     1. MySQL/DML + Workbench
   1. HTTP 
-    1. Curl Basics
+     1. Curl Basics
   1. Agile Basics
-    1. Backlogs, Sprints, Rituals
-    1. Epics, User stories, Tasks, Sub-Tasks
-    1. Life Cycle
+     1. Backlogs, Sprints, Rituals
+     1. Epics, User stories, Tasks, Sub-Tasks
+     1. Life Cycle
 
 ## Week #1 Workshop Goals
 
