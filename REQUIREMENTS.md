@@ -17,6 +17,18 @@ and their statuses.
   
 # Must-Have
   * All the high-level requirements above
+  * Same functionality available via
+     * Cli
+     * Curl
+     * Browser
+  * Validations, with error messages, both on 
+     * the server side, to make sure the data is clean no matter what the source and,
+     * the client side, to provide a responsive user interface
+     * Type validations
+     * Semantic validations
+        * A new leave application should not overlap with an existing leave application in the approved or pending status
+        * Start date must not be in the past
+        * End date should be equal to or greater than the start date
 
 # Nice-To-Have
   * Mail alert to manager when his/her employee applies for leave
@@ -35,3 +47,6 @@ and their statuses.
   * Escalation when manager does not approve within some SLA
   * Sorting options on all tables
   * 'quick filter' options on all tables
+  * Employees to re-edit their leave applications, esp. those in the pending status
+  * A way to handle leave already availed in the past
+  * Ability for managers to review and revisit their decisions
