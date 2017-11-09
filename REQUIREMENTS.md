@@ -11,16 +11,28 @@ or deny the leave application.
 As said earlier, employees have a leave balance; this cannot go negative. At any time, an employee can see his/her applications
 and their statuses.
 
-# Application flow
-
-The skeletal application contains a simple screen w/ a list of employees. Clicking the "login" button against the employee row takes you to the 'Login Screen'
-
-![Login Screen](/admin/ScreenDesign/Slide2.jpg) 
-
 # Out-Of-Scope
   * Authentication of the employees, password, password-reset etc.
   * Cancellation of leave applications (applications which are in the pending-approval status, approved status or denied status).
+
+# Application flow
+
+The skeletal application contains a simple screen w/ a list of employees. Clicking the "login" button against the employee row takes you to the 'Login Screen', with the employee id pre-populated.
+
+![Login Screen](/admin/ScreenDesign/Slide2.jpg) 
+
+  * The "Login" button is the default button (i.e., pressing "Enter" invokes the login function.
+  * "Cancel" takes the user back to the employee list screen.
+
+Since authentiation is out-of-scope, the "Login" function is always successful and the user is taken to the Employee Dashboard screen.
   
+![Employee Dashboard](/admin/ScreenDesign/Slide3.jpg)
+![Employee Dashboard](/admin/ScreenDesign/Slide4.jpg)
+![Employee Dashboard](/admin/ScreenDesign/Slide5.jpg)
+![Employee Dashboard](/admin/ScreenDesign/Slide6.jpg)
+![Employee Dashboard](/admin/ScreenDesign/Slide7.jpg)
+
+
 # Must-Have
   * All the high-level requirements above, screen flow above
   * Same functionality available via
@@ -56,3 +68,11 @@ The skeletal application contains a simple screen w/ a list of employees. Clicki
   * Employees to re-edit their leave applications, esp. those in the pending status
   * A way to handle leave already availed in the past
   * Ability for managers to review and revisit their decisions
+  
+# Fantastic-To-Have
+  * Mobile UI
+  * Conversational Interface
+     * ChatBot
+     * VoiceBot
+  * Metrics, Monitoring, Logs, Alerts, Dashboards
+
