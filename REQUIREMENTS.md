@@ -15,10 +15,10 @@ and their statuses.
   * Authentication of the employees, password, password-reset etc.
   * Cancellation of leave applications (applications which are in the pending-approval status, approved status or denied status).
   
-Must-Have
+# Must-Have
   * All the high-level requirements above
 
-Nice-To-Have
+# Nice-To-Have
   * Mail alert to manager when his/her employee applies for leave
   * Mail alert to manager when his/her manager approves/denies leave application
   * Handle leave applications in the past differently
@@ -30,7 +30,7 @@ Nice-To-Have
     * Sick leave
     * Maternity/Paternity leave
     
-Great-To-Have
+# Great-To-Have
   * Photos for employee in the database
   * Escalation when manager does not approve within some SLA
   * Sorting options on all tables
