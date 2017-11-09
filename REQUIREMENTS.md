@@ -25,9 +25,13 @@ Nice-To-Have
   * Calculate number of days of application leave automatically using
     * Weekend calculations
     * Company calendar which specifies company holidays
+  * Different types of leave
+    * Earned leave/Privileged leave
+    * Sick leave
+    * Maternity/Paternity leave
     
-  
 Great-To-Have
   * Photos for employee in the database
   * Escalation when manager does not approve within some SLA
-  * 
+  * Sorting options on all tables
+  * 'quick filter' options on all tables
