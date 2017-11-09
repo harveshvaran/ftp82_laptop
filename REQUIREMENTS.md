@@ -29,9 +29,26 @@ Since authentiation is out-of-scope, the "Login" function is always successful a
 ![Employee Dashboard](/admin/ScreenDesign/Slide3.jpg)
 ![Employee Dashboard](/admin/ScreenDesign/Slide4.jpg)
 ![Employee Dashboard](/admin/ScreenDesign/Slide5.jpg)
+
+For the CEO, this section will be empty.
+
 ![Employee Dashboard](/admin/ScreenDesign/Slide6.jpg)
 ![Employee Dashboard](/admin/ScreenDesign/Slide7.jpg)
 
+For extra credits, allow the user to multi-select rows and approve/deny in bulk.
+
+![Employee Dashboard](/admin/ScreenDesign/Slide8.jpg)
+
+The user should be able to type in the date, or use the calendar widget.
+Base version requirements:
+  * start date must not be in the past
+  * end date should be greater than, or equal to, the start date
+  * pre-calculate the number of days when start and end dates have been entered, but let the user overwrite the value
+  * All fields except leave reason are mandatory
+
+![Employee Dashboard](/admin/ScreenDesign/Slide9.jpg)
+
+Comments are mandatory for denial only.
 
 # Must-Have
   * All the high-level requirements above, screen flow above
