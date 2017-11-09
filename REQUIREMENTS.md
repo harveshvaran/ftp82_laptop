@@ -11,12 +11,18 @@ or deny the leave application.
 As said earlier, employees have a leave balance; this cannot go negative. At any time, an employee can see his/her applications
 and their statuses.
 
+# Application flow
+
+The skeletal application contains a simple screen w/ a list of employees. Clicking the "login" button against the employee row takes you to the 'Login Screen'
+
+![Login Screen](/admin/ScreenDesign/Slide2.jpg) 
+
 # Out-Of-Scope
   * Authentication of the employees, password, password-reset etc.
   * Cancellation of leave applications (applications which are in the pending-approval status, approved status or denied status).
   
 # Must-Have
-  * All the high-level requirements above
+  * All the high-level requirements above, screen flow above
   * Same functionality available via
      * Cli
      * Curl
