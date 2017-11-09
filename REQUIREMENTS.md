@@ -44,8 +44,6 @@ For the CEO, this section will be empty.
 ![Employee Dashboard](/admin/ScreenDesign/Slide6.jpg)
 ![Employee Dashboard](/admin/ScreenDesign/Slide7.jpg)
 
-For extra credits, allow the user to multi-select rows and approve/deny in bulk.
-
 ![Employee Dashboard](/admin/ScreenDesign/Slide8.jpg)
 
 The user should be able to type in the date, or use the calendar widget.
@@ -78,6 +76,7 @@ Comments are mandatory for denial only.
   * Mail alert to manager when his/her employee applies for leave
   * Mail alert to manager when his/her manager approves/denies leave application
   * Handle leave applications in the past differently
+  * Ability approve/deny multiple applications at once via multi-select/select-all
   * Calculate number of days of application leave automatically using
     * Weekend calculations
     * Company calendar which specifies company holidays
