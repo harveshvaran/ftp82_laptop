@@ -1,7 +1,14 @@
 
 # High level requirements
 
-We need to build a leave management application. This is an application where employee details (id, name, etc.) are stored
+We need to build a leave management application. This is an application where employees
+   * can view their personal details
+   * can view their manager details
+   * can apply for leave
+   * can check the status of their leave applications
+   * can approve/deny the leave applications of their direct reportees
+
+The employee details (id, name, etc.) are stored
 along with their current leave balance. All employees have a manager, who is also an employee, except the CEO of the company
 who does not have a manager.
 
@@ -13,6 +20,8 @@ and their statuses.
 
 # Out-Of-Scope
   * Authentication of the employees, password, password-reset etc.
+  * Adding/Editing employee details, reporting hierarchy.
+  * How the leave balance is setup and refilled on an yearly basis.
   * Cancellation of leave applications (applications which are in the pending-approval status, approved status or denied status).
 
 # Application flow
