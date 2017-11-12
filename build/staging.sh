@@ -1,6 +1,4 @@
 #!/bin/bash -ex
-/usr/local/bin/aws s3 cp s3://com.hexaware.builds.ftp/$TAR_FILE $TAR_FILE
-tar -xvzf $TAR_FILE
 #deploy
 scp -i ~/.ssh/ftp_jenkins.pem ftpxx.war centos@$STAGING_HOST:/home/centos/apache-tomcat-8.5.23/webapps
 #database
