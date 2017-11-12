@@ -49,8 +49,8 @@
     * `CREATE DATABASE FTPXX;` -- XX from 01 to 10
     * `CREATE USER 'FTPXX'@'%' IDENTIFIED BY 'FTPXX';`
     * `GRANT ALL ON FTPXX.* TO 'FTPXX'@'%';`
-    * `select Host, User, Password from mysql.user;`
-    * `select * from db order by Db;`
+    * `select Host, User, Password from mysql.user order by user;`
+    * `select * from mysql.db order by Db;`
   * Jenkins jobs - 3 per team
     * FTPXX-10-UNIT
     * FTPXX-30-INTEGRATION
