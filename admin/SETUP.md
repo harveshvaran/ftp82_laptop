@@ -41,6 +41,16 @@
     * Install tomcat
       * As centos, in /home/centos, wget "http://www-us.apache.org/dist/tomcat/tomcat-8/v8.5.23/bin/apache-tomcat-8.5.23.tar.gz", "tar -xvzf apache-tomcat-8.5.23"
       * Edit bin/startup.sh, add "export DB_CONNECTION=...:3306"
+  * Databases - 3 per team
+    * Integration and Staging instances
+      * `export PATH=$PATH:/Applications/MySQLWorkbench.app/Contents/MacOS`
+      * `mysql -u root -po7Vb6H4bcrnC -h ftp-integration.c1jpaaszplju.us-east-1.rds.amazonaws.com`
+      * 
+    * `CREATE DATABASE FTPXX;` -- XX from 01 to 10
+    * `CREATE USER 'FTPXX'@'%' IDENTIFIED BY 'FTPXX';`
+    * `GRANT ALL ON FTPXX.* TO 'FTPXX'@'%';`
+    * `select Host, User, Password from mysql.user;`
+    * `select * from db order by Db;`
   * Jenkins jobs - 3 per team
     * FTPXX-10-UNIT
     * FTPXX-30-INTEGRATION
@@ -51,11 +61,6 @@
         * Free Style Project
         * Copy from FTPnn-{stage}, "Add to current view" checked
         * Change all xx to nn in the job fields  
-  * Databases - 3 per team
-    * Integration and Staging instances
-    * `CREATE DATABASE FTPXX;` -- XX from 01 to 10
-    * `CREATE USER 'FTPXX'@'%' IDENTIFIED BY 'FTPXX';`
-    * `GRANT ALL ON FTPXX.* TO 'FTPXX'@'%';`
 
 # Week #1 Day #1
   * Go to https://github.com/orgs/HexaInnovLab/people, and click "Invite Member" and add them to the FTPnn team.
