@@ -11,6 +11,22 @@ cd restservice/integration-test/src/test/java
 jar -xvf ../../../../../ftpxx-integration-tests-1.0-test-sources.jar
 cd ../../../
 cp ./src/test/java/META-INF/maven/com.hexa/ftpxx-integration-tests/pom.xml .
+#before running tests, make sure that the war file has been deployed completely
+n=0
+while true
+do
+  response=$(curl --write-out %{http_code} --silent --output /dev/null http://$INTEGRATION_HOST:8080/ftpxx/favicon.ico)
+  [ $response -eq 200 ] && break
+  n=$[$n+1]
+  if [ $n -ge 5 ]
+  then
+    echo "Web app never came up; aborting..."
+    exit -1
+  else
+    echo "Web app still not up; sleeping and retrying..."
+  fi
+  sleep 30
+done
 /var/lib/jenkins/apache-maven-3.5.2/bin/mvn test -Dservice.host=$INTEGRATION_HOST -Dservice.webapp=ftpxx
 #protractor tests
 cd ../..
