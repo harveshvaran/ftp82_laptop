@@ -20,6 +20,6 @@ cp ../webui/lm-app/ftpxx.war .
 cp ../webui/lm-app.zip .
 cp ../restservice/integration-test/target/ftpxx-integration-tests-1.0-test-sources.jar .
 cp ../database/database.* .
-tar -cvzf ftpxx-${BUILD_NUMBER}.tar.gz ftpxx.war ftpxx-integration-tests-1.0-test-sources.jar lm-app.zip database.*
+tar -cvzf ftpxx-${BUILD_NUMBER}.tar.gz ftpxx.war ftpxx-integration-tests-1.0-test-sources.jar lm-app.zip database.* *.sh
 echo TAR_FILE=ftpxx-${BUILD_NUMBER}.tar.gz > build.properties
 /usr/local/bin/aws s3 cp ftpxx-${BUILD_NUMBER}.tar.gz s3://com.hexaware.builds.ftp/
