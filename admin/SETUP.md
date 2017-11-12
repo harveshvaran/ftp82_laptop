@@ -28,8 +28,9 @@
 `
         * `mv restservice/leavemanager/src/main/java/com/hexaware/ftpxx/ restservice/leavemanager/src/main/java/com/hexaware/ftpnn/`
       * `git add restservice/leavemanager/src/main/java/com/hexaware/ftpnn/`
-      * `git commit -a -m "replacing xx with the team number`
+      * `git commit -a -m "replacing xx with the team number"`
       * `git push origin HEAD`
+      * `git clean -f`
       
     * Add the .pub key from jenkins home/.ssh directory for this team as the repository's deploy key
     * [TBD: This has to be done on day1] Add each team member to the team's git repository
