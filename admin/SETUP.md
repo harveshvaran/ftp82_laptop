@@ -40,7 +40,9 @@
     * Use the instructions in JENKINS.md to spin up the instances, stop iptables, yum install and install jdk
     * Install tomcat
       * As centos, in /home/centos, wget "http://www-us.apache.org/dist/tomcat/tomcat-8/v8.5.23/bin/apache-tomcat-8.5.23.tar.gz", "tar -xvzf apache-tomcat-8.5.23"
-      * Edit bin/startup.sh, add "export DB_CONNECTION=...:3306"
+      * Edit bin/startup.sh, add "export DB_CONNECTION=[rds-host]:3306"
+      * Edit webapps/manager/META-INF/context.xml and comment out the valve which restricts access to localhost only
+      * Edit conf/tomcat-users.xml and add roles manager-gui and manager-script, with a user "manager"/"manager" with access to both these roles 
   * Databases - 3 per team
     * Integration and Staging instances
       * `export PATH=$PATH:/Applications/MySQLWorkbench.app/Contents/MacOS`
