@@ -28,8 +28,9 @@
 `
         * `mv restservice/leavemanager/src/main/java/com/hexaware/ftpxx/ restservice/leavemanager/src/main/java/com/hexaware/ftpnn/`
       * `git add restservice/leavemanager/src/main/java/com/hexaware/ftpnn/`
-      * `git commit -a -m "replacing xx with the team number`
+      * `git commit -a -m "replacing xx with the team number"`
       * `git push origin HEAD`
+      * `git clean -f`
       
     * Add the .pub key from jenkins home/.ssh directory for this team as the repository's deploy key
     * [TBD: This has to be done on day1] Add each team member to the team's git repository
@@ -40,6 +41,16 @@
     * Install tomcat
       * As centos, in /home/centos, wget "http://www-us.apache.org/dist/tomcat/tomcat-8/v8.5.23/bin/apache-tomcat-8.5.23.tar.gz", "tar -xvzf apache-tomcat-8.5.23"
       * Edit bin/startup.sh, add "export DB_CONNECTION=...:3306"
+  * Databases - 3 per team
+    * Integration and Staging instances
+      * `export PATH=$PATH:/Applications/MySQLWorkbench.app/Contents/MacOS`
+      * `mysql -u root -po7Vb6H4bcrnC -h ftp-integration.c1jpaaszplju.us-east-1.rds.amazonaws.com`
+      * 
+    * `CREATE DATABASE FTPXX;` -- XX from 01 to 10
+    * `CREATE USER 'FTPXX'@'%' IDENTIFIED BY 'FTPXX';`
+    * `GRANT ALL ON FTPXX.* TO 'FTPXX'@'%';`
+    * `select Host, User, Password from mysql.user order by user;`
+    * `select * from mysql.db order by Db;`
   * Jenkins jobs - 3 per team
     * FTPXX-10-UNIT
     * FTPXX-30-INTEGRATION
@@ -50,11 +61,6 @@
         * Free Style Project
         * Copy from FTPnn-{stage}, "Add to current view" checked
         * Change all xx to nn in the job fields  
-  * Databases - 3 per team
-    * Integration and Staging instances
-    * `CREATE DATABASE FTPXX;` -- XX from 01 to 10
-    * `CREATE USER 'FTPXX'@'%' IDENTIFIED BY 'FTPXX';`
-    * `GRANT ALL ON FTPXX.* TO 'FTPXX'@'%';`
 
 # Week #1 Day #1
   * Go to https://github.com/orgs/HexaInnovLab/people, and click "Invite Member" and add them to the FTPnn team.

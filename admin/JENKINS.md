@@ -27,7 +27,9 @@
     * ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
     * rm -rf awscli-bundle awscli-bundle.zip    
   * Configure AWS CLI (as jenkins)
-  
+  * Setup "deploy keys" for all the teams ftp01-10
+     * https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
+ 
   # Spin up a selenium server
   * Windows server
     * Turn off Enhanced Security
