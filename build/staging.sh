@@ -1,6 +1,7 @@
 #!/bin/bash -ex
 #deploy
-scp -i ~/.ssh/ftp_jenkins.pem ftpxx.war centos@$STAGING_HOST:/home/centos/apache-tomcat-8.5.23/webapps
+curl -T ftpxx.war "http://manager:manager@STAGING_HOST:8080/manager/text/deploy?path=/ftpxx&update=true"
+#scp -i ~/.ssh/ftp_jenkins.pem ftpxx.war centos@$STAGING_HOST:/home/centos/apache-tomcat-8.5.23/webapps
 #database
 mysql --host ftp-staging.c1jpaaszplju.us-east-1.rds.amazonaws.com -u FTPXX -pFTPXX FTPXX < database.ddl
 mysql --host ftp-staging.c1jpaaszplju.us-east-1.rds.amazonaws.com -u FTPXX -pFTPXX FTPXX < database.dml
