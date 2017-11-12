@@ -24,8 +24,8 @@
         * use VS Code, find/replace in files to do the following: replacing ftpxx -> ftpnn, FTPXX -> FTPnn
         * Rename directory restservice/leavemanager/src/main/java/com/hexaware/ftpxx/ to restservice/leavemanager/src/main/java/com/hexaware/ftpnn/
       * For Mac OS
-        * `find . -type f -not -path '*/\.*' -not -path "*/node_modules/*" -exec sed -i '' -e 's/ftpxx/ftpnn/g' {} \; -exec sed -i '' -e 's/FTPXX/FTPnn/g' {} \;
-`
+        * NOTE: replace nn with the team-id in the following three commands
+        * `find . -type f -not -path '*/\.*' -not -path "*/node_modules/*" -exec sed -i '' -e 's/ftpxx/ftpnn/g' {} \; -exec sed -i '' -e 's/FTPXX/FTPnn/g' {} \;`
         * `mv restservice/leavemanager/src/main/java/com/hexaware/ftpxx/ restservice/leavemanager/src/main/java/com/hexaware/ftpnn/`
       * `git add restservice/leavemanager/src/main/java/com/hexaware/ftpnn/`
       * `git commit -a -m "replacing xx with the team number"`
@@ -63,6 +63,7 @@
         * Free Style Project
         * Copy from FTPnn-{stage}, "Add to current view" checked
         * Change all xx to nn in the job fields  
+        * For the unit job, change the git repository as well; if the credentials are not yet added, you can add them now
 
 # Week #1 Day #1
   * Go to https://github.com/orgs/HexaInnovLab/people, and click "Invite Member" and add them to the FTPnn team.

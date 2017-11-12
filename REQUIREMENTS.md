@@ -75,7 +75,6 @@ Comments are mandatory for denial only.
 # Nice-To-Have
   * Mail alert to manager when his/her employee applies for leave
   * Mail alert to manager when his/her manager approves/denies leave application
-  * Handle leave applications in the past differently
   * Ability approve/deny multiple applications at once via multi-select/select-all
   * Calculate number of days of application leave automatically using
     * Weekend calculations
