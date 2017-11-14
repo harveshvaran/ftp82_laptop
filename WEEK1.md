@@ -171,6 +171,7 @@
 # Workshop material - Day #3 - Setup Jira
 
   * signup for a jira id using your hexaware email address. Use the hexaware email address, the UI already selects the hexawareid as the username.
+     * https://id.atlassian.com/signup
   * inform your facilitator that you have signed. s/he will add you to the required jira project.
 
 # Reading material
