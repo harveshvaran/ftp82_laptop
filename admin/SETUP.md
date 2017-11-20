@@ -11,7 +11,8 @@
     * Go to github.com
       * delete any existing repositories: ftp01 to ftp10
       * create a repository for each team : ftp01 to ftp10
-      * Add FTP-Admins as a group w/ R/W access to these repositories
+      * create a team for each team : ftp01 to ftp10
+      * Add FTP-Admins as a group w/ Admin access, and ftpnn team w/ R/W to these repositories
     * `git clone --bare git@github.com:HexaInnovLab/ftp-fork-me.git ftpxx`
     * `cd ftpxx`
     * For each team, nn = 01 to 10
