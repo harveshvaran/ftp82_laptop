@@ -109,6 +109,7 @@
     * Open https://github.com/HexaInnovLab/ftpxx
       * look at source code organization
     * Go back to gitbash and clone the project
+    * `pwd` -- Check and verify that the current working directory is C:\users\Hvuser/workspace
     * `git clone git@github.com:HexaInnovLab/ftpxx.git`
     * `cd ftpxx`
     * `git status`
