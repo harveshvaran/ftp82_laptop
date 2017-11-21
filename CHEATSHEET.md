@@ -29,6 +29,7 @@
 >       Your branch is up-to-date with 'origin/master'.
 >       nothing to commit, working tree clean
    * `git branch` -- it should not show any local branches
+   * `git stash list` -- no stashes should be there
    * `git pull` -- get the latest master
      
 ### Create a branch
@@ -42,6 +43,7 @@
 
    * `git status`
    * `git add -i` and 2/4 options to add changed/new files to staging area
+      * Enter the number against the file to add the file to the staging area in the submenu
    * `git status`
    * go to EDIT, if there are more changes
 
@@ -49,6 +51,14 @@
    
    * `git commit -m [message]`
    * `git status`
+
+### Absorb any changes that has been done to master since we branched
+
+   * `git checkout master`
+   * `git pull`
+   * `git checkout [BranchName]`
+   * `git rebase -i master`
+      * If there are any conflicts between your changes and changes done in master, they will appear now. You need to go through the changes one by one, and resolve the conflicts.
 
 ### Push it to origin
 
@@ -73,9 +83,9 @@
    * `git checkout master`
    * `git fetch -p`
    * `git pull`
-   * `git branch -a` -- list all branches; the local branch will be there
+   * `git branch` -- list all branches; the local branch will be there
    * `git branch -d [BranchName]`
-   * `git branch -a` -- list all branches; the local branch will not be there
+   * `git branch` -- list all branches; the local branch will not be there
 
 # maven
 
