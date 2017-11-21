@@ -1,3 +1,11 @@
+# Github Branch naming conventions
+
+  * [2CharInitial]-[JiraTicketNumber][-OptionalShortText]
+     * 2CharInitial: e.g., KK
+     * JiraTicketNumber: e.g., FTP01-99
+     * OptionalShortText: e.g., fix-typo
+     * e.g., KK-FTP01-99-fix-typo
+  
 # Database naming conventions
 
 ## Database schema conventions
