@@ -59,11 +59,20 @@
    * `git checkout [BranchName]`
    * `git rebase -i master`
       * If there are any conflicts between your changes and changes done in master, they will appear now. You need to go through the changes one by one, and resolve the conflicts.
+      * Typically
+         * pick all the changes i.e., `:wq` in the vi editor
+         * For all files in conflict
+            * Merge the conflicts highlighted with `<<<` and `>>>` markers
+            * 'git add [FileInConflict]`
+         * git rebase --continue
 
 ### Push it to origin
 
    * `git status` -- and check if you are on branch and not on 'master'
    * `git push origin HEAD`
+      * At times, this fails with 'non-fast-forward' message. In that case
+         * `git pull` and then try pushing
+         * if confident, `git push --force origin HEAD` to force push the changes
 
 ### Create a pull request and get it merged
 
