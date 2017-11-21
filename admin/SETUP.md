@@ -69,12 +69,10 @@
 # Week #1 Day #1
   * Go to https://github.com/orgs/HexaInnovLab/people, and click "Invite Member" and add them to the FTPnn team.
 
------ To be reviewed ---------
-
 ## Setup Jira
 
-The users are added by invite: Site Administration/User Management. Use the hexaware email address, the UI already selects the hexawareid as the username.
+The users are added by invite: Site Administration/User Management. Use the hexaware email address
 
-Create a "FTP" group and add all the users from the ftp program.
+Create a "FTP" group and invite all the users from the ftp program.
 
 Create a project, with shared configuration w/ StationMaster. Create a scrum board, fix the swimlanes and filters, and create the epics. Give developer access to FTP group.
