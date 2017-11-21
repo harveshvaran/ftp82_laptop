@@ -168,8 +168,43 @@
    * Notice that the tail terminal shows that the new version of the web application archive is now getting deployed
    * Open Chrome browser and navigate to http://localhost:8080/ftpxx/
    * You should be able to see the employee ids as you have entered them in the local mysql database
-      
-# Workshop material - Day #3 - Setup Jira
+
+# Workshop material - Day #3 - Git workflow
+
+In this workshop, we will get familiar with
+
+  * The git development cycle - see CHEATSHEET.md, git/development cycle
+  * Branching, Reviewing, Merging
+  * Resolving conflicts
+  
+We will learn to this by playing tic-tac-toe within each group. Play as many rounds as needed to get the hang of how we use git for branching and merging, by letting different members play different roles in each round.
+
+In this, let's use TTT-99 for the Jira Ticket number which is needed for branch naming.
+
+## Playing without conflicts
+
+Split the group into two teams of two each and one reviewer, say team-X and team-O. Choose who goes first, perhaps by coin toss.
+
+In this, team-X use one desktop in a shared manner and play 'X's while team-O share another desktop and play 'O's.
+
+The team that goes first follows the git process to checkout and change tictactoe.md to add 'X' or 'O' in a cell. The reviewer
+merges the change - after verifying that the game is not over and the team has added only one cell.
+
+Then the second team plays in a similar manner. This continues until the reviewer decides that the game has been won, or is a draw.
+
+The reviewer then cleans up tictactoe.md. One of the others review and merge this change.
+
+Play as many rounds as needed till everyone is comfortable with git operations. The git commands should become 'muscle' memory - the ability to run these commands without referring to the cheatsheet.
+
+## Playing with conflicts
+
+Here, the team members play their turns individually on their desktops; say team-X has two members X1 and X2. Both start their turns simultaneously (by pulling master and checking out branches.
+
+The reviewer will merge one, but the second pull request can not be auto-merged. So the player who goes second needs to resolve the conflict. S/he looks at the change as made by the first player and her own change and chooses the better of the two. If hers is better, this is another pull request for the reviewer to merge.
+
+Play as many rounds as needed till everyone is comfortable with git conflict resolution.
+
+# Workshop material - Day #4 - Setup Jira
 
   * signup for a jira id using your hexaware email address. Use the hexaware email address, the UI already selects the hexawareid as the username.
      * https://id.atlassian.com/signup
