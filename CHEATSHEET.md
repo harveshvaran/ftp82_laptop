@@ -69,7 +69,7 @@
 ### Push it to origin
 
    * `git status` -- and check if you are on branch and not on 'master'
-   * `git push origin HEAD`
+   * `git push -u origin HEAD`
       * At times, this fails with 'non-fast-forward' message. In that case
          * `git pull` and then try pushing
          * if confident, `git push --force origin HEAD` to force push the changes
