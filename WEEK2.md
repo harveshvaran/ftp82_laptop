@@ -10,7 +10,8 @@
   * Database Design
   * Assign the jira to one of the team members  
   * Pull it to "In Progress"
-  * `git checkout -b FTPXX-<TicketNumber>-DDL`
+  * `git checkout -b [2CharInitial]-[JiraTicketNumber]-[ShortText]`
+     * `git checkout -b KK-FTP01-1-DDL`
   * Edit Database.ddl for two tables: EMPLOYEE and LEAVE_HISTORY
     * Use the "STANDARDS_AND_GUIDELINES.md" file for the naming conventions to be followed.
   * Edit Database.dml to insert data into the EMPLOYEE table; The LEAVE_HISTORY table can be blank to start with.
