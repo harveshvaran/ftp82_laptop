@@ -27,7 +27,7 @@
    * `git status` -- you should be on 'master' branch; and it should not show any files changed/staged etc
 >       On branch master
 >       Your branch is up-to-date with 'origin/master'.
->       nothing to commit, working tree clean```
+>       nothing to commit, working tree clean
    * `git branch` -- it should not show any local branches
    * `git pull` -- get the latest master
      
