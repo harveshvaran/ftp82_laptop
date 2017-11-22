@@ -77,7 +77,7 @@
 
 ### Create a pull request and get it merged
 
-   * Go to "https://github.com/HexaInnovLab/ftpxx"
+   * In your browser, go to "https://github.com/HexaInnovLab/ftpxx"
    * You may see a yellow box with your branch name, and with a button for creating a pull request.
        * If you don't see it, drop down the "Branch" dropdown, select your branch. Then click the "New Pull Request" button next to it.
    * Review your changes in the next screen. Lookout for typos, trailing whitespace etc. and fix them.
