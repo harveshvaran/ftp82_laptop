@@ -187,12 +187,12 @@ Split the group into two teams of two each and one reviewer, say team-X and team
 
 In this, team-X use one desktop in a shared manner and play 'X's while team-O share another desktop and play 'O's.
 
-The team that goes first follows the git process to checkout and change tictactoe.md to add 'X' or 'O' in a cell. The reviewer
+The team that goes first follows the git process to checkout and change tictactoe.html to add 'X' or 'O' in a cell. The reviewer
 merges the change - after verifying that the game is not over and the team has added only one cell.
 
 Then the second team plays in a similar manner. This continues until the reviewer decides that the game has been won, or is a draw.
 
-The reviewer then cleans up tictactoe.md. One of the others review and merge this change.
+The reviewer then cleans up tictactoe.html. One of the others review and merge this change.
 
 Play as many rounds as needed till everyone is comfortable with git operations. The git commands should become 'muscle' memory - the ability to run these commands without referring to the cheatsheet.
 
