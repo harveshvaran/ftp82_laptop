@@ -61,10 +61,11 @@
       * If there are any conflicts between your changes and changes done in master, they will appear now. You need to go through the changes one by one, and resolve the conflicts.
       * Typically
          * pick all the changes i.e., `:wq` in the vi editor
-         * For all files in conflict
-            * Merge the conflicts highlighted with `<<<` and `>>>` markers
-            * 'git add [FileInConflict]`
-         * git rebase --continue
+         * If there is a conflict
+            * For all files in conflict
+               * Merge the conflicts highlighted with `<<<` and `>>>` markers
+               * 'git add [FileInConflict]`
+            * git rebase --continue
 
 ### Push it to origin
 
