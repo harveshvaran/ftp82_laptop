@@ -204,11 +204,56 @@ The reviewer will merge one, but the second pull request can not be auto-merged.
 
 Play as many rounds as needed till everyone is comfortable with git conflict resolution.
 
-# Workshop material - Day #4 - Setup Jira
+# Workshop material - Day #4 - Setup Jira, use it to run a complete sprint
 
-  * signup for a jira id using your hexaware email address. Use the hexaware email address, the UI already selects the hexawareid as the username.
-     * https://id.atlassian.com/signup
-  * inform your facilitator that you have signed. s/he will add you to the required jira project.
+  * Login to Jira and select your project FTPXX.
+  * [Team member #1] Create an epic, with name: "Demonstrate team familiarity with git workflow" and Summary: "This epic demonstrates to the course facilitators that each member of the team knows the git workflow, both as a developer and as a reviewer".
+  * [Team member #2] Use the "Create issue in epic" link to create the following stories
+     * Summary: "Clean up tictactoe.html before the demonstrations"
+     * Summary: "Delete tictactoe.html after the demonstrations"
+  * [All team members] Use the "Create issue in epic" link to create two stories each
+     * Summary: "As a git user, I, [full name], will demo my ability to use git as a developer by making one move on the tictactoe board"
+     * Summary: "As a git user, I, [full name], will demo my ability to use git as a review by reviewing and merging another team member's pull request of a tictactoe board change"
+  * [Team member #3]
+     * Create sprint "FTPXX Sprint 1"
+     * Drag all stories into the sprint
+     * Start sprint
+       * Duration: Custom, with both start date being today and end date being tomorrow
+       * Sprint goal: Demo git familiarity
+  * [Team member #4]
+     * Drag the "Clean up tictactoe.html before the demonstrations" story to "IN PROGRESS" swimlane
+     * Assign the user story to yourself using the Assignee field, "Assign to me" link
+     * With a facilitator overlooking your work, follow the git development cycle workflow to clean up the tictactoe.html to produce a clean fresh board
+       * Self-merge the pull request
+     * Drag the story to "DONE"
+  * [All Team members]
+     * Open your 'demo' story and create two sub-tasks
+        * Summary: "Demo the git familiarity as a developer"
+        * Summary: "Demo the git familiarity as a reviewer"
+        * Assign the story and the two tasks to yourself
+  * [Team members, one-by-one]      
+     * Drag the "develop demo" task to IN PROGRESS
+     * With a facilitator overlooking your work, follow the git development cycle workflow to make one move on the tictactoe.html 
+        * Use your left neighbour in the team as the reviewer. S/he will drag the "reviewer demo" task to IN PROGRESS to do your review and then move that task to DONE.
+     * Drag the story to "DONE" after review/merge done, and local git cleaned up
+     * When both your tasks are done, Jira will prompt you to move the parent issue to DONE. Agree by choosing "Update"
+  * [Team member #5]
+     * Drag the "Delete tictactoe.html after the demonstrations" story to "IN PROGRESS" swimlane
+     * Assign the user story to yourself using the Assignee field, "Assign to me" link
+     * With a facilitator overlooking your work, follow the git development cycle workflow to delete the tictactoe.html file
+       * Self-merge the pull request
+     * Drag the story to "DONE"
+     * Click the "Complete Sprint" button on top right     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
 
 # Reading material
 
