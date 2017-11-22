@@ -243,17 +243,20 @@ Play as many rounds as needed till everyone is comfortable with git conflict res
      * With a facilitator overlooking your work, follow the git development cycle workflow to delete the tictactoe.html file
        * Self-merge the pull request
      * Drag the story to "DONE"
-     * Click the "Complete Sprint" button on top right     
+     * Click the "Complete Sprint" button on top right    
+     * "Mark as Done" the jira epic
      
-     
-     
-     
-     
-     
-     
-     
-     
-     
+# Workshop material - Day #5
+
+   * Feedback
+      * Ideas on what we should start doing
+      * Opinions on what we should stop doing
+      * Opinions on what we should continue doing
+   * Suggestions for improvements
+      * classroom material
+      * workshop material
+   * *MANDATORY*
+      * Each trainee to suggest one online material for the Must-Read, Nice-To-Read and Go-Deep for any topics covered in the classroom sessions or workshop sessions     
 
 # Reading material
 
