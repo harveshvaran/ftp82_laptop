@@ -227,16 +227,12 @@ Play as many rounds as needed till everyone is comfortable with git conflict res
        * Self-merge the pull request
      * Drag the story to "DONE"
   * [All Team members]
-     * Open your 'demo' story and create two sub-tasks
-        * Summary: "Demo the git familiarity as a developer"
-        * Summary: "Demo the git familiarity as a reviewer"
-        * Assign the story and the two tasks to yourself
+     * Open your 'demo' stories and assign them to yourself
   * [Team members, one-by-one]      
-     * Drag the "develop demo" task to IN PROGRESS
+     * Drag the "develop demo" story to IN PROGRESS
      * With a facilitator overlooking your work, follow the git development cycle workflow to make one move on the tictactoe.html 
-        * Use your left neighbour in the team as the reviewer. S/he will drag the "reviewer demo" task to IN PROGRESS to do your review and then move that task to DONE.
+        * Use your left neighbour in the team as the reviewer. S/he will drag the "reviewer demo" story to IN PROGRESS to do your review and then move that story to DONE.
      * Drag the story to "DONE" after review/merge done, and local git cleaned up
-     * When both your tasks are done, Jira will prompt you to move the parent issue to DONE. Agree by choosing "Update"
   * [Team member #5]
      * Drag the "Delete tictactoe.html after the demonstrations" story to "IN PROGRESS" swimlane
      * Assign the user story to yourself using the Assignee field, "Assign to me" link
