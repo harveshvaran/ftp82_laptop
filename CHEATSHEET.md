@@ -104,7 +104,7 @@
 ### Clean up
    
    * `git checkout master`
-   * `git fetch -p`
+   * `git fetch -p` -- if the reviewer has deleted the branch as s/he should, then you should see that your tracking branch also gets deleted by this command
    * `git pull`
    * `git branch` -- list all branches; the local branch will be there
    * `git branch -d [BranchName]`
