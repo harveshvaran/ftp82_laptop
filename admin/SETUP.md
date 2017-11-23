@@ -75,4 +75,4 @@ The users are added by invite: Site Administration/User Management. Use the hexa
 
 Create a "FTP" group and invite all the users from the ftp program.
 
-Create a project, with shared configuration w/ StationMaster. Create a scrum board, fix the swimlanes and filters, and create the epics. Give developer access to FTP group.
+Create projects FTPnn and give developer access to the FTP group.
