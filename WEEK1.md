@@ -214,6 +214,7 @@ Play as many rounds as needed till everyone is comfortable with git conflict res
   * [All team members] Use the "Create issue in epic" link to create two stories each
      * Summary: "As a git user, I, [full name], will demo my ability to use git as a developer by making one move on the tictactoe board"
      * Summary: "As a git user, I, [full name], will demo my ability to use git as a review by reviewing and merging another team member's pull request of a tictactoe board change"
+     * Open your 'demo' stories and assign them to yourself
   * [Team member #3]
      * Create sprint "FTPXX Sprint 1"
      * Drag all stories into the sprint
@@ -226,8 +227,6 @@ Play as many rounds as needed till everyone is comfortable with git conflict res
      * With a facilitator overlooking your work, follow the git development cycle workflow to clean up the tictactoe.html to produce a clean fresh board
        * Self-merge the pull request
      * Drag the story to "DONE"
-  * [All Team members]
-     * Open your 'demo' stories and assign them to yourself
   * [Team members, one-by-one]      
      * Drag the "develop demo" story to IN PROGRESS
      * With a facilitator overlooking your work, follow the git development cycle workflow to make one move on the tictactoe.html 
