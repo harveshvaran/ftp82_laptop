@@ -7,7 +7,14 @@
 
 ### reset
 
+### fetch
+
+  * `git fetch` -- update remote branches
+  * `git fetch -p` -- update remote branches pruning branches deleted in server
+
 ## checkout/branch
+   * `git branch` -- list local branches
+   * `git branch -a` -- list local and remote branches
 
 ## stash
 
