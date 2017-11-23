@@ -280,67 +280,55 @@ HEXAVARSIT,27
             * In the staging area, there is a version where the contents are "Version 3"
             * In the workspace, there is a version where the contents are "Version 4"
             * In 'master', there is another version - child of "Version 0" - whose contents are "Version 0a"         
-         * What is command to compare the workspace version to the staging version
+         * #1. What is command to compare the workspace version to the staging version
             * expected output
 ```
 ...
---- a/T.txt
-+++ b/T.txt
-@@ -1 +1 @@
--Version 4
-+Version 5
-```
-         * What is command to compare the staging version to the committed version
-            * expected output
-```
-...
---- a/T.txt
-+++ b/T.txt
-@@ -1 +1 @@
 -Version 3
 +Version 4
 ```
-         * What is command to compare the committed version to the branching point
+         * #2. What is command to compare the staging version to the committed version
             * expected output
 ```
 ...
---- a/T.txt
-+++ b/T.txt
-@@ -1 +1 @@
--Version 3
-+Version 0
+-Version 2
++Version 3
 ```
-         * What is command to compare the workspace version to the branching point
+         * #3. What is command to compare the committed version to the branching point
             * expected output
 ```
 ...
---- a/T.txt
-+++ b/T.txt
-@@ -1 +1 @@
 -Version 0
-+Version 5
++Version 2
 ```
-         * What is command to compare the staging version to the committed version
-            * expected output
+         * #4. What is command to compare the workspace version to the committed version
+            * expected output
 ```
 ...
---- a/T.txt
-+++ b/T.txt
-@@ -1 +1 @@
--Version 3
+-Version 2
 +Version 4
 ```
-         * What is command to compare the committed version to the branching point
+         * #5. What is command to compare the workspace version to the branching point
             * expected output
 ```
 ...
---- a/T.txt
-+++ b/T.txt
-@@ -1 +1 @@
--Version 3
-+Version 0
+-Version 0
++Version 4
 ```
-          
+         * #6. What is command to compare the staging version to the branching point
+            * expected output
+```
+...
+-Version 0
++Version 3
+```
+         * #6. What is command to compare the workspace version to the latest version in master
+            * expected output
+```
+...
+-Version 0a
++Version 4          
+```
          
    * Feedback
       * Ideas on what we should start doing
