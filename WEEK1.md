@@ -198,7 +198,7 @@ Play as many rounds as needed till everyone is comfortable with git operations. 
 
 ## Playing with conflicts
 
-Here, the team members play their turns individually on their desktops; say team-X has two members X1 and X2. Both start their turns simultaneously (by pulling master and checking out branches.
+Here, the team members play their turns individually on their desktops; say team-X has two members X1 and X2. Both start their turns simultaneously, by pulling master and checking out branches.
 
 The reviewer will merge one, but the second pull request can not be auto-merged. So the player who goes second needs to resolve the conflict. S/he looks at the change as made by the first player and her own change and chooses the better of the two. If hers is better, this is another pull request for the reviewer to merge.
 
@@ -230,7 +230,7 @@ Play as many rounds as needed till everyone is comfortable with git conflict res
   * [Team members, one-by-one]      
      * Drag the "develop demo" story to IN PROGRESS
      * With a facilitator overlooking your work, follow the git development cycle workflow to make one move on the tictactoe.html 
-        * Use your left neighbour in the team as the reviewer. S/he will drag the "reviewer demo" story to IN PROGRESS to do your review and then move that story to DONE.
+       * Use your left neighbour in the team as the reviewer. S/he will drag the "reviewer demo" story to IN PROGRESS to do your review and then move that story to DONE.
      * Drag the story to "DONE" after review/merge done, and local git cleaned up
   * [Team member #5]
      * Drag the "Delete tictactoe.html after the demonstrations" story to "IN PROGRESS" swimlane
@@ -243,6 +243,105 @@ Play as many rounds as needed till everyone is comfortable with git conflict res
      
 # Workshop material - Day #5
 
+   * Exercises
+      * Unix Command line
+        * Given a file, say employee.csv, contained data in the following format
+```
+empid,initials,department,leave_available        
+1000,KK,CTO_OFFICE,12
+2001,MA,HEXAVARSIT,8
+1001,IK,CTO_OFFICE,9
+2002,UM,HEXAVARSIT,7
+1002,SK,CTO_OFFICE,13
+2003,VR,HEXAVARSIT,6
+2004,JK,HEXAVARSIT,6
+```
+           * Give an unix command which returns the record with the maximum leave_available
+              * In the above case, the output should be
+```
+1002,SK,CTO_OFFICE,13
+```
+           * Give an unix command which returns one row per department - department, sum of leave_available of all employees in that department
+              * In the above case, the output should be
+```
+CTO_OFFICE,34
+HEXAVARSIT,27
+```
+        * In our codebase, search and print all lines in java code (files w/ .java suffix), where there is a "FTP" or a "ftp" string
+      * Database Queries via SQL
+         * Given that the same data as in employee.csv is there in a mysql table EMP, give an SQL query
+            * id and the initials of the employee with the maximum leave_available
+            * each department and sum of leave_available of all employees in that department            
+      * Git Commands
+         * Create a T.txt file whose version history looks like this
+            * In 'master', there is a version whose contents are "Version 0"
+            * In a branch, say TT-Branch off masters' "Version 0" , there is one version where the contents are "Version 1"
+            * In the same branch, there is a subsequent version where the contents are "Version 2"
+            * In the staging area, there is a version where the contents are "Version 3"
+            * In the workspace, there is a version where the contents are "Version 4"
+            * In 'master', there is another version - child of "Version 0" - whose contents are "Version 0a"         
+         * What is command to compare the workspace version to the staging version
+            * expected output
+```
+...
+--- a/T.txt
++++ b/T.txt
+@@ -1 +1 @@
+-Version 4
++Version 5
+```
+         * What is command to compare the staging version to the committed version
+            * expected output
+```
+...
+--- a/T.txt
++++ b/T.txt
+@@ -1 +1 @@
+-Version 3
++Version 4
+```
+         * What is command to compare the committed version to the branching point
+            * expected output
+```
+...
+--- a/T.txt
++++ b/T.txt
+@@ -1 +1 @@
+-Version 3
++Version 0
+```
+         * What is command to compare the workspace version to the branching point
+            * expected output
+```
+...
+--- a/T.txt
++++ b/T.txt
+@@ -1 +1 @@
+-Version 0
++Version 5
+```
+         * What is command to compare the staging version to the committed version
+            * expected output
+```
+...
+--- a/T.txt
++++ b/T.txt
+@@ -1 +1 @@
+-Version 3
++Version 4
+```
+         * What is command to compare the committed version to the branching point
+            * expected output
+```
+...
+--- a/T.txt
++++ b/T.txt
+@@ -1 +1 @@
+-Version 3
++Version 0
+```
+          
+         
    * Feedback
       * Ideas on what we should start doing
       * Opinions on what we should stop doing
