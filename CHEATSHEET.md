@@ -15,8 +15,14 @@
 ## checkout/branch
    * `git branch` -- list local branches
    * `git branch -a` -- list local and remote branches
+   * `git checkout [BranchName]` -- change to BranchName
 
 ## stash
+
+   * `git stash list` -- list all stashes
+   * `git stash push` -- push local workspace changes to stash
+   * `git stash pop` -- pop local workspace changes from stash
+   * `git stash drop` -- drop the latest stash
 
 ## file actions
 
