@@ -302,6 +302,7 @@ HEXAVARSIT,27
 +Version 2
 ```
          * #4. What is the command to compare the workspace version to the committed version
+         
            * expected output
 ```
 ...
