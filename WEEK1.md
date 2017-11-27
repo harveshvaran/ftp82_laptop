@@ -245,7 +245,7 @@ Play as many rounds as needed till everyone is comfortable with git conflict res
 
    * Exercises
       * Unix Command line
-        * Given a file, say employee.csv, contained data in the following format
+        * Given a file, say employee.csv, containing data in the following format
 ```
 empid,initials,department,leave_available        
 1000,KK,CTO_OFFICE,12
@@ -280,49 +280,49 @@ HEXAVARSIT,27
             * In the staging area, there is a version where the contents are "Version 3"
             * In the workspace, there is a version where the contents are "Version 4"
             * In 'master', there is another version - child of "Version 0" - whose contents are "Version 0a"         
-         * #1. What is command to compare the workspace version to the staging version
+         * #1. What is the command to compare the workspace version to the staging version
             * expected output
 ```
 ...
 -Version 3
 +Version 4
 ```
-         * #2. What is command to compare the staging version to the committed version
+         * #2. What is the command to compare the staging version to the committed version
             * expected output
 ```
 ...
 -Version 2
 +Version 3
 ```
-         * #3. What is command to compare the committed version to the branching point
+         * #3. What is the command to compare the committed version to the branching point
             * expected output
 ```
 ...
 -Version 0
 +Version 2
 ```
-         * #4. What is command to compare the workspace version to the committed version
+         * #4. What is the command to compare the workspace version to the committed version
             * expected output
 ```
 ...
 -Version 2
 +Version 4
 ```
-         * #5. What is command to compare the workspace version to the branching point
+         * #5. What is the command to compare the workspace version to the branching point
             * expected output
 ```
 ...
 -Version 0
 +Version 4
 ```
-         * #6. What is command to compare the staging version to the branching point
+         * #6. What is the command to compare the staging version to the branching point
             * expected output
 ```
 ...
 -Version 0
 +Version 3
 ```
-         * #6. What is command to compare the workspace version to the latest version in master
+         * #6. What is the command to compare the workspace version to the latest version in master
             * expected output
 ```
 ...
