@@ -302,7 +302,7 @@ HEXAVARSIT,27
 +Version 2
 ```
          * #4. What is the command to compare the workspace version to the committed version
-            * expected output
+            * expected output
 ```
 ...
 -Version 2
@@ -322,7 +322,7 @@ HEXAVARSIT,27
 -Version 0
 +Version 3
 ```
-         * #6. What is the command to compare the workspace version to the latest version in master
+         * #7. What is the command to compare the workspace version to the latest version in master
             * expected output
 ```
 ...
