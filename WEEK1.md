@@ -344,7 +344,21 @@ HEXAVARSIT,27
 # Reading material
 
 ## Must-Read
+
+### Multi-Tier
   * https://en.wikipedia.org/wiki/Multitier_architecture#Three-tier_architecture
+  
+### Unix commandline
+  * http://oliverelliott.org/article/computing/ref_unix/
+  
+### Agile
+  * https://www.mountaingoatsoftware.com/agile/scrum
+  * https://www.atlassian.com/agile/developer
+  * https://www.atlassian.com/agile/scrum
+  * https://www.atlassian.com/agile/ceremonies
+
+### Git
+  * https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow (We use this, w/ the rebase variant)
 
 ## Nice-To-Read
   * https://git-scm.com/docs
