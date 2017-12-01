@@ -5,8 +5,6 @@ for coverage, style fixes, etc. And to complete the Cli fully to list/apply/appr
 
 ## Junit/JMockit
 
-## CheckStyle, PMD/CPD, FindBugs
-
 ## Devops/Continuous Integration/Continuous Delivery/Build Automation
 
 ## Jenkins
