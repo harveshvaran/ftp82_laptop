@@ -51,8 +51,33 @@ The objective of week #2 is to get the cli working with showing employee details
 
 ## Must-Read
 
+### Java
+  * https://docs.oracle.com/javase/tutorial/getStarted/index.html
+  * https://docs.oracle.com/javase/tutorial/java/index.html
+   
+### JDBI
+  * http://jdbi.org/#_declarative_api
+  * http://jdbi.org/#_sql_objects
+  
+### Junit/Jmockit
+  * https://github.com/junit-team/junit4/wiki/Getting-started
+  * https://github.com/junit-team/junit4/wiki/Assertions
+  * http://jmockit.org/
+  * http://jmockit.org/gettingStarted.html
+  
+### Maven
+  * https://javapapers.com/jee/maven-in-10-minutes/
+
 ## Nice-To-Read
 
+### Java
+  * https://docs.oracle.com/javase/tutorial/essential/index.html
+  * https://docs.oracle.com/javase/tutorial/collections/index.html
+  
+### Junit/Jmockit
+  * http://jmockit.org/tutorial/Mocking.html
+  * http://jmockit.org/tutorial/Faking.html
+  
 ## Go-Deep
 
   
