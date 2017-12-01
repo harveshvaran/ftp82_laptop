@@ -51,16 +51,6 @@ The objective of week #2 is to get the cli working with showing employee details
 
 ## Must-Read
 
-  * Typescript
-    * Promises: https://basarat.gitbooks.io/typescript/docs/promise.html
-  * Angular Intro
-    * https://www.youtube.com/watch?v=KhzGSHNhnbI
-  * Agile
-    * https://www.mountaingoatsoftware.com/agile/scrum
-    * https://www.atlassian.com/agile/developer
-    * https://www.atlassian.com/agile/scrum
-    * https://www.atlassian.com/agile/ceremonies
-
 ## Nice-To-Read
 
 ## Go-Deep
