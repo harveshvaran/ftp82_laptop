@@ -359,6 +359,10 @@ HEXAVARSIT,27
 
 ### Git
   * https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow (We use this, w/ the rebase variant)
+  
+### Database
+  * https://www.lucidchart.com/pages/database-diagram/database-design
+  * https://www.w3schools.com/sql/sql_intro.asp
 
 ## Nice-To-Read
   * https://git-scm.com/docs
