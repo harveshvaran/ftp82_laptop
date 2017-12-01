@@ -26,6 +26,12 @@ for coverage, style fixes, etc. And to complete the Cli fully to list/apply/appr
 
 ## Must-Read
 
+### CI/CD
+  * https://www.atlassian.com/continuous-delivery/continuous-delivery-workflows-with-feature-branching-and-gitflow
+  * https://www.agilealliance.org/glossary/continuous-integration
+  * https://continuousdelivery.com/
+  * https://www.infoq.com/articles/orch-pipelines-jenkins
+
 ## Nice-To-Read
 
 ## Go-Deep
