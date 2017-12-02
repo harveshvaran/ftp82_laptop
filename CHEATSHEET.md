@@ -117,6 +117,9 @@
   * ```mvn checkstyle:checkstyle```
   * ```open target/site/checkstyle.html```
 
+## run cli
+  * ```mvn exec:java -Dexec.mainClass=com.hexaware.ftpxx.util.CliMain```
+
 ## Package
   * ```mvn package```
 
