@@ -2,9 +2,9 @@
 
 The objective of week #2 is to get the cli working with showing employee details - name, department, leave_available etc.
 
-## Java
+## Java (Will be continued in Week#3 as well)
 
-## Junit
+## Junit (Will be continued in Week#3 as well)
 
 ## Maven
 
@@ -45,6 +45,7 @@ The objective of week #2 is to get the cli working with showing employee details
 
   * Complete the other tickets
   * At the end, the cli should show all the new attributes added.
+    * At this point, you must be able to compile ```mvn compile``` and run the cli ```mvn exec ...```, but other command i.e., ```mvn package``` etc will fail because of lack of code coverage etc.
   * You should have added some unit tests as well.
      
 # Reading material
