@@ -80,4 +80,8 @@ The objective of week #2 is to get the cli working with showing employee details
   
 ## Go-Deep
 
+### Java
+  * https://www.udemy.com/java-tutorial/
+  * https://www.javatpoint.com/java-tutorial
+
   
