@@ -26,9 +26,10 @@
         * Rename directory restservice/leavemanager/src/main/java/com/hexaware/ftpxx/ to restservice/leavemanager/src/main/java/com/hexaware/ftpnn/
       * For Mac OS
         * NOTE: replace nn with the team-id in the following three commands
-        * `find . -type f -not -path '*/\.*' -not -path "*/node_modules/*" -exec sed -i '' -e 's/ftpxx/ftpnn/g' {} \; -exec sed -i '' -e 's/FTPXX/FTPnn/g' {} \;`
-        * `mv restservice/leavemanager/src/main/java/com/hexaware/ftpxx/ restservice/leavemanager/src/main/java/com/hexaware/ftpnn/`
-      * `git add restservice/leavemanager/src/main/java/com/hexaware/ftpnn/`
+        * `find . -type f -not -path '*/\.*' -not -path "*/node_modules/*" -exec sed -i '' -e 's/ftpxx/ftp[nn]/g' {} \; -exec sed -i '' -e 's/FTPXX/FTP[nn]/g' {} \;`
+        * `mv restservice/leavemanager/src/main/java/com/hexaware/ftpxx/ restservice/leavemanager/src/main/java/com/hexaware/ftp[nn]/`
+        * `mv restservice/leavemanager/src/test/java/com/hexaware/ftpxx/ restservice/leavemanager/src/test/java/com/hexaware/ftp[nn]/`
+      * `git add restservice/leavemanager/src/main/java/com/hexaware/ftp[nn]/ restservice/leavemanager/src/test/java/com/hexaware/ftp[nn]/`
       * `git commit -a -m "replacing xx with the team number"`
       * `git push origin HEAD`
       * `git clean -f`
