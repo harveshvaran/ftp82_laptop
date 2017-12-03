@@ -16,7 +16,7 @@
 ## Table naming conventions
   * ALL CAPS
   * underscores allowed
-  * e.g., EMPLOYEE, LEAVE_HISTORY
+  * e.g., EMPLOYEE, LEAVE_DETAILS
   
 ## Column naming conventions
   * ALL CAPS
@@ -24,5 +24,4 @@
   * Use a three character prefix derived from the table name for all the columns
   * e.g., EMP_ID, EMP_NAME
   * Except for foreign keys, where you will use the foreign key tables' prefix
-  * e.g., in LEAVE_HISTORY table, use EMP_ID as the foreign key
-
+  * e.g., in LEAVE_DETAILS table, use EMP_ID as the foreign key
