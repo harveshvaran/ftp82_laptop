@@ -121,7 +121,7 @@
 
   * Open MySQL Workbench
   * Open the localhost connection
-    * Mac OS: `export PATH=$PATH:/Applications/MySQLWorkbench.app/Contents/MacOS` and then you can use the command line `mysql -u root -p hexawareftpdev`
+    * Mac OS: `export PATH=$PATH:/Applications/MySQLWorkbench.app/Contents/MacOS` and then you can use the command line `mysql -u root -phexawareftpdev`
   * `CREATE DATABASE FTPXX;` and click the lightning button
   * `CREATE USER 'FTPXX'@'localhost' IDENTIFIED BY 'FTPXX';`
   * `GRANT ALL ON FTPXX.* TO 'FTPXX'@'localhost';`
