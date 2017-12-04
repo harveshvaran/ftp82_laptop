@@ -39,6 +39,8 @@ A secondary objective is to get the jenkins incorporated into the development li
   1. Others to add tests for Leave Details etc.
 
 ### Tests for the cli
+
+#### Basic tests
   * Invalid input for the data type
     * Including for the menu option
   * Non-existing employee id
@@ -49,6 +51,10 @@ A secondary objective is to get the jenkins incorporated into the development li
   * PENDING <-> APPROVED <-> DENIED three-way state transitions
   * leaveid/employeeid incorrect combinations
 
+#### Advanced tests
+  * No leave before doj
+  * No pending application overlapping other pending/approved leave for the same employee
+  
 # Reading material
 
 ## Must-Read
