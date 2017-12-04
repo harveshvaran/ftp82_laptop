@@ -1,6 +1,8 @@
 # Week #3: Course Materials
 
-The primary objective of week #3 is to complete the Cli fully to list/apply/approve/deny leave applications. A secondary objective is to get the jenkins incorporated into the development life cycle. This means adding unit tests for coverage, style fixes, etc. 
+The primary objective of week #3 is to complete the Cli fully to list/apply/approve/deny leave applications. 
+
+A secondary objective is to get the jenkins incorporated into the development life cycle. This means adding unit tests for  the required coverage.
 
 ## Java (Continued from Week#2)
 
@@ -10,11 +12,11 @@ The primary objective of week #3 is to complete the Cli fully to list/apply/appr
 
 # Week #3 Sprint Goals:
 
-    * Jira Task: "Make the mvn package succeed"
     * Jira User Story: "As a Cli user of the leave application, as an employee, I should be able to apply for leave."
     * Jira User Story: "As a Cli user of the leave application, as an employee, I should be able to see all my leave history."
     * Jira User Story: "As a Cli user of the leave application, as a manager, I should be able to see all pending leave applications of my direct report employees"
     * Jira User Story: "As a Cli user of the leave application, as a manager, I should be able to approve/deny any pending leave applications of my direct report employees"
+    * Jira Task: "Make the mvn package succeed"
     * Jira Task: "Make the jenkins pipeline green"
 
     * There will be a ftpxx-10-unit, a ftpxx-30-integration and a ftpxx-50-staging jobs in your team's tab. The unit job will be 
@@ -28,11 +30,13 @@ The primary objective of week #3 is to complete the Cli fully to list/apply/appr
   1. Whiteboard Java methods for the functionalities
   1. Create skeleton class for LeaveDetails, and empty methods for apply, list, approve/deny etc
 ### For the first task + story
-  1. One person to make mvn package succeed - add employee tests
   1. One person to add LeaveDetails class, and then its DAO/Mapper
   1. One Person to change cli
   1. One Person to add apply methods on Employee class
 ### Similarly for the other stories
+### Simultaneously work on adding unit tests
+  1. One person to make mvn package succeed - add employee tests
+  1. Others to add tests for Leave Details etc.
 
 # Reading material
 
