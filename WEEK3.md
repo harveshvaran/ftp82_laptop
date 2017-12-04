@@ -38,6 +38,17 @@ A secondary objective is to get the jenkins incorporated into the development li
   1. One person to make mvn package succeed - add employee tests
   1. Others to add tests for Leave Details etc.
 
+### Tests for the cli
+  * Invalid input for the data type
+    * Including for the menu option
+  * Non-existing employee id
+  * Apply w/ balance not sufficient
+  * startDate > endDate
+  * numDays > endDate - startDate
+  * numDays = 0
+  * PENDING <-> APPROVED <-> DENIED three-way state transitions
+  * leaveid/employeeid incorrect combinations
+
 # Reading material
 
 ## Must-Read
