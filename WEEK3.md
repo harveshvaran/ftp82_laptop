@@ -4,6 +4,23 @@ The primary objective of week #3 is to complete the Cli fully to list/apply/appr
 
 A secondary objective is to get the jenkins incorporated into the development life cycle. This means adding unit tests for  the required coverage.
 
+We will also start doing standups from this week. https://www.mountaingoatsoftware.com/agile/scrum/meetings/daily-scrum
+
+Each day, as the team does the standup, one from each team notes down briefly the answers to the three questions for each team member and send it to the facilitators.
+
+  Here is a rough format (for each team)
+
+  Subject: FTP{nn} daily standup – {date}
+{team member#1}:
+  * Yesterday:
+    * Completed {blah}, In progress {blah}
+  * Today:
+    * Will complete {blah}, Will start {blah}
+  * Impediments:
+    * {Things like machine issues, network issues etc}
+{team member #2:
+   * ...
+
 ## Java (Continued from Week#2)
 
 ## Junit/JMockit (Continued from Week#2)
