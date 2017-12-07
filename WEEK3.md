@@ -22,6 +22,8 @@ Each day, as the team does the standup, one from each team notes down briefly th
     
 {team member #2:
    * ...
+   
+Ideally, the blahs above should include the ticket number FTP{nn}-{jj}
 
 ## Java (Continued from Week#2)
 
