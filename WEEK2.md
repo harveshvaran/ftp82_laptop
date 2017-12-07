@@ -1,6 +1,6 @@
 # Week #2: Course Materials
 
-The objective of week #2 is to get the cli working with showing employee details - name, department, leave_available etc.
+The objective of week #2 is to get the cli working with showing employee details - name, department, leave_available etc. From this week onwards, we will be doing sprint planning and sprint review/retrospective every week.
 
 ## Java (Will be continued in Week#3 as well)
 
