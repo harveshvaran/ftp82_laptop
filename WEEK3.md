@@ -11,6 +11,7 @@ Each day, as the team does the standup, one from each team notes down briefly th
   Here is a rough format (for each team)
 
   Subject: FTP{nn} daily standup – {date}
+  
 {team member#1}:
   * Yesterday:
     * Completed {blah}, In progress {blah}
@@ -18,6 +19,7 @@ Each day, as the team does the standup, one from each team notes down briefly th
     * Will complete {blah}, Will start {blah}
   * Impediments:
     * {Things like machine issues, network issues etc}
+    
 {team member #2:
    * ...
 
