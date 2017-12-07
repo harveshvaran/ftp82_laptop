@@ -25,3 +25,7 @@
   * e.g., EMP_ID, EMP_NAME
   * Except for foreign keys, where you will use the foreign key tables' prefix
   * e.g., in LEAVE_DETAILS table, use EMP_ID as the foreign key
+
+# Java naming conventions
+
+## Method naming conventions https://docs.oracle.com/javase/tutorial/java/javaOO/methods.html
