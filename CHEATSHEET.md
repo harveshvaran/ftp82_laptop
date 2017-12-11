@@ -120,6 +120,9 @@
 ## run cli
   * ```mvn exec:java -Dexec.mainClass=com.hexaware.ftpxx.util.CliMain```
 
+## running a single test
+  * ```mvn -Dtest=[TestClass#testname] test```
+
 ## Package
   * ```mvn package```
 
