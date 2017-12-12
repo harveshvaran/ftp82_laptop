@@ -140,6 +140,10 @@
   * Copy the war file to the webapps folder
     * ```cp target/<some>.war /path/to/apache-tomcat-9.0.0.M22/webapps/ftpxx.war```
 
+## Curl
+  * `curl http://localhost:8080/ftpxx/api/employees`
+  * `curl http://localhost:8080/ftpxx/api/employees/1000`
+
 # angular
 
   * To serve from the working directory
