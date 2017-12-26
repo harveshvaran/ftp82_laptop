@@ -1,4 +1,4 @@
-# Week #5: Course Materials
+# Week #7: Course Materials
 
 The objective of week #5 is to get the employee details to the web ui in the list. Also to add change the unit and system tests.
 
@@ -8,10 +8,10 @@ The objective of week #5 is to get the employee details to the web ui in the lis
 
 ## Selenium/Protractor
 
-# Week #5
+# Week #7
 
     * Sprint goals
-       * Jira Task: TBD
+       * Jira Task: To start on the web interface and complete the basic screens - login/dashboard screens
      
 # Reading material
 
