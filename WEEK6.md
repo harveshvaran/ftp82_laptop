@@ -1,4 +1,4 @@
-# Week #4: Course Materials
+# Week #6: Course Materials
 
 The objective of week #4 is to complete the REST implementation and be able to demonstrate via Curl all the features 
 of the application. Also, to add RestAssured tests to complete the system tests in the pipeline.
@@ -13,10 +13,10 @@ of the application. Also, to add RestAssured tests to complete the system tests 
 
 ## RestAssured
 
-# Week #2
+# Week #6
 
     * Sprint goals
-       * Jira Task: TBD
+       * Jira Task: Complete building a REST API on top of the implementation
      
 # Reading material
 
