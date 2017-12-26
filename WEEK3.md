@@ -2,8 +2,6 @@
 
 The primary objective of week #3 is to complete the Cli fully to list/apply/approve/deny leave applications. 
 
-A secondary objective is to get the jenkins incorporated into the development life cycle. This means adding unit tests for  the required coverage.
-
 We will also start doing standups from this week. https://www.mountaingoatsoftware.com/agile/scrum/meetings/daily-scrum
 
 Each day, as the team does the standup, one from each team notes down briefly the answers to the three questions for each team member and send it to the facilitators.
