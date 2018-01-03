@@ -30,7 +30,7 @@
         * `mv restservice/leavemanager/src/main/java/com/hexaware/ftpxx/ restservice/leavemanager/src/main/java/com/hexaware/ftp[nn]/`
         * `mv restservice/leavemanager/src/test/java/com/hexaware/ftpxx/ restservice/leavemanager/src/test/java/com/hexaware/ftp[nn]/`
         * `mv restservice/integration-test/src/test/java/com/hexaware/ftpxx restservice/integration-test/src/test/java/com/hexaware/ftp[nn]`
-      * `git add restservice/leavemanager/src/main/java/com/hexaware/ftp[nn]/ restservice/leavemanager/src/test/java/com/hexaware/ftp[nn]/`
+      * `git add restservice/leavemanager/src/main/java/com/hexaware/ftp[nn]/ restservice/leavemanager/src/test/java/com/hexaware/ftp[nn]/ restservice/integration-test/src/test/java/com/hexaware/ftp[nn]`
       * `git commit -a -m "replacing xx with the team number"`
       * `git push origin HEAD`
       * `git clean -f`
