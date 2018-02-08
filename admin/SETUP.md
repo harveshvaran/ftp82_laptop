@@ -77,4 +77,4 @@ The users are added by invite: Site Administration/User Management. Use the hexa
 
 Create a "FTP" group and invite all the users from the ftp program.
 
-Create projects FTPnn and give developer access to the FTP group.
+Create projects FTPnn and give developer/administrator access to the FTP group.
