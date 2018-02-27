@@ -9,23 +9,23 @@
   * Create Git repository for the 10 teams
     * Make sure that ftp-fork-me does not have any branches
     * Go to github.com
-      * delete any existing repositories: ftp01 to ftp10
-      * create a repository for each team : ftp01 to ftp10
-      * create a team for each team : ftp01 to ftp10
-      * Add FTP-Admins as a group w/ Admin access, and ftpnn team w/ R/W to these repositories
+      * create a team for each team : ftpnn
+      * create a repository for each team : ftpnn
+        * Add FTP-Admins as a group w/ Admin access, and ftpnn team w/ R/W to these repositories
     * `git clone --bare git@github.com:HexaInnovLab/ftp-fork-me.git ftpxx`
-    * `cd ftpxx`
+    * 'cd ftpxx`
     * For each team, nn = 01 to 10
       * `git push --mirror git@github.com:HexaInnovLab/ftpnn.git`
     * For each team, nn = 01 to 10
       * from the workspace
-      * `git clone git@github.com:HexaInnovLab/ftpnn.git`
-      * cd ftpnn
       * For windows
+        * `git clone git@github.com:HexaInnovLab/ftpnn.git`
+        * cd ftpnn
         * use VS Code, find/replace in files to do the following: replacing ftpxx -> ftpnn, FTPXX -> FTPnn
         * Rename directory restservice/leavemanager/src/main/java/com/hexaware/ftpxx/ to restservice/leavemanager/src/main/java/com/hexaware/ftpnn/
-      * For Mac OS
-        * NOTE: replace nn with the team-id in the following three commands
+      * For Mac OS; replace nn with the team-id in the following three commands; use xxnn.sh
+        * `git clone git@github.com:HexaInnovLab/ftpnn.git`
+        * `cd ftpnn`      
         * `find . -type f -not -path '*/\.*' -not -path "*/node_modules/*" -exec sed -i '' -e 's/ftpxx/ftp[nn]/g' {} \; -exec sed -i '' -e 's/FTPXX/FTP[nn]/g' {} \;`
         * `mv restservice/leavemanager/src/main/java/com/hexaware/ftpxx/ restservice/leavemanager/src/main/java/com/hexaware/ftp[nn]/`
         * `mv restservice/leavemanager/src/test/java/com/hexaware/ftpxx/ restservice/leavemanager/src/test/java/com/hexaware/ftp[nn]/`
