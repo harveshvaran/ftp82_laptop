@@ -11,8 +11,8 @@ The objective of week #2 is to get the cli working with showing employee details
 ## JDBI
 
 # Week #2: Workshop Day #1 - Create the development database, table and populate it
-  * Create JIRAs for all the work to be done in Week #2 
-    * Create a JIRA for changing the database design
+  * Create Task in GITHUB  Project Board for all the work to be done in Week #2 
+    * Create the task for changing the database design
        * A "Task" type ticket w/ 
           * Summary: "Create a database design for the leave management application", and 
           * Description: " As per the requirements in https://github.com/HexaInnovLab/ftp-fork-me/blob/master/REQUIREMENTS.md"
@@ -30,7 +30,8 @@ The objective of week #2 is to get the cli working with showing employee details
           * Summary: "Change the Util.CliMain java class for the new attributes", and 
           * Linked Issues: "Is Blocked By"
           * Issue: the ticket number for the Employee model change ticket          
-  * Start the sprint after pulling all the tickets to the sprint backlog
+  * Ensure that once after creating all your task moved to "To do" column in the project board
+  * Move the task for "To do" to "In Progress" column and start your task  
   * Database Design
      * Edit Database.ddl for two tables: EMPLOYEE and LEAVE_DETAILS
         * Use the "STANDARDS_AND_GUIDELINES.md" file for the naming conventions to be followed.

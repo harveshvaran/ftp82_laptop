@@ -204,21 +204,20 @@ The reviewer will merge one, but the second pull request can not be auto-merged.
 
 Play as many rounds as needed till everyone is comfortable with git conflict resolution.
 
-# Workshop material - Day #4 - Setup Jira, use it to run a complete sprint
+# Workshop material - Day #4 - Configure Project Board in GITHUB for  Managing and Tracking Your Project
 
   * Login to Jira and select your project FTPXX.
   * [Team member #1] Create an epic, with name: "Demonstrate team familiarity with git workflow" and Summary: "This epic demonstrates to the course facilitators that each member of the team knows the git workflow, both as a developer and as a reviewer".
-  * [Team member #2] Use the "Create issue in epic" link to create the following stories
+  * [Team member #2] Use the "Use the "Create issue button" to create the following stories"
      * Summary: "Clean up tictactoe.html before the demonstrations"
      * Summary: "Delete tictactoe.html after the demonstrations"
-  * [All team members] Use the "Create issue in epic" link to create two stories each
+  * [All team members] Use the "Use the "Create issue button" to create two stories each
      * Summary: "As a git user, I, [full name], will demo my ability to use git as a developer by making one move on the tictactoe board"
      * Summary: "As a git user, I, [full name], will demo my ability to use git as a review by reviewing and merging another team member's pull request of a tictactoe board change"
      * Open your 'demo' stories and assign them to yourself
   * [Team member #3]
      * Create sprint "FTPXX Sprint 1"
-     * Drag all stories into the sprint
-     * Start sprint
+     * Drag all stories /task into “To do” column of the project board
        * Duration: Custom, with both start date being today and end date being tomorrow
        * Sprint goal: Demo git familiarity
   * [Team member #4]
@@ -238,8 +237,8 @@ Play as many rounds as needed till everyone is comfortable with git conflict res
      * With a facilitator overlooking your work, follow the git development cycle workflow to delete the tictactoe.html file
        * Self-merge the pull request
      * Drag the story to "DONE"
-     * Click the "Complete Sprint" button on top right    
      * "Mark as Done" the jira epic
+     * Move the "epic" to " Done" column in the project board
      
 # Workshop material - Day #5
 
