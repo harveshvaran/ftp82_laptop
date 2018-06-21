@@ -28,6 +28,6 @@
 
   * A skeletal repository which the trainee teams can clone, build and deploy to get a basic e2e application
 
-#### Jira
+#### GITHUB Project Board
 
   * Epics, User Stories and Tasks for Sprint #1. Boards setup.

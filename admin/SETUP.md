@@ -38,7 +38,7 @@
     * Add the .pub key from jenkins home/.ssh directory for this team as the repository's deploy key
     * [TBD: This has to be done on day1] Add each team member to the team's git repository
   * Create Scrum teams corresponding to the 10 teams
-    * Add each team member to the team's Jira group 
+    * Add each team member to the team's GITHUB Project Board group 
   * Staging and Integration ec2 instances
     * Use the instructions in JENKINS.md to spin up the instances, stop iptables, yum install and install jdk
     * Install tomcat
@@ -71,7 +71,7 @@
 # Week #1 Day #1
   * Go to https://github.com/orgs/HexaInnovLab/people, and click "Invite Member" and add them to the FTPnn team.
 
-## Setup Jira
+## Setup GITHUB Project Board
 
 The users are added by invite: Site Administration/User Management. Use the hexaware email address
 

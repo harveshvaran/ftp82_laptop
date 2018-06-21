@@ -11,7 +11,7 @@ The objective of week #5 is to get the employee details to the web ui in the lis
 # Week #7
 
     * Sprint goals
-       * Jira Task: To start on the web interface and complete the basic screens - login/dashboard screens
+       * GITHUB Project Board Task: To start on the web interface and complete the basic screens - login/dashboard screens
        
 STEPS TO CREATE BASIC SCREENS IN ANGULAR
 DAY-1

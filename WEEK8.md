@@ -5,7 +5,7 @@ The objective of week #8 is to complete the Web UI implementation for all the fu
 # Week #8
 
     * Sprint goals
-       * Jira Task: Complete UI implementation w/ Angular, unit tests and integration tests
+       * GITHUB Project Board Task: Complete UI implementation w/ Angular, unit tests and integration tests
      
 # Reading material
 
