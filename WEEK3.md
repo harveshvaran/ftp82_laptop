@@ -31,12 +31,12 @@ Ideally, the blahs above should include the ticket number FTP{nn}-{jj}
 
 # Week #3 Sprint Goals:
 
-    * Jira User Story: "As a Cli user of the leave application, as an employee, I should be able to apply for leave."
-    * Jira User Story: "As a Cli user of the leave application, as an employee, I should be able to see all my leave history."
-    * Jira User Story: "As a Cli user of the leave application, as a manager, I should be able to see all pending leave applications of my direct report employees"
-    * Jira User Story: "As a Cli user of the leave application, as a manager, I should be able to approve/deny any pending leave applications of my direct report employees"
-    * Jira Task: "Make the mvn package succeed"
-    * Jira Task: "Make the jenkins pipeline green"
+    * GITHUB Project Board User Story: "As a Cli user of the leave application, as an employee, I should be able to apply for leave."
+    * GITHUB Project Board User Story: "As a Cli user of the leave application, as an employee, I should be able to see all my leave history."
+    * GITHUB Project Board User Story: "As a Cli user of the leave application, as a manager, I should be able to see all pending leave applications of my direct report employees"
+    * GITHUB Project Board User Story: "As a Cli user of the leave application, as a manager, I should be able to approve/deny any pending leave applications of my direct report employees"
+    * GITHUB Project Board Task: "Make the mvn package succeed"
+    * GITHUB Project Board Task: "Make the jenkins pipeline green"
 
     * There will be a ftpxx-10-unit, a ftpxx-30-integration and a ftpxx-50-staging jobs in your team's tab. The unit job will be 
     triggered (within 5 minutes of the merge) and it will execute the unit tests etc. It then will trigger the integration 
