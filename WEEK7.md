@@ -13,12 +13,12 @@ The objective of week #5 is to get the employee details to the web ui in the lis
     * Sprint goals
        * GITHUB Project Board Task: To start on the web interface and complete the basic screens - login/dashboard screens
        
-STEPS TO CREATE BASIC SCREENS IN ANGULAR
-DAY-1
+## STEPS TO CREATE BASIC SCREENS IN ANGULAR
+# DAY-1
      * 1.	Open Employee.ts, add all the attributes of Employee.java class
      * 2.	Open app.component.html, add the attributes of Employee class to the corresponding tags inside the table tag
      * 3.	Browser will display all the columns with values
-DAY-2
+# DAY-2
      * 4.	Open Git bash
             cd  /c/user/Hvuser/workspace/FTPXX/webui/lm-app
      * 5.	Commands to generate LoginForm and Dashboard Component
