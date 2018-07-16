@@ -6,25 +6,25 @@
     * CS/Non-CS folks
     * Scores equally distributed
     * Gender distribution
-  * Create Git repository for the 10 teams
+  * Create  repository for the 10 teams
     * Make sure that ftp-fork-me does not have any branches
-    * Go to github.com
-      * create a team for each team : ftpnn
+    * Go to https://635681506020.signin.aws.amazon.com/console.com
+      * create a group for each team : ftpnn
       * create a repository for each team : ftpnn
         * Add FTP-Admins as a group w/ Admin access, and ftpnn team w/ R/W to these repositories
-    * `git clone --bare git@github.com:HexaInnovLab/ftp-fork-me.git ftpxx`
+    * `git clone --bare ssh://git-codecommit.us-east-2.amazonaws.com/v1/repos/FTPXX`
     * 'cd ftpxx`
     * For each team, nn = 01 to 10
-      * `git push --mirror git@github.com:HexaInnovLab/ftpnn.git`
+      * `git push --mirror ssh://git-codecommit.us-east-2.amazonaws.com/v1/repos/FTPnn.git`
     * For each team, nn = 01 to 10
       * from the workspace
       * For windows
-        * `git clone git@github.com:HexaInnovLab/ftpnn.git`
+        * `git clone ssh://git-codecommit.us-east-2.amazonaws.com/v1/repos/FTPnn.git`
         * cd ftpnn
         * use VS Code, find/replace in files to do the following: replacing ftpxx -> ftpnn, FTPXX -> FTPnn
         * Rename directory restservice/leavemanager/src/main/java/com/hexaware/ftpxx/ to restservice/leavemanager/src/main/java/com/hexaware/ftpnn/
       * For Mac OS; replace nn with the team-id in the following three commands; use xxnn.sh
-        * `git clone git@github.com:HexaInnovLab/ftpnn.git`
+        * `git clone ssh://git-codecommit.us-east-2.amazonaws.com/v1/repos/FTPnn.git`
         * `cd ftpnn`      
         * `find . -type f -not -path '*/\.*' -not -path "*/node_modules/*" -exec sed -i '' -e 's/ftpxx/ftp[nn]/g' {} \; -exec sed -i '' -e 's/FTPXX/FTP[nn]/g' {} \;`
         * `mv restservice/leavemanager/src/main/java/com/hexaware/ftpxx/ restservice/leavemanager/src/main/java/com/hexaware/ftp[nn]/`
@@ -69,12 +69,14 @@
         * For the unit job, change the git repository as well; if the credentials are not yet added, you can add them now
 
 # Week #1 Day #1
-  * Go to https://github.com/orgs/HexaInnovLab/people, and click "Invite Member" and add them to the FTPnn team.
+  * Go to https://console.aws.amazon.com/codecommit,  and clone the repo through GitBash 
+  
 
-## Setup GITHUB Project Board
+## Setup Trello Project Board
 
-The users are added by invite: Site Administration/User Management. Use the hexaware email address
+The users are expected to login  through {Hexaware-id}-.hexaware@gmail.com id at Trello 
 
-Create a "FTP" group and invite all the users from the ftp program.
+Create a "FTPXX" as project board and add users through add members link at Trello board
 
-Create projects FTPnn and give developer/administrator access to the FTP group.
+Create Sprint Backlog as list and include various tasks as cards
+Assign each task to members (add member button) with due date mentioned  

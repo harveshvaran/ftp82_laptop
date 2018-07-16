@@ -6,7 +6,7 @@ A secondary objective is to get the jenkins incorporated into the development li
 # Week #5
 
     * Sprint goals
-       * GITHUB Project Board Task: Jenkins integration
+       * Trello Project Board Task: Jenkins integration
      
 # Reading material
 

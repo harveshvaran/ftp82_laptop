@@ -1,8 +1,8 @@
 # Multi-tier architecture
 
-# Software lifecycle with git/GITHUB Project Board
+# Software lifecycle with git/Trello Project Board
 
 # Markdown cheatsheet
 
-# Git sheatsheet
+# Git Cheatsheet
 

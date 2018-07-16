@@ -24,10 +24,10 @@
 
   * 3 Jobs per team - Unit, Integration and Staging
 
-#### Git
+#### AWS CodeCommit
 
   * A skeletal repository which the trainee teams can clone, build and deploy to get a basic e2e application
 
-#### GITHUB Project Board
+#### Trello Project Board
 
-  * Epics, User Stories and Tasks for Sprint #1. Boards setup.
+  *  User Stories and Tasks for Sprint #1. Boards setup.
