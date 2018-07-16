@@ -12,4 +12,4 @@
 	* Create a list to maintain track of completed sprint as “Sprint complete” 
 	* The “In-progress” and “Completed” list will be empty initially and once the task is started, move the task to “In-progress” list and it is subsequently moved to “Completed” list once it is completed    
 	* Move the completed sprint to “Completed Sprint” whenever it is completed
-	* Assign label for different tasks ., eg., green collor for user story, pink color for task 
+	* Assign label for different tasks ., eg., green collor for user story, pink color for task
