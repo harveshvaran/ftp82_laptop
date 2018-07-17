@@ -9,7 +9,7 @@
 
 ## Goals of the program
   * "Learning to learn"
-    * Git, GITHUB Project Board, Jenkins, MySQL, SQL, JDBI, Java, Junit, Jmockit, Jersey, Maven, REST, Json, RestAssured, Javascript, HTML, CSS, Angular 4, Karma/Jasmine, Selenium
+    * Git, TRELLO (Project Management Tool), Jenkins, MySQL, SQL, JDBI, Java, Junit, Jmockit, Jersey, Maven, REST, Json, RestAssured, Javascript, HTML, CSS, Angular 4/6, Karma/Jasmine, Selenium/Protractor
   * Productivity hacks
     * google
     * command line (+ simple IDE)
@@ -75,25 +75,87 @@
     * Review
     * Retrospective
   
-# Workshop material - Day #1 - Git/VS Code
-  * Setting up git
-    * Open "https://github.com/HexaInnovLab" in your browser; bookmark this page in your browser
-    * Click the signup on the top-right
-    * In the following instructions, {hexawareid} is the part preceding @hexaware.com in your email address
-    * your username is {hexawareid}-Hexaware, e.g., krishnakumar-Hexaware
-    * Use hexaware email address as the email address
-    * Select your own password
-    * Tell the facilitator the username just created
-    * You will get mail to verify your mail address; click the link to complete the verification
-    * The facilitator will add you to the hexaware github organization and also give you access to the team's repository
-    * You will get a mail inviting you to the HexaInnovLab organization. Please join the organization.
-    * Open https://github.com/HexaInnovLab/ftpxx, and look at the WEEK1.md
-    * Follow the instructions as in https://help.github.com/articles/connecting-to-github-with-ssh/
-      * Skip "Checking for existing SSH keys" as this is a fresh installation
-      * Run the ssh-keygen command and save the private key in C:\users\Hvuser\.ssh\id_rsa. *Do not* use a passphrase in step #4 - just press enter twice.
-      * Skip "Adding your SSH key to the ssh-agent" section as we do not use ssh-agent
-      * Follow the instructions as in "https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/" and "https://help.github.com/articles/testing-your-ssh-connection/" and test the setup
+# Workshop material - Day #1 - AWS CodeCommit/Visual Studio (VS) Code
+  * Setting up AWS CodeCommit
+    * Open: https://635681506020.signin.aws.amazon.com/console in your browser; bookmark this page in your browser
+    * Type your IAMS user name as  {hexaware e-mail Id}-Hexaware, e.g, KrishnaKumar-Hexaware  and "hexaware123" as your initial sign-in password
+    * After  you sign in for the first time, you must change your password.
+    
+  * Setting Up the Public and Private Keys for Git and AWS CodeCommit
+    * Step 1: Open the Git Bash emulator; From the emulator, run the ssh-keygen command, and follow the directions to save the file to the .ssh directory for your profile.
 
+    * For example:
+    $ `ssh-keygen`
+    Generating public/private rsa key pair.
+    Enter file in which to save the key (/drive/Users/user-name/.ssh/id_rsa): Pree Enter [to save the key in C:\users\Hvuser\.ssh\id_rsa) 
+
+    Enter passphrase (empty for no passphrase): Pree Enter [do not use passphrase]
+    
+    Enter same passphrase again: Press Enter 
+
+    Your identification has been saved in drive/Users/user-name/.ssh/id_rsa.
+    
+    Your public key has been saved in drive/Users/user-name/.ssh/id_rsa.pub.
+    
+    The key fingerprint is:
+    
+    45:63:d5:99:0e:99:73:50:5e:d4:b3:2d:86:4a:2c:14 user-name@client-name
+    The key's randomart image is:
+    
+    +--[ RSA 2048]----+
+    |        E.+.o*.++|
+    |        .o .=.=o.|
+    |       . ..  *. +|
+    |        ..o . +..|
+    |        So . . . |
+    |          .      |
+    |                 |
+    |                 |
+    |                 |
+    +-----------------+
+    
+    This generates:
+    •	The id_rsa file, which is the private key file.
+    •	The id_rsa.pub file, which is the public key file.
+   
+    * Step 2: Run the following commands to display the value of the public key file (id_rsa.pub)
+    
+    `cd .ssh`
+    `notepad id_rsa.pub`
+    
+    Copy the contents of the file, and then close Notepad without saving. The contents of the file will look similar to the following:
+
+
+    ssh-rsa EXAMPLE-AfICCQD6m7oRw0uXOjANBgkqhkiG9w0BAQUFADCBiDELMAkGA1UEBhMCVVMxCzAJB
+    gNVBAgTAldBMRAwDgYDVQQHEwdTZWF0dGxlMQ8wDQYDVQQKEwZBbWF6b24xFDASBgNVBAsTC0lBTSBDb2
+    5zb2xlMRIwEAYDVQQDEwlUZXN0Q2lsYWMxHzAdBgkqhkiG9w0BCQEWEG5vb25lQGFtYXpvbi5jb20wHhc
+    NMTEwNDI1MjA0NTIxWhcNMTIwNDI0MjA0NTIxWjCBiDELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAldBMRAw
+    DgYDVQQHEwdTZWF0dGxlMQ8wDQYDVQQKEwZBbWF6b24xFDAS=EXAMPLE user-name@computer-name
+    
+    * Step 3: Sign in to the AWS Management Console and open the IAM console at https://console.aws.amazon.com/iam/.
+    * Step 4: In the IAM console, in the navigation pane, choose Users, and from the list of users, choose your IAM user
+    * Step 5: On the user details page, choose the Security Credentials tab, and then choose Upload SSH public key.
+    * Step 6: Paste the contents of your SSH public key into the field, and then choose Upload SSH public key
+    * Step 7: Copy or save the information in SSH Key ID (for example, APKAEIBAERJR2EXAMPLE).
+    * Step 8: In the Bash emulator, type the following commands to create a config file in the ~/.ssh directory, or edit it if one already exists:
+    `cd .. [if you are in .ssh directory already]`
+    `vi ~/.ssh/config`
+
+    * Step 9: Add the following lines to the file, where the value for User is the SSH key ID you copied earlier, and the value for 
+    [User shift+ p to copy the following lines in vi editor]
+    
+    Host git-codecommit.*.amazonaws.com
+      User APKAEIBAERJR2EXAMPLE   [user i(insertmode)to edit the user id]
+      IdentityFile ~/.ssh/codecommit_rsa
+    User :wq to save the file 
+    * Step 10: Run the following command to test your SSH configuration:
+    
+
+     `ssh git-codecommit.us-east-2.amazonaws.com`
+
+     You will be asked to confirm the connection because git-codecommit.us-east-2.amazonaws.com is not yet included in your known hosts file. The AWS CodeCommit server fingerprint is displayed as part of the verification (a9:6d:03:ed:08:42:21:be:06:e1:e0:2a:d1:75:31:5e for MD5 or 3lBlW2g5xn/NA2Ck6dyeJIrQOWvn7n8UEs56fG6ZIzQ for SHA256).
+
+    
   * Command Line/Gitbash --  Open Gitbash
     
     * `pwd` -- Check and verify that the current working directory is C:\users\Hvuser
@@ -106,14 +168,18 @@
     * `git config --global user.name "<your name>"`
     * `git config --global user.email <your email>`
     * `git config --global -l`
-    * Open https://github.com/HexaInnovLab/ftpxx
-      * look at source code organization
+
+  * Clone repository at Gitbash
+    * Open https://console.aws.amazon.com/codecommit
+    Choose the repository you want to connect to from the list. This opens the Code page for that repository
+    * Choose Clone URL, and then copy the SSH URL.
+    
     * Go back to gitbash and clone the project
     * `pwd` -- Check and verify that the current working directory is C:\users\Hvuser/workspace
-    * `git clone git@github.com:HexaInnovLab/ftpxx.git`
+    * `git clone ssh://git-codecommit.us-east-2.amazonaws.com/v1/repos/FTPXX `
     * `cd ftpxx`
     * `git status`
-  * open Visual Studio Code
+  * open Visual Studio (VS) Code
     * Open folder c:\users\Hvuser\workspace\ftpxx
     * Browse the directories to understand the repository structure
 
@@ -204,28 +270,36 @@ The reviewer will merge one, but the second pull request can not be auto-merged.
 
 Play as many rounds as needed till everyone is comfortable with git conflict resolution.
 
-# Workshop material - Day #4 - Configure Project Board in GITHUB for  Managing and Tracking Your Project
+# Workshop material - Day #4 - Configure Project Board in Trello for  Managing and Tracking Your Project
 
-  * Login to GITHUB Project Board and select your project FTPXX.
-  * [Team member #1] Create an epic, with name: "Demonstrate team familiarity with git workflow" and Summary: "This epic demonstrates to the course facilitators that each member of the team knows the git workflow, both as a developer and as a reviewer".
-  * [Team member #2] Use the "Use the "Create issue button" to create the following stories"
+  * Login to Trello Project Board with {Your Hexaware e-mail id}.hexaware as  user name; e.g., KrishnaKumar.hexaware@gmail.com;  Please follow the next step to create user name if it is not created 
+
+  * Create a free e-mail id at gmail with user name {your Hexaware e-mail id}.hexaware. e.g., KrishnaKumar.hexaware@gmail.com  and use this id for Trello login 
+
+  * Create a board for your project as "FTPXX"
+
+  * [Team member #1] Create a "Product Backlog" [List] to describe a  user story : "Demonstrate team familiarity with git workflow, both as a developer and as a reviewer"
+
+  * Using Add Members option, please include others team members in this board  
+
+  * [Team member #2] Use "Sprint Backlog" [list] to include (as cards)  to create the following stories"
      * Summary: "Clean up tictactoe.html before the demonstrations"
      * Summary: "Delete tictactoe.html after the demonstrations"
-  * [All team members] Use the "Use the "Create issue button" to create two stories each
+  * [All team members] In the "Sprint Backlog"  and create two user stories (through card) 
      * Summary: "As a git user, I, [full name], will demo my ability to use git as a developer by making one move on the tictactoe board"
      * Summary: "As a git user, I, [full name], will demo my ability to use git as a review by reviewing and merging another team member's pull request of a tictactoe board change"
-     * Open your 'demo' stories and assign them to yourself
+     * Assign these user stories to you  (develoepr/reviewer) and your neighbour (reviwer/develoepr) 
   * [Team member #3]
-     * Create sprint "FTPXX Sprint 1"
-     * Drag all stories /task into “To do” column of the project board
-       * Duration: Custom, with both start date being today and end date being tomorrow
-       * Sprint goal: Demo git familiarity
+     * Create "Current Sprint" with "FTPXX Sprint 1" as label 
+     * Drag all stories /task into “To do” list
+       * Due Date: start date being today and end date being tomorrow
+       
   * [Team member #4]
      * Drag the "Clean up tictactoe.html before the demonstrations" story to "IN PROGRESS" swimlane
-     * Assign the user story to yourself using the Assignee field, "Assign to me" link
+     * Assign the user story to yourself using Add Members
      * With a facilitator overlooking your work, follow the git development cycle workflow to clean up the tictactoe.html to produce a clean fresh board
        * Self-merge the pull request
-     * Drag the story to "DONE"
+     * Drag the story to "DONE" list
   * [Team members, one-by-one]      
      * Drag the "develop demo" story to IN PROGRESS
      * With a facilitator overlooking your work, follow the git development cycle workflow to make one move on the tictactoe.html 
@@ -233,12 +307,11 @@ Play as many rounds as needed till everyone is comfortable with git conflict res
      * Drag the story to "DONE" after review/merge done, and local git cleaned up
   * [Team member #5]
      * Drag the "Delete tictactoe.html after the demonstrations" story to "IN PROGRESS" swimlane
-     * Assign the user story to yourself using the Assignee field, "Assign to me" link
+     * Assign the user story to yourself using Add members 
      * With a facilitator overlooking your work, follow the git development cycle workflow to delete the tictactoe.html file
        * Self-merge the pull request
-     * Drag the story to "DONE"
-     * "Mark as Done" the GITHUB Project Board epic
-     * Move the "epic" to " Done" column in the project board
+     * Drag the story to "DONE" list
+     * "Mark as Done" the Product Catalog by assigning  "complete" sticker 
      
 # Workshop material - Day #5
 
@@ -356,9 +429,17 @@ HEXAVARSIT,27
   * https://www.atlassian.com/agile/scrum
   * https://www.atlassian.com/agile/ceremonies
 
+### Trello
+  * https://help.trello.com/ 
+  * https://trello.com/b/6otslC4i/template-board-agile-with-trello 
+  * https://trello.com/b/ZqN99gGN/agile-sprint-board
+
 ### Git
   * https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow (We use this, w/ the rebase variant)
-  
+
+### AWS CodeCommit
+  *  https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-ssh-windows.html 
+
 ### Database
   * https://www.lucidchart.com/pages/database-diagram/database-design
   * https://www.w3schools.com/sql/sql_intro.asp

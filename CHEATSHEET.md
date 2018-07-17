@@ -3,7 +3,7 @@
 ## repository actions
 
 ### clone
-  * ```git clone git@github.com:HexaInnovLab/ftpxx.git```
+  * ```git clone https://git-codecommit.us-east-2.amazonaws.com/v1/repos/FTPxx```
 
 ### reset
 
@@ -89,17 +89,15 @@
          * if confident, `git push --force origin HEAD` to force push the changes
 
 ### Create a pull request and get it merged
+   * A pull request is the primary way you and other repository users can review, comment on, and merge code changes from one branch to another. You can use pull requests to collaboratively review code changes for minor changes or fixes, major feature additions, or new versions of your released software. 
 
-   * In your browser, go to "https://github.com/HexaInnovLab/ftpxx"
-   * You may see a yellow box with your branch name, and with a button for creating a pull request.
-       * If you don't see it, drop down the "Branch" dropdown, select your branch. Then click the "New Pull Request" button next to it.
-   * Review your changes in the next screen. Lookout for typos, trailing whitespace etc. and fix them.
-   * if there are any changes, go back to EDIT
-   * Once happy, click the "Create pull request" button after correcting the description, comment etc.
-   * Ask a reviewer to review the pull request.
-   * The reviewer will and review your changes
-       * If there are any comments needing changes to the files, go back to EDIT
-   * The reviewer will merge the pull request and delete the branch
+   * In your browser, go to "https://635681506020.signin.aws.amazon.com/console" and select the repositoty and then click  "pull requests" link 
+
+   * select desination branch and source branch (pull requst branch) and click compare button 
+   * If any change is required, the reviewer add comments and save
+   * The reviewer will merge the pull request by clicking "merge" button when the reviewer is satitifed completely 
+   
+   * Refer the URL for more details  https://docs.aws.amazon.com/codecommit/latest/userguide/pull-requests.html
 
 ### Clean up
    

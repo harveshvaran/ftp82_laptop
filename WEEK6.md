@@ -16,7 +16,7 @@ of the application. Also, to add RestAssured tests to complete the system tests 
 # Week #6
 
     * Sprint goals
-       * GITHUB Project Board Task: Complete building a REST API on top of the implementation
+       * Trello Project Board Task: Complete building a REST API on top of the implementation
      
 # Reading material
 

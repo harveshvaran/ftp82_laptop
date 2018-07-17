@@ -1,8 +1,8 @@
-# Github Branch naming conventions
+# AWS CodeCommit Branch naming conventions
 
-  * [2CharInitial]-[GITHUB Project BoardTicketNumber][-OptionalShortText]
+  * [2CharInitial]-[Trello Project BoardTicketNumber][-OptionalShortText]
      * 2CharInitial: e.g., KK
-     * GITHUB Project BoardTicketNumber: e.g., FTP01-99
+     * Trello Project BoardTicketNumber: e.g., FTP01-99
      * OptionalShortText: e.g., fix-typo
      * e.g., KK-FTP01-99-fix-typo
   

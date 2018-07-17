@@ -11,25 +11,19 @@ The objective of week #2 is to get the cli working with showing employee details
 ## JDBI
 
 # Week #2: Workshop Day #1 - Create the development database, table and populate it
-  * Create Task in GITHUB  Project Board for all the work to be done in Week #2 
-    * Create the task for changing the database design
-       * A "Task" type ticket w/ 
-          * Summary: "Create a database design for the leave management application", and 
-          * Description: " As per the requirements in https://github.com/HexaInnovLab/ftp-fork-me/blob/master/REQUIREMENTS.md"
-          * Note down the ticket number
-       * A "Task" type ticket w/ 
-          * Summary: "Change the model/Employee java class for the columns identified", and 
-          * Description: " As per the requirements in https://github.com/HexaInnovLab/ftp-fork-me/blob/master/REQUIREMENTS.md"
-          * Linked Issues: "Is Blocked By"
-          * Issue: the ticket number for the database design ticket
-       * A "Task" type ticket w/ 
-          * Summary: "Change the persistence/Employee DAO/mapper java classes for the new attributes", and 
-          * Linked Issues: "Is Blocked By"
-          * Issue: the ticket number for the Employee model change ticket
-       * A "Task" type ticket w/ 
-          * Summary: "Change the Util.CliMain java class for the new attributes", and 
-          * Linked Issues: "Is Blocked By"
-          * Issue: the ticket number for the Employee model change ticket          
+  * Create Trello  Project Board for all the work to be done in Week #2 
+    * Create  task for database design changes  
+       * A "Card" should  be included to describe the below task in the Sprint Backlog (board) 
+          * Task : "Create a database design for the leave management application", and 
+          * Ticket Number (manually typed) shoudld be included as prefix in the Task           
+       * A "Card" should be included to describe the below task in the Sprint Backlog 
+          * Task: "Change the model/Employee java class for the columns identified"
+       * A "Card" should be incldued to desribe the below task in the Sprint Backlog
+          * Task: "Change the persistence/Employee DAO/mapper java classes for the new attributes"           
+          * Ticket Number (manually typed) shoudld be included as prefix in the Task  
+       * A "Card" should be incldued to desribe the below task in the Sprint Backlog
+          * Task: "Change the Util.CliMain java class for the new attributes"  
+          * Ticket Number (manually typed) shoudld be included as prefix in the Task                 
   * Ensure that once after creating all your task moved to "To do" column in the project board
   * Move the task for "To do" to "In Progress" column and start your task  
   * Database Design
