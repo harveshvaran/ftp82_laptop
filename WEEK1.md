@@ -146,7 +146,7 @@
     
     Host git-codecommit.*.amazonaws.com
       User APKAEIBAERJR2EXAMPLE   [user i(insertmode)to edit the user id]
-      IdentityFile ~/.ssh/codecommit_rsa
+      IdentityFile ~/.ssh/id_rsa
     User :wq to save the file 
     * Step 10: Run the following command to test your SSH configuration:
     
