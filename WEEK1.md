@@ -245,7 +245,7 @@ In this workshop, we will get familiar with
   
 We will learn to this by playing tic-tac-toe within each group. Play as many rounds as needed to get the hang of how we use git for branching and merging, by letting different members play different roles in each round.
 
-In this, let's use TTT-99 for the GITHUB Project Board Ticket number which is needed for branch naming.
+In this, let's use TTT-99 for the Trello Project Board Ticket number which is needed for branch naming.
 
 ## Playing without conflicts
 
