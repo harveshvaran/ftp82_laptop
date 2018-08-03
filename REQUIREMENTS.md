@@ -28,7 +28,7 @@ and their statuses.
 
 The skeletal application contains a simple screen w/ a list of employees. Clicking the "login" button against the employee row takes you to the 'Login Screen', with the employee id pre-populated.
 
-![Login Screen](/admin/ScreenDesign/Slide2.jpg) 
+![Login Screen](https://us-east-2.console.aws.amazon.com/codecommit/home?region=us-east-2#/repository/FTP-fork-me/browse/HEAD/--/admin/ScreenDesign/Slide2.jpg)
 
   * The "Login" button is the default button (i.e., pressing "Enter" invokes the login function.
   * "Cancel" takes the user back to the employee list screen.
