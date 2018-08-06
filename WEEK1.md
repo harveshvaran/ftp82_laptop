@@ -94,6 +94,7 @@
     * The key fingerprint is:
        * 45:63:d5:99:0e:99:73:50:5e:d4:b3:2d:86:4a:2c:14 user-name@client-name
     * The key's randomart image is:
+    ...
         +--[ RSA 2048]----+
         |        E.+.o*.++|
         |        .o .=.=o.|
@@ -105,7 +106,7 @@
         |                 |
         |                 |
         +-----------------+
-    
+    ...
     * This generates:
         •	The id_rsa file, which is the private key file.
         •	The id_rsa.pub file, which is the public key file.
@@ -114,12 +115,13 @@
         `cd .ssh`
         `notepad id_rsa.pub`
     * Copy the contents of the file, and then close Notepad without saving. The contents of the file will look similar to the following:
+    ...
         ssh-rsa EXAMPLE-AfICCQD6m7oRw0uXOjANBgkqhkiG9w0BAQUFADCBiDELMAkGA1UEBhMCVVMxCzAJB
         gNVBAgTAldBMRAwDgYDVQQHEwdTZWF0dGxlMQ8wDQYDVQQKEwZBbWF6b24xFDASBgNVBAsTC0lBTSBDb2
         5zb2xlMRIwEAYDVQQDEwlUZXN0Q2lsYWMxHzAdBgkqhkiG9w0BCQEWEG5vb25lQGFtYXpvbi5jb20wHhc
         NMTEwNDI1MjA0NTIxWhcNMTIwNDI0MjA0NTIxWjCBiDELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAldBMRAw
         DgYDVQQHEwdTZWF0dGxlMQ8wDQYDVQQKEwZBbWF6b24xFDAS=EXAMPLE user-name@computer-name
-    
+    ...
     * Step 3: Sign in to the AWS Management Console and open the IAM console at https://console.aws.amazon.com/iam/.
     * Step 4: In the IAM console, in the navigation pane, choose Users, and from the list of users, choose your IAM user
     * Step 5: On the user details page, choose the Security Credentials tab, and then choose Upload SSH public key.
