@@ -96,17 +96,17 @@
        * 45:63:d5:99:0e:99:73:50:5e:d4:b3:2d:86:4a:2c:14 user-name@client-name
     * The key's randomart image is:
     ```
-        +--[ RSA 2048]----+
-        |        E.+.o*.++|
-        |        .o .=.=o.|
-        |       . ..  *. +|
-        |        ..o . +..|
-        |        So . . . |
-        |          .      |
-        |                 |
-        |                 |
-        |                 |
-        +-----------------+
+    +--[ RSA 2048]----+
+    |        E.+.o*.++|
+    |        .o .=.=o.|
+    |       . ..  *. +|
+    |        ..o . +..|
+    |        So . . . |
+    |          .      |
+    |                 |
+    |                 |
+    |                 |
+    +-----------------+
     ```
     * This generates:
         •	The id_rsa file, which is the private key file.
@@ -117,11 +117,11 @@
         `notepad id_rsa.pub`
     * Copy the contents of the file, and then close Notepad without saving. The contents of the file will look similar to the following:
     ```
-        ssh-rsa EXAMPLE-AfICCQD6m7oRw0uXOjANBgkqhkiG9w0BAQUFADCBiDELMAkGA1UEBhMCVVMxCzAJB
-        gNVBAgTAldBMRAwDgYDVQQHEwdTZWF0dGxlMQ8wDQYDVQQKEwZBbWF6b24xFDASBgNVBAsTC0lBTSBDb2
-        5zb2xlMRIwEAYDVQQDEwlUZXN0Q2lsYWMxHzAdBgkqhkiG9w0BCQEWEG5vb25lQGFtYXpvbi5jb20wHhc
-        NMTEwNDI1MjA0NTIxWhcNMTIwNDI0MjA0NTIxWjCBiDELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAldBMRAw
-        DgYDVQQHEwdTZWF0dGxlMQ8wDQYDVQQKEwZBbWF6b24xFDAS=EXAMPLE user-name@computer-name
+    ssh-rsa EXAMPLE-AfICCQD6m7oRw0uXOjANBgkqhkiG9w0BAQUFADCBiDELMAkGA1UEBhMCVVMxCzAJB
+    gNVBAgTAldBMRAwDgYDVQQHEwdTZWF0dGxlMQ8wDQYDVQQKEwZBbWF6b24xFDASBgNVBAsTC0lBTSBDb2
+    5zb2xlMRIwEAYDVQQDEwlUZXN0Q2lsYWMxHzAdBgkqhkiG9w0BCQEWEG5vb25lQGFtYXpvbi5jb20wHhc
+    NMTEwNDI1MjA0NTIxWhcNMTIwNDI0MjA0NTIxWjCBiDELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAldBMRAw
+    DgYDVQQHEwdTZWF0dGxlMQ8wDQYDVQQKEwZBbWF6b24xFDAS=EXAMPLE user-name@computer-name
     ```
     * Step 3: Sign in to the AWS Management Console and open the IAM console at https://console.aws.amazon.com/iam/.
     
@@ -139,17 +139,17 @@
     * Step 9: Add the following lines to the file, where the value for User is the SSH key ID you copied earlier, and the value for 
     [User shift+ p to copy the following lines in vi editor]
     ```
-       Host git-codecommit.*.amazonaws.com
-       User APKAEIBAERJR2EXAMPLE   [user i(insertmode)to edit the user id]
-       IdentityFile ~/.ssh/id_rsa
+    Host git-codecommit.*.amazonaws.com
+    User APKAEIBAERJR2EXAMPLE   [user i(insertmode)to edit the user id]
+    IdentityFile ~/.ssh/id_rsa
     ```
       * Use :wq to save the file 
       
     * Step 10: Run the following command to test your SSH configuration:
      * `ssh git-codecommit.us-east-2.amazonaws.com`
      * You will be asked to confirm the connection because git-codecommit.us-east-2.amazonaws.com is not yet included in your known hosts file. 
-      The AWS CodeCommit server fingerprint is displayed as part of the verification (a9:6d:03:ed:08:42:21:be:06:e1:e0:2a:d1:75:31:5e for MD5 or 
-                                                                                       3lBlW2g5xn/NA2Ck6dyeJIrQOWvn7n8UEs56fG6ZIzQ for SHA256).
+     * The AWS CodeCommit server fingerprint is displayed as part of the verification (a9:6d:03:ed:08:42:21:be:06:e1:e0:2a:d1:75:31:5e for MD5 or 
+     *                                                                                   3lBlW2g5xn/NA2Ck6dyeJIrQOWvn7n8UEs56fG6ZIzQ for SHA256).
   * Command Line/Gitbash --  Open Gitbash
     * `pwd` -- Check and verify that the current working directory is C:\users\Hvuser
     * `cd workspace` -- change current working to workspace
@@ -311,27 +311,27 @@ Play as many rounds as needed till everyone is comfortable with git conflict res
    * Exercises
       * Unix Command line
         * Given a file, say employee.csv, containing data in the following format
-```
-empid,initials,department,leave_available        
-1000,KK,CTO_OFFICE,12
-2001,MA,HEXAVARSIT,8
-1001,IK,CTO_OFFICE,9
-2002,UM,HEXAVARSIT,7
-1002,SK,CTO_OFFICE,13
-2003,VR,HEXAVARSIT,6
-2004,JK,HEXAVARSIT,6
-```
+    ```
+        empid,initials,department,leave_available        
+        1000,KK,CTO_OFFICE,12
+        2001,MA,HEXAVARSIT,8
+        1001,IK,CTO_OFFICE,9
+        2002,UM,HEXAVARSIT,7
+        1002,SK,CTO_OFFICE,13
+        2003,VR,HEXAVARSIT,6
+        2004,JK,HEXAVARSIT,6
+    ```
            * Give an unix command which returns the record with the maximum leave_available
               * In the above case, the output should be
-```
-1002,SK,CTO_OFFICE,13
-```
+    ```
+        1002,SK,CTO_OFFICE,13
+    ```
            * Give an unix command which returns one row per department - department, sum of leave_available of all employees in that department
               * In the above case, the output should be
-```
-CTO_OFFICE,34
-HEXAVARSIT,27
-```
+    ```
+        CTO_OFFICE,34
+        HEXAVARSIT,27
+    ```
         * In our codebase, search and print all lines in java code (files w/ .java suffix), where there is a "FTP" or a "ftp" string
       * Database Queries via SQL
          * Given that the same data as in employee.csv is there in a mysql table EMP, give an SQL query
@@ -347,54 +347,54 @@ HEXAVARSIT,27
             * In 'master', there is another version - child of "Version 0" - whose contents are "Version 0a"         
          * #1. What is the command to compare the workspace version to the staging version
             * expected output
-```
-...
--Version 3
-+Version 4
-```
+    ```
+        ...
+        -Version 3
+        +Version 4
+    ```
          * #2. What is the command to compare the staging version to the committed version
             * expected output
-```
-...
--Version 2
-+Version 3
-```
+    ```
+        ...
+        -Version 2
+        +Version 3
+    ```
          * #3. What is the command to compare the committed version to the branching point
             * expected output
-```
-...
--Version 0
-+Version 2
-```
+    ```
+        ...
+        -Version 0
+        +Version 2
+    ```
          * #4. What is the command to compare the workspace version to the committed version
          
            * expected output
-```
-...
--Version 2
-+Version 4
-```
+    ```
+        ...
+        -Version 2
+        +Version 4
+    ```
          * #5. What is the command to compare the workspace version to the branching point
             * expected output
-```
-...
--Version 0
-+Version 4
-```
+    ```
+        ...
+        -Version 0
+        +Version 4
+    ```
          * #6. What is the command to compare the staging version to the branching point
             * expected output
-```
-...
--Version 0
-+Version 3
-```
+    ```
+        ...
+        -Version 0
+        +Version 3
+    ```
          * #7. What is the command to compare the workspace version to the latest version in master
             * expected output
-```
-...
--Version 0a
-+Version 4          
-```
+    ```
+        ...
+        -Version 0a
+        +Version 4          
+    ```
          
    * Feedback
       * Ideas on what we should start doing
