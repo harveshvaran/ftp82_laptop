@@ -96,17 +96,17 @@
        * 45:63:d5:99:0e:99:73:50:5e:d4:b3:2d:86:4a:2c:14 user-name@client-name
     * The key's randomart image is:
     ```
-    +--[ RSA 2048]----+
-    |        E.+.o*.++|
-    |        .o .=.=o.|
-    |       . ..  *. +|
-    |        ..o . +..|
-    |        So . . . |
-    |          .      |
-    |                 |
-    |                 |
-    |                 |
-    +-----------------+
++--[ RSA 2048]----+
+|        E.+.o*.++|
+|        .o .=.=o.|
+|       . ..  *. +|
+|        ..o . +..|
+|        So . . . |
+|          .      |
+|                 |
+|                 |
+|                 |
++-----------------+
     ```
     * This generates:
         •	The id_rsa file, which is the private key file.
@@ -139,9 +139,9 @@
     * Step 9: Add the following lines to the file, where the value for User is the SSH key ID you copied earlier, and the value for 
     [User shift+ p to copy the following lines in vi editor]
     ```
-    Host git-codecommit.*.amazonaws.com
-    User APKAEIBAERJR2EXAMPLE   [user i(insertmode)to edit the user id]
-    IdentityFile ~/.ssh/id_rsa
+Host git-codecommit.*.amazonaws.com
+User APKAEIBAERJR2EXAMPLE   [user i(insertmode)to edit the user id]
+IdentityFile ~/.ssh/id_rsa
     ```
       * Use :wq to save the file 
       
