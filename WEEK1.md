@@ -123,22 +123,32 @@
         DgYDVQQHEwdTZWF0dGxlMQ8wDQYDVQQKEwZBbWF6b24xFDAS=EXAMPLE user-name@computer-name
     ```
     * Step 3: Sign in to the AWS Management Console and open the IAM console at https://console.aws.amazon.com/iam/.
+    
     * Step 4: In the IAM console, in the navigation pane, choose Users, and from the list of users, choose your IAM user
+    
     * Step 5: On the user details page, choose the Security Credentials tab, and then choose Upload SSH public key.
+    
     * Step 6: Paste the contents of your SSH public key into the field, and then choose Upload SSH public key
+    
     * Step 7: Copy or save the information in SSH Key ID (for example, APKAEIBAERJR2EXAMPLE).
+    
     * Step 8: In the Bash emulator, type the following commands to create a config file in the ~/.ssh directory, or edit it if one already exists:
         `cd .. [if you are in .ssh directory already]`
         `vi ~/.ssh/config`
     * Step 9: Add the following lines to the file, where the value for User is the SSH key ID you copied earlier, and the value for 
     [User shift+ p to copy the following lines in vi editor]
-    * Host git-codecommit.*.amazonaws.com
-      * User APKAEIBAERJR2EXAMPLE   [user i(insertmode)to edit the user id]
-      * IdentityFile ~/.ssh/id_rsa
-      * User :wq to save the file 
+    ```
+       Host git-codecommit.*.amazonaws.com
+       User APKAEIBAERJR2EXAMPLE   [user i(insertmode)to edit the user id]
+       IdentityFile ~/.ssh/id_rsa
+    ```
+      * Use :wq to save the file 
+      
     * Step 10: Run the following command to test your SSH configuration:
      * `ssh git-codecommit.us-east-2.amazonaws.com`
-     * You will be asked to confirm the connection because git-codecommit.us-east-2.amazonaws.com is not yet included in your known hosts file. The AWS CodeCommit server fingerprint is displayed as part of the verification (a9:6d:03:ed:08:42:21:be:06:e1:e0:2a:d1:75:31:5e for MD5 or 3lBlW2g5xn/NA2Ck6dyeJIrQOWvn7n8UEs56fG6ZIzQ for SHA256).
+     * You will be asked to confirm the connection because git-codecommit.us-east-2.amazonaws.com is not yet included in your known hosts file. 
+      The AWS CodeCommit server fingerprint is displayed as part of the verification (a9:6d:03:ed:08:42:21:be:06:e1:e0:2a:d1:75:31:5e for MD5 or 
+                                                                                       3lBlW2g5xn/NA2Ck6dyeJIrQOWvn7n8UEs56fG6ZIzQ for SHA256).
   * Command Line/Gitbash --  Open Gitbash
     * `pwd` -- Check and verify that the current working directory is C:\users\Hvuser
     * `cd workspace` -- change current working to workspace
@@ -151,12 +161,12 @@
     * `git config --global user.email <your email>`
     * `git config --global -l`
 
-  * Clone repository at Gitbash
+  ** Clone repository at Gitbash **
     * Open https://console.aws.amazon.com/codecommit
-    Choose the repository you want to connect to from the list. This opens the Code page for that repository
+     Choose the repository you want to connect to from the list. This opens the Code page for that repository
     * Choose Clone URL, and then copy the SSH URL.
     
-    * Go back to gitbash and clone the project
+    * Go back to Gitbash and clone the project
     * `pwd` -- Check and verify that the current working directory is C:\users\Hvuser/workspace
     * `git clone ssh://git-codecommit.us-east-2.amazonaws.com/v1/repos/FTPXX `
     * `cd ftpxx`
