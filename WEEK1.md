@@ -76,10 +76,11 @@
     * Retrospective
   
 # Workshop material - **Day #1** - AWS CodeCommit/Visual Studio (VS) Code
-  **Setting up AWS CodeCommit**
-    * Open: https://635681506020.signin.aws.amazon.com/console in your browser; bookmark this page in your browser
-    * Type your IAMS user name as  {hexaware e-mail Id}-Hexaware, e.g, KrishnaKumar-Hexaware  and "hexaware123" as your initial sign-in password
-    * After  you sign in for the first time, you must change your password.
+ 
+ **Setting up AWS CodeCommit**
+   * Open: https://635681506020.signin.aws.amazon.com/console in your browser; bookmark this page in your browser
+   * Type your IAMS user name as  {hexaware e-mail Id}-Hexaware, e.g, KrishnaKumar-Hexaware  and "hexaware123" as your initial sign-in password
+   * After  you sign in for the first time, you must change your password.
     
   **Setting Up the Public and Private Keys for Git and AWS CodeCommit**
     * Step 1: Open the Git Bash emulator; From the emulator, run the ssh-keygen command, and follow the directions to save the file to the .ssh directory for your profile.
