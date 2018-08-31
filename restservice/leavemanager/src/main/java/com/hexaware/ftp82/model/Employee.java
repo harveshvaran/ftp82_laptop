@@ -1,7 +1,7 @@
-package com.hexaware.ftpxx.model;
+package com.hexaware.ftp82.model;
 
-import com.hexaware.ftpxx.persistence.DbConnection;
-import com.hexaware.ftpxx.persistence.EmployeeDAO;
+import com.hexaware.ftp82.persistence.DbConnection;
+import com.hexaware.ftp82.persistence.EmployeeDAO;
 
 import java.util.Objects;
 import java.util.List;

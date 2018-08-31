@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.hexaware</groupId>
-  <artifactId>ftpxx</artifactId>
+  <artifactId>ftp82</artifactId>
   <version>0.0.1-${build.number}</version>
   <packaging>war</packaging>
-  <name>ftpxx</name>
+  <name>ftp82</name>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -98,7 +98,7 @@
             <systemPropertyVariables>
               <coverage-output>html</coverage-output>
               <coverage-metrics>all</coverage-metrics>
-              <coverage-classes>com.hexaware.ftpxx.model.*</coverage-classes>
+              <coverage-classes>com.hexaware.ftp82.model.*</coverage-classes>
               <coverage-check>85</coverage-check>
             </systemPropertyVariables>
           </configuration>

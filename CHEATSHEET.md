@@ -3,7 +3,7 @@
 ## repository actions
 
 ### clone
-  * ```git clone https://git-codecommit.us-east-2.amazonaws.com/v1/repos/FTPxx```
+  * ```git clone https://git-codecommit.us-east-2.amazonaws.com/v1/repos/ftp82```
 
 ### reset
 
@@ -116,7 +116,7 @@
   * ```open target/site/checkstyle.html```
 
 ## run cli
-  * ```mvn exec:java -Dexec.mainClass=com.hexaware.ftpxx.util.CliMain```
+  * ```mvn exec:java -Dexec.mainClass=com.hexaware.ftp82.util.CliMain```
 
 ## running a single test
   * ```mvn -Dtest=[TestClass#testname] test```
@@ -136,11 +136,11 @@
 ## Deploy
 
   * Copy the war file to the webapps folder
-    * ```cp target/<some>.war /path/to/apache-tomcat-9.0.0.M22/webapps/ftpxx.war```
+    * ```cp target/<some>.war /path/to/apache-tomcat-9.0.0.M22/webapps/ftp82.war```
 
 ## Curl
-  * `curl http://localhost:8080/ftpxx/api/employees`
-  * `curl http://localhost:8080/ftpxx/api/employees/1000`
+  * `curl http://localhost:8080/ftp82/api/employees`
+  * `curl http://localhost:8080/ftp82/api/employees/1000`
 
 # angular
 

@@ -20,7 +20,7 @@ The objective of week #5 is to get the employee details to the web ui in the lis
      * 3.	Browser will display all the columns with values
 # DAY-2
      * 4.	Open Git bash
-            cd  /c/user/Hvuser/workspace/FTPXX/webui/lm-app
+            cd  /c/user/Hvuser/workspace/ftp82/webui/lm-app
      * 5.	Commands to generate LoginForm and Dashboard Component
             a.	ng generate component LoginForm
             b.	ng generate component Dashboard

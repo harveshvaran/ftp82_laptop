@@ -38,7 +38,7 @@ Ideally, the blahs above should include the ticket number FTP{nn}-{jj}
     * Trello Project Board Task: "Make the mvn package succeed"
     * Trello Project Board Task: "Make the jenkins pipeline green"
 
-    * There will be a ftpxx-10-unit, a ftpxx-30-integration and a ftpxx-50-staging jobs in your team's tab. The unit job will be 
+    * There will be a ftp82-10-unit, a ftp82-30-integration and a ftp82-50-staging jobs in your team's tab. The unit job will be 
     triggered (within 5 minutes of the merge) and it will execute the unit tests etc. It then will trigger the integration 
     job which will perform black box tests on the package. And finally the application will be deployed on staging.
 

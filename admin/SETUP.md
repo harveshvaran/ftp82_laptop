@@ -12,8 +12,8 @@
       * create a group for each team : ftpnn
       * create a repository for each team : ftpnn
         * Add FTP-Admins as a group w/ Admin access, and ftpnn team w/ R/W to these repositories
-    * `git clone --bare ssh://git-codecommit.us-east-2.amazonaws.com/v1/repos/FTPXX`
-    * 'cd ftpxx`
+    * `git clone --bare ssh://git-codecommit.us-east-2.amazonaws.com/v1/repos/ftp82`
+    * 'cd ftp82`
     * For each team, nn = 01 to 10
       * `git push --mirror ssh://git-codecommit.us-east-2.amazonaws.com/v1/repos/FTPnn.git`
     * For each team, nn = 01 to 10
@@ -21,15 +21,15 @@
       * For windows
         * `git clone ssh://git-codecommit.us-east-2.amazonaws.com/v1/repos/FTPnn.git`
         * cd ftpnn
-        * use VS Code, find/replace in files to do the following: replacing ftpxx -> ftpnn, FTPXX -> FTPnn
-        * Rename directory restservice/leavemanager/src/main/java/com/hexaware/ftpxx/ to restservice/leavemanager/src/main/java/com/hexaware/ftpnn/
+        * use VS Code, find/replace in files to do the following: replacing ftp82 -> ftpnn, ftp82 -> FTPnn
+        * Rename directory restservice/leavemanager/src/main/java/com/hexaware/ftp82/ to restservice/leavemanager/src/main/java/com/hexaware/ftpnn/
       * For Mac OS; replace nn with the team-id in the following three commands; use xxnn.sh
         * `git clone ssh://git-codecommit.us-east-2.amazonaws.com/v1/repos/FTPnn.git`
         * `cd ftpnn`      
-        * `find . -type f -not -path '*/\.*' -not -path "*/node_modules/*" -exec sed -i '' -e 's/ftpxx/ftp[nn]/g' {} \; -exec sed -i '' -e 's/FTPXX/FTP[nn]/g' {} \;`
-        * `mv restservice/leavemanager/src/main/java/com/hexaware/ftpxx/ restservice/leavemanager/src/main/java/com/hexaware/ftp[nn]/`
-        * `mv restservice/leavemanager/src/test/java/com/hexaware/ftpxx/ restservice/leavemanager/src/test/java/com/hexaware/ftp[nn]/`
-        * `mv restservice/integration-test/src/test/java/com/hexaware/ftpxx restservice/integration-test/src/test/java/com/hexaware/ftp[nn]`
+        * `find . -type f -not -path '*/\.*' -not -path "*/node_modules/*" -exec sed -i '' -e 's/ftp82/ftp[nn]/g' {} \; -exec sed -i '' -e 's/ftp82/FTP[nn]/g' {} \;`
+        * `mv restservice/leavemanager/src/main/java/com/hexaware/ftp82/ restservice/leavemanager/src/main/java/com/hexaware/ftp[nn]/`
+        * `mv restservice/leavemanager/src/test/java/com/hexaware/ftp82/ restservice/leavemanager/src/test/java/com/hexaware/ftp[nn]/`
+        * `mv restservice/integration-test/src/test/java/com/hexaware/ftp82 restservice/integration-test/src/test/java/com/hexaware/ftp[nn]`
       * `git add restservice/leavemanager/src/main/java/com/hexaware/ftp[nn]/ restservice/leavemanager/src/test/java/com/hexaware/ftp[nn]/ restservice/integration-test/src/test/java/com/hexaware/ftp[nn]`
       * `git commit -a -m "replacing xx with the team number"`
       * `git push origin HEAD`
@@ -51,15 +51,15 @@
       * `export PATH=$PATH:/Applications/MySQLWorkbench.app/Contents/MacOS`
       * `mysql -u root -po7Vb6H4bcrnC -h ftp-integration.c1jpaaszplju.us-east-1.rds.amazonaws.com`
       * 
-    * `CREATE DATABASE FTPXX;` -- XX from 01 to 10
-    * `CREATE USER 'FTPXX'@'%' IDENTIFIED BY 'FTPXX';`
-    * `GRANT ALL ON FTPXX.* TO 'FTPXX'@'%';`
+    * `CREATE DATABASE ftp82;` -- XX from 01 to 10
+    * `CREATE USER 'ftp82'@'%' IDENTIFIED BY 'ftp82';`
+    * `GRANT ALL ON ftp82.* TO 'ftp82'@'%';`
     * `select Host, User, Password from mysql.user order by user;`
     * `select * from mysql.db order by Db;`
   * Jenkins jobs - 3 per team
-    * FTPXX-10-UNIT
-    * FTPXX-30-INTEGRATION
-    * FTPXX-50-STAGING
+    * ftp82-10-UNIT
+    * ftp82-30-INTEGRATION
+    * ftp82-50-STAGING
     * For each team, nn = 01 to 10
       * Create a tab FTPnn
       * Create New Item, for stage = 10-UNIT, 30-INTEGRATION, and 50-STAGING
@@ -76,7 +76,7 @@
 
 The users are expected to login  through {Hexaware-id}-.hexaware@gmail.com id at Trello 
 
-Create a "FTPXX" as project board and add users through add members link at Trello board
+Create a "ftp82" as project board and add users through add members link at Trello board
 
 Create Sprint Backlog as list and include various tasks as cards
 Assign each task to members (add member button) with due date mentioned  

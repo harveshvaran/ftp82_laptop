@@ -10,16 +10,16 @@ npm install
 ng lint --type-check
 ng test --watch false
 ng build
-cp ../../restservice/leavemanager/target/ftpxx-0.0.1-${BUILD_NUMBER}.war ./ftpxx.war
+cp ../../restservice/leavemanager/target/ftp82-0.0.1-${BUILD_NUMBER}.war ./ftp82.war
 cd ..
 tar -cvzf lm-app.zip lm-app/*
 cd lm-app/dist
-jar -uvf ../ftpxx.war *
+jar -uvf ../ftp82.war *
 cd ../../../build
-cp ../webui/lm-app/ftpxx.war .
+cp ../webui/lm-app/ftp82.war .
 cp ../webui/lm-app.zip .
-cp ../restservice/integration-test/target/ftpxx-integration-tests-1.0-test-sources.jar .
+cp ../restservice/integration-test/target/ftp82-integration-tests-1.0-test-sources.jar .
 cp ../database/database.* .
-tar -cvzf ftpxx-${BUILD_NUMBER}.tar.gz ftpxx.war ftpxx-integration-tests-1.0-test-sources.jar lm-app.zip database.* *.sh
-echo TAR_FILE=ftpxx-${BUILD_NUMBER}.tar.gz > build.properties
-/usr/local/bin/aws s3 cp ftpxx-${BUILD_NUMBER}.tar.gz s3://com.hexaware.builds.ftp/
+tar -cvzf ftp82-${BUILD_NUMBER}.tar.gz ftp82.war ftp82-integration-tests-1.0-test-sources.jar lm-app.zip database.* *.sh
+echo TAR_FILE=ftp82-${BUILD_NUMBER}.tar.gz > build.properties
+/usr/local/bin/aws s3 cp ftp82-${BUILD_NUMBER}.tar.gz s3://com.hexaware.builds.ftp/

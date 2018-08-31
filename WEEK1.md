@@ -169,11 +169,11 @@ IdentityFile ~/.ssh/id_rsa
     
     * Go back to Gitbash and clone the project
     * `pwd` -- Check and verify that the current working directory is C:\users\Hvuser/workspace
-    * `git clone ssh://git-codecommit.us-east-2.amazonaws.com/v1/repos/FTPXX `
-    * `cd ftpxx`
+    * `git clone ssh://git-codecommit.us-east-2.amazonaws.com/v1/repos/ftp82 `
+    * `cd ftp82`
     * `git status`
   * open Visual Studio (VS) Code
-    * Open folder c:\users\Hvuser\workspace\ftpxx
+    * Open folder c:\users\Hvuser\workspace\ftp82
     * Browse the directories to understand the repository structure
 
 # Workshop material - Day #2 - MySQL Workbench/Cli/Curl/Browser to interact w/ application
@@ -181,9 +181,9 @@ IdentityFile ~/.ssh/id_rsa
   * Open MySQL Workbench
   * Open the localhost connection
     * Mac OS: `export PATH=$PATH:/Applications/MySQLWorkbench.app/Contents/MacOS` and then you can use the command line `mysql -u root -phexawareftpdev`
-  * `CREATE DATABASE FTPXX;` and click the lightning button
-  * `CREATE USER 'FTPXX'@'localhost' IDENTIFIED BY 'FTPXX';`
-  * `GRANT ALL ON FTPXX.* TO 'FTPXX'@'localhost';`
+  * `CREATE DATABASE ftp82;` and click the lightning button
+  * `CREATE USER 'ftp82'@'localhost' IDENTIFIED BY 'ftp82';`
+  * `GRANT ALL ON ftp82.* TO 'ftp82'@'localhost';`
   * Open database/database.ddl in VS code
   * Copy the entire contents to MySQL Workbench
   * Execute the ddl 
@@ -199,33 +199,33 @@ IdentityFile ~/.ssh/id_rsa
     * At the end of all the playing around, leave the database with 5 records with ids (1000, 2001
     
   * Next, we will build and run the java code
-  * go to gitbash, ensure you are in workspace/ftpxx
+  * go to gitbash, ensure you are in workspace/ftp82
   * `cd restservice/leavemanager`
   * `mvn compile`
-  * `mvn exec:java -Dexec.mainClass=com.hexaware.ftpxx.util.CliMain`
+  * `mvn exec:java -Dexec.mainClass=com.hexaware.ftp82.util.CliMain`
     * As expected, the cli displays only the employee id for the employee; we need to do some code changes before the other attributes such as name will start appearing in the cli. But before that we will test the application as a REST service.
     * Due to a bug in the database connection code, after exiting, there will be an error with a stack trace. Ignore this error.
   * Build the war file as follows:
     * `mvn package` -- This build a war (java web archive with the code for the REST service)
-    * `cp target/ftpxx-0.0.1-SNAPSHOT.war /D/FTP/apache-tomcat-8.5.16-windows-x64/apache-tomcat-8.5.16/webapps/ftpxx.war`
+    * `cp target/ftp82-0.0.1-SNAPSHOT.war /D/FTP/apache-tomcat-8.5.16-windows-x64/apache-tomcat-8.5.16/webapps/ftp82.war`
     * start tomcat and tail its logs
       * `cd D/FTP/apache-tomcat-8.5.16-windows-x64/apache-tomcat-8.5.16`
       * `rm -rf logs/*`
       * `./bin/startup.sh`
       * `tail -f logs/*`
-      * `curl -vvv http://localhost:8080/ftpxx/api/employees | python -m json.tool`
-      * `curl -vvv http://localhost:8080/ftpxx/api/employees/2000 | python -m json.tool`
+      * `curl -vvv http://localhost:8080/ftp82/api/employees | python -m json.tool`
+      * `curl -vvv http://localhost:8080/ftp82/api/employees/2000 | python -m json.tool`
    * `cd ../../webui/lm-app/`
    * `npm install`
    * `ng build`
-   * `cp ../../restservice/leavemanager/target/ftpxx-0.0.1-SNAPSHOT.war ./ftpxx.war`
+   * `cp ../../restservice/leavemanager/target/ftp82-0.0.1-SNAPSHOT.war ./ftp82.war`
    * `cd dist`
-   * `jar -uvf ../ftpxx.war *`
+   * `jar -uvf ../ftp82.war *`
    * `cd ..`
-   * `jar -tvf ftpxx.war`
-   * `cp ftpxx.war /D/FTP/apache-tomcat-8.5.16-windows-x64/apache-tomcat-8.5.16/webapps/ftpxx.war`
+   * `jar -tvf ftp82.war`
+   * `cp ftp82.war /D/FTP/apache-tomcat-8.5.16-windows-x64/apache-tomcat-8.5.16/webapps/ftp82.war`
    * Notice that the tail terminal shows that the new version of the web application archive is now getting deployed
-   * Open Chrome browser and navigate to http://localhost:8080/ftpxx/
+   * Open Chrome browser and navigate to http://localhost:8080/ftp82/
    * You should be able to see the employee ids as you have entered them in the local mysql database
 
 # Workshop material - Day #3 - Git workflow
@@ -269,7 +269,7 @@ Play as many rounds as needed till everyone is comfortable with git conflict res
 
   * Create a free e-mail id at gmail with user name {your Hexaware e-mail id}.hexaware. e.g., KrishnaKumar.hexaware@gmail.com  and use this id for Trello login 
 
-  * Create a board for your project as "FTPXX"
+  * Create a board for your project as "ftp82"
 
   * [Team member #1] Create a "Product Backlog" [List] to describe a  user story : "Demonstrate team familiarity with git workflow, both as a developer and as a reviewer"
 
@@ -283,7 +283,7 @@ Play as many rounds as needed till everyone is comfortable with git conflict res
      * Summary: "As a git user, I, [full name], will demo my ability to use git as a review by reviewing and merging another team member's pull request of a tictactoe board change"
      * Assign these user stories to you  (develoepr/reviewer) and your neighbour (reviwer/develoepr) 
   * [Team member #3]
-     * Create "Current Sprint" with "FTPXX Sprint 1" as label 
+     * Create "Current Sprint" with "ftp82 Sprint 1" as label 
      * Drag all stories /task into “To do” list
        * Due Date: start date being today and end date being tomorrow
        
