@@ -15,11 +15,14 @@ export class AppComponent implements OnInit {
   employees: Employee[];
 
   getEmployees(): void {
-      this.employeeService.getEmployees().then(employees => {
+      /*this.employeeService.getEmployees().then(employees => {
         console.log('getEmployees promise resolved : ' + employees.length);
         this.employees = employees;
       }
-    );
+      );
+      */
+      this.employeeService.getEmployees().subscribe(data=>this.employees=data,err=>console.log(err));
+    
   }
 
   ngOnInit(): void {
