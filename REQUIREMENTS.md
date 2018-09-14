@@ -1,5 +1,5 @@
 
-# High level requirements
+# High level requirements 
 
 We need to build a leave management application. This is an application where employees
    * can view their personal details
