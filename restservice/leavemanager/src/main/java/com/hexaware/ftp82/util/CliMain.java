@@ -44,12 +44,26 @@ public class CliMain {
       System.out.println("Sorry, No such employee");
     } else {
       System.out.println(employee.getEmpId());
+      System.out.println(employee.getEmpName());
+      System.out.println(employee.getEmpPh());
+      System.out.println(employee.getEmpEmail());
+      System.out.println(employee.getEmpDept());
+      System.out.println(employee.getEmpManagerId());
+      System.out.println(employee.getEmpLeaveBalance());
+      System.out.println(employee.getEmpDoj());
     }
   }
   private void listEmployeesDetails() {
     Employee[] employee = Employee.listAll();
     for (Employee e : employee) {
       System.out.println(e.getEmpId());
+      System.out.println(e.getEmpName());
+      System.out.println(e.getEmpPh());
+      System.out.println(e.getEmpEmail());
+      System.out.println(e.getEmpDept());
+      System.out.println(e.getEmpManagerId());
+      System.out.println(e.getEmpLeaveBalance());
+      System.out.println(e.getEmpDoj());
     }
   }
   /**
