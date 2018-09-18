@@ -2,14 +2,14 @@
 use ftp82;
 
 -- The CEO
-insert into employee values(1000, 'AKASH', 9900103077, 'akash300383', 'IT', NULL, 10, '2018-07-17');
+insert into employee values(1000, 'AKASH', 9900103077, 'akash300383@gmail.com', 'IT', NULL, 10, '2018-07-17');
 
 
 -- Two Managers
-insert into employee values(2000, 'AJITHA.C', 8148760677, 'ajithachandraprakash', 'IT', 1000, 03, '2018-08-09');
-insert into employee values(2001, 'VANMATHI.S', 9487622955, 'vanmathis85', 'IT', 1000, 15, '2018-08-09');
+insert into employee values(2000, 'AJITHA.C', 8148760677, 'ajithachandraprakash@gmail.com', 'IT', 1000, 03, '2018-08-09');
+insert into employee values(2001, 'VANMATHI.S', 9487622955, 'vanmathis85@gmail.com', 'IT', 1000, 15, '2018-08-09');
 
 
 -- Two Employees
-insert into employee values(3000, 'HARVESHVARAN.S', 8220645161, 'harveshvaran96', 'IT', 2000, 15, '2018-08-15');
-insert into employee values(3001, 'VINOTH.M', 7871253089, 'vinothsaec68','IT', 2001, 20, '2018-08-15');
+insert into employee values(3000, 'HARVESHVARAN.S', 8220645161, 'harveshvaran96@gmail.com', 'IT', 2000, 15, '2018-08-15');
+insert into employee values(3001, 'VINOTH.M', 7871253089, 'vinothsaec68@gmail.com','IT', 2001, 20, '2018-08-15');

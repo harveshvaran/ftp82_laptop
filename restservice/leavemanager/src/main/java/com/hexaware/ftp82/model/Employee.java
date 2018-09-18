@@ -24,7 +24,7 @@ public class Employee {
    */
   private int empId;
   private String empName;
-  private int empPh;
+  private long empPh;
   private String empEmail;
   private String empDept;
   private int empManagerId;
@@ -90,7 +90,7 @@ public class Employee {
    * @param argEmpLeaveBalance to initialize employee table details.
    * @param argEmpDoj to initialize employee table details.
    */
-  public Employee(final int argEmpId, final String argEmpName, final int argEmpPh, final String argEmpEmail, final String argEmpDept, final int argEmpManagerId, final int argEmpLeaveBalance, final Date argEmpDoj) {
+  public Employee(final int argEmpId, final String argEmpName, final long argEmpPh, final String argEmpEmail, final String argEmpDept, final int argEmpManagerId, final int argEmpLeaveBalance, final Date argEmpDoj) {
     this.empId = argEmpId;
     this.empName = argEmpName;
     this.empPh = argEmpPh;
@@ -134,7 +134,7 @@ public class Employee {
    * Gets the EmployeePhoneNumber.
    * @return this Employee's PhoneNumber.
    */
-  public final int getEmpPh() {
+  public final long getEmpPh() {
     return empPh;
   }
 
@@ -142,7 +142,7 @@ public class Employee {
    *
    * @param argEmpPh to set employee PhoneNumber.
    */
-  public final void setEmpPh(final int argEmpPh) {
+  public final void setEmpPh(final long argEmpPh) {
     this.empPh = argEmpPh;
   }
   /**
