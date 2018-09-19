@@ -43,27 +43,29 @@ public class CliMain {
     if (employee == null) {
       System.out.println("Sorry, No such employee");
     } else {
-      System.out.println(employee.getEmpId());
-      System.out.print(employee.getEmpName());
-      System.out.print(employee.getEmpPh());
-      System.out.print(employee.getEmpEmail());
-      System.out.print(employee.getEmpDept());
-      System.out.print(employee.getEmpManagerId());
-      System.out.print(employee.getEmpLeaveBalance());
-      System.out.print(employee.getEmpDoj());
+      System.out.println("----------------------------------------------");
+      System.out.println("Employee ID = " + employee.getEmpId() + "\n");
+      System.out.print("Employee Name = " + employee.getEmpName() + "\n");
+      System.out.print("Employee Phone number = " + employee.getEmpPh() + "\n");
+      System.out.print("Employee Email ID = " + employee.getEmpEmail() + "\n");
+      System.out.print("Employee Department = " + employee.getEmpDept() + "\n");
+      System.out.print("Employee Manager ID = " + employee.getEmpManagerId() + "\n");
+      System.out.print("Employee Leave Balance = " + employee.getEmpLeaveBalance() + "\n");
+      System.out.print("Employee Date of Joining = " + employee.getEmpDoj() + "\n");
     }
   }
   private void listEmployeesDetails() {
     Employee[] employee = Employee.listAll();
     for (Employee e : employee) {
-      System.out.print(e.getEmpId());
-      System.out.print(e.getEmpName());
-      System.out.print(e.getEmpPh());
-      System.out.print(e.getEmpEmail());
-      System.out.print(e.getEmpDept());
-      System.out.print(e.getEmpManagerId());
-      System.out.print(e.getEmpLeaveBalance());
-      System.out.print(e.getEmpDoj());
+      System.out.println("----------------------------------------------");
+      System.out.println("Employee ID = " + e.getEmpId() + "\n");
+      System.out.print("Employee Name = " + e.getEmpName() + "\n");
+      System.out.print("Employee Phone number = " + e.getEmpPh() + "\n");
+      System.out.print("Employee Email ID = " + e.getEmpEmail() + "\n");
+      System.out.print("Employee Department = " + e.getEmpDept() + "\n");
+      System.out.print("Employee Manager ID = " + e.getEmpManagerId() + "\n");
+      System.out.print("Employee Leave Balance = " + e.getEmpLeaveBalance() + "\n");
+      System.out.print("Employee Date of Joining = " + e.getEmpDoj() + "\n");
     }
   }
   /**
