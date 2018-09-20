@@ -2,7 +2,6 @@ package com.hexaware.ftp82.util;
 import java.util.Scanner;
 
 import com.hexaware.ftp82.model.Employee;
-import com.hexaware.ftp82.model.LeaveDetails;
 
 /**
  * Class CliMain provides the command line interface to the leavemanagement
@@ -16,8 +15,9 @@ public class CliMain {
     System.out.println("-----------------------");
     System.out.println("1. List All Employees Info");
     System.out.println("2. Display Employee Info");
-    System.out.println("3. Leave detail");
-    System.out.println("4. Exit");
+    System.out.println("3. Leave Details");
+    System.out.println("5. Pending Leave Applications");
+    System.out.println("7. Exit");
     System.out.println("Enter your choice:");
     int menuOption = option.nextInt();
     mainMenuDetails(menuOption);
@@ -33,7 +33,10 @@ public class CliMain {
       case 3:
         applyLeave();
         break;
-      case 4:
+      case 5:
+        listPendingApplicatons();
+        break;
+      case 3:
         // halt since normal exit throws a stacktrace due to jdbc threads not responding
         Runtime.getRuntime().halt(0);
       default:
@@ -72,10 +75,12 @@ public class CliMain {
       System.out.print("Employee Leave Balance = " + e.getEmpLeaveBalance() + "\n");
       System.out.print("Employee Date of Joining = " + e.getEmpDoj() + "\n");
     }
-  }
   private void applyLeave() {
-    LeaveDetails ls = new LeaveDetails();
-    ls.applyForLeave();
+    LeaveDetails ls=new LeaveDetails();
+    ls.applyforleave();
+  }
+  private void listPendingApplications() {
+    
   }
   /**
    * The main entry point.
