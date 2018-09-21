@@ -15,17 +15,9 @@ public class CliMain {
     System.out.println("-----------------------");
     System.out.println("1. List All Employees Info");
     System.out.println("2. Display Employee Info");
-<<<<<<< HEAD
     System.out.println("3. Leave Details");
     System.out.println("5. Pending Leave Applications");
-=======
-    System.out.println("3. Leave detail");
-<<<<<<< HEAD
     System.out.println("6. Apply / Deny leave");
->>>>>>> e0d6cc1da63ffefb389440c22fc2f528f1c44431
-=======
-    System.out.println("5. Pending Leave Applications");
->>>>>>> 30ab9e0... changes
     System.out.println("7. Exit");
     System.out.println("Enter your choice:");
     int menuOption = option.nextInt();
@@ -39,24 +31,13 @@ public class CliMain {
       case 2:
         listEmployeeDetail();
         break;
-      case 6:
-        acceptOrDeny();
-        break;
-<<<<<<< HEAD
       case 5:
         listPendingApplicatons();
         break;
-<<<<<<< HEAD
-      case 3:
-=======
-      case 7:
->>>>>>> e0d6cc1da63ffefb389440c22fc2f528f1c44431
-=======
-      case 5:
-        listPendingApplications();
+      case 6:
+        acceptOrDeny();
         break;
       case 7:
->>>>>>> 30ab9e0... changes
         // halt since normal exit throws a stacktrace due to jdbc threads not responding
         Runtime.getRuntime().halt(0);
       default:
@@ -95,20 +76,17 @@ public class CliMain {
       System.out.print("Employee Leave Balance = " + e.getEmpLeaveBalance() + "\n");
       System.out.print("Employee Date of Joining = " + e.getEmpDoj() + "\n");
     }
-<<<<<<< HEAD
   private void applyLeave() {
     LeaveDetails ls=new LeaveDetails();
     ls.applyforleave();
   }
-  private void listPendingApplications() {
-    
-=======
-  }
   /**
    * The main entry point.
    */
-  private void acceptOrDeny() {
-    LeaveDetails[] leave = LeaveDetails.listAll();
+  private void listPendingApplications() {
+    System.out.println("Enter the Your employee ID:");
+    empId=option.nextInt();
+    LeaveDetails[] leave = LeaveDetails.listAll(empId);
     for (LeaveDetails l : leave) {
       System.out.println("----------------------------------------------");
       System.out.println("Leave ID = " + l.getLeaveId() + " ");
@@ -123,11 +101,10 @@ public class CliMain {
       System.out.print("Employee Id = " + l.getEmpId() + " ");
       System.out.println("----------------------------------------------" + "\n");
     }
->>>>>>> e0d6cc1da63ffefb389440c22fc2f528f1c44431
   }
   /**
    * The main entry point.
-   * @param ar the list of arguments
+   * @param the list of arguments
    */
   public static void main(final String[] ar) {
     final CliMain mainObj = new CliMain();
