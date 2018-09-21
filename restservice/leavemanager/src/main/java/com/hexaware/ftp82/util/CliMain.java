@@ -20,8 +20,12 @@ public class CliMain {
     System.out.println("5. Pending Leave Applications");
 =======
     System.out.println("3. Leave detail");
+<<<<<<< HEAD
     System.out.println("6. Apply / Deny leave");
 >>>>>>> e0d6cc1da63ffefb389440c22fc2f528f1c44431
+=======
+    System.out.println("5. Pending Leave Applications");
+>>>>>>> 30ab9e0... changes
     System.out.println("7. Exit");
     System.out.println("Enter your choice:");
     int menuOption = option.nextInt();
@@ -42,10 +46,17 @@ public class CliMain {
       case 5:
         listPendingApplicatons();
         break;
+<<<<<<< HEAD
       case 3:
 =======
       case 7:
 >>>>>>> e0d6cc1da63ffefb389440c22fc2f528f1c44431
+=======
+      case 5:
+        listPendingApplications();
+        break;
+      case 7:
+>>>>>>> 30ab9e0... changes
         // halt since normal exit throws a stacktrace due to jdbc threads not responding
         Runtime.getRuntime().halt(0);
       default:

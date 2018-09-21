@@ -11,6 +11,9 @@ import java.text.SimpleDateFormat;
  * @author hexware
  */
 public class LeaveDetails {
+  public final void applyForLeave() {
+    System.out.println("Welcome to ls");
+  }
 /**
  *
  */
@@ -278,5 +281,7 @@ public class LeaveDetails {
   public static LeaveDetails[] listAll() {
     List<LeaveDetails> ls = dao().list();
     return ls.toArray(new LeaveDetails[ls.size()]);
+  public static final void pendingApplications() {
+    System.out.println("PENDING APPLICATIONS");
   }
 }
