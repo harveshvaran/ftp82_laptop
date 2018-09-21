@@ -15,8 +15,13 @@ public class CliMain {
     System.out.println("-----------------------");
     System.out.println("1. List All Employees Info");
     System.out.println("2. Display Employee Info");
+<<<<<<< HEAD
     System.out.println("3. Leave Details");
     System.out.println("5. Pending Leave Applications");
+=======
+    System.out.println("3. Leave detail");
+    System.out.println("6. Apply / Deny leave");
+>>>>>>> e0d6cc1da63ffefb389440c22fc2f528f1c44431
     System.out.println("7. Exit");
     System.out.println("Enter your choice:");
     int menuOption = option.nextInt();
@@ -30,13 +35,17 @@ public class CliMain {
       case 2:
         listEmployeeDetail();
         break;
-      case 3:
-        applyLeave();
+      case 6:
+        acceptOrDeny();
         break;
+<<<<<<< HEAD
       case 5:
         listPendingApplicatons();
         break;
       case 3:
+=======
+      case 7:
+>>>>>>> e0d6cc1da63ffefb389440c22fc2f528f1c44431
         // halt since normal exit throws a stacktrace due to jdbc threads not responding
         Runtime.getRuntime().halt(0);
       default:
@@ -75,12 +84,35 @@ public class CliMain {
       System.out.print("Employee Leave Balance = " + e.getEmpLeaveBalance() + "\n");
       System.out.print("Employee Date of Joining = " + e.getEmpDoj() + "\n");
     }
+<<<<<<< HEAD
   private void applyLeave() {
     LeaveDetails ls=new LeaveDetails();
     ls.applyforleave();
   }
   private void listPendingApplications() {
     
+=======
+  }
+  /**
+   * The main entry point.
+   */
+  private void acceptOrDeny() {
+    LeaveDetails[] leave = LeaveDetails.listAll();
+    for (LeaveDetails l : leave) {
+      System.out.println("----------------------------------------------");
+      System.out.println("Leave ID = " + l.getLeaveId() + " ");
+      System.out.print("Leave Type = " + l.getLeaveType() + " ");
+      System.out.print("Start Date = " + l.getStartDate() + " ");
+      System.out.print("End Date = " + l.getEndDate() + " ");
+      System.out.print("Number of days = " + l.getNumberOfDays() + " ");
+      System.out.print("Leave Status = " + l.getLeaveStatus() + " ");
+      System.out.print("Leave reason = " + l.getLeaveReason() + " ");
+      System.out.print("Leave Applied On = " + l.getLeaveAppliedOn() + " ");
+      System.out.print("Manager Comments = " + l.getManagerComments() + " ");
+      System.out.print("Employee Id = " + l.getEmpId() + " ");
+      System.out.println("----------------------------------------------" + "\n");
+    }
+>>>>>>> e0d6cc1da63ffefb389440c22fc2f528f1c44431
   }
   /**
    * The main entry point.
