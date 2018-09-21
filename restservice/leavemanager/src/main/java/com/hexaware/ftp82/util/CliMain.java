@@ -17,7 +17,8 @@ public class CliMain {
     System.out.println("1. List All Employees Info");
     System.out.println("2. Display Employee Info");
     System.out.println("3. Leave detail");
-    System.out.println("4. Exit");
+    System.out.println("6. Apply / Deny leave");
+    System.out.println("7. Exit");
     System.out.println("Enter your choice:");
     int menuOption = option.nextInt();
     mainMenuDetails(menuOption);
@@ -30,10 +31,10 @@ public class CliMain {
       case 2:
         listEmployeeDetail();
         break;
-      case 3:
-        applyLeave();
+      case 6:
+        acceptOrDeny();
         break;
-      case 4:
+      case 7:
         // halt since normal exit throws a stacktrace due to jdbc threads not responding
         Runtime.getRuntime().halt(0);
       default:
@@ -73,9 +74,25 @@ public class CliMain {
       System.out.print("Employee Date of Joining = " + e.getEmpDoj() + "\n");
     }
   }
-  private void applyLeave() {
-    LeaveDetails ls = new LeaveDetails();
-    ls.applyForLeave();
+  /**
+   * The main entry point.
+   */
+  private void acceptOrDeny() {
+    LeaveDetails[] leave = LeaveDetails.listAll();
+    for (LeaveDetails l : leave) {
+      System.out.println("----------------------------------------------");
+      System.out.println("Leave ID = " + l.getLeaveId() + " ");
+      System.out.print("Leave Type = " + l.getLeaveType() + " ");
+      System.out.print("Start Date = " + l.getStartDate() + " ");
+      System.out.print("End Date = " + l.getEndDate() + " ");
+      System.out.print("Number of days = " + l.getNumberOfDays() + " ");
+      System.out.print("Leave Status = " + l.getLeaveStatus() + " ");
+      System.out.print("Leave reason = " + l.getLeaveReason() + " ");
+      System.out.print("Leave Applied On = " + l.getLeaveAppliedOn() + " ");
+      System.out.print("Manager Comments = " + l.getManagerComments() + " ");
+      System.out.print("Employee Id = " + l.getEmpId() + " ");
+      System.out.println("----------------------------------------------" + "\n");
+    }
   }
   /**
    * The main entry point.

@@ -2,6 +2,13 @@ package com.hexaware.ftp82.model;
 import java.util.Date;
 import java.util.Objects;
 
+import com.hexaware.ftp82.persistence.DbConnection;
+import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
+
+import java.util.Objects;
+import java.util.List;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 /**
  * LeaveDetails class to process employee leave details.
  * @author hexware
@@ -11,15 +18,56 @@ public class LeaveDetails {
  *
  */
   private int leaveId;
-  private LeaveType leaveType;
-  private Date startDate;
-  private Date endDate;
+  private String leaveType;
+  private String startDate;
+  private String endDate;
   private int noOfDays;
-  private LeaveStatus leaveStatus;
+  private String leaveStatus;
   private String leaveReason;
-  private Date leaveAppliedOn;
+  private String leaveAppliedOn;
   private String managerComments;
   private int empId;
+  /**
+   *
+   */
+  public LeaveDetails() { }
+  /**
+   *
+   */  
+  public LeaveDetails(final int argEmpId) {
+    this.empId = argEmpId;
+  }
+  /**
+   * @param argLeaveId to initialize employee table details.
+   * @param argLeaveType to initialize employee table details.
+   * @param argStartDate to initialize employee table details.
+   * @param argEndDate to initialize employee table details.
+   * @param argNoOfDays to initialize employee table details.
+   * @param argLeaveStatus to initialize employee table details.
+   * @param argLeaveReason to initialize employee table details.
+   * @param argLeaveAppliedOn to initialize employee table details.
+   * @param argManagerComments to initialize employee table details.
+   * @param argEmpId to initialize employee table details.
+   */
+  public LeaveDetails(final int argLeaveId, final String argLeaveType, final Date argStartDate, final Date argEndDate, final int argNoOfDays, final String argLeaveStatus, final String argLeaveReason, final Date argLeaveAppliedOn, final String argManagerComments, final int argEmpId) {
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+    this.leaveId = argLeaveId;
+    this.leaveType = argLeaveType;
+    String strtDate = dateFormat.format(argStartDate);
+    this.startDate = strtDate;
+    String edDate = dateFormat.format(argEndDate);
+    this.endDate = edDate;
+    this.noOfDays = argNoOfDays;
+    this.leaveStatus = argLeaveStatus;
+    this.leaveReason = argLeaveReason;
+    String leaveApplied = dateFormat.format(argLeaveAppliedOn);
+    this.leaveAppliedOn = leaveApplied;
+    this.managerComments = argManagerComments;
+    this.empId = argEmpId;
+  }
+  /**
+   * @param argEmpId to initialize employee id.
+   */
   @Override
   public final boolean equals(final Object obj) {
     if (obj == null) {
@@ -28,35 +76,35 @@ public class LeaveDetails {
     if (getClass() != obj.getClass()) {
       return false;
     }
-    LeaveDetails ld = (LeaveDetails) obj;
-    if (Objects.equals(leaveId, ld.leaveId)) {
+    LeaveDetails ls = (LeaveDetails) obj;
+    if (Objects.equals(leaveId, ls.leaveId)) {
       return true;
     }
-    if (Objects.equals(leaveType, ld.leaveType)) {
+    if (Objects.equals(leaveType, ls.leaveType)) {
       return true;
     }
-    if (Objects.equals(startDate, ld.startDate)) {
+    if (Objects.equals(startDate, ls.startDate)) {
       return true;
     }
-    if (Objects.equals(endDate, ld.endDate)) {
+    if (Objects.equals(endDate, ls.endDate)) {
       return true;
     }
-    if (Objects.equals(noOfDays, ld.noOfDays)) {
+    if (Objects.equals(noOfDays, ls.noOfDays)) {
       return true;
     }
-    if (Objects.equals(leaveStatus, ld.leaveStatus)) {
+    if (Objects.equals(leaveStatus, ls.leaveStatus)) {
       return true;
     }
-    if (Objects.equals(leaveReason, ld.leaveReason)) {
+    if (Objects.equals(leaveReason, ls.leaveReason)) {
       return true;
     }
-    if (Objects.equals(leaveAppliedOn, ld.leaveAppliedOn)) {
+    if (Objects.equals(leaveAppliedOn, ls.leaveAppliedOn)) {
       return true;
     }
-    if (Objects.equals(managerComments, ld.managerComments)) {
+    if (Objects.equals(managerComments, ls.managerComments)) {
       return true;
     }
-    if (Objects.equals(empId, ld.empId)) {
+    if (Objects.equals(empId, ls.empId)) {
       return true;
     }
     return false;
@@ -68,7 +116,7 @@ public class LeaveDetails {
 /**
  *@param declares the enum variables
  */
-  enum LeaveType {
+enum LeaveType {
 /**
  *@param decalres EL as leave type
  */
@@ -77,44 +125,17 @@ public class LeaveDetails {
 /**
  *@param declares the enum variables
  */
-  enum LeaveStatus {
+enum LeaveStatus {
 /**
  *@param declares PENDING, APPROVED, DENIED as enum variables
  */
     PENDING, APPROVED, DENIED;
   }
-/**
- *
- */
-  public LeaveDetails() { }
   /**
-   * @param argleaveId to initialize employee table details.
-   * @param argleaveType to initialize employee table details.
-   * @param argstartDate to initialize employee table details.
-   * @param argendDate to initialize employee table details.
-   * @param argnoOfDays to initialize employee table details.
-   * @param argleaveStatus to initialize employee table details.
-   * @param argleaveReason to initialize employee table details.
-   * @param argleaveAppliedOn to initialize employee table details.
-   * @param argmanagerComments to initialize employee table details.
-   * @param argempId to initialize employee table details.
+   * Gets the LeaveId.
+   * @return this LeaveId.
    */
-  public LeaveDetails(final int argleaveId, final LeaveType argleaveType, final Date argstartDate, final Date argendDate, final int argnoOfDays, final LeaveStatus argleaveStatus, final String argleaveReason, final Date argleaveAppliedOn, final String argmanagerComments, final int argempId) {
-    this.leaveId = argleaveId;
-    this.leaveType = argleaveType;
-    this.startDate = argstartDate;
-    this.endDate = argendDate;
-    this.noOfDays = argnoOfDays;
-    this.leaveStatus = argleaveStatus;
-    this.leaveReason = argleaveReason;
-    this.leaveAppliedOn = argleaveAppliedOn;
-    this.managerComments = argmanagerComments;
-    this.empId = argempId;
-  }
-  /**
-   *@return the Leave ID.
-   */
-  public final  int getLeaveId() {
+  public final int getLeaveId() {
     return leaveId;
   }
   /**
@@ -125,72 +146,78 @@ public class LeaveDetails {
     this.leaveId = argleaveId;
   }
   /**
-  @return this Leave Type.
+   * Gets the LeaveType.
+   * @return this LeaveType.
    */
-  public final LeaveType getLeaveType() {
+  public final String getLeaveType() {
     return leaveType;
   }
   /**
    *
    * @param argleaveType to set leave type.
    */
-  public final void setLeaveType(final LeaveType argleaveType) {
+  public final void setLeaveType(final String argleaveType) {
     this.leaveType = argleaveType;
   }
-  /**
-   * @return this Leave Type.
+    /**
+   * Gets the StartDate.
+   * @return this StartDate.
    */
-  public final Date getStartDate() {
+  public final String getStartDate() {
     return startDate;
   }
   /**
    *
    * @param argstartDate to set start date.
    */
-  public final void setStartDate(final Date argstartDate) {
+  public final void setStartDate(final String argstartDate) {
     this.startDate = argstartDate;
   }
   /**
-   *@return this End date.
+   * Gets the EndDate.
+   * @return this EndDate.
    */
-  public final Date getEndDate() {
+  public final String getEndDate() {
     return endDate;
   }
   /**
    *
    * @param argendDate to set End date.
    */
-  public final void setEndDate(final Date argendDate) {
+  public final void setEndDate(final String argendDate) {
     this.endDate = argendDate;
   }
   /**
-   * @return this number of days
+   * Gets the NumberOfdays.
+   * @return this NumberOfDays.
    */
-  public final int getNoOfDays() {
+  public final int getNumberOfDays() {
     return noOfDays;
   }
   /**
    *
-   * @param argnoOfDays to set number of days.
+   * @param argnoOfDays to set employee id.
    */
-  public final void setNOOfDays(final int argnoOfDays) {
+  public final void setNumberOfDays(final int argnoOfDays) {
     this.noOfDays = argnoOfDays;
   }
-  /**
-   *@return this leave status
+    /**
+   * Gets the LeaveStatus.
+   * @return this LeaveStatus.
    */
-  public final LeaveStatus getLeaveStatus() {
+  public final String getLeaveStatus() {
     return leaveStatus;
   }
   /**
    *
    * @param argleaveStatus to set leave status.
    */
-  public final void setLeaveStatus(final LeaveStatus argleaveStatus) {
+  public final void setLeaveStatus(final String argleaveStatus) {
     this.leaveStatus = argleaveStatus;
   }
   /**
-   *@return this leave reason
+   * Gets the LeaveId.
+   * @return this LeaveId.
    */
   public final String getLeaveReason() {
     return leaveReason;
@@ -203,20 +230,24 @@ public class LeaveDetails {
     this.leaveReason = argleaveReason;
   }
   /**
-   * @return this leave applied on
+   * @return this manager comments
+   * Gets the LeaveAppliedOn.
+   * @return this LeaveAppliedOn.
    */
-  public final Date getLeaveAppliedOn() {
+  public final String getLeaveAppliedOn() {
     return leaveAppliedOn;
   }
   /**
    *
    * @param argleaveAppliedOn to set leave status.
    */
-  public final void setLeaveAppliedOn(final Date argleaveAppliedOn) {
+  public final void setLeaveAppliedOn(final String argleaveAppliedOn) {
     this.leaveAppliedOn = argleaveAppliedOn;
   }
+
   /**
-   * @return this manager comments
+   * Gets the ManagerComments.
+   * @return this ManagerComments.
    */
   public final String getManagerComments() {
     return managerComments;
@@ -242,10 +273,17 @@ public class LeaveDetails {
     this.empId = argempId;
   }
   /**
-   * apply for leave method to process employee leave details.
-   * @author hexware
+   *
    */
-  public final void applyForLeave() {
-    System.out.println("Welcome to ls");
+  private static LeaveDetailsDAO dao() {
+    DbConnection db = new DbConnection();
+    return db.getConnect().onDemand(LeaveDetailsDAO.class);
+  }
+  /**
+   *
+   */
+  public static LeaveDetails[] listAll() {
+    List<LeaveDetails> ls = dao().list();
+    return ls.toArray(new LeaveDetails[ls.size()]);
   }
 }
