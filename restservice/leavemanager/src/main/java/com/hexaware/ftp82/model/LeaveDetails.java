@@ -1,13 +1,10 @@
 package com.hexaware.ftp82.model;
 import java.util.Date;
 import java.util.Objects;
-
+import java.util.List;
 import com.hexaware.ftp82.persistence.DbConnection;
 import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
 
-import java.util.Objects;
-import java.util.List;
-import java.util.Date;
 import java.text.SimpleDateFormat;
 /**
  * LeaveDetails class to process employee leave details.
@@ -32,8 +29,8 @@ public class LeaveDetails {
    */
   public LeaveDetails() { }
   /**
-   *
-   */  
+   *@param argEmpId to set manager comments
+   */
   public LeaveDetails(final int argEmpId) {
     this.empId = argEmpId;
   }
@@ -65,9 +62,6 @@ public class LeaveDetails {
     this.managerComments = argManagerComments;
     this.empId = argEmpId;
   }
-  /**
-   * @param argEmpId to initialize employee id.
-   */
   @Override
   public final boolean equals(final Object obj) {
     if (obj == null) {
@@ -113,22 +107,22 @@ public class LeaveDetails {
   public final int hashCode() {
     return Objects.hash(leaveId, leaveType, startDate, endDate, noOfDays, leaveStatus, leaveReason, leaveAppliedOn, managerComments, empId);
   }
-/**
- *@param declares the enum variables
- */
-enum LeaveType {
-/**
- *@param decalres EL as leave type
- */
+  /**
+   *@param declares the enum variables
+   */
+  enum LeaveType {
+  /**
+   *@param decalres EL as leave type
+   */
     EL;
   }
-/**
- *@param declares the enum variables
- */
-enum LeaveStatus {
-/**
- *@param declares PENDING, APPROVED, DENIED as enum variables
- */
+  /**
+   *@param declares the enum variables
+   */
+  enum LeaveStatus {
+  /**
+   *@param declares PENDING, APPROVED, DENIED as enum variables
+   */
     PENDING, APPROVED, DENIED;
   }
   /**
@@ -230,7 +224,6 @@ enum LeaveStatus {
     this.leaveReason = argleaveReason;
   }
   /**
-   * @return this manager comments
    * Gets the LeaveAppliedOn.
    * @return this LeaveAppliedOn.
    */
@@ -267,10 +260,10 @@ enum LeaveStatus {
   }
   /**
    *
-   * @param argempId to set manager comments.
+   * @param argEmpId to set manager comments.
    */
-  public final void setEmpId(final int argempId) {
-    this.empId = argempId;
+  public final void setEmpId(final int argEmpId) {
+    this.empId = argEmpId;
   }
   /**
    *
@@ -280,7 +273,7 @@ enum LeaveStatus {
     return db.getConnect().onDemand(LeaveDetailsDAO.class);
   }
   /**
-   *
+   *@return all leave pending details
    */
   public static LeaveDetails[] listAll() {
     List<LeaveDetails> ls = dao().list();
