@@ -203,7 +203,7 @@ public class Employee {
   public final void setEmpLeaveBalance(final int argEmpLeaveBalance) {
     this.empLeaveBalance = argEmpLeaveBalance;
   }
-/**
+  /**
    * Gets the EmployeeDoj.
    * @return this Employee's Doj.
    */
@@ -225,7 +225,6 @@ public class Employee {
     DbConnection db = new DbConnection();
     return db.getConnect().onDemand(EmployeeDAO.class);
   }
-
   /**
    * list all employee details.
    * @return all employees' details
@@ -235,7 +234,6 @@ public class Employee {
     List<Employee> es = dao().list();
     return es.toArray(new Employee[es.size()]);
   }
-
   /**
    * list employee details by id.
    * @param empID id to get employee details.

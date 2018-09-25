@@ -6,11 +6,7 @@ import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
 
 //import com.hexaware.ftp82.persistence.EmployeeDAO;
 
-
-//import java.Date;
-//import java.time.LocalDate;
-//import java.time.LocalDateTime;
-
+import java.util.regex.*;
 import java.text.SimpleDateFormat;
 import java.sql.Date;
 
@@ -39,6 +35,7 @@ public class LeaveDetails {
   private String leaveAppliedOn;
   private String managerComments;
   private int empId;
+  private int managerId;
   /**
    *
    */
@@ -323,6 +320,40 @@ public class LeaveDetails {
     } else {
       return 0;
     }
-
+  }
+  /**
+   *
+   * @param argApplyEmpId to check manager Id.
+   * @param argApplyLeaveId to check manager Id.
+   * @param argMgrComments to check manager Id.
+   * @param argApproveStatus to check manager Id.
+   * @return return statusId;
+   */
+  public final int applyLeave(final int argApplyEmpId, final int argApplyLeaveId, final String argMgrComments, final String argApproveStatus) {
+    Employee e1 = dao().getLeaveBalance(argApplyEmpId);
+    LeaveDetails l1 = dao().getStatus(argApplyLeaveId);
+    int leaveBalance = e1.getEmpLeaveBalance();
+    int appliedNoOfLeaves = l1.getNumberOfDays();
+    String statusOfEmp = l1.getLeaveStatus();
+    if (argApproveStatus.equalsIgnoreCase("approve")) {
+      if (statusOfEmp.equals("PENDING")) {
+        statusOfEmp = "APPROVED";
+        int approvedLeaves = leaveBalance - appliedNoOfLeaves;
+        int leaves = dao().updateEmployee(approvedLeaves, argApplyEmpId);
+        int applyEmpStatus = dao().updateApproveOrDenial(statusOfEmp, argMgrComments, argApplyLeaveId);
+        if (leaves > 0 && applyEmpStatus > 0) {
+          return 1;
+        }
+      } else {
+        return 102;
+      }
+    } else if (argApproveStatus.equalsIgnoreCase("deny")) {
+      statusOfEmp = "DENIED";
+      dao().updateApproveOrDenial(statusOfEmp, argMgrComments, argApplyLeaveId);
+      return 100;
+    } else {
+      return 101;
+    }
+    return 101;
   }
 }

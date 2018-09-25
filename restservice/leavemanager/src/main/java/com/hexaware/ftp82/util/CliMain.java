@@ -162,7 +162,58 @@ public class CliMain {
   }
   /**
    * The main entry point.
-   * @param ar list of arguments
+   */
+  private void acceptOrDeny() {
+    LeaveDetails ls = new LeaveDetails();
+    System.out.println("Enter Manager ID : ");
+    int managerId = option.nextInt();
+    int checkStatus = 0;
+    try {
+      checkStatus = ls.checkMgrId(managerId);
+    } catch (Exception e) {
+      System.out.println("Please provide correct manager ID !");
+    }
+    if (checkStatus > 0) {
+      System.out.println("Correct manager Id !");
+      Employee[] employee = Employee.displayCorrespondingEmpDetails(checkStatus);  
+      for (Employee e : employee) {
+        System.out.println("----------------------------------------------");
+        System.out.println("Employee ID = " + e.getEmpId() + "\n");
+        System.out.print("Employee Name = " + e.getEmpName() + "\n");
+        System.out.print("Employee Leave Balance = " + e.getEmpLeaveBalance() + "\n");
+      }
+      System.out.println("Enter Employee ID: ");
+      int applyEmpId = option.nextInt();
+      System.out.println("Enter Leave ID: ");
+      int applyLeaveId = option.nextInt();
+      System.out.println("Enter Comments ");
+      String applyMgrComments = option.next();
+      System.out.println("Approve / Deny ");
+      String approveStatus = option.next();
+      int applyStatus = ls.applyLeave(applyEmpId, applyLeaveId, applyMgrComments, approveStatus);
+      switch (applyStatus) {
+        case 1:
+          System.out.println("Leave approved !");
+          break;
+        case 100:
+          System.out.println("Leave approval Denied !");
+          break;
+        case 102:
+          System.out.println("Leave process completed !");
+          break;
+        case 103:
+          System.out.println("process unsuccessful ! ");
+          break;
+        default:
+          System.out.println("process unsuccessful !");
+      }
+    } else {
+      System.out.println("Please provide manager Id !");
+    }
+  }
+  /**
+   * The main entry point.
+   * @param ar the list of arguments
    */
   public static void main(final String[] ar) {
     final CliMain mainObj = new CliMain();
