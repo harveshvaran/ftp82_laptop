@@ -4,6 +4,7 @@ import java.util.Objects;
 import java.util.List;
 import com.hexaware.ftp82.persistence.DbConnection;
 import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
+//import com.hexaware.ftp82.persistence.EmployeeDAO;
 
 import java.text.SimpleDateFormat;
 /**
@@ -11,6 +12,10 @@ import java.text.SimpleDateFormat;
  * @author hexware
  */
 public class LeaveDetails {
+  /**
+ * Apply for leave method to apply leave.
+ * @author hexware
+ */
   public final void applyForLeave() {
     System.out.println("Welcome to ls");
   }
@@ -276,12 +281,12 @@ public class LeaveDetails {
     return db.getConnect().onDemand(LeaveDetailsDAO.class);
   }
   /**
-   *@return all leave pending details
+   * Returns a specific employee's details.
+   * @param id the id of the employee
+   * @return the employee details
    */
-  public static LeaveDetails[] listAll() {
-    List<LeaveDetails> ls = dao().list();
+  public static LeaveDetails[] listAll(final int id) {
+    List<LeaveDetails> ls = dao().list(id);
     return ls.toArray(new LeaveDetails[ls.size()]);
-  public static final void pendingApplications() {
-    System.out.println("PENDING APPLICATIONS");
   }
 }

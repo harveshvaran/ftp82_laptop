@@ -29,6 +29,23 @@ public interface EmployeeDAO  {
   @Mapper(EmployeeMapper.class)
   Employee find(@Bind("empID") int empID);
 
+ /**
+   * return all the details of the selected employee.
+   * @param empId the id of the employee
+   * @return the employee object
+   */
+  @SqlQuery("SELECT * FROM Employee WHERE EMP_ID IN (SELECT E2.EMP_ID FROM EMPLOYEE E1,EMPLOYEE E2 WHERE E2.EMP_MANAGER_ID=E1.EMP_ID AND E1.EMP_ID= :empId);")
+  @Mapper(EmployeeMapper.class)
+  Employee check(@Bind("empId") int empId);
+
+  /**
+   * return all the details of the selected employee.
+   * @param empId the id of the employee
+   * @return the employee object
+   */
+  @SqlQuery("SELECT EMP_LEAVE-BALANCE FROM Employee WHERE EMP_ID IN (SELECT E2.EMP_ID FROM EMPLOYEE E1,EMPLOYEE E2 WHERE E2.EMP_MANAGER_ID=E1.EMP_ID AND E1.EMP_ID= :empId)")
+  @Mapper(EmployeeMapper.class)
+  Employee get(@Bind("empId") int empId);
   /**
   * close with no args is used to close the connection.
   */

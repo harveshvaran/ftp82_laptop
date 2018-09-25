@@ -244,5 +244,20 @@ public class Employee {
   public static Employee listById(final int empID) {
     return dao().find(empID);
   }
-
+   /**
+   * list employee details by id.
+   * @param id to get employee details.
+   * @return Employee
+   */
+  public static Employee send(final int id) {
+    return dao().check(id);
+  }
+  /**
+   * list employee details by id.
+   * @param id to get employee details.
+   * @return Employee
+   */
+  public static Employee getLeaveBalance(final int id) {
+    return dao().get(id);
+  }
 }

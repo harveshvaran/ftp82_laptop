@@ -1,8 +1,10 @@
 package com.hexaware.ftp82.util;
 import java.util.Scanner;
-
+import com.hexaware.ftp82.model.LeaveDetails;
 import com.hexaware.ftp82.model.Employee;
-
+//import com.hexaware.ftp82.model.persistence.EmployeeDAO;
+//import com.hexaware.ftp82.model.persistence.LeaveDetailsDAO;
+//import java.util.*;
 /**
  * Class CliMain provides the command line interface to the leavemanagement
  * application.
@@ -32,10 +34,10 @@ public class CliMain {
         listEmployeeDetail();
         break;
       case 5:
-        listPendingApplicatons();
+        listPendingApplications();
         break;
       case 6:
-        acceptOrDeny();
+        //acceptOrDeny();
         break;
       case 7:
         // halt since normal exit throws a stacktrace due to jdbc threads not responding
@@ -45,6 +47,9 @@ public class CliMain {
     }
     mainMenu();
   }
+  /**
+   *
+   */
   private void listEmployeeDetail() {
     System.out.println("Enter an Employee Id");
     int empId = option.nextInt();
@@ -63,6 +68,9 @@ public class CliMain {
       System.out.print("Employee Date of Joining = " + employee.getEmpDoj() + "\n");
     }
   }
+  /**
+   *
+   */
   private void listEmployeesDetails() {
     Employee[] employee = Employee.listAll();
     for (Employee e : employee) {
@@ -76,35 +84,47 @@ public class CliMain {
       System.out.print("Employee Leave Balance = " + e.getEmpLeaveBalance() + "\n");
       System.out.print("Employee Date of Joining = " + e.getEmpDoj() + "\n");
     }
-  private void applyLeave() {
-    LeaveDetails ls=new LeaveDetails();
-    ls.applyforleave();
   }
   /**
    * The main entry point.
    */
   private void listPendingApplications() {
     System.out.println("Enter the Your employee ID:");
-    empId=option.nextInt();
+    int empId = option.nextInt();
+    Employee employee = Employee.listById(empId);
+    if (employee == null) {
+      System.out.println("Sorry, No such employee");
+    } else {
+      Employee emp = Employee.send(empId);
+      if (emp == null) {
+        System.out.println("You Are not a MANAGER");
+      } else {
+        LeaveDetails[] leave = LeaveDetails.listAll(empId);
+        if (leave.length == 0) {
+          System.out.println("NO PENDING LEAVE FOR NOW");
+        }
+      }
+    }
     LeaveDetails[] leave = LeaveDetails.listAll(empId);
     for (LeaveDetails l : leave) {
       System.out.println("----------------------------------------------");
-      System.out.println("Leave ID = " + l.getLeaveId() + " ");
-      System.out.print("Leave Type = " + l.getLeaveType() + " ");
-      System.out.print("Start Date = " + l.getStartDate() + " ");
-      System.out.print("End Date = " + l.getEndDate() + " ");
-      System.out.print("Number of days = " + l.getNumberOfDays() + " ");
-      System.out.print("Leave Status = " + l.getLeaveStatus() + " ");
-      System.out.print("Leave reason = " + l.getLeaveReason() + " ");
-      System.out.print("Leave Applied On = " + l.getLeaveAppliedOn() + " ");
-      System.out.print("Manager Comments = " + l.getManagerComments() + " ");
-      System.out.print("Employee Id = " + l.getEmpId() + " ");
+      System.out.println("PENDING LEAVE APPLICATIONS");
+      System.out.println("LeaveID = " + l.getLeaveId() + " ");
+      System.out.print("LeaveType = " + l.getLeaveType() + " ");
+      System.out.print("StartDate = " + l.getStartDate() + " ");
+      System.out.print("EndDate = " + l.getEndDate() + " ");
+      System.out.print("Numberofdays = " + l.getNumberOfDays() + " ");
+      System.out.print("LeaveStatus = " + l.getLeaveStatus() + " ");
+      System.out.print("LeaveReason = " + l.getLeaveReason() + " ");
+      System.out.print("LeaveAppliedOn = " + l.getLeaveAppliedOn() + " ");
+      System.out.print("ManagerComments = " + l.getManagerComments() + " ");
+      System.out.print("EmployeeId = " + l.getEmpId() + " ");
       System.out.println("----------------------------------------------" + "\n");
     }
   }
   /**
    * The main entry point.
-   * @param the list of arguments
+   * @param ar list of arguments
    */
   public static void main(final String[] ar) {
     final CliMain mainObj = new CliMain();
