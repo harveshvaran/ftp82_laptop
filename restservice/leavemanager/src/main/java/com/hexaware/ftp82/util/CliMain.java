@@ -121,6 +121,13 @@ public class CliMain {
       System.out.print("EmployeeId = " + l.getEmpId() + " ");
       System.out.println("----------------------------------------------" + "\n");
     }
+  private void applyLeave() {
+    LeaveDetails ls = new LeaveDetails();
+    ls.applyForLeave();
+  }
+  private void leaveHistoryDetails() {
+    LeaveDetails ld = new LeaveDetails();
+    ld.leaveHistory();
   }
   /**
    * The main entry point.
