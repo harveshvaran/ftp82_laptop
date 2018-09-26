@@ -351,4 +351,19 @@ public class LeaveDetails {
     }
     return 101;
   }
+  /**
+   * list employee details by id.
+   * @param empId to get employee details.
+   * @param leaveId to get employee details.
+   * @return Employee
+   */
+  public static int checkIds(final int empId, final int leaveId) {
+    LeaveDetails lsId = dao().checkIdss(empId);
+    System.out.println(lsId.getLeaveId() + " " + leaveId);
+    System.out.println(lsId.getEmpId() + " " + empId);
+    if (lsId.getLeaveId() == leaveId && lsId.getEmpId() == empId) {
+      return 1;
+    }
+    return 0;
+  }
 }

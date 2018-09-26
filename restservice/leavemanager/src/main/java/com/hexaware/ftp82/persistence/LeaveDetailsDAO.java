@@ -58,6 +58,13 @@ public interface LeaveDetailsDAO  {
   @SqlQuery("SELECT * FROM leave_details WHERE LEAVE_STATUS = 'PENDING' && EMP_ID = :empId")
   @Mapper(LeaveDetailsMapper.class)
   List<LeaveDetails> displayLeaveDetails(@Bind("empId") int empId);
+   * update leave balance in employee table.
+   * @param empId the employee array
+   * @return the employee array
+   */
+  @SqlQuery("SELECT * FROM leave_details WHERE EMP_ID = :empId")
+  @Mapper(LeaveDetailsMapper.class)
+  LeaveDetails checkIdss(@Bind("empId") int empId);
   /**
    * returns details of particular employee Id for leave approval processing.
    * @param empIDForleave the id of the employee

@@ -18,7 +18,7 @@ public class CliMain {
   private void mainMenu() {
     System.out.println("Leave Management System");
     System.out.println("-----------------------");
-    System.out.println("1. List All Employees Info"); 
+    System.out.println("1. List All Employees Info");
     System.out.println("2. Display Employee Info");
     System.out.println("3. Apply for leave !");
     System.out.println("5. Pending Leave Applications");
@@ -183,22 +183,27 @@ public class CliMain {
     String applyMgrComments = option.nextLine();
     System.out.println("Approve / Deny ");
     String approveStatus = option.nextLine();
-    int applyStatus = ls.applyLeave(applyEmpId, applyLeaveId, applyMgrComments, approveStatus);
-    switch (applyStatus) {
-      case 1:
-        System.out.println("Leave approved !");
-        break;
-      case 100:
-        System.out.println("Leave approval Denied !");
-        break;
-      case 102:
-        System.out.println("Leave process completed !");
-        break;
-      case 103:
-        System.out.println("process unsuccessful ! ");
-        break;
-      default:
-        System.out.println("process unsuccessful !");
+    //System.out.println(LeaveDetails.checkIds(applyEmpId, applyLeaveId));
+    if (LeaveDetails.checkIds(applyEmpId, applyLeaveId) == 1) {
+      int applyStatus = ls.applyLeave(applyEmpId, applyLeaveId, applyMgrComments, approveStatus);
+      switch (applyStatus) {
+        case 1:
+          System.out.println("Leave approved !");
+          break;
+        case 100:
+          System.out.println("Leave approval Denied !");
+          break;
+        case 102:
+          System.out.println("Leave process completed !");
+          break;
+        case 103:
+          System.out.println("process unsuccessful ! ");
+          break;
+        default:
+          System.out.println("process unsuccessful !");
+      }
+    } else {
+      System.out.println("Enter corresponding Employee Id and leave ID ");
     }
   }
   /**
