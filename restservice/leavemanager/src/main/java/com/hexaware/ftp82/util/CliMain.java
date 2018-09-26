@@ -33,11 +33,17 @@ public class CliMain {
       case 2:
         listEmployeeDetail();
         break;
+      case 3:
+        applyLeave();
+        break;
+      case 4:
+        leaveHistory();
+        break;
       case 5:
         listPendingApplications();
         break;
       case 6:
-        //acceptOrDeny();
+        acceptOrDeny();
         break;
       case 7:
         // halt since normal exit throws a stacktrace due to jdbc threads not responding
@@ -125,9 +131,28 @@ public class CliMain {
     LeaveDetails ls = new LeaveDetails();
     ls.applyForLeave();
   }
-  private void leaveHistoryDetails() {
-    LeaveDetails ld = new LeaveDetails();
-    ld.leaveHistory();
+
+  private void applyLeave() {
+    LeaveDetails ls = new LeaveDetails();
+    ls.applyForLeave();
+  }
+  private void leaveHistory() {
+     LeaveDetails[] leaveHistory = LeaveDetails.listAll();
+    for (LeaveDetails l : leaveHistory) {
+      System.out.println("----------------------------------------------");
+      System.out.println("Leave ID = " + l.getLeaveId() + " ");
+      System.out.print("Leave Type = " + l.getLeaveType() + " ");
+      System.out.print("Start Date = " + l.getStartDate() + " ");
+      System.out.print("End Date = " + l.getEndDate() + " ");
+      System.out.print("Number of days = " + l.getNumberOfDays() + " ");
+      System.out.print("Leave Status = " + l.getLeaveStatus() + " ");
+      System.out.print("Leave reason = " + l.getLeaveReason() + " ");
+      System.out.print("Leave Applied On = " + l.getLeaveAppliedOn() + " ");
+      System.out.print("Manager Comments = " + l.getManagerComments() + " ");
+      System.out.print("Employee Leave Balance = " + l.getEmployeeLeaveBalance() + " ");
+      System.out.print("Employee Id = " + l.getEmpId() + " ");
+      System.out.println("---------------------------------------------");
+
   }
   /**
    * The main entry point.
