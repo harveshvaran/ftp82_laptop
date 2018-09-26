@@ -18,6 +18,7 @@ public class CliMain {
     System.out.println("1. List All Employees Info");
     System.out.println("2. Display Employee Info");
     System.out.println("3. Leave Details");
+    System.out.println("4. Leave history");
     System.out.println("5. Pending Leave Applications");
     System.out.println("6. Apply / Deny leave");
     System.out.println("7. Exit");
@@ -33,15 +34,14 @@ public class CliMain {
       case 2:
         listEmployeeDetail();
         break;
-      case 3:
-        applyLeave();
-        break;
       case 4:
         leaveHistory();
         break;
+
       case 5:
         listPendingApplications();
         break;
+
       case 6:
         acceptOrDeny();
         break;
@@ -94,6 +94,7 @@ public class CliMain {
   /**
    * The main entry point.
    */
+
   private void listPendingApplications() {
     System.out.println("Enter the Your employee ID:");
     int empId = option.nextInt();
@@ -127,18 +128,13 @@ public class CliMain {
       System.out.print("EmployeeId = " + l.getEmpId() + " ");
       System.out.println("----------------------------------------------" + "\n");
     }
-  private void applyLeave() {
-    LeaveDetails ls = new LeaveDetails();
-    ls.applyForLeave();
-  }
-
-  private void applyLeave() {
-    LeaveDetails ls = new LeaveDetails();
-    ls.applyForLeave();
-  }
   private void leaveHistory() {
      LeaveDetails[] leaveHistory = LeaveDetails.listAll();
     for (LeaveDetails l : leaveHistory) {
+
+  private void acceptOrDeny() {
+    LeaveDetails[] leave = LeaveDetails.listAll();
+    for (LeaveDetails l : leave) {
       System.out.println("----------------------------------------------");
       System.out.println("Leave ID = " + l.getLeaveId() + " ");
       System.out.print("Leave Type = " + l.getLeaveType() + " ");
@@ -149,9 +145,14 @@ public class CliMain {
       System.out.print("Leave reason = " + l.getLeaveReason() + " ");
       System.out.print("Leave Applied On = " + l.getLeaveAppliedOn() + " ");
       System.out.print("Manager Comments = " + l.getManagerComments() + " ");
-      System.out.print("Employee Leave Balance = " + l.getEmployeeLeaveBalance() + " ");
       System.out.print("Employee Id = " + l.getEmpId() + " ");
       System.out.println("---------------------------------------------");
+      System.out.println("----------------------------------------------" + "\n");
+    }
+  }
+  private void leaveHistoryDetails() {
+    LeaveDetails ld = new LeaveDetails();
+    ld.leaveHistory();
 
   }
   /**
