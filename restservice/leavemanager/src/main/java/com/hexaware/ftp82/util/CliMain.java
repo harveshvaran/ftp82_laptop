@@ -16,8 +16,8 @@ public class CliMain {
   private Scanner option = new Scanner(System.in, "UTF-8");
 
   private void mainMenu() {
-    System.out.println("Leave Management System");
     System.out.println("-----------------------");
+    System.out.println("Leave Management System");
     System.out.println("1. List All Employees Info");
     System.out.println("2. Display Employee Info");
     System.out.println("3. Apply for leave !");
@@ -36,9 +36,6 @@ public class CliMain {
         break;
       case 2:
         listEmployeeDetail();
-        break;
-      case 3:
-        applyLeave();
         break;
       case 5:
         listPendingApplications();
