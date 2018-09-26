@@ -178,9 +178,10 @@ public class CliMain {
     System.out.println("Enter Leave ID: ");
     int applyLeaveId = option.nextInt();
     System.out.println("Enter Comments ");
+    option.nextLine();
     String applyMgrComments = option.nextLine();
     System.out.println("Approve / Deny ");
-    String approveStatus = option.next();
+    String approveStatus = option.nextLine();
     int applyStatus = ls.applyLeave(applyEmpId, applyLeaveId, applyMgrComments, approveStatus);
     switch (applyStatus) {
       case 1:
