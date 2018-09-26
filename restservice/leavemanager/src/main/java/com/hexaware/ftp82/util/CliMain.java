@@ -24,6 +24,7 @@ public class CliMain {
     System.out.println("5. Pending Leave Applications");
     System.out.println("6. Apply / Deny leave");
     System.out.println("7. Exit");
+    System.out.println("-----------------------");
     System.out.println("Enter your choice:");
     int menuOption = option.nextInt();
     mainMenuDetails(menuOption);
