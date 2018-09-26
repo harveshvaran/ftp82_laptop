@@ -1,7 +1,10 @@
 package com.hexaware.ftp82.util;
-import java.util.Scanner;
 import com.hexaware.ftp82.model.LeaveDetails;
 import com.hexaware.ftp82.model.Employee;
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.ListIterator;
 //import com.hexaware.ftp82.model.persistence.EmployeeDAO;
 //import com.hexaware.ftp82.model.persistence.LeaveDetailsDAO;
 //import java.util.*;
@@ -40,7 +43,7 @@ public class CliMain {
         listPendingApplications();
         break;
       case 6:
-        //acceptOrDeny();
+        acceptOrDeny();
         break;
       case 7:
         // halt since normal exit throws a stacktrace due to jdbc threads not responding
@@ -96,6 +99,7 @@ public class CliMain {
     System.out.println("Enter the Your employee ID:");
     int empId = option.nextInt();
     Employee employee = Employee.listById(empId);
+    LeaveDetails[] leave = LeaveDetails.listAll(empId);
     if (employee == null) {
       System.out.println("Sorry, No such employee");
     } else {
@@ -103,27 +107,33 @@ public class CliMain {
       if (emp == null) {
         System.out.println("You Are not a MANAGER");
       } else {
-        LeaveDetails[] leave = LeaveDetails.listAll(empId);
         if (leave.length == 0) {
           System.out.println("NO PENDING LEAVE FOR NOW");
+        } else {
+          List hs = new ArrayList();
+          for (LeaveDetails l : leave) {
+            hs.add(Employee.getLeaveBalance(l.getEmpId()));
+          }
+          ListIterator ii = hs.listIterator();
+          System.out.println("----------------------------------------------");
+          System.out.println("PENDING LEAVE APPLICATIONS");
+          for (LeaveDetails l : leave) {
+            System.out.println("----------------------------------------------");
+            System.out.print("EmployeeId = " + l.getEmpId() + " ");
+            System.out.println("LeaveID = " + l.getLeaveId() + " ");
+            System.out.print("LeaveType = " + l.getLeaveType() + " ");
+            System.out.print("StartDate = " + l.getStartDate() + " ");
+            System.out.print("EndDate = " + l.getEndDate() + " ");
+            System.out.print("Numberofdays = " + l.getNumberOfDays() + " ");
+            System.out.print("LeaveStatus = " + l.getLeaveStatus() + " ");
+            System.out.print("LeaveReason = " + l.getLeaveReason() + " ");
+            System.out.print("LeaveAppliedOn = " + l.getLeaveAppliedOn() + " ");
+            System.out.print("Employee Leave Balance  = " + ii.next() + " ");
+            System.out.print("ManagerComments = " + l.getManagerComments() + " ");
+            System.out.println("----------------------------------------------" + "\n");
+          }
         }
       }
-    }
-    LeaveDetails[] leave = LeaveDetails.listAll(empId);
-    for (LeaveDetails l : leave) {
-      System.out.println("----------------------------------------------");
-      System.out.println("PENDING LEAVE APPLICATIONS");
-      System.out.println("LeaveID = " + l.getLeaveId() + " ");
-      System.out.print("LeaveType = " + l.getLeaveType() + " ");
-      System.out.print("StartDate = " + l.getStartDate() + " ");
-      System.out.print("EndDate = " + l.getEndDate() + " ");
-      System.out.print("Numberofdays = " + l.getNumberOfDays() + " ");
-      System.out.print("LeaveStatus = " + l.getLeaveStatus() + " ");
-      System.out.print("LeaveReason = " + l.getLeaveReason() + " ");
-      System.out.print("LeaveAppliedOn = " + l.getLeaveAppliedOn() + " ");
-      System.out.print("ManagerComments = " + l.getManagerComments() + " ");
-      System.out.print("EmployeeId = " + l.getEmpId() + " ");
-      System.out.println("----------------------------------------------" + "\n");
     }
   }
   private void applyLeave() {
@@ -165,50 +175,30 @@ public class CliMain {
    */
   private void acceptOrDeny() {
     LeaveDetails ls = new LeaveDetails();
-    System.out.println("Enter Manager ID : ");
-    int managerId = option.nextInt();
-    int checkStatus = 0;
-    try {
-      checkStatus = ls.checkMgrId(managerId);
-    } catch (Exception e) {
-      System.out.println("Please provide correct manager ID !");
-    }
-    if (checkStatus > 0) {
-      System.out.println("Correct manager Id !");
-      Employee[] employee = Employee.displayCorrespondingEmpDetails(checkStatus);  
-      for (Employee e : employee) {
-        System.out.println("----------------------------------------------");
-        System.out.println("Employee ID = " + e.getEmpId() + "\n");
-        System.out.print("Employee Name = " + e.getEmpName() + "\n");
-        System.out.print("Employee Leave Balance = " + e.getEmpLeaveBalance() + "\n");
-      }
-      System.out.println("Enter Employee ID: ");
-      int applyEmpId = option.nextInt();
-      System.out.println("Enter Leave ID: ");
-      int applyLeaveId = option.nextInt();
-      System.out.println("Enter Comments ");
-      String applyMgrComments = option.next();
-      System.out.println("Approve / Deny ");
-      String approveStatus = option.next();
-      int applyStatus = ls.applyLeave(applyEmpId, applyLeaveId, applyMgrComments, approveStatus);
-      switch (applyStatus) {
-        case 1:
-          System.out.println("Leave approved !");
-          break;
-        case 100:
-          System.out.println("Leave approval Denied !");
-          break;
-        case 102:
-          System.out.println("Leave process completed !");
-          break;
-        case 103:
-          System.out.println("process unsuccessful ! ");
-          break;
-        default:
-          System.out.println("process unsuccessful !");
-      }
-    } else {
-      System.out.println("Please provide manager Id !");
+    System.out.println("Enter Employee ID: ");
+    int applyEmpId = option.nextInt();
+    System.out.println("Enter Leave ID: ");
+    int applyLeaveId = option.nextInt();
+    System.out.println("Enter Comments ");
+    String applyMgrComments = option.next();
+    System.out.println("Approve / Deny ");
+    String approveStatus = option.next();
+    int applyStatus = ls.applyLeave(applyEmpId, applyLeaveId, applyMgrComments, approveStatus);
+    switch (applyStatus) {
+      case 1:
+        System.out.println("Leave approved !");
+        break;
+      case 100:
+        System.out.println("Leave approval Denied !");
+        break;
+      case 102:
+        System.out.println("Leave process completed !");
+        break;
+      case 103:
+        System.out.println("process unsuccessful ! ");
+        break;
+      default:
+        System.out.println("process unsuccessful !");
     }
   }
   /**

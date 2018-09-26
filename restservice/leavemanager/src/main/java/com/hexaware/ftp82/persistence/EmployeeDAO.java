@@ -39,9 +39,9 @@ public interface EmployeeDAO  {
    * @param empId the id of the employee
    * @return the employee object
    */
-  @SqlQuery("SELECT EMP_LEAVE-BALANCE FROM Employee WHERE EMP_ID IN (SELECT E2.EMP_ID FROM EMPLOYEE E1,EMPLOYEE E2 WHERE E2.EMP_MANAGER_ID=E1.EMP_ID AND E1.EMP_ID= :empId)")
+  @SqlQuery("SELECT * FROM Employee WHERE EMP_ID = :empId ")
   @Mapper(EmployeeMapper.class)
-  Employee get(@Bind("empId") int empId);
+  Employee getBalance(@Bind("empId") int empId);
   /**
    * return manager Id's.
    * @param mgrId the employee array

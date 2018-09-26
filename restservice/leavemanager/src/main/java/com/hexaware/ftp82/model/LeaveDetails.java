@@ -3,10 +3,6 @@ import java.util.Objects;
 import java.util.List;
 import com.hexaware.ftp82.persistence.DbConnection;
 import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
-
-//import com.hexaware.ftp82.persistence.EmployeeDAO;
-
-import java.util.regex.*;
 import java.text.SimpleDateFormat;
 import java.sql.Date;
 
@@ -35,7 +31,6 @@ public class LeaveDetails {
   private String leaveAppliedOn;
   private String managerComments;
   private int empId;
-  private int managerId;
   /**
    *
    */
