@@ -35,13 +35,13 @@ public class CliMain {
         break;
       case 3:
         applyLeave();
-
+        break;
       case 5:
         listPendingApplications();
         break;
       case 6:
         //acceptOrDeny();
-          break;
+        break;
       case 7:
         // halt since normal exit throws a stacktrace due to jdbc threads not responding
         Runtime.getRuntime().halt(0);
@@ -126,7 +126,6 @@ public class CliMain {
       System.out.println("----------------------------------------------" + "\n");
     }
   }
-  
   private void applyLeave() {
     int i = 1;
     System.out.println("Employee Id : ");

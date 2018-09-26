@@ -1,6 +1,6 @@
 package com.hexaware.ftp82.model;
 import java.util.Objects;
-//import java.util.List;
+import java.util.List;
 import com.hexaware.ftp82.persistence.DbConnection;
 import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
 
@@ -278,7 +278,7 @@ public class LeaveDetails {
     List<LeaveDetails> ls = dao().list(id);
     return ls.toArray(new LeaveDetails[ls.size()]);
   }
-  /** 
+  /**
    *@param leaveType leave pending details
    *@param startDate startdate
    *@param endDate enddate

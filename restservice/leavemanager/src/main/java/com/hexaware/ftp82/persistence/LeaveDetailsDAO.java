@@ -12,7 +12,7 @@ import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
 import java.sql.Date;
 //import java.time.LocalDate;
-//import java.util.List;
+import java.util.List;
 
 /**
  * The DAO class for employee.
@@ -49,15 +49,6 @@ public interface LeaveDetailsDAO  {
   @SqlQuery("SELECT * FROM leave_details WHERE LEAVE_STATUS='PENDING' AND EMP_ID IN (SELECT E2.EMP_ID FROM EMPLOYEE E1,EMPLOYEE E2 WHERE E2.EMP_MANAGER_ID=E1.EMP_ID AND E1.EMP_ID= :empId)")
   @Mapper(LeaveDetailsMapper.class)
   List<LeaveDetails> list(@Bind("empId") int id);
-
-   * return the pending leave details of all the employees.
-   * @return the employee array
-   */
-  // @SqlQuery("SELECT * FROM leave_details WHERE LEAVE_STATUS = 'PENDING' ")
-  //@Mapper(LeaveDetailsMapper.class)
-  //List<LeaveDetails> list(id);
-
-
   /**
   * close with no args is used to close the connection.
   */
