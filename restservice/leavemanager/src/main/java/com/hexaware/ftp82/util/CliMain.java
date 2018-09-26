@@ -91,6 +91,26 @@ public class CliMain {
       System.out.print("Employee Date of Joining = " + e.getEmpDoj() + "\n");
     }
   }
+   /**
+   * The main entry point.
+   */
+  private void leaveHistoryDetails() {
+   LeaveDetails[] leaveHistory = LeaveDetails.listAll();
+    for (LeaveDetails l : leaveHistory) {
+      System.out.println("----------------------------------------------");
+      System.out.println("Leave ID = " + l.getLeaveId() + " ");
+      System.out.print("Leave Type = " + l.getLeaveType() + " ");
+      System.out.print("Start Date = " + l.getStartDate() + " ");
+      System.out.print("End Date = " + l.getEndDate() + " ");
+      System.out.print("Number of days = " + l.getNumberOfDays() + " ");
+      System.out.print("Leave Status = " + l.getLeaveStatus() + " ");
+      System.out.print("Leave reason = " + l.getLeaveReason() + " ");
+      System.out.print("Leave Applied On = " + l.getLeaveAppliedOn() + " ");
+      System.out.print("Manager Comments = " + l.getManagerComments() + " ");
+      System.out.print("Employee Leave Balance = " + l.getEmployeeLeaveBalance() + " ");
+      System.out.print("Employee Id = " + l.getEmpId() + " ");
+      System.out.println("----------------------------------------------" + "\n");
+  }
   /**
    * The main entry point.
    */
@@ -150,6 +170,7 @@ public class CliMain {
       System.out.println("----------------------------------------------" + "\n");
     }
   }
+
   private void leaveHistoryDetails() {
     LeaveDetails ld = new LeaveDetails();
     ld.leaveHistory();
