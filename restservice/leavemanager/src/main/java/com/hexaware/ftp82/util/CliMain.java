@@ -115,10 +115,8 @@ public class CliMain {
             hs.add(Employee.getLeaveBalance(l.getEmpId()));
           }
           ListIterator ii = hs.listIterator();
-          System.out.println("----------------------------------------------");
-          System.out.println("PENDING LEAVE APPLICATIONS");
+          System.out.println("\n--------------------------------------------------------PENDING LEAVE APPLICATIONS-------------------------------------------------\n");
           for (LeaveDetails l : leave) {
-            System.out.println("----------------------------------------------");
             System.out.print("EmployeeId = " + l.getEmpId() + " ");
             System.out.println("LeaveID = " + l.getLeaveId() + " ");
             System.out.print("LeaveType = " + l.getLeaveType() + " ");
@@ -129,9 +127,9 @@ public class CliMain {
             System.out.print("LeaveReason = " + l.getLeaveReason() + " ");
             System.out.print("LeaveAppliedOn = " + l.getLeaveAppliedOn() + " ");
             System.out.print("Employee Leave Balance  = " + ii.next() + " ");
-            System.out.print("ManagerComments = " + l.getManagerComments() + " ");
-            System.out.println("----------------------------------------------" + "\n");
+            System.out.print("ManagerComments = " + l.getManagerComments() + "\n\n");
           }
+          System.out.println("--------------------------------------------------------------------------------------------------------------------------------------" + "\n");
         }
       }
     }
@@ -180,7 +178,7 @@ public class CliMain {
     System.out.println("Enter Leave ID: ");
     int applyLeaveId = option.nextInt();
     System.out.println("Enter Comments ");
-    String applyMgrComments = option.next();
+    String applyMgrComments = option.nextLine();
     System.out.println("Approve / Deny ");
     String approveStatus = option.next();
     int applyStatus = ls.applyLeave(applyEmpId, applyLeaveId, applyMgrComments, approveStatus);
