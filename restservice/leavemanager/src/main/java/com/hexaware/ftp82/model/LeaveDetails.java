@@ -1,11 +1,14 @@
 package com.hexaware.ftp82.model;
+import java.util.Date;
 import java.util.Objects;
 import java.util.List;
 import com.hexaware.ftp82.persistence.DbConnection;
 import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
+<<<<<<< HEAD
+=======
+//import com.hexaware.ftp82.persistence.EmployeeDAO;
+>>>>>>> acd15d2... approve/deny is ready to push
 import java.text.SimpleDateFormat;
-import java.sql.Date;
-
 /**
  * LeaveDetails class to process employee leave details.
  * @author hexware
@@ -42,32 +45,32 @@ public class LeaveDetails {
     this.empId = argEmpId;
   }
   /**
-   * @param argleaveId to initialize LeaveDetails table.
-   * @param argleaveType to initialize LeaveDetails table.
-   * @param argnoOfDays to initialize LeaveDetails table.
-   * @param argstartDate to initialize LeaveDetails table.
-   * @param argendDate to initialize LeaveDetails table.
-   * @param argleaveStatus to initialize LeaveDetails table.
-   * @param argleaveReason to initialize LeaveDetails table.
-   * @param argleaveAppliedOn to initialize LeaveDetails table.
-   * @param argmanagerComments to initialize LeaveDetails table.
-   * @param argempId to initialize LeaveDetails table.
+   * @param argLeaveId to initialize employee table details.
+   * @param argLeaveType to initialize employee table details.
+   * @param argStartDate to initialize employee table details.
+   * @param argEndDate to initialize employee table details.
+   * @param argNoOfDays to initialize employee table details.
+   * @param argLeaveStatus to initialize employee table details.
+   * @param argLeaveReason to initialize employee table details.
+   * @param argLeaveAppliedOn to initialize employee table details.
+   * @param argManagerComments to initialize employee table details.
+   * @param argEmpId to initialize employee table details.
    */
-  public LeaveDetails(final int argleaveId, final String argleaveType, final Date argstartDate, final Date argendDate, final int argnoOfDays,
-      final String argleaveStatus, final String argleaveReason, final Date argleaveAppliedOn,
-      final String argmanagerComments, final int argempId) {
+  public LeaveDetails(final int argLeaveId, final String argLeaveType, final Date argStartDate, final Date argEndDate, final int argNoOfDays, final String argLeaveStatus, final String argLeaveReason, final Date argLeaveAppliedOn, final String argManagerComments, final int argEmpId) {
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-    this.leaveId = argleaveId;
-    this.leaveType = argleaveType;
-    this.startDate = dateFormat.format(argstartDate);
-    this.endDate = dateFormat.format(argendDate);
-    this.noOfDays = argnoOfDays;
-    this.leaveStatus = argleaveStatus;
-    this.leaveReason = argleaveReason;
-    String appliedOn = dateFormat.format(argleaveAppliedOn);
-    this.leaveAppliedOn = appliedOn;
-    this.managerComments = argmanagerComments;
-    this.empId = argempId;
+    this.leaveId = argLeaveId;
+    this.leaveType = argLeaveType;
+    String strtDate = dateFormat.format(argStartDate);
+    this.startDate = strtDate;
+    String edDate = dateFormat.format(argEndDate);
+    this.endDate = edDate;
+    this.noOfDays = argNoOfDays;
+    this.leaveStatus = argLeaveStatus;
+    this.leaveReason = argLeaveReason;
+    String leaveApplied = dateFormat.format(argLeaveAppliedOn);
+    this.leaveAppliedOn = leaveApplied;
+    this.managerComments = argManagerComments;
+    this.empId = argEmpId;
   }
   @Override
   public final boolean equals(final Object obj) {
@@ -144,7 +147,7 @@ public class LeaveDetails {
   }
     /**
    * Gets the StartDate.
-   * @return the startdate
+   * @return this StartDate.
    */
   public final String getStartDate() {
     return startDate;
@@ -324,7 +327,7 @@ public class LeaveDetails {
    * @param argApproveStatus to check manager Id.
    * @return return statusId;
    */
-  public final int applyLeave(final int argApplyEmpId, final int argApplyLeaveId, final String argMgrComments, final String argApproveStatus) {
+  public final int applyForLeave(final int argApplyEmpId, final int argApplyLeaveId, final String argMgrComments, final String argApproveStatus) {
     Employee e1 = dao().getLeaveBalance(argApplyEmpId);
     LeaveDetails l1 = dao().getStatus(argApplyLeaveId);
     int leaveBalance = e1.getEmpLeaveBalance();
