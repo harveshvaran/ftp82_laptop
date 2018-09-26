@@ -1,6 +1,4 @@
 package com.hexaware.ftp82.model;
-
-
 import java.util.Date;
 import java.util.Objects;
 import java.util.List;
@@ -9,13 +7,6 @@ import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
 
 //import com.hexaware.ftp82.persistence.EmployeeDAO;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Objects;
-
-
-import java.text.SimpleDateFormat;
-
-
 /**
  * LeaveDetails class to process employee leave details.
  * @author hexaware
@@ -35,9 +26,6 @@ public class LeaveDetails {
   private Date leaveAppliedOn;
   private String managerComments;
   private int empId;
-
-
-
   /**
    *
    */
@@ -124,7 +112,9 @@ public class LeaveDetails {
   public final int hashCode() {
     return Objects.hash(leaveId, leaveType, startDate, endDate, noOfDays, leaveStatus, leaveReason, leaveAppliedOn, managerComments, empId);
   }
-
+  /**
+   * return LeaveDetails.
+   */
   public LeaveDetails() { }
   /**
    * @param argleaveId to initialize employee table details.
@@ -212,7 +202,7 @@ public class LeaveDetails {
    *
    * @param argnoOfDays to set number of days.
    */
-  public final void setNOOfDays(final int argnoOfDays) {
+  public final void setNoOfDays(final int argnoOfDays) {
     this.noOfDays = argnoOfDays;
   }
   /**
@@ -280,9 +270,6 @@ public class LeaveDetails {
   public final void setEmpId(final int argempId) {
     this.empId = argempId;
   }
-  
-
-
   /**
    *
    */
@@ -299,7 +286,6 @@ public class LeaveDetails {
     List<LeaveDetails> ls = dao().list(id);
     return ls.toArray(new LeaveDetails[ls.size()]);
   }
-
   /**
    *@param id to check employee leave history.
    *@return The leave history for the current employee.
@@ -308,5 +294,4 @@ public class LeaveDetails {
     List<LeaveDetails> lh = dao().leaveHistory(id);
     return lh.toArray(new LeaveDetails[lh.size()]);
   }
-
 }

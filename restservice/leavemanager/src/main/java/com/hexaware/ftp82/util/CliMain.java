@@ -36,11 +36,9 @@ public class CliMain {
       case 4:
         leaveHistoryDetails();
         break;
-
       case 5:
         listPendingApplications();
         break;
-
       case 6:
         acceptOrDeny();
         break;
@@ -48,7 +46,7 @@ public class CliMain {
         // halt since normal exit throws a stacktrace due to jdbc threads not responding
         Runtime.getRuntime().halt(0);
       default:
-        System.out.println("Choose either 1, 2 or 3");
+        System.out.println("Choose either 1 to 6");
     }
     mainMenu();
   }
@@ -60,8 +58,7 @@ public class CliMain {
     int empId = option.nextInt();
     Employee employee = Employee.listById(empId);
     if (employee == null) {
-      System.out.println("Sorry, No such employee");
-      System.out.println("----There is no such employee-----");
+      System.out.println("----There is NO such employee ID-----");
     } else {
       System.out.println("----------------------------------------------");
       System.out.println("Employee ID = " + employee.getEmpId() + "\n");
@@ -100,7 +97,7 @@ public class CliMain {
     LeaveDetails[] leaveHistory = LeaveDetails.history(empId);
     Employee employee = Employee.listById(empId);
     if (employee == null) {
-      System.out.println("\n--------There is no such employee ID----------\n");
+      System.out.println("\n--------There is NO such employee ID----------\n");
     }
     System.out.println("\n-------------Employee Leave History-----------\n");
     for (LeaveDetails lh : leaveHistory) {
@@ -118,7 +115,6 @@ public class CliMain {
   /**
    * The main entry point.
    */
-
   private void listPendingApplications() {
     System.out.println("Enter the Your employee ID:");
     int empId = option.nextInt();
@@ -152,10 +148,7 @@ public class CliMain {
       System.out.print("EmployeeId = " + l.getEmpId() + " ");
       System.out.println("----------------------------------------------" + "\n");
     }
-  private void leaveHistory() {
-     LeaveDetails[] leaveHistory = LeaveDetails.listAll();
-    for (LeaveDetails l : leaveHistory) {
-
+  }
   private void acceptOrDeny() {
     LeaveDetails[] leave = LeaveDetails.listAll();
     for (LeaveDetails l : leave) {
@@ -173,13 +166,6 @@ public class CliMain {
       System.out.println("---------------------------------------------");
       System.out.println("----------------------------------------------" + "\n");
     }
-  }
-
-
-  private void leaveHistoryDetails() {
-    LeaveDetails ld = new LeaveDetails();
-    ld.leaveHistory();
-
   }
   /**
    * The main entry point.
