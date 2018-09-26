@@ -1,12 +1,19 @@
 package com.hexaware.ftp82.model;
-import java.util.Date;
 import java.util.Objects;
-import java.util.List;
+//import java.util.List;
 import com.hexaware.ftp82.persistence.DbConnection;
 import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
+
 //import com.hexaware.ftp82.persistence.EmployeeDAO;
 
+
+//import java.Date;
+//import java.time.LocalDate;
+//import java.time.LocalDateTime;
+
 import java.text.SimpleDateFormat;
+import java.sql.Date;
+
 /**
  * LeaveDetails class to process employee leave details.
  * @author hexware
@@ -43,32 +50,32 @@ public class LeaveDetails {
     this.empId = argEmpId;
   }
   /**
-   * @param argLeaveId to initialize employee table details.
-   * @param argLeaveType to initialize employee table details.
-   * @param argStartDate to initialize employee table details.
-   * @param argEndDate to initialize employee table details.
-   * @param argNoOfDays to initialize employee table details.
-   * @param argLeaveStatus to initialize employee table details.
-   * @param argLeaveReason to initialize employee table details.
-   * @param argLeaveAppliedOn to initialize employee table details.
-   * @param argManagerComments to initialize employee table details.
-   * @param argEmpId to initialize employee table details.
+   * @param argleaveId to initialize LeaveDetails table.
+   * @param argleaveType to initialize LeaveDetails table.
+   * @param argnoOfDays to initialize LeaveDetails table.
+   * @param argstartDate to initialize LeaveDetails table.
+   * @param argendDate to initialize LeaveDetails table.
+   * @param argleaveStatus to initialize LeaveDetails table.
+   * @param argleaveReason to initialize LeaveDetails table.
+   * @param argleaveAppliedOn to initialize LeaveDetails table.
+   * @param argmanagerComments to initialize LeaveDetails table.
+   * @param argempId to initialize LeaveDetails table.
    */
-  public LeaveDetails(final int argLeaveId, final String argLeaveType, final Date argStartDate, final Date argEndDate, final int argNoOfDays, final String argLeaveStatus, final String argLeaveReason, final Date argLeaveAppliedOn, final String argManagerComments, final int argEmpId) {
+  public LeaveDetails(final int argleaveId, final String argleaveType, final Date argstartDate, final Date argendDate, final int argnoOfDays,
+      final String argleaveStatus, final String argleaveReason, final Date argleaveAppliedOn,
+      final String argmanagerComments, final int argempId) {
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-    this.leaveId = argLeaveId;
-    this.leaveType = argLeaveType;
-    String strtDate = dateFormat.format(argStartDate);
-    this.startDate = strtDate;
-    String edDate = dateFormat.format(argEndDate);
-    this.endDate = edDate;
-    this.noOfDays = argNoOfDays;
-    this.leaveStatus = argLeaveStatus;
-    this.leaveReason = argLeaveReason;
-    String leaveApplied = dateFormat.format(argLeaveAppliedOn);
-    this.leaveAppliedOn = leaveApplied;
-    this.managerComments = argManagerComments;
-    this.empId = argEmpId;
+    this.leaveId = argleaveId;
+    this.leaveType = argleaveType;
+    this.startDate = dateFormat.format(argstartDate);
+    this.endDate = dateFormat.format(argendDate);
+    this.noOfDays = argnoOfDays;
+    this.leaveStatus = argleaveStatus;
+    this.leaveReason = argleaveReason;
+    String appliedOn = dateFormat.format(argleaveAppliedOn);
+    this.leaveAppliedOn = appliedOn;
+    this.managerComments = argmanagerComments;
+    this.empId = argempId;
   }
   @Override
   public final boolean equals(final Object obj) {
@@ -116,24 +123,6 @@ public class LeaveDetails {
     return Objects.hash(leaveId, leaveType, startDate, endDate, noOfDays, leaveStatus, leaveReason, leaveAppliedOn, managerComments, empId);
   }
   /**
-   *@param declares the enum variables
-   */
-  enum LeaveType {
-  /**
-   *@param decalres EL as leave type
-   */
-    EL;
-  }
-  /**
-   *@param declares the enum variables
-   */
-  enum LeaveStatus {
-  /**
-   *@param declares PENDING, APPROVED, DENIED as enum variables
-   */
-    PENDING, APPROVED, DENIED;
-  }
-  /**
    * Gets the LeaveId.
    * @return this LeaveId.
    */
@@ -163,7 +152,7 @@ public class LeaveDetails {
   }
     /**
    * Gets the StartDate.
-   * @return this StartDate.
+   * @return the startdate
    */
   public final String getStartDate() {
     return startDate;
@@ -288,5 +277,52 @@ public class LeaveDetails {
   public static LeaveDetails[] listAll(final int id) {
     List<LeaveDetails> ls = dao().list(id);
     return ls.toArray(new LeaveDetails[ls.size()]);
+  }
+  /** 
+   *@param leaveType leave pending details
+   *@param startDate startdate
+   *@param endDate enddate
+   *@param empId employee ID
+   *@param leaveReason leave reason
+   *@return status of the application
+   */
+  public static int applyLeave(final int empId, final String leaveType, final String startDate, final String endDate, final String leaveReason) {
+    String leaveStatus = "Pending";
+    Date appliedDate = Date.valueOf(java.time.LocalDate.now());
+    Date sDate = Date.valueOf(startDate);
+    Date eDate = Date.valueOf(endDate);
+    long diff = eDate.getTime() - sDate.getTime();
+    int diffInDays = (int) diff / (1000 * 60 * 60 * 24);
+    int status = dao().insertLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveReason, appliedDate, leaveStatus, empId);
+    return status;
+  }
+  /**
+   * @param sDate to initialize start date.
+   * @return values of leave date.
+   */
+  public static int dateExpiryOfsdate(final String sDate) {
+    Date startDate = Date.valueOf(sDate);
+    long ex = startDate.getTime();
+    Date dt = new Date(ex);
+    if (dt.before(Date.valueOf(java.time.LocalDate.now()))) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+  /**
+   * @param eDate to initialize end date.
+   * @return values of leave date.
+   */
+  public static int dateExpiryOfedate(final String eDate) {
+    Date endDate = Date.valueOf(eDate);
+    long ex = endDate.getTime();
+    Date dt = new Date(ex);
+    if (dt.after(Date.valueOf(java.time.LocalDate.now()))) {
+      return 1;
+    } else {
+      return 0;
+    }
+
   }
 }

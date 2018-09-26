@@ -17,7 +17,7 @@ public class CliMain {
     System.out.println("-----------------------");
     System.out.println("1. List All Employees Info");
     System.out.println("2. Display Employee Info");
-    System.out.println("3. Leave Details");
+    System.out.println("3. Apply for leave !");
     System.out.println("5. Pending Leave Applications");
     System.out.println("6. Apply / Deny leave");
     System.out.println("7. Exit");
@@ -33,12 +33,15 @@ public class CliMain {
       case 2:
         listEmployeeDetail();
         break;
+      case 3:
+        applyLeave();
+
       case 5:
         listPendingApplications();
         break;
       case 6:
         //acceptOrDeny();
-        break;
+          break;
       case 7:
         // halt since normal exit throws a stacktrace due to jdbc threads not responding
         Runtime.getRuntime().halt(0);
@@ -85,6 +88,7 @@ public class CliMain {
       System.out.print("Employee Date of Joining = " + e.getEmpDoj() + "\n");
     }
   }
+
   /**
    * The main entry point.
    */
@@ -120,6 +124,41 @@ public class CliMain {
       System.out.print("ManagerComments = " + l.getManagerComments() + " ");
       System.out.print("EmployeeId = " + l.getEmpId() + " ");
       System.out.println("----------------------------------------------" + "\n");
+    }
+  }
+  
+  private void applyLeave() {
+    int i = 1;
+    System.out.println("Employee Id : ");
+    int empId = option.nextInt();
+    System.out.println("Start Date : YYYY-MM-DD");
+    String startDate = option.next();
+    do {
+      i = LeaveDetails.dateExpiryOfsdate(startDate);
+      if (i == 1) {
+        System.out.println("entered date is invalid");
+        applyLeave();
+      }
+    } while (i == 1);
+    System.out.println("End Date : YYYY-MM-DD");
+    String endDate = option.next();
+    do {
+      i = LeaveDetails.dateExpiryOfedate(endDate);
+      if (i == 0) {
+        System.out.println("entered date is invalid");
+        applyLeave();
+      }
+    } while (i == 0);
+    System.out.println("Leave Type : ");
+    String leaveType = option.next();
+    System.out.println("Leave Reason : ");
+    String leaveReason = option.next();
+    int status = LeaveDetails.applyLeave(empId, leaveType, startDate, endDate, leaveReason);
+    if (status > 0) {
+      System.out.print("leave applied");
+    } else {
+      System.out.print("unable to insert record");
+
     }
   }
   /**
