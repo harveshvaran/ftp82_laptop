@@ -170,7 +170,8 @@ public class CliMain {
       System.out.print("Employee Id = " + l.getEmpId() + " ");
       System.out.println("---------------------------------------------");
       System.out.println("----------------------------------------------" + "\n");
-
+    }
+  }
   private void applyLeave() {
     int i = 1;
     System.out.println("Employee Id : ");
@@ -202,8 +203,6 @@ public class CliMain {
       System.out.print("leave applied");
     } else {
       System.out.print("unable to insert record");
-
-
     }
   }
   /**

@@ -59,13 +59,15 @@ public class LeaveDetails {
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
     this.leaveId = argleaveId;
     this.leaveType = argleaveType;
-    this.startDate = dateFormat.format(argstartDate);
-    this.endDate = dateFormat.format(argendDate);
+    String strtDate = dateFormat.format(argstartDate);
+    this.startDate = strtDate;
+    String edDate = dateFormat.format(argendDate);
+    this.endDate = edDate;
     this.noOfDays = argnoOfDays;
     this.leaveStatus = argleaveStatus;
     this.leaveReason = argleaveReason;
-    String appliedOn = dateFormat.format(argleaveAppliedOn);
-    this.leaveAppliedOn = appliedOn;
+    String leaveApplied = dateFormat.format(argleaveAppliedOn);
+    this.leaveAppliedOn = leaveApplied;
     this.managerComments = argmanagerComments;
     this.empId = argempId;
   }
@@ -164,14 +166,14 @@ public class LeaveDetails {
   /**
   @return this Leave Type.
    */
-  public final LeaveType getLeaveType() {
+  public final String getLeaveType() {
     return leaveType;
   }
   /**
    *
    * @param argleaveType to set leave type.
    */
-  public final void setLeaveType(final LeaveType argleaveType) {
+  public final void setLeaveType(final String argleaveType) {
     this.leaveType = argleaveType;
   }
 
@@ -181,27 +183,27 @@ public class LeaveDetails {
    * Gets the StartDate.
    * @return the startdate
    */
-  public final Date getStartDate() {
+  public final String getStartDate() {
     return startDate;
   }
   /**
    *
    * @param argstartDate to set start date.
    */
-  public final void setStartDate(final Date argstartDate) {
+  public final void setStartDate(final String argstartDate) {
     this.startDate = argstartDate;
   }
   /**
    *@return this End date.
    */
-  public final Date getEndDate() {
+  public final String getEndDate() {
     return endDate;
   }
   /**
    *
    * @param argendDate to set End date.
    */
-  public final void setEndDate(final Date argendDate) {
+  public final void setEndDate(final String argendDate) {
     this.endDate = argendDate;
   }
   /**
@@ -220,14 +222,14 @@ public class LeaveDetails {
   /**
    *@return this leave status
    */
-  public final LeaveStatus getLeaveStatus() {
+  public final String getLeaveStatus() {
     return leaveStatus;
   }
   /**
    *
    * @param argleaveStatus to set leave status.
    */
-  public final void setLeaveStatus(final LeaveStatus argleaveStatus) {
+  public final void setLeaveStatus(final String argleaveStatus) {
     this.leaveStatus = argleaveStatus;
   }
   /**

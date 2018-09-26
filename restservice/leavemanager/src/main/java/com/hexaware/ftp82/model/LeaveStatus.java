@@ -1,3 +1,4 @@
+package com.hexaware.ftp82.model;
 /**
  * Employee class to store employee personal details.
  * @author hexware
