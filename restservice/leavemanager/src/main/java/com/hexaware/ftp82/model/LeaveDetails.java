@@ -6,10 +6,15 @@ import java.util.Objects;
 import java.util.List;
 import com.hexaware.ftp82.persistence.DbConnection;
 import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
+
 //import com.hexaware.ftp82.persistence.EmployeeDAO;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
+
+
+import java.text.SimpleDateFormat;
+
 
 /**
  * LeaveDetails class to process employee leave details.
@@ -30,6 +35,48 @@ public class LeaveDetails {
   private Date leaveAppliedOn;
   private String managerComments;
   private int empId;
+
+
+
+  /**
+   *
+   */
+  public LeaveDetails() { }
+  /**
+   *@param argEmpId to set manager comments
+   */
+  public LeaveDetails(final int argEmpId) {
+    this.empId = argEmpId;
+  }
+  
+  /**
+   * @param argLeaveId to initialize employee table details.
+   * @param argLeaveType to initialize employee table details.
+   * @param argStartDate to initialize employee table details.
+   * @param argEndDate to initialize employee table details.
+   * @param argNoOfDays to initialize employee table details.
+   * @param argLeaveStatus to initialize employee table details.
+   * @param argLeaveReason to initialize employee table details.
+   * @param argLeaveAppliedOn to initialize employee table details.
+   * @param argManagerComments to initialize employee table details.
+   * @param argEmpId to initialize employee table details.
+   */
+  public LeaveDetails(final int argLeaveId, final String argLeaveType, final Date argStartDate, final Date argEndDate, final int argNoOfDays, final String argLeaveStatus, final String argLeaveReason, final Date argLeaveAppliedOn, final String argManagerComments, final int argEmpId) {
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+    this.leaveId = argLeaveId;
+    this.leaveType = argLeaveType;
+    String strtDate = dateFormat.format(argStartDate);
+    this.startDate = strtDate;
+    String edDate = dateFormat.format(argEndDate);
+    this.endDate = edDate;
+    this.noOfDays = argNoOfDays;
+    this.leaveStatus = argLeaveStatus;
+    this.leaveReason = argLeaveReason;
+    String leaveApplied = dateFormat.format(argLeaveAppliedOn);
+    this.leaveAppliedOn = leaveApplied;
+    this.managerComments = argManagerComments;
+    this.empId = argEmpId;
+  }
 
   @Override
   public final boolean equals(final Object obj) {
