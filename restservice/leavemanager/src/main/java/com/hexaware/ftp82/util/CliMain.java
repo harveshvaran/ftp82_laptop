@@ -18,7 +18,7 @@ public class CliMain {
   private void mainMenu() {
     System.out.println("Leave Management System");
     System.out.println("-----------------------");
-    System.out.println("1. List All Employees Info");
+    System.out.println("1. List All Employees Info"); 
     System.out.println("2. Display Employee Info");
     System.out.println("3. Apply for leave !");
     System.out.println("5. Pending Leave Applications");
