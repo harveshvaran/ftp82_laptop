@@ -48,7 +48,7 @@ public class LeaveDetails {
   public LeaveDetails(final int argEmpId) {
     this.empId = argEmpId;
   }
-  
+
   /**
    * @param argLeaveId to initialize employee table details.
    * @param argLeaveType to initialize employee table details.
@@ -281,6 +281,8 @@ public class LeaveDetails {
     this.empId = argempId;
   }
   
+
+
   /**
    *
    */
@@ -297,4 +299,16 @@ public class LeaveDetails {
     List<LeaveDetails> ls = dao().list(id);
     return ls.toArray(new LeaveDetails[ls.size()]);
   }
+<<<<<<< HEAD
+=======
+  /**
+  *@return The leave history for the current employee.
+  */
+  public static LeaveDetails[] history(int id) {
+    System.out.println("Leave History");
+    List<LeaveDetails> ls = dao().leaveHistory(empId);
+    return ls.toArray(new LeaveDetails[ls.size()]);
+  }
+
+>>>>>>> 7cd8186... commited
 }

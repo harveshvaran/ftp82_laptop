@@ -1,6 +1,7 @@
 package com.hexaware.ftp82.persistence;
 
 import com.hexaware.ftp82.model.LeaveDetails;
+
 //import com.hexaware.ftp82.persistence.EmployeeDAO;
 //import com.hexaware.ftp82.model.Employee;
 import org.skife.jdbi.v2.sqlobject.Bind;
@@ -26,17 +27,9 @@ public interface LeaveDetailsDAO  {
    * return all the leave history of the current employee.
    * @return the employee array
    */
-  @SqlQuery("SELECT * FROM leave_details WHERE EMP_ID = :empID ")
+  @SqlQuery("select LEAVE_TYPE, START_DATE, END_DATE, NO_OF_DAYS, LEAVE_STATUS from leave_details where EMP_ID = :empID ")
   @Mapper(LeaveDetailsMapper.class)
-  List<LeaveDetails> list();
-
-  /**
-   * return all the leave history of the current employee.
-   * @return the employee array
-   */
-  @SqlQuery("select t1.leave_id,t1.leave_type,t1.start_date,t1.end_date,t1.no_of_days,t1.leave_status,t1.leave_reason,t1.leave_applied_on,t1.manager_comments,t2.emp_leave_balance from leave_details t1 inner join employee t2 on t1.emp_id=t2.emp_id;")
-  @Mapper(LeaveDetailsMapper.class)
-  List<LeaveDetails> list();
+  List<LeaveDetails> leaveHistory(@Bind("empID") int empID);
   
   /**
   * close with no args is used to close the connection.
