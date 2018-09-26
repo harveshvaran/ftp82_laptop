@@ -11,7 +11,6 @@ import com.hexaware.ftp82.model.Employee;
  */
 public class CliMain {
   private Scanner option = new Scanner(System.in, "UTF-8");
-
   private void mainMenu() {
     System.out.println("Leave Management System");
     System.out.println("-----------------------");
@@ -57,11 +56,12 @@ public class CliMain {
    *
    */
   private void listEmployeeDetail() {
-    System.out.println("Enter an Employee Id");
+    System.out.println("Enter an Employee Id: ");
     int empId = option.nextInt();
     Employee employee = Employee.listById(empId);
     if (employee == null) {
       System.out.println("Sorry, No such employee");
+      System.out.println("----There is no such employee-----");
     } else {
       System.out.println("----------------------------------------------");
       System.out.println("Employee ID = " + employee.getEmpId() + "\n");
@@ -92,22 +92,28 @@ public class CliMain {
     }
   }
    /**
-   * The main entry point.
+   * The main entry point for leave history method.
    */
   private void leaveHistoryDetails() {
-    System.out.println("Employee leave History: ");
+    System.out.println("Enter the Employee ID to get the leave History: ");
     int empId = option.nextInt();
     LeaveDetails[] leaveHistory = LeaveDetails.history(empId);
-    for (LeaveDetails l : leaveHistory) {
-      System.out.println("----------------------------------------------");
-      System.out.println("Employee Id = " + l.getEmpId() + " ");
-      System.out.print("Leave ID = " + l.getLeaveId() + " ");
-      System.out.print("Leave Type = " + l.getLeaveType() + " ");
-      System.out.print("Start Date = " + l.getStartDate() + " ");
-      System.out.print("End Date = " + l.getEndDate() + " ");
-      System.out.print("Number of days = " + l.getNumberOfDays() + " ");
-      System.out.print("Leave Status = " + l.getLeaveStatus() + " ");
-      System.out.println("----------------------------------------------" + "\n");
+    Employee employee = Employee.listById(empId);
+    if (employee == null) {
+      System.out.println("\n--------There is no such employee ID----------\n");
+    }
+    System.out.println("\n-------------Employee Leave History-----------\n");
+    for (LeaveDetails lh : leaveHistory) {
+      System.out.print("Employee Id = " + lh.getEmpId() +  " | ");
+      System.out.print("Leave ID = " + lh.getLeaveId() +  " | ");
+      System.out.print("Leave Type = " + lh.getLeaveType() +  " | ");
+      System.out.print("Start Date = " + lh.getStartDate() +  " | ");
+      System.out.print("End Date = " + lh.getEndDate() +  " | ");
+      System.out.print("Number of days = " + lh.getNumberOfDays() +  " | ");
+      System.out.print("Leave Status = " + lh.getLeaveStatus() +  " ");
+      System.out.println("\n");
+    }
+    System.out.println("\n-----------------------------------------------\n");
   }
   /**
    * The main entry point.
@@ -168,6 +174,7 @@ public class CliMain {
       System.out.println("----------------------------------------------" + "\n");
     }
   }
+
 
   private void leaveHistoryDetails() {
     LeaveDetails ld = new LeaveDetails();

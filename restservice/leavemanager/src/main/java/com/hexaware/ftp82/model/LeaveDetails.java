@@ -18,7 +18,7 @@ import java.text.SimpleDateFormat;
 
 /**
  * LeaveDetails class to process employee leave details.
- * @author hexware
+ * @author hexaware
  */
 public class LeaveDetails {
   /**
@@ -299,16 +299,14 @@ public class LeaveDetails {
     List<LeaveDetails> ls = dao().list(id);
     return ls.toArray(new LeaveDetails[ls.size()]);
   }
-<<<<<<< HEAD
-=======
+
   /**
-  *@return The leave history for the current employee.
-  */
-  public static LeaveDetails[] history(int id) {
-    System.out.println("Leave History");
-    List<LeaveDetails> ls = dao().leaveHistory(empId);
-    return ls.toArray(new LeaveDetails[ls.size()]);
+   *@param id to check employee leave history.
+   *@return The leave history for the current employee.
+   */
+  public static LeaveDetails[] history(final int id) {
+    List<LeaveDetails> lh = dao().leaveHistory(id);
+    return lh.toArray(new LeaveDetails[lh.size()]);
   }
 
->>>>>>> 7cd8186... commited
 }
