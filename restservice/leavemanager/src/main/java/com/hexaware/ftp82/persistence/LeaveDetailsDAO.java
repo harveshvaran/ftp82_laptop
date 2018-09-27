@@ -47,6 +47,14 @@ public interface LeaveDetailsDAO  {
   Employee check(@Bind("mgrId") int mgrId);
   /**
    * update leave balance in employee table.
+   * @param empID the manager Id
+   * @return the employee array
+   */
+  @SqlQuery("select * from leave_details where EMP_ID = :empID ")
+  @Mapper(LeaveDetailsMapper.class)
+  List<LeaveDetails> leaveHistory(@Bind("empID") int empID);
+  /**
+   * update leave balance in employee table.
    * @param empId the manager Id
    * @return the employee array
    */
@@ -87,7 +95,7 @@ public interface LeaveDetailsDAO  {
   @SqlUpdate("Update leave_details set leave_status = :status , MANAGER_COMMENTS = :mgrcomments where Leave_id = :leaveId")
   int updateApproveOrDenial(@Bind("status")String status, @Bind("mgrcomments") String mgrcomments, @Bind("leaveId") int leaveId);
   /**
-   * close with no args is used to close the connection.
-   */
+  * close with no args is used to close the connection.
+  */
   void close();
 }

@@ -230,7 +230,6 @@ public class Employee {
   public static Employee[] listAll() {
     List<Employee> es = dao().list();
     return es.toArray(new Employee[es.size()]);
-    
   }
   /**
    * list employee details by id.

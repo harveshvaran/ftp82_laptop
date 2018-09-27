@@ -7,7 +7,7 @@ import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
 import java.text.SimpleDateFormat;
 /**
  * LeaveDetails class to process employee leave details.
- * @author hexware
+ * @author hexaware
  */
 public class LeaveDetails {
 /**
@@ -61,6 +61,7 @@ public class LeaveDetails {
     this.managerComments = argManagerComments;
     this.empId = argEmpId;
   }
+
   @Override
   public final boolean equals(final Object obj) {
     if (obj == null) {
@@ -69,39 +70,40 @@ public class LeaveDetails {
     if (getClass() != obj.getClass()) {
       return false;
     }
-    LeaveDetails ls = (LeaveDetails) obj;
-    if (Objects.equals(leaveId, ls.leaveId)) {
+    LeaveDetails ld = (LeaveDetails) obj;
+    if (Objects.equals(leaveId, ld.leaveId)) {
       return true;
     }
-    if (Objects.equals(leaveType, ls.leaveType)) {
+    if (Objects.equals(leaveType, ld.leaveType)) {
       return true;
     }
-    if (Objects.equals(startDate, ls.startDate)) {
+    if (Objects.equals(startDate, ld.startDate)) {
       return true;
     }
-    if (Objects.equals(endDate, ls.endDate)) {
+    if (Objects.equals(endDate, ld.endDate)) {
       return true;
     }
-    if (Objects.equals(noOfDays, ls.noOfDays)) {
+    if (Objects.equals(noOfDays, ld.noOfDays)) {
       return true;
     }
-    if (Objects.equals(leaveStatus, ls.leaveStatus)) {
+    if (Objects.equals(leaveStatus, ld.leaveStatus)) {
       return true;
     }
-    if (Objects.equals(leaveReason, ls.leaveReason)) {
+    if (Objects.equals(leaveReason, ld.leaveReason)) {
       return true;
     }
-    if (Objects.equals(leaveAppliedOn, ls.leaveAppliedOn)) {
+    if (Objects.equals(leaveAppliedOn, ld.leaveAppliedOn)) {
       return true;
     }
-    if (Objects.equals(managerComments, ls.managerComments)) {
+    if (Objects.equals(managerComments, ld.managerComments)) {
       return true;
     }
-    if (Objects.equals(empId, ls.empId)) {
+    if (Objects.equals(empId, ld.empId)) {
       return true;
     }
     return false;
   }
+
   @Override
   public final int hashCode() {
     return Objects.hash(leaveId, leaveType, startDate, endDate, noOfDays, leaveStatus, leaveReason, leaveAppliedOn, managerComments, empId);
@@ -110,7 +112,7 @@ public class LeaveDetails {
    * Gets the LeaveId.
    * @return this LeaveId.
    */
-  public final int getLeaveId() {
+  public final  int getLeaveId() {
     return leaveId;
   }
   /**
@@ -121,8 +123,7 @@ public class LeaveDetails {
     this.leaveId = argleaveId;
   }
   /**
-   * Gets the LeaveType.
-   * @return this LeaveType.
+  @return this Leave Type.
    */
   public final String getLeaveType() {
     return leaveType;
@@ -134,7 +135,7 @@ public class LeaveDetails {
   public final void setLeaveType(final String argleaveType) {
     this.leaveType = argleaveType;
   }
-    /**
+  /**
    * Gets the StartDate.
    * @return this StartDate.
    */
@@ -149,8 +150,7 @@ public class LeaveDetails {
     this.startDate = argstartDate;
   }
   /**
-   * Gets the EndDate.
-   * @return this EndDate.
+   *@return this End date.
    */
   public final String getEndDate() {
     return endDate;
@@ -163,22 +163,20 @@ public class LeaveDetails {
     this.endDate = argendDate;
   }
   /**
-   * Gets the NumberOfdays.
-   * @return this NumberOfDays.
+   * @return this number of days
    */
-  public final int getNumberOfDays() {
+  public final int getNoOfDays() {
     return noOfDays;
   }
   /**
    *
-   * @param argnoOfDays to set employee id.
+   * @param argnoOfDays to set number of days.
    */
-  public final void setNumberOfDays(final int argnoOfDays) {
+  public final void setNoOfDays(final int argnoOfDays) {
     this.noOfDays = argnoOfDays;
   }
-    /**
-   * Gets the LeaveStatus.
-   * @return this LeaveStatus.
+  /**
+   *@return this leave status
    */
   public final String getLeaveStatus() {
     return leaveStatus;
@@ -191,8 +189,7 @@ public class LeaveDetails {
     this.leaveStatus = argleaveStatus;
   }
   /**
-   * Gets the LeaveId.
-   * @return this LeaveId.
+   *@return this leave reason
    */
   public final String getLeaveReason() {
     return leaveReason;
@@ -205,8 +202,7 @@ public class LeaveDetails {
     this.leaveReason = argleaveReason;
   }
   /**
-   * Gets the LeaveAppliedOn.
-   * @return this LeaveAppliedOn.
+   * @return this leave applied on
    */
   public final String getLeaveAppliedOn() {
     return leaveAppliedOn;
@@ -219,8 +215,7 @@ public class LeaveDetails {
     this.leaveAppliedOn = argleaveAppliedOn;
   }
   /**
-   * Gets the ManagerComments.
-   * @return this ManagerComments.
+   * @return this manager comments
    */
   public final String getManagerComments() {
     return managerComments;
@@ -240,10 +235,10 @@ public class LeaveDetails {
   }
   /**
    *
-   * @param argEmpId to set manager comments.
+   * @param argempId to set manager comments.
    */
-  public final void setEmpId(final int argEmpId) {
-    this.empId = argEmpId;
+  public final void setEmpId(final int argempId) {
+    this.empId = argempId;
   }
   /**
    *
@@ -260,6 +255,14 @@ public class LeaveDetails {
   public static LeaveDetails[] listAll(final int id) {
     List<LeaveDetails> ls = dao().list(id);
     return ls.toArray(new LeaveDetails[ls.size()]);
+  }
+  /**
+   *@param id to check employee leave history.
+   *@return The leave history for the current employee.
+   */
+  public static LeaveDetails[] history(final int id) {
+    List<LeaveDetails> lh = dao().leaveHistory(id);
+    return lh.toArray(new LeaveDetails[lh.size()]);
   }
   /**
    *@param leaveType leave pending details
@@ -295,20 +298,20 @@ public class LeaveDetails {
   }
   /**
    * @param eDate to initialize end date.
+   * @param sDate to initialize end date.
    * @return values of leave date.
    */
-  public static int dateExpiryOfedate(final String eDate) {
+  public static int dateExpiryOfedate(final String eDate, final String sDate) {
     Date endDate = Date.valueOf(eDate);
     long ex = endDate.getTime();
     Date dt = new Date(ex);
-    if (dt.after(Date.valueOf(java.time.LocalDate.now()))) {
+    if (dt.after(Date.valueOf(sDate))) {
       return 1;
     } else {
       return 0;
     }
   }
   /**
-   *
    * @param argApplyEmpId to check manager Id.
    * @param argApplyLeaveId to check manager Id.
    * @param argMgrComments to check manager Id.
@@ -319,7 +322,7 @@ public class LeaveDetails {
     Employee e1 = dao().getLeaveBalance(argApplyEmpId);
     LeaveDetails l1 = dao().getStatus(argApplyLeaveId);
     int leaveBalance = e1.getEmpLeaveBalance();
-    int appliedNoOfLeaves = l1.getNumberOfDays();
+    int appliedNoOfLeaves = l1.getNoOfDays();
     String statusOfEmp = l1.getLeaveStatus();
     if (argApproveStatus.equalsIgnoreCase("approve")) {
       if (statusOfEmp.equals("PENDING")) {

@@ -1,8 +1,9 @@
+package com.hexaware.ftp82.model;
 /**
  * Employee class to store employee personal details.
  * @author hexware
  */
-enum LeaveStatus {
+public enum LeaveStatus {
 /**
  *@param decalres PENDING, APPROVED, DENIED as leave status
  */
