@@ -1,26 +1,15 @@
 package com.hexaware.ftp82.model;
-import java.util.Date;
+import java.sql.Date;
 import java.util.Objects;
 import java.util.List;
 import com.hexaware.ftp82.persistence.DbConnection;
 import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
-<<<<<<< HEAD
-=======
-//import com.hexaware.ftp82.persistence.EmployeeDAO;
->>>>>>> acd15d2... approve/deny is ready to push
 import java.text.SimpleDateFormat;
 /**
  * LeaveDetails class to process employee leave details.
  * @author hexware
  */
 public class LeaveDetails {
-  /**
- * Apply for leave method to apply leave.
- * @author hexware
- */
-  public final void applyForLeave() {
-    System.out.println("Welcome to ls");
-  }
 /**
  *
  */
@@ -229,7 +218,6 @@ public class LeaveDetails {
   public final void setLeaveAppliedOn(final String argleaveAppliedOn) {
     this.leaveAppliedOn = argleaveAppliedOn;
   }
-
   /**
    * Gets the ManagerComments.
    * @return this ManagerComments.

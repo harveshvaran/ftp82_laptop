@@ -1,6 +1,7 @@
 package com.hexaware.ftp82.util;
 import com.hexaware.ftp82.model.LeaveDetails;
 import com.hexaware.ftp82.model.Employee;
+//import com.hexaware.ftp82.excep.MyException;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
@@ -26,7 +27,10 @@ public class CliMain {
     System.out.println("7. Exit");
     System.out.println("-----------------------");
     System.out.println("Enter your choice:");
-    int menuOption = option.nextInt();
+    int menuOption = 0;
+    do {
+      menuOption = getInteger();
+    } while (menuOption == 0);
     mainMenuDetails(menuOption);
   }
   private void mainMenuDetails(final int selectedOption) {
@@ -36,6 +40,9 @@ public class CliMain {
         break;
       case 2:
         listEmployeeDetail();
+        break;
+      case 3:
+        applyLeave();
         break;
       case 5:
         listPendingApplications();
@@ -56,7 +63,10 @@ public class CliMain {
    */
   private void listEmployeeDetail() {
     System.out.println("Enter an Employee Id");
-    int empId = option.nextInt();
+    int empId = 0;
+    do {
+      empId = getInteger();
+    } while (empId == 0);
     Employee employee = Employee.listById(empId);
     if (employee == null) {
       System.out.println("Sorry, No such employee");
@@ -89,13 +99,15 @@ public class CliMain {
       System.out.print("Employee Date of Joining = " + e.getEmpDoj() + "\n");
     }
   }
-
   /**
    * The main entry point.
    */
   private void listPendingApplications() {
     System.out.println("Enter the Your employee ID:");
-    int empId = option.nextInt();
+    int empId = 0;
+    do {
+      empId = getInteger();
+    } while (empId == 0);
     Employee employee = Employee.listById(empId);
     LeaveDetails[] leave = LeaveDetails.listAll(empId);
     if (employee == null) {
@@ -135,7 +147,10 @@ public class CliMain {
   private void applyLeave() {
     int i = 1;
     System.out.println("Employee Id : ");
-    int empId = option.nextInt();
+    int empId = 0;
+    do {
+      empId = getInteger();
+    } while (empId == 0);
     System.out.println("Start Date : YYYY-MM-DD");
     String startDate = option.next();
     do {
@@ -172,9 +187,15 @@ public class CliMain {
   private void acceptOrDeny() {
     LeaveDetails ls = new LeaveDetails();
     System.out.println("Enter Employee ID: ");
-    int applyEmpId = option.nextInt();
+    int applyEmpId = 0;
+    do {
+      applyEmpId = getInteger();
+    } while (applyEmpId == 0);
     System.out.println("Enter Leave ID: ");
-    int applyLeaveId = option.nextInt();
+    int applyLeaveId = 0;
+    do {
+      applyLeaveId = getInteger();
+    } while (applyLeaveId == 0);
     System.out.println("Enter Comments ");
     option.nextLine();
     String applyMgrComments = option.nextLine();
@@ -182,7 +203,7 @@ public class CliMain {
     String approveStatus = option.nextLine();
     //System.out.println(LeaveDetails.checkIds(applyEmpId, applyLeaveId));
     if (LeaveDetails.checkIds(applyEmpId, applyLeaveId) == 1) {
-      int applyStatus = ls.applyLeave(applyEmpId, applyLeaveId, applyMgrComments, approveStatus);
+      int applyStatus = ls.applyForLeave(applyEmpId, applyLeaveId, applyMgrComments, approveStatus);
       switch (applyStatus) {
         case 1:
           System.out.println("Leave approved !");
@@ -202,6 +223,21 @@ public class CliMain {
     } else {
       System.out.println("Enter corresponding Employee Id and leave ID ");
     }
+  }
+  /**
+   * The main entry point.
+   * @return the list of arguments
+   */
+  public static int getInteger() {
+    try {
+      Scanner sc = new Scanner(System.in);
+      String msg = sc.next();
+      int num = Integer.parseInt(msg);
+      return num;
+    } catch (Exception e) {
+      System.out.println("Enter integer !");
+    }
+    return 0;
   }
   /**
    * The main entry point.

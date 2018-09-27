@@ -1,7 +1,6 @@
 package com.hexaware.ftp82.persistence;
 import com.hexaware.ftp82.model.Employee;
 import com.hexaware.ftp82.model.LeaveDetails;
-import com.hexaware.ftp82.persistence.EmployeeDAO;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
@@ -13,6 +12,23 @@ import java.util.List;
  * The DAO class for leaveDetails.
  */
 public interface LeaveDetailsDAO  {
+  /**
+   * @param empId of the employee
+   * @param leaveType of the employee
+   * @param startDate of the employee
+   * @param endDate of the employee
+   * @param noOfDays of the employee
+   * @param leaveReason of the employee
+   * @param leaveAppliedOn of the employee
+   * @param leaveStatus of the employee
+   * @return the leave object
+   */
+  @SqlUpdate("insert into Leave_Details(LEAVE_TYPE, START_DATE, END_DATE, NO_OF_DAYS, LEAVE_REASON,"
+      + "LEAVE_APPLIED_ON, LEAVE_STATUS, EMP_ID) values "
+      + "(:leaveType, :startDate, :endDate, :noOfDays, :leaveReason, :leaveAppliedOn, :leaveStatus, :empId)")
+  int insertLeaveDetails(@Bind("leaveType") String leaveType, @Bind("startDate") Date startDate,
+      @Bind("endDate") Date endDate, @Bind("noOfDays") int noOfDays, @Bind("leaveReason") String leaveReason,
+      @Bind("leaveAppliedOn") Date leaveAppliedOn, @Bind("leaveStatus") String leaveStatus, @Bind("empId") int empId);
   /**
    * return all the details of the selected employee.
    * @param id the id of the employee
@@ -30,15 +46,8 @@ public interface LeaveDetailsDAO  {
   @Mapper(EmployeeMapper.class)
   Employee check(@Bind("mgrId") int mgrId);
   /**
-   * return all the details of leavedetails table based on empId and pending status.
-   * @param empId the employee array
-   * @return the employee array
-   */
-  @SqlQuery("SELECT * FROM leave_details WHERE LEAVE_STATUS = 'PENDING' && EMP_ID = :empId")
-  @Mapper(LeaveDetailsMapper.class)
-  List<LeaveDetails> displayLeaveDetails(@Bind("empId") int empId);
    * update leave balance in employee table.
-   * @param empId the employee array
+   * @param empId the manager Id
    * @return the employee array
    */
   @SqlQuery("SELECT * FROM leave_details WHERE EMP_ID = :empId")
