@@ -8,8 +8,9 @@ import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
 //import java.Date;
 //import java.time.LocalDate;
 //import java.time.LocalDateTime;
-import java.text.SimpleDateFormat;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+//import java.sql.Date;
 
 /**
  * LeaveDetails class to process employee leave details.
@@ -21,13 +22,13 @@ public class LeaveDetails {
  * @author hexware
  */
   private int leaveId;
-  private LeaveType leaveType;
-  private Date startDate;
-  private Date endDate;
+  private String leaveType;
+  private String startDate;
+  private String endDate;
   private int noOfDays;
-  private LeaveStatus leaveStatus;
+  private String leaveStatus;
   private String leaveReason;
-  private Date leaveAppliedOn;
+  private String leaveAppliedOn;
   private String managerComments;
   private int empId;
   /**
@@ -40,36 +41,35 @@ public class LeaveDetails {
   public LeaveDetails(final int argEmpId) {
     this.empId = argEmpId;
   }
-
   /**
-   * @param argleaveId to initialize LeaveDetails table.
-   * @param argleaveType to initialize LeaveDetails table.
-   * @param argnoOfDays to initialize LeaveDetails table.
-   * @param argstartDate to initialize LeaveDetails table.
-   * @param argendDate to initialize LeaveDetails table.
-   * @param argleaveStatus to initialize LeaveDetails table.
-   * @param argleaveReason to initialize LeaveDetails table.
-   * @param argleaveAppliedOn to initialize LeaveDetails table.
-   * @param argmanagerComments to initialize LeaveDetails table.
-   * @param argempId to initialize LeaveDetails table.
+   * @param argLeaveId to initialize LeaveDetails table.
+   * @param argLeaveType to initialize LeaveDetails table.
+   * @param argNoOfDays to initialize LeaveDetails table.
+   * @param argStartDate to initialize LeaveDetails table.
+   * @param argEndDate to initialize LeaveDetails table.
+   * @param argLeaveStatus to initialize LeaveDetails table.
+   * @param argLeaveReason to initialize LeaveDetails table.
+   * @param argLeaveAppliedOn to initialize LeaveDetails table.
+   * @param argManagerComments to initialize LeaveDetails table.
+   * @param argEmpId to initialize LeaveDetails table.
    */
-  public LeaveDetails(final int argleaveId, final String argleaveType, final Date argstartDate, final Date argendDate, final int argnoOfDays,
-      final String argleaveStatus, final String argleaveReason, final Date argleaveAppliedOn,
-      final String argmanagerComments, final int argempId) {
+  public LeaveDetails(final int argLeaveId, final String argLeaveType, final Date argStartDate, final Date argEndDate, final int argNoOfDays,
+      final String argLeaveStatus, final String argLeaveReason, final Date argLeaveAppliedOn,
+      final String argManagerComments, final int argEmpId) {
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-    this.leaveId = argleaveId;
-    this.leaveType = argleaveType;
-    String strtDate = dateFormat.format(argstartDate);
+    this.leaveId = argLeaveId;
+    this.leaveType = argLeaveType;
+    String strtDate = dateFormat.format(argStartDate);
     this.startDate = strtDate;
-    String edDate = dateFormat.format(argendDate);
+    String edDate = dateFormat.format(argEndDate);
     this.endDate = edDate;
-    this.noOfDays = argnoOfDays;
-    this.leaveStatus = argleaveStatus;
-    this.leaveReason = argleaveReason;
-    String leaveApplied = dateFormat.format(argleaveAppliedOn);
+    this.noOfDays = argNoOfDays;
+    this.leaveStatus = argLeaveStatus;
+    this.leaveReason = argLeaveReason;
+    String leaveApplied = dateFormat.format(argLeaveAppliedOn);
     this.leaveAppliedOn = leaveApplied;
-    this.managerComments = argmanagerComments;
-    this.empId = argempId;
+    this.managerComments = argManagerComments;
+    this.empId = argEmpId;
   }
 
   @Override
@@ -119,37 +119,6 @@ public class LeaveDetails {
     return Objects.hash(leaveId, leaveType, startDate, endDate, noOfDays, leaveStatus, leaveReason, leaveAppliedOn, managerComments, empId);
   }
   /**
-
-   * return LeaveDetails.
-   */
-  public LeaveDetails() { }
-  /**
-   * @param argleaveId to initialize employee table details.
-   * @param argleaveType to initialize employee table details.
-   * @param argstartDate to initialize employee table details.
-   * @param argendDate to initialize employee table details.
-   * @param argnoOfDays to initialize employee table details.
-   * @param argleaveStatus to initialize employee table details.
-   * @param argleaveReason to initialize employee table details.
-   * @param argleaveAppliedOn to initialize employee table details.
-   * @param argmanagerComments to initialize employee table details.
-   * @param argempId to initialize employee table details.
-   */
-  public LeaveDetails(final int argleaveId, final LeaveType argleaveType, final Date argstartDate, final Date argendDate, final int argnoOfDays, final LeaveStatus argleaveStatus, final String argleaveReason, final Date argleaveAppliedOn, final String argmanagerComments, final int argempId) {
-    this.leaveId = argleaveId;
-    this.leaveType = argleaveType;
-    this.startDate = argstartDate;
-    this.endDate = argendDate;
-    this.noOfDays = argnoOfDays;
-    this.leaveStatus = argleaveStatus;
-    this.leaveReason = argleaveReason;
-    this.leaveAppliedOn = argleaveAppliedOn;
-    this.managerComments = argmanagerComments;
-    this.empId = argempId;
-  }
-  /**
-   *@return the Leave ID.
-
    * Gets the LeaveId.
    * @return this LeaveId.
    */
@@ -176,10 +145,7 @@ public class LeaveDetails {
   public final void setLeaveType(final String argleaveType) {
     this.leaveType = argleaveType;
   }
-
   /**
-   * @return this Leave Type.
-    /**
    * Gets the StartDate.
    * @return the startdate
    */
@@ -248,14 +214,14 @@ public class LeaveDetails {
   /**
    * @return this leave applied on
    */
-  public final Date getLeaveAppliedOn() {
+  public final String getLeaveAppliedOn() {
     return leaveAppliedOn;
   }
   /**
    *
    * @param argleaveAppliedOn to set leave status.
    */
-  public final void setLeaveAppliedOn(final Date argleaveAppliedOn) {
+  public final void setLeaveAppliedOn(final String argleaveAppliedOn) {
     this.leaveAppliedOn = argleaveAppliedOn;
   }
   /**

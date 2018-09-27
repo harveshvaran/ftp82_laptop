@@ -43,7 +43,7 @@ public class CliMain {
         listPendingApplications();
         break;
       case 6:
-        acceptOrDeny();
+        //acceptOrDeny();
         break;
       case 7:
         // halt since normal exit throws a stacktrace due to jdbc threads not responding
@@ -110,7 +110,7 @@ public class CliMain {
       System.out.print("Leave Type = " + lh.getLeaveType() +  " | ");
       System.out.print("Start Date = " + lh.getStartDate() +  " | ");
       System.out.print("End Date = " + lh.getEndDate() +  " | ");
-      System.out.print("Number of days = " + lh.getNumberOfDays() +  " | ");
+      System.out.print("Number of days = " + lh.getNoOfDays() +  " | ");
       System.out.print("Leave Status = " + lh.getLeaveStatus() +  " ");
       System.out.println("\n");
     }
@@ -144,31 +144,12 @@ public class CliMain {
       System.out.print("LeaveType = " + l.getLeaveType() + " ");
       System.out.print("StartDate = " + l.getStartDate() + " ");
       System.out.print("EndDate = " + l.getEndDate() + " ");
-      System.out.print("Numberofdays = " + l.getNumberOfDays() + " ");
+      System.out.print("Numberofdays = " + l.getNoOfDays() + " ");
       System.out.print("LeaveStatus = " + l.getLeaveStatus() + " ");
       System.out.print("LeaveReason = " + l.getLeaveReason() + " ");
       System.out.print("LeaveAppliedOn = " + l.getLeaveAppliedOn() + " ");
       System.out.print("ManagerComments = " + l.getManagerComments() + " ");
       System.out.print("EmployeeId = " + l.getEmpId() + " ");
-      System.out.println("----------------------------------------------" + "\n");
-    }
-  }
-
-  private void acceptOrDeny() {
-    LeaveDetails[] leave = LeaveDetails.listAll();
-    for (LeaveDetails l : leave) {
-      System.out.println("----------------------------------------------");
-      System.out.println("Leave ID = " + l.getLeaveId() + " ");
-      System.out.print("Leave Type = " + l.getLeaveType() + " ");
-      System.out.print("Start Date = " + l.getStartDate() + " ");
-      System.out.print("End Date = " + l.getEndDate() + " ");
-      System.out.print("Number of days = " + l.getNumberOfDays() + " ");
-      System.out.print("Leave Status = " + l.getLeaveStatus() + " ");
-      System.out.print("Leave reason = " + l.getLeaveReason() + " ");
-      System.out.print("Leave Applied On = " + l.getLeaveAppliedOn() + " ");
-      System.out.print("Manager Comments = " + l.getManagerComments() + " ");
-      System.out.print("Employee Id = " + l.getEmpId() + " ");
-      System.out.println("---------------------------------------------");
       System.out.println("----------------------------------------------" + "\n");
     }
   }
