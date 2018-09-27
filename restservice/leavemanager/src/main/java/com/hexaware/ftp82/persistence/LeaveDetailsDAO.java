@@ -58,7 +58,7 @@ public interface LeaveDetailsDAO  {
    * @param empId the manager Id
    * @return the employee array
    */
-  @SqlQuery("SELECT * FROM leave_details WHERE EMP_ID = :empId")
+  @SqlQuery("SELECT * FROM leave_details WHERE EMP_ID = :empId and leave_status = 'PENDING' ")
   @Mapper(LeaveDetailsMapper.class)
   LeaveDetails checkIdss(@Bind("empId") int empId);
   /**

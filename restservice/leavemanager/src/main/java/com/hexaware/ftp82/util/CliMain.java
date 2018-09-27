@@ -229,7 +229,6 @@ public class CliMain {
       applyLeaveId = getInteger();
     } while (applyLeaveId == 0);
     System.out.println("Enter Comments ");
-    option.nextLine();
     String applyMgrComments = option.nextLine();
     System.out.println("Approve / Deny ");
     String approveStatus = option.nextLine();
