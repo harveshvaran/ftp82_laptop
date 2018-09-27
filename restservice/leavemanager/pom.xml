@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.hexaware</groupId>
   <artifactId>ftp82</artifactId>
-  <version>0.0.1-${build.number}</version>
+  <version>1.8.0_131-${build.number}</version>
   <packaging>war</packaging>
   <name>ftp82</name>
   <url>http://maven.apache.org</url>
