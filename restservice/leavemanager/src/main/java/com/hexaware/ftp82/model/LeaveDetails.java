@@ -1,25 +1,17 @@
 package com.hexaware.ftp82.model;
+import java.sql.Date;
 import java.util.Objects;
 import java.util.List;
 import com.hexaware.ftp82.persistence.DbConnection;
 import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
-//import com.hexaware.ftp82.persistence.EmployeeDAO;
-//import com.hexaware.ftp82.persistence.EmployeeDAO;
-//import java.Date;
-//import java.time.LocalDate;
-//import java.time.LocalDateTime;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
-//import java.sql.Date;
-
 /**
  * LeaveDetails class to process employee leave details.
  * @author hexaware
  */
 public class LeaveDetails {
-  /**
- * Apply for leave method to apply leave.
- * @author hexware
+/**
+ *
  */
   private int leaveId;
   private String leaveType;
@@ -42,20 +34,18 @@ public class LeaveDetails {
     this.empId = argEmpId;
   }
   /**
-   * @param argLeaveId to initialize LeaveDetails table.
-   * @param argLeaveType to initialize LeaveDetails table.
-   * @param argNoOfDays to initialize LeaveDetails table.
-   * @param argStartDate to initialize LeaveDetails table.
-   * @param argEndDate to initialize LeaveDetails table.
-   * @param argLeaveStatus to initialize LeaveDetails table.
-   * @param argLeaveReason to initialize LeaveDetails table.
-   * @param argLeaveAppliedOn to initialize LeaveDetails table.
-   * @param argManagerComments to initialize LeaveDetails table.
-   * @param argEmpId to initialize LeaveDetails table.
+   * @param argLeaveId to initialize employee table details.
+   * @param argLeaveType to initialize employee table details.
+   * @param argStartDate to initialize employee table details.
+   * @param argEndDate to initialize employee table details.
+   * @param argNoOfDays to initialize employee table details.
+   * @param argLeaveStatus to initialize employee table details.
+   * @param argLeaveReason to initialize employee table details.
+   * @param argLeaveAppliedOn to initialize employee table details.
+   * @param argManagerComments to initialize employee table details.
+   * @param argEmpId to initialize employee table details.
    */
-  public LeaveDetails(final int argLeaveId, final String argLeaveType, final Date argStartDate, final Date argEndDate, final int argNoOfDays,
-      final String argLeaveStatus, final String argLeaveReason, final Date argLeaveAppliedOn,
-      final String argManagerComments, final int argEmpId) {
+  public LeaveDetails(final int argLeaveId, final String argLeaveType, final Date argStartDate, final Date argEndDate, final int argNoOfDays, final String argLeaveStatus, final String argLeaveReason, final Date argLeaveAppliedOn, final String argManagerComments, final int argEmpId) {
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
     this.leaveId = argLeaveId;
     this.leaveType = argLeaveType;
@@ -147,7 +137,7 @@ public class LeaveDetails {
   }
   /**
    * Gets the StartDate.
-   * @return the startdate
+   * @return this StartDate.
    */
   public final String getStartDate() {
     return startDate;
@@ -309,16 +299,64 @@ public class LeaveDetails {
   }
   /**
    * @param eDate to initialize end date.
+   * @param sDate to initialize end date.
    * @return values of leave date.
    */
-  public static int dateExpiryOfedate(final String eDate) {
+  public static int dateExpiryOfedate(final String eDate, final String sDate) {
     Date endDate = Date.valueOf(eDate);
     long ex = endDate.getTime();
     Date dt = new Date(ex);
-    if (dt.after(Date.valueOf(java.time.LocalDate.now()))) {
+    if (dt.after(Date.valueOf(sDate))) {
       return 1;
     } else {
       return 0;
     }
+  }
+  /**
+   * @param argApplyEmpId to check manager Id.
+   * @param argApplyLeaveId to check manager Id.
+   * @param argMgrComments to check manager Id.
+   * @param argApproveStatus to check manager Id.
+   * @return return statusId;
+   */
+  public final int applyForLeave(final int argApplyEmpId, final int argApplyLeaveId, final String argMgrComments, final String argApproveStatus) {
+    Employee e1 = dao().getLeaveBalance(argApplyEmpId);
+    LeaveDetails l1 = dao().getStatus(argApplyLeaveId);
+    int leaveBalance = e1.getEmpLeaveBalance();
+    int appliedNoOfLeaves = l1.getNoOfDays();
+    String statusOfEmp = l1.getLeaveStatus();
+    if (argApproveStatus.equalsIgnoreCase("approve")) {
+      if (statusOfEmp.equals("PENDING")) {
+        statusOfEmp = "APPROVED";
+        int approvedLeaves = leaveBalance - appliedNoOfLeaves;
+        int leaves = dao().updateEmployee(approvedLeaves, argApplyEmpId);
+        int applyEmpStatus = dao().updateApproveOrDenial(statusOfEmp, argMgrComments, argApplyLeaveId);
+        if (leaves > 0 && applyEmpStatus > 0) {
+          return 1;
+        }
+      } else {
+        return 102;
+      }
+    } else if (argApproveStatus.equalsIgnoreCase("deny")) {
+      statusOfEmp = "DENIED";
+      dao().updateApproveOrDenial(statusOfEmp, argMgrComments, argApplyLeaveId);
+      return 100;
+    } else {
+      return 101;
+    }
+    return 101;
+  }
+  /**
+   * list employee details by id.
+   * @param empId to get employee details.
+   * @param leaveId to get employee details.
+   * @return Employee
+   */
+  public static int checkIds(final int empId, final int leaveId) {
+    LeaveDetails lsId = dao().checkIdss(empId);
+    if (lsId.getLeaveId() == leaveId && lsId.getEmpId() == empId) {
+      return 1;
+    }
+    return 0;
   }
 }

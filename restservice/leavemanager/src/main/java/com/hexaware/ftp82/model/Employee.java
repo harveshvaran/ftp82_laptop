@@ -195,7 +195,6 @@ public class Employee {
   public final int getEmpLeaveBalance() {
     return empLeaveBalance;
   }
-
   /**
    *
    * @param argEmpLeaveBalance to set employee leave balance.
@@ -203,14 +202,13 @@ public class Employee {
   public final void setEmpLeaveBalance(final int argEmpLeaveBalance) {
     this.empLeaveBalance = argEmpLeaveBalance;
   }
-/**
+  /**
    * Gets the EmployeeDoj.
    * @return this Employee's Doj.
    */
   public final Date getEmpDoj() {
     return empDoj;
   }
-
   /**
    *
    * @param argEmpDoj to set employee Doj.
@@ -225,17 +223,14 @@ public class Employee {
     DbConnection db = new DbConnection();
     return db.getConnect().onDemand(EmployeeDAO.class);
   }
-
   /**
    * list all employee details.
    * @return all employees' details
    */
   public static Employee[] listAll() {
-
     List<Employee> es = dao().list();
     return es.toArray(new Employee[es.size()]);
   }
-
   /**
    * list employee details by id.
    * @param empID id to get employee details.
@@ -257,7 +252,10 @@ public class Employee {
    * @param id to get employee details.
    * @return Employee
    */
-  public static Employee getLeaveBalance(final int id) {
-    return dao().get(id);
+  public static int getLeaveBalance(final int id) {
+    Employee e = dao().getBalance(id);
+    int leavBalance = 0;
+    leavBalance = e.getEmpLeaveBalance();
+    return leavBalance;
   }
 }
