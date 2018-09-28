@@ -269,13 +269,10 @@ public class CliMain {
     } catch (Exception e) {
       System.out.println("Enter integer !");
     }
-<<<<<<< HEAD
     } catch(InputMismatchException exception) {
       System.out.println("Enter the valid employee ID...!!!!!!!");
     }
-=======
     return 0;
->>>>>>> e229432bc624e89818d42983f78141a7d04ad611
   }
   /**
    * The main entry point.
