@@ -286,11 +286,11 @@ public class LeaveDetails {
    * @param sDate to initialize start date.
    * @return values of leave date.
    */
-  public static int dateExpiryOfsdate(final String sDate) {
+  public static int dateExpiryOfsdate(final String sDate, final String empId) {
     Date startDate = Date.valueOf(sDate);
     long ex = startDate.getTime();
     Date dt = new Date(ex);
-    if (dt.before(Date.valueOf(java.time.LocalDate.now()))) {
+    if (dt.before(Date.valueOf(java.time.LocalDate.now())) && dt.after(Date.valueOf())) {
       return 1;
     } else {
       return 0;
@@ -304,6 +304,7 @@ public class LeaveDetails {
   public static int dateExpiryOfedate(final String eDate, final String sDate) {
     Date endDate = Date.valueOf(eDate);
     long ex = endDate.getTime();
+    //insert query for connection with employee table for retrieving empDOJ
     Date dt = new Date(ex);
     if (dt.after(Date.valueOf(sDate))) {
       return 1;

@@ -115,7 +115,7 @@ public class CliMain {
     System.out.println("Start Date : YYYY-MM-DD");
     String startDate = option.next();
     do {
-      i = LeaveDetails.dateExpiryOfsdate(startDate);
+      i = LeaveDetails.dateExpiryOfsdate(startDate, empId);
       if (i == 1) {
         System.out.println("entered date is invalid");
         applyLeave();
