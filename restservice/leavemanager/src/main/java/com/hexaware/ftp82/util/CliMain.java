@@ -89,6 +89,7 @@ public class CliMain {
    * The main entry point.
    */
   private void listPendingApplications() {
+    try {
     System.out.println("Enter the Your employee ID:");
     int empId = option.nextInt();
     Employee employee = Employee.listById(empId);
@@ -120,6 +121,9 @@ public class CliMain {
       System.out.print("ManagerComments = " + l.getManagerComments() + " ");
       System.out.print("EmployeeId = " + l.getEmpId() + " ");
       System.out.println("----------------------------------------------" + "\n");
+    }
+    } catch(InputMismatchException exception) {
+      System.out.println("Enter the valid employee ID...!!!!!!!");
     }
   }
   /**
