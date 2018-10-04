@@ -45,7 +45,10 @@ public class LeaveDetails {
    * @param argManagerComments to initialize employee table details.
    * @param argEmpId to initialize employee table details.
    */
-  public LeaveDetails(final int argLeaveId, final String argLeaveType, final Date argStartDate, final Date argEndDate, final int argNoOfDays, final String argLeaveStatus, final String argLeaveReason, final Date argLeaveAppliedOn, final String argManagerComments, final int argEmpId) {
+  public LeaveDetails(final int argLeaveId, final String argLeaveType, final String argStartDate, 
+  final String argEndDate, final int argNoOfDays, final String argLeaveStatus, final String argLeaveReason, 
+  final String argLeaveAppliedOn, final String argManagerComments, final int argEmpId) {
+    try{
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
     this.leaveId = argLeaveId;
     this.leaveType = argLeaveType;
@@ -60,6 +63,9 @@ public class LeaveDetails {
     this.leaveAppliedOn = leaveApplied;
     this.managerComments = argManagerComments;
     this.empId = argEmpId;
+    }catch(Exception e){
+      System.out.println(e.toString());
+    }
   }
 
   @Override
@@ -274,12 +280,17 @@ public class LeaveDetails {
    */
   public static int applyLeave(final int empId, final String leaveType, final String startDate, final String endDate, final String leaveReason) {
     String leaveStatus = "Pending";
+    int status=0;
+    try{
     Date appliedDate = Date.valueOf(java.time.LocalDate.now());
     Date sDate = Date.valueOf(startDate);
     Date eDate = Date.valueOf(endDate);
     long diff = eDate.getTime() - sDate.getTime();
     int diffInDays = (int) diff / (1000 * 60 * 60 * 24);
-    int status = dao().insertLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveReason, appliedDate, leaveStatus, empId);
+    status = dao().insertLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveReason, appliedDate, leaveStatus, empId);
+    }catch(Exception e){
+      System.out.println(e.toString());
+    }
     return status;
   }
   /**

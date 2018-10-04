@@ -172,7 +172,6 @@ public class CliMain {
    * The main entry point.
    */
   private void listPendingApplications() {
-    try {
     System.out.println("Enter the Your employee ID:");
     int empId = 0;
     do {
@@ -268,9 +267,6 @@ public class CliMain {
       return num;
     } catch (Exception e) {
       System.out.println("Enter integer !");
-    }
-    } catch(InputMismatchException exception) {
-      System.out.println("Enter the valid employee ID...!!!!!!!");
     }
     return 0;
   }
