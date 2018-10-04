@@ -1,10 +1,22 @@
 package com.hexaware.ftp82.model;
+import com.hexaware.ftp82.persistence.DbConnection;
+import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
+
+import java.text.SimpleDateFormat;
 import java.sql.Date;
 import java.util.Objects;
 import java.util.List;
-import com.hexaware.ftp82.persistence.DbConnection;
-import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
-import java.text.SimpleDateFormat;
+
+import java.util.Properties;
+import javax.mail.Transport;
+import javax.mail.Session;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.mail.Message;
+//import javax.mail.Authenticator;
+import javax.mail.MessagingException;
+//import javax.mail.NoSuchProviderException;
+import javax.mail.PasswordAuthentication;
 /**
  * LeaveDetails class to process employee leave details.
  * @author hexaware
@@ -357,5 +369,38 @@ public class LeaveDetails {
       return 1;
     }
     return 0;
+  }
+  /**
+   *
+   */
+  public static void sendMail() {
+    final String from = "harveshvaran96@gmail.com";
+    final String to = "harveshvaran96@gmail.com";
+    final String username = "harveshvaran96";//change accordingly
+    final String password = "Cse_1234";//change accordingly
+    String host = "smtp.gmail.com";
+    Properties props = new Properties();
+    props.put("mail.smtp.auth", "true");
+    props.put("mail.smtp.starttls.enable", "true");
+    props.put("mail.smtp.host", host);
+    props.put("mail.smtp.port", "587");
+    Session session = Session.getInstance(props,
+    new javax.mail.Authenticator() {
+      protected PasswordAuthentication getPasswordAuthentication() {
+      return new PasswordAuthentication(username, password);
+      }
+    });
+    try {
+      Message message = new MimeMessage(session);
+      message.setFrom(new InternetAddress(from));
+      message.setRecipients(Message.RecipientType.TO,
+      InternetAddress.parse(to));
+      message.setSubject("Testing Subject");
+      message.setText("Hello, this is sample for to check send "+ "email using JavaMailAPI ");
+      Transport.send(message);
+      System.out.println("Sent message successfully....");
+    } catch (MessagingException e) {
+      throw new RuntimeException(e);
+    }
   }
 }
