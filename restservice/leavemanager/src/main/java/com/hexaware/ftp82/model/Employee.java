@@ -5,6 +5,8 @@ import com.hexaware.ftp82.persistence.EmployeeDAO;
 
 import java.util.Objects;
 import java.util.List;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 /**
  * Employee class to store employee personal details.
@@ -29,7 +31,7 @@ public class Employee {
   private String empDept;
   private int empManagerId;
   private int empLeaveBalance;
-  private Date empDoj;
+  private String empDoj;
   @Override
   public final boolean equals(final Object obj) {
     if (obj == null) {
@@ -56,11 +58,11 @@ public class Employee {
     }
     if (Objects.equals(empManagerId, emp.empManagerId)) {
       return true;
-    }
+    } 
     if (Objects.equals(empLeaveBalance, emp.empLeaveBalance)) {
       return true;
     }
-    if (Objects.equals(empDoj, emp.empDoj)) {
+    if(Objects.equals(empDoj, emp.empDoj)) {
       return true;
     }
     return false;
@@ -98,7 +100,9 @@ public class Employee {
     this.empDept = argEmpDept;
     this.empManagerId = argEmpManagerId;
     this.empLeaveBalance = argEmpLeaveBalance;
-    this.empDoj = argEmpDoj;
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+    String empDojj = dateFormat.format(argEmpDoj);
+    this.empDoj = empDojj;
   }
   /**
    * Gets the EmployeeId.
@@ -206,14 +210,14 @@ public class Employee {
    * Gets the EmployeeDoj.
    * @return this Employee's Doj.
    */
-  public final Date getEmpDoj() {
+  public final String getEmpDoj() {
     return empDoj;
   }
   /**
    *
    * @param argEmpDoj to set employee Doj.
    */
-  public final void setEmpDoj(final Date argEmpDoj) {
+  public final void setEmpDoj(final String argEmpDoj) {
     this.empDoj = argEmpDoj;
   }
   /**
