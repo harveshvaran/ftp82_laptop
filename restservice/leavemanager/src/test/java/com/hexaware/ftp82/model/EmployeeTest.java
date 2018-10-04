@@ -40,13 +40,13 @@ public class EmployeeTest {
     Employee e100 = new Employee(100);
     Employee e101 = new Employee(101);
     assertNotEquals(e100, null);
-    assertNotEquals(e100, new Integer(100));
+    assertNotEquals(e100, "Raj");
     assertEquals(e100, new Employee(100));
     assertNotEquals(e101, new Employee(100));
     assertEquals(e100.hashCode(), new Employee(100).hashCode());
     assertEquals(e100.getEmpId(), new Employee(100).getEmpId());
     e101.setEmpId(100);
-    assertEquals(e101, new Employee(100));
+    assertEquals(e101, new Employee(109));
   }
 
 
