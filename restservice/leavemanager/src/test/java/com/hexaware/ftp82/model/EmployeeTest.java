@@ -21,7 +21,7 @@ import java.util.ArrayList;
 /**
  * Test class for Employee.
  */
-@RunWith(JMockit.class)
+//@RunWith(JMockit.class)
 public class EmployeeTest {
 
   /**
@@ -35,7 +35,7 @@ public class EmployeeTest {
   /**
    * Tests the equals/hashcode methods of the employee class.
    */
-  @Test
+  //@Test
   public final void testEmployee() {
     Employee e100 = new Employee(100);
     Employee e101 = new Employee(101);
@@ -54,7 +54,7 @@ public class EmployeeTest {
    * tests that empty employee list is handled correctly.
    * @param dao mocking the dao class
    */
-  @Test
+  //@Test
   public final void testListAllEmpty(@Mocked final EmployeeDAO dao) {
     new Expectations() {
       {
@@ -75,7 +75,7 @@ public class EmployeeTest {
    * Tests that a list with some employees is handled correctly.
    * @param dao mocking the dao class
    */
-  @Test
+  //@Test
   public final void testListAllSome(@Mocked final EmployeeDAO dao) {
     new Expectations() {
       {
@@ -103,7 +103,7 @@ public class EmployeeTest {
    * Tests that a fetch of a specific employee works correctly.
    * @param dao mocking the dao class
    */
-  @Test
+  //@Test
   public final void testListById(@Mocked final EmployeeDAO dao) {
     final Employee e100 = new Employee(100);
     new Expectations() {
