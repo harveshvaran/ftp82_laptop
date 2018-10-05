@@ -1,11 +1,7 @@
 package com.hexaware.ftp82.model;
-
 import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
-//import static org.junit.Assert.assertNull;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,12 +13,10 @@ import mockit.MockUp;
 import mockit.Mocked;
 import mockit.Mock;
 import mockit.integration.junit4.JMockit;
-
 import java.util.ArrayList;
-//import java.text.SimpleDateFormat;
 /**
- * Test class for LeaveDetails.
- */
+  * setup method.
+  */
 @RunWith(JMockit.class)
 public class LeaveDetailsTest {
   /**
@@ -144,18 +138,17 @@ public class LeaveDetailsTest {
   }
   /**
    * Tests that a fetch of a specific employee works correctly.
-   * @param dao mocking the dao class
    */
   @Test
-  public void testDateMethod(){
-   int res = LeaveDetails.dateExpiryOfsdate("2018-10-08");
-   assertEquals(0,res);
-   int res1 = LeaveDetails.dateExpiryOfsdate("2018-10-02");
-   assertEquals(1,res1);
-   int res2 = LeaveDetails.dateExpiryOfedate("2018-10-15", "2018-10-08");
-   assertEquals(1, res2);
-   int res3 = LeaveDetails.dateExpiryOfedate("2018-10-06", "2018-10-08");
-   assertEquals(0, res3);
+  public final void testDateMethod() {
+    int res = LeaveDetails.dateExpiryOfsdate("2018-10-08");
+    assertEquals(0, res);
+    int res1 = LeaveDetails.dateExpiryOfsdate("2018-10-02");
+    assertEquals(1, res1);
+    int res2 = LeaveDetails.dateExpiryOfedate("2018-10-15", "2018-10-08");
+    assertEquals(1, res2);
+    int res3 = LeaveDetails.dateExpiryOfedate("2018-10-06", "2018-10-08");
+    assertEquals(0, res3);
   }
   /**
    * Tests that a fetch of a specific employee works correctly.
@@ -182,7 +175,7 @@ public class LeaveDetailsTest {
         result = 1;
       }
     };
-        new MockUp<LeaveDetails>() {
+    new MockUp<LeaveDetails>() {
       @Mock
       LeaveDetailsDAO dao() {
         return dao;
@@ -214,7 +207,6 @@ public class LeaveDetailsTest {
         return dao;
       }
     };
-
     LeaveDetails[] l = LeaveDetails.history(300);
     assertEquals(0, l.length);
   }
@@ -266,8 +258,8 @@ public class LeaveDetailsTest {
         return dao;
       }
     };
-    int l = LeaveDetails.checkIds(2000,1000);
-    int l1 = LeaveDetails.checkIds(3000,1000);
+    int l = LeaveDetails.checkIds(2000, 1000);
+    int l1 = LeaveDetails.checkIds(3000, 1000);
     assertEquals(l100.getEmpId(), 2000);
     assertEquals(l100.getLeaveId(), 1000);
     assertEquals(l, 1);

@@ -40,15 +40,14 @@ public class Employee {
       return false;
     }
     Employee emp = (Employee) obj;
-    if (Objects.equals(empId, emp.empId) && Objects.equals(empName, emp.empName) 
-      && Objects.equals(empPh, emp.empPh) && Objects.equals(empEmail, emp.empEmail) 
-      && Objects.equals(empDept, emp.empDept) && Objects.equals(empManagerId, emp.empManagerId) 
-      && Objects.equals(empLeaveBalance, emp.empLeaveBalance) && Objects.equals(empDoj, emp.empDoj)) {
+    if (Objects.equals(empId, emp.empId) && Objects.equals(empName, emp.empName)
+        && Objects.equals(empPh, emp.empPh) && Objects.equals(empEmail, emp.empEmail)
+        && Objects.equals(empDept, emp.empDept) && Objects.equals(empManagerId, emp.empManagerId)
+        && Objects.equals(empLeaveBalance, emp.empLeaveBalance) && Objects.equals(empDoj, emp.empDoj)) {
       return true;
     }
     return false;
   }
-
   @Override
   public final int hashCode() {
     return Objects.hash(empId, empName, empPh, empEmail, empDept, empManagerId, empLeaveBalance, empDoj);

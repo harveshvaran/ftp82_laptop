@@ -5,8 +5,6 @@ import com.hexaware.ftp82.persistence.EmployeeDAO;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import java.util.Objects;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -50,27 +48,22 @@ public class EmployeeTest {
       Employee e101 = new Employee();
       Employee e102 = new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1);
       Employee e103 = new Employee();
-      
       assertNotEquals(e100, null);
       assertNotEquals(e101, null);
       assertNotEquals(e102, null);
       assertNotEquals(e103, null);
-
       assertNotEquals(e103, new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1));
       assertEquals(new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1).equals(e102), true);
       assertEquals(e100.hashCode(), new Employee(100).hashCode());
       assertEquals(e101.hashCode(), new Employee().hashCode());
       assertEquals(e102.hashCode(), new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1).hashCode());
       assertNotEquals(e103.hashCode(), new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1).hashCode());
-
       assertNotEquals(e100, new Integer(100));
       assertNotEquals(e101, new Integer(100));
       assertNotEquals(e102, new Integer(100));
       assertNotEquals(e103, new Integer(100));
-
       assertEquals(e100, new Employee(100));
       assertEquals(e102, new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1));
-      
       assertEquals(e100.getEmpId(), new Employee(100).getEmpId());
       assertEquals(e102.getEmpId(), 100);
       assertEquals(e102.getEmpName(), "harvesh");
@@ -130,14 +123,14 @@ public class EmployeeTest {
     new Expectations() {
       {
         try {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-        String sDate1 = "2018-11-09";
-        Date date1 = dateFormat.parse(sDate1);
-        ArrayList<Employee> es = new ArrayList<Employee>();
-        es.add(new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1));
-        es.add(new Employee(10));
-        es.add(new Employee(100));
-        dao.list(); result = es;
+          SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+          String sDate1 = "2018-11-09";
+          Date date1 = dateFormat.parse(sDate1);
+          ArrayList<Employee> es = new ArrayList<Employee>();
+          es.add(new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1));
+          es.add(new Employee(10));
+          es.add(new Employee(100));
+          dao.list(); result = es;
         } catch (ParseException e) {
           e.printStackTrace();
         }
@@ -186,7 +179,29 @@ public class EmployeeTest {
     e = Employee.listById(-1);
     assertNull(e);
   }
-      /**
+  /**
+   * tests that empty employee list is handled correctly.
+   * @param dao mocking the dao class
+   */
+  @Test
+  public final void testSend(@Mocked final EmployeeDAO dao) {
+    final Employee e100 = new Employee();
+    new Expectations() {
+      {
+        dao.check(100);
+        result = e100;
+      }
+    };
+    new MockUp<Employee>() {
+      @Mock
+      EmployeeDAO dao() {
+        return dao;
+      }
+    };
+    Employee e = Employee.send(100);
+    assertEquals(e100, e);
+  }
+  /**
    * Tests that a fetch of a specific employee works correctly.
    * @param dao mocking the dao class
    */
@@ -195,7 +210,7 @@ public class EmployeeTest {
     final Employee e100 = new Employee(100);
     new Expectations() {
       {
-        dao.getBalance(100); 
+        dao.getBalance(100);
         e100.setEmpLeaveBalance(3);
         result = e100;
       }

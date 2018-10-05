@@ -74,11 +74,11 @@ public class LeaveDetails {
       return false;
     }
     LeaveDetails ld = (LeaveDetails) obj;
-    if (Objects.equals(leaveId, ld.leaveId) && Objects.equals(leaveType, ld.leaveType) 
-      && Objects.equals(startDate, ld.startDate) &&Objects.equals(endDate, ld.endDate) 
-      && Objects.equals(noOfDays, ld.noOfDays) && Objects.equals(leaveStatus, ld.leaveStatus) 
-      && Objects.equals(leaveReason, ld.leaveReason) && Objects.equals(leaveAppliedOn, ld.leaveAppliedOn)
-      && Objects.equals(managerComments, ld.managerComments) && Objects.equals(empId, ld.empId)) {
+    if (Objects.equals(leaveId, ld.leaveId) && Objects.equals(leaveType, ld.leaveType)
+        && Objects.equals(startDate, ld.startDate) && Objects.equals(endDate, ld.endDate)
+        && Objects.equals(noOfDays, ld.noOfDays) && Objects.equals(leaveStatus, ld.leaveStatus)
+        && Objects.equals(leaveReason, ld.leaveReason) && Objects.equals(leaveAppliedOn, ld.leaveAppliedOn)
+        && Objects.equals(managerComments, ld.managerComments) && Objects.equals(empId, ld.empId)) {
       return true;
     }
     return false;
