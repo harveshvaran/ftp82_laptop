@@ -343,4 +343,17 @@ public class LeaveDetails {
     }
     return 0;
   }
+   /**
+   * list employee details by id.
+   * @param empId to get employee details.
+   * @param leaveId to get employee details.
+   * @return Employee
+   */
+   public static int overlapCheck(final Date startDate, final Date SD, final Date ED) {
+     int a=-1;
+     if (startDate.getTime() >= SD.getTime()&&startDate.getTime() <= ED.getTime() || startDate.getTime() == SD.getTime() || startDate.getTime() == ED.getTime()) {
+       a=0;
+     }
+     return a;
+     }
 }
