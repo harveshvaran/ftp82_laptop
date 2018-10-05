@@ -229,7 +229,6 @@ public class LeaveDetails {
    */
   public final void setManagerComments(final String argmanagerComments) {
     this.managerComments = argmanagerComments;
-    
   }
   /**
    * @return this Employee ID

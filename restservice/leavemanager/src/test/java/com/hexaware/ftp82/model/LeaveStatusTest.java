@@ -1,21 +1,21 @@
 package com.hexaware.ftp82.model;
-import org.junit.Before;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
-//import static org.junit.Assert.assertEquals;
-import mockit.Expectations;
-import mockit.MockUp;
-import mockit.Mocked;
-import mockit.Mock;
+
 import mockit.integration.junit4.JMockit;
+/**
+ * Test class for Employee.
+ */
 @RunWith(JMockit.class)
 public class LeaveStatusTest {
-    @Test
+  /**
+   * Tests the equals/hashcode methods of the employee class.
+   */
+  @Test
     public final void testLeaveStatus() {
-        LeaveStatus ls1 = LeaveStatus.PENDING;
-        LeaveStatus ls2 = LeaveStatus.APPROVED;
-        LeaveStatus ls3 = LeaveStatus.DENIED;
-        
-    }
-
+    LeaveStatus ls1 = LeaveStatus.PENDING;
+    LeaveStatus ls2 = LeaveStatus.APPROVED;
+    LeaveStatus ls3 = LeaveStatus.DENIED;
+  }
 }
