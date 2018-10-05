@@ -7,14 +7,14 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+//import org.junit.Test;
+//import org.junit.runner.RunWith;
 
 import mockit.Expectations;
 import mockit.MockUp;
 import mockit.Mocked;
 import mockit.Mock;
-import mockit.integration.junit4.JMockit;
+//import mockit.integration.junit4.JMockit;
 
 import java.util.ArrayList;
 
@@ -98,8 +98,7 @@ public class EmployeeTest {
     assertEquals(new Employee(10), es[1]);
     assertEquals(new Employee(100), es[2]);
   }
-
-    /**
+  /**
    * Tests that a fetch of a specific employee works correctly.
    * @param dao mocking the dao class
    */
@@ -120,9 +119,7 @@ public class EmployeeTest {
     };
     Employee e = Employee.listById(100);
     assertEquals(e100, e);
-
     e = Employee.listById(-1);
     assertNull(e);
   }
 }
-
