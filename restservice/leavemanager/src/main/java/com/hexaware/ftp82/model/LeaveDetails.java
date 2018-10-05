@@ -372,18 +372,11 @@ public class LeaveDetails {
    * @param leaveId to get employee details.
    * @return Employee
    */
-   public static int overlapCheck(int empId, String startDate) {
-     List<LeaveDetails> li = dao().leaveHistory(empId);
-     Date chDate = date.valueOf(startDate);
-     for(LeaveDetails l : li) {
-       Date sDate = l.getStartDate();
-       Date eDate = l.getEndDate();
-       if(chDate.after(sDate)&&chDate.before(eDate)) {
-         return 0;
-       } else 
-       {
-         return 1;
-       }
+   public static int overlapCheck(final Date startDate, final Date SD, final Date ED) {
+     int a=-1;
+     if (startDate.getTime() >= SD.getTime()&&startDate.getTime() <= ED.getTime() || startDate.getTime() == SD.getTime() || startDate.getTime() == ED.getTime()) {
+       a=0;
      }
-   }
+     return a;
+     }
 }
