@@ -366,4 +366,24 @@ public class LeaveDetails {
     }
     return 0;
   }
+   /**
+   * list employee details by id.
+   * @param empId to get employee details.
+   * @param leaveId to get employee details.
+   * @return Employee
+   */
+   public static int overlapCheck(int empId, String startDate) {
+     List<LeaveDetails> li = dao().leaveHistory(empId);
+     Date chDate = date.valueOf(startDate);
+     for(LeaveDetails l : li) {
+       Date sDate = l.getStartDate();
+       Date eDate = l.getEndDate();
+       if(chDate.after(sDate)&&chDate.before(eDate)) {
+         return 0;
+       } else 
+       {
+         return 1;
+       }
+     }
+   }
 }

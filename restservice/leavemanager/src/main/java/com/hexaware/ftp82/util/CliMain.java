@@ -121,6 +121,11 @@ public class CliMain {
         applyLeave();
       }
     } while (i == 1);
+    int flag = LeaveDetails.overlapCheck(empId, startDate);
+    if (flag == 0) {
+      System.out.print("You have already applied leave on this date!");
+      applyLeave();
+    }
     System.out.println("End Date : YYYY-MM-DD");
     String endDate = option.next();
     do {
