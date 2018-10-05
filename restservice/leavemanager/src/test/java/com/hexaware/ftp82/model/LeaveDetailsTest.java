@@ -43,6 +43,7 @@ public class LeaveDetailsTest {
     assertNotEquals(ld, new Integer(100));
     assertEquals(ld, new LeaveDetails(1, "EL", "2018-08-27", "2018-08-27", 2, "PENDING", "SICK","2018-08-27", "OK", 1000));
     assertEquals(ld1, new LeaveDetails());
+    assertNotEquals(ld, new LeaveDetails());
     assertEquals(ld1.hashCode(), new LeaveDetails().hashCode());
     ld.setLeaveId(100);
     assertEquals(ld.getLeaveId(),100);
@@ -142,20 +143,77 @@ public class LeaveDetailsTest {
     };
     int e = LeaveDetails.applyLeave(100, "EL", "2018-08-26", "2018-08-26", "SICK");
     assertEquals(1, e);
-
-    //e = LeaveDetails.applyLeave(-1);
-    //assertNull(e);
   }
-@Test
-public void testDateMethod(){
- int res = LeaveDetails.dateExpiryOfsdate("2018-10-08");
- assertEquals(0,res);
- int res1 = LeaveDetails.dateExpiryOfsdate("2018-10-02");
- assertEquals(1,res1);
- int res2 = LeaveDetails.dateExpiryOfedate("2018-10-15", "2018-10-08");
- assertEquals(1, res2);
- int res3 = LeaveDetails.dateExpiryOfedate("2018-10-06", "2018-10-08");
- assertEquals(0, res3);
-
-}
+  @Test
+  public void testDateMethod(){
+   int res = LeaveDetails.dateExpiryOfsdate("2018-10-08");
+   assertEquals(0,res);
+   int res1 = LeaveDetails.dateExpiryOfsdate("2018-10-02");
+   assertEquals(1,res1);
+   int res2 = LeaveDetails.dateExpiryOfedate("2018-10-15", "2018-10-08");
+   assertEquals(1, res2);
+   int res3 = LeaveDetails.dateExpiryOfedate("2018-10-06", "2018-10-08");
+   assertEquals(0, res3);
+  }
+  @Test
+  public final void testApplyOrDeny(@Mocked final LeaveDetailsDAO dao) {
+    final Employee e100 = new Employee();
+    final LeaveDetails l100 = new LeaveDetails();
+    new Expectations() {
+      {
+        dao.getLeaveBalance(100);
+        e100.setEmpLeaveBalance(30);
+        result = e100;
+        dao.getStatus(200);
+        l100.setNoOfDays(5);
+        l100.setLeaveStatus("PENDING");
+        result = l100;
+        dao.updateEmployee(25, 100);
+        result = 1;
+        dao.updateApproveOrDenial("APPROVED", "hi", 200);
+        result = 1;
+        dao.updateApproveOrDenial("DENIED", "hi", 300);
+        result = 1;
+      }
+    };
+    new MockUp<LeaveDetails>() {
+      @Mock
+      LeaveDetailsDAO dao() {
+        return dao;
+      }
+    };
+    LeaveDetails ld = new LeaveDetails();
+    int status = ld.applyForLeave(100, 200, "hi", "approve");
+    int status1 = ld.applyForLeave(100, 300, "hi", "deny");
+    int status2 = ld.applyForLeave(100, 300, "hi", "oky");
+    assertEquals(status, 1);
+    assertNotEquals(status, 1000);
+    assertEquals(status1, 100);
+    assertEquals(status2, 101);
+  }
+  @Test
+  public final void testCheckIds(@Mocked final LeaveDetailsDAO dao) {
+    final LeaveDetails l100 = new LeaveDetails();
+    new Expectations() {
+      {
+        dao.checkIdss(2000);
+        l100.setEmpId(2000);
+        l100.setLeaveId(1000);
+        result = l100;
+      }
+    };
+    new MockUp<LeaveDetails>() {
+      @Mock
+      LeaveDetailsDAO dao() {
+        return dao;
+      }
+    };
+    int l = LeaveDetails.checkIds(2000,1000);
+    int l1 = LeaveDetails.checkIds(3000,1000);
+    assertEquals(l100.getEmpId(), 2000);
+    assertEquals(l100.getLeaveId(), 1000);
+    assertEquals(l, 1);
+    assertNotEquals(l, 0);
+    assertEquals(l1, 0);
+  }
 }

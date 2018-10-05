@@ -26,7 +26,7 @@ import java.util.ArrayList;
 /**
  * Test class for Employee.
  */
-//@RunWith(JMockit.class)
+@RunWith(JMockit.class)
 public class EmployeeTest {
 
   /**
@@ -40,9 +40,8 @@ public class EmployeeTest {
   /**
    * Tests the equals/hashcode methods of the employee class.
    */
-  //@Test
+  @Test
   public final void testEmployee() {
-<<<<<<< HEAD
     try {
       SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
       String sDate1 = "2018-11-09";
@@ -56,19 +55,6 @@ public class EmployeeTest {
       assertNotEquals(e101, null);
       assertNotEquals(e102, null);
       assertNotEquals(e103, null);
-=======
-    Employee e100 = new Employee(100);
-    Employee e101 = new Employee(101);
-    assertNotEquals(e100, null);
-    assertNotEquals(e100, "Raj");
-    assertEquals(e100, new Employee(100));
-    assertNotEquals(e101, new Employee(100));
-    assertEquals(e100.hashCode(), new Employee(100).hashCode());
-    assertEquals(e100.getEmpId(), new Employee(100).getEmpId());
-    e101.setEmpId(100);
-    assertEquals(e101, new Employee(109));
-  }
->>>>>>> 7aea9250b85279f65b564e58bce0d822914fdd6e
 
       assertNotEquals(e103, new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1));
       assertEquals(new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1).equals(e102), true);
@@ -118,7 +104,7 @@ public class EmployeeTest {
    * tests that empty employee list is handled correctly.
    * @param dao mocking the dao class
    */
- // @Test
+  @Test
   public final void testListAllEmpty(@Mocked final EmployeeDAO dao) {
     new Expectations() {
       {
@@ -139,7 +125,7 @@ public class EmployeeTest {
    * Tests that a list with some employees is handled correctly.
    * @param dao mocking the dao class
    */
-  //@Test
+  @Test
   public final void testListAllSome(@Mocked final EmployeeDAO dao) {
     new Expectations() {
       {
@@ -181,7 +167,7 @@ public class EmployeeTest {
    * Tests that a fetch of a specific employee works correctly.
    * @param dao mocking the dao class
    */
-  //@Test
+  @Test
   public final void testListById(@Mocked final EmployeeDAO dao) {
     final Employee e100 = new Employee(100);
     new Expectations() {
