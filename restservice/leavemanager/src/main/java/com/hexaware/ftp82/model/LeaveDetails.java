@@ -57,23 +57,26 @@ public class LeaveDetails {
    * @param argManagerComments to initialize employee table details.
    * @param argEmpId to initialize employee table details.
    */
-  public LeaveDetails(final int argLeaveId, final String argLeaveType, final Date argStartDate, final Date argEndDate, final int argNoOfDays, final String argLeaveStatus, final String argLeaveReason, final Date argLeaveAppliedOn, final String argManagerComments, final int argEmpId) {
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-    this.leaveId = argLeaveId;
-    this.leaveType = argLeaveType;
-    String strtDate = dateFormat.format(argStartDate);
-    this.startDate = strtDate;
-    String edDate = dateFormat.format(argEndDate);
-    this.endDate = edDate;
-    this.noOfDays = argNoOfDays;
-    this.leaveStatus = argLeaveStatus;
-    this.leaveReason = argLeaveReason;
-    String leaveApplied = dateFormat.format(argLeaveAppliedOn);
-    this.leaveAppliedOn = leaveApplied;
-    this.managerComments = argManagerComments;
-    this.empId = argEmpId;
+  public LeaveDetails(final int argLeaveId, final String argLeaveType, final String argStartDate, final String argEndDate, final int argNoOfDays, final String argLeaveStatus, final String argLeaveReason, final String argLeaveAppliedOn, final String argManagerComments, final int argEmpId) {
+    try {
+      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+      this.leaveId = argLeaveId;
+      this.leaveType = argLeaveType;
+      String strtDate = dateFormat.format(argStartDate);
+      this.startDate = strtDate;
+      String edDate = dateFormat.format(argEndDate);
+      this.endDate = edDate;
+      this.noOfDays = argNoOfDays;
+      this.leaveStatus = argLeaveStatus;
+      this.leaveReason = argLeaveReason;
+      String leaveApplied = dateFormat.format(argLeaveAppliedOn);
+      this.leaveAppliedOn = leaveApplied;
+      this.managerComments = argManagerComments;
+      this.empId = argEmpId;
+    } catch (Exception e)  {
+      System.out.println(e.toString());
+    }
   }
-
   @Override
   public final boolean equals(final Object obj) {
     if (obj == null) {
@@ -286,12 +289,17 @@ public class LeaveDetails {
    */
   public static int applyLeave(final int empId, final String leaveType, final String startDate, final String endDate, final String leaveReason) {
     String leaveStatus = "Pending";
-    Date appliedDate = Date.valueOf(java.time.LocalDate.now());
-    Date sDate = Date.valueOf(startDate);
-    Date eDate = Date.valueOf(endDate);
-    long diff = eDate.getTime() - sDate.getTime();
-    int diffInDays = (int) diff / (1000 * 60 * 60 * 24);
-    int status = dao().insertLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveReason, appliedDate, leaveStatus, empId);
+    int status = 0;
+    try {
+      Date appliedDate = Date.valueOf(java.time.LocalDate.now());
+      Date sDate = Date.valueOf(startDate);
+      Date eDate = Date.valueOf(endDate);
+      long diff = eDate.getTime() - sDate.getTime();
+      int diffInDays = (int) diff / (1000 * 60 * 60 * 24);
+      status = dao().insertLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveReason, appliedDate, leaveStatus, empId);
+    } catch (Exception e) {
+      System.out.println(e.toString());
+    }
     return status;
   }
   /**
@@ -322,6 +330,19 @@ public class LeaveDetails {
     } else {
       return 0;
     }
+  }
+ /**
+  * list employee details by id.
+  * @param empId to get employee details.
+  * @param leaveId to get employee details.
+  * @return Employee
+  */
+  public static int overlapCheck(final Date startDate, final Date SD, final Date ED) {
+    int a=-1;
+    if (startDate.getTime() >= SD.getTime()&&startDate.getTime() <= ED.getTime() || startDate.getTime() == SD.getTime() || startDate.getTime() == ED.getTime()) {
+      a=0;
+    }
+    return a;
   }
   /**
    * @param argApplyEmpId to check manager Id.
