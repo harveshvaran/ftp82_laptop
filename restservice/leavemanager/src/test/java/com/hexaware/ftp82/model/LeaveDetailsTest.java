@@ -7,12 +7,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.sql.Date;
-
+import java.text.SimpleDateFormat;
+import java.text.DateFormat; 
 import mockit.Expectations;
 import mockit.MockUp;
 import mockit.Mocked;
 import mockit.Mock;
 import mockit.integration.junit4.JMockit;
+import java.util.List;
 import java.util.ArrayList;
 /**
   * setup method.
@@ -31,11 +33,18 @@ public class LeaveDetailsTest {
   */
   @Test
   public final void testLeaveDetails() {
-    final LeaveDetails ld = new LeaveDetails(1, "EL", "2018-08-27", "2018-08-27", 2, "PENDING", "SICK", "2018-08-27", "OK", 1000);
+    //DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    String StrtDate = "2018-08-27";
+    String EndDate = "2018-08-27";
+    String AppliedDate = "2018-08-27";
+    Date sDate = Date.valueOf(StrtDate);
+    Date eDate = Date.valueOf(EndDate);
+    Date adate = Date.valueOf(AppliedDate);
+    final LeaveDetails ld = new LeaveDetails(1, "EL", sDate, eDate, 2, "PENDING", "SICK", adate, "OK", 1000);
     final LeaveDetails ld1 = new LeaveDetails();
     assertNotEquals(ld, null);
     assertNotEquals(ld, new Integer(100));
-    assertEquals(ld, new LeaveDetails(1, "EL", "2018-08-27", "2018-08-27", 2, "PENDING", "SICK", "2018-08-27", "OK", 1000));
+    assertEquals(ld, new LeaveDetails(1, "EL", sDate, eDate, 2, "PENDING", "SICK", adate, "OK", 1000));
     assertEquals(ld1, new LeaveDetails());
     assertNotEquals(ld, new LeaveDetails());
     assertEquals(ld1.hashCode(), new LeaveDetails().hashCode());
@@ -221,7 +230,6 @@ public class LeaveDetailsTest {
         ArrayList<LeaveDetails> lt = new ArrayList<LeaveDetails>();
         lt.add(new LeaveDetails(100));
         lt.add(new LeaveDetails(200));
-        lt.add(new LeaveDetails(300));
         dao.list(300); result = lt;
       }
     };
@@ -232,10 +240,9 @@ public class LeaveDetailsTest {
       }
     };
     LeaveDetails[] lt = LeaveDetails.listAll(300);
-    assertEquals(3, lt.length);
+    assertEquals(2, lt.length);
     assertEquals(new LeaveDetails(100), lt[0]);
     assertEquals(new LeaveDetails(200), lt[1]);
-    assertEquals(new LeaveDetails(300), lt[2]);
   }
   /**
    * Tests that a fetch of a specific employee works correctly.
@@ -265,5 +272,39 @@ public class LeaveDetailsTest {
     assertEquals(l, 1);
     assertNotEquals(l, 0);
     assertEquals(l1, 0);
+  }
+ /**
+   * Tests that a fetch of a specific employee works correctly.
+   * @param dao mocking the dao class
+   */
+  @Test
+  public final void testOverlap(@Mocked final LeaveDetailsDAO dao) {
+
+    final LeaveDetails lea = new LeaveDetails();
+    final LeaveDetails lea1 = new LeaveDetails();
+    
+    new Expectations() {
+      {
+        List<LeaveDetails> lshs = new ArrayList();
+        lea.setStartDate("2018-10-06");
+        lea.setEndDate("2018-10-08");
+        lea1.setStartDate("2018-10-06");
+        lea1.setEndDate("2018-10-08");
+        lshs.add(lea);
+        lshs.add(lea1);
+        lshs = dao.leaveHistory(300);
+        result = lshs;
+      }
+    };
+    new MockUp<LeaveDetails>() {
+      @Mock
+      LeaveDetailsDAO dao() {
+        return dao;
+      }
+    };
+    int l = LeaveDetails.overLapCheck("2018-10-16", 300);
+    int l2 = LeaveDetails.overLapCheck("2018-10-14", 300);
+    assertEquals(1, l);
+    assertEquals(1, l2);
   }
 }

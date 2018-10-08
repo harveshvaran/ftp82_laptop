@@ -288,8 +288,12 @@ public class LeaveDetails {
       Date eDate = Date.valueOf(endDate);
       long diff = eDate.getTime() - sDate.getTime();
       diffInDays = (int) diff / (1000 * 60 * 60 * 24);
+<<<<<<< HEAD
       diffInDays = diffInDays + 1;
       System.out.println("\n number of days" + diffInDays + "\n");
+=======
+      System.out.println("\n number of days"+diffInDays+"\n");
+>>>>>>> b348f222ca9c6de4e256da621a9d25320e1aa423
       status = dao().insertLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveReason, appliedDate, leaveStatus, empId);
     }catch(Exception e){
       System.out.println(e.toString());
