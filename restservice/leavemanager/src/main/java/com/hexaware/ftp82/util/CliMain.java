@@ -1,15 +1,10 @@
 package com.hexaware.ftp82.util;
 import com.hexaware.ftp82.model.LeaveDetails;
 import com.hexaware.ftp82.model.Employee;
-//import com.hexaware.ftp82.excep.MyException;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.ListIterator;
-//import java.sql.Date;
-//import com.hexaware.ftp82.model.persistence.EmployeeDAO;
-//import com.hexaware.ftp82.model.persistence.LeaveDetailsDAO;
-//import java.util.*;
 /**
  * Class CliMain provides the command line interface to the leavemanagement
  * application.
@@ -110,6 +105,7 @@ public class CliMain {
     int i = 1;
     System.out.println("Employee Id : ");
     int empId = 0;
+    int overlap = 0;
     do {
       empId = getInteger();
     } while (empId == 0);
@@ -131,16 +127,23 @@ public class CliMain {
         applyLeave();
       }
     } while (i == 0);
-    System.out.println("Leave Type : ");
-    String leaveType = option.next();
-    System.out.println("Leave Reason : ");
-    String leaveReason = option.next();
-    int status = LeaveDetails.applyLeave(empId, leaveType, startDate, endDate, leaveReason);
-    if (status > 0) {
-      System.out.print("leave applied");
+    overlap = LeaveDetails.overLapCheck(startDate, empId);
+    if(overlap == 1) {
+      System.out.println("Leave Type : ");
+      String leaveType = option.next();
+      System.out.println("Leave Reason : ");
+      String leaveReason = option.next();
+      int status = LeaveDetails.applyLeave(empId, leaveType, startDate, endDate, leaveReason);
+      if (status > 0) {
+        System.out.print("leave applied");
       LeaveDetails.sendMail();
-    } else {
+      } else {
       System.out.print("<<<<<<<<<<<<<<<< UNABLE TO APPLY FOR LEAVE >>>>>>>>>>>>>>>>>>>\n");
+      }
+    }
+    else {
+      System.out.print("<<<<<<<<<<<<<<<<<<Dates are overlaping ! try again>>>>>>>>>>>>>>>>>>");
+      mainMenu();
     }
   }
    /**

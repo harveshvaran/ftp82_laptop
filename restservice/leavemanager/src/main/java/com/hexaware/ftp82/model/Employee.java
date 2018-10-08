@@ -4,6 +4,8 @@ import com.hexaware.ftp82.persistence.DbConnection;
 import com.hexaware.ftp82.persistence.EmployeeDAO;
 import java.util.Objects;
 import java.util.List;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 /**
  * Employee class to store employee personal details.
@@ -28,7 +30,7 @@ public class Employee {
   private String empDept;
   private int empManagerId;
   private int empLeaveBalance;
-  private Date empDoj;
+  private String empDoj;
   @Override
   public final boolean equals(final Object obj) {
     if (obj == null) {
@@ -38,33 +40,14 @@ public class Employee {
       return false;
     }
     Employee emp = (Employee) obj;
-    if (Objects.equals(empId, emp.empId)) {
-      return true;
-    }
-    if (Objects.equals(empName, emp.empName)) {
-      return true;
-    }
-    if (Objects.equals(empPh, emp.empPh)) {
-      return true;
-    }
-    if (Objects.equals(empEmail, emp.empEmail)) {
-      return true;
-    }
-    if (Objects.equals(empDept, emp.empDept)) {
-      return true;
-    }
-    if (Objects.equals(empManagerId, emp.empManagerId)) {
-      return true;
-    }
-    if (Objects.equals(empLeaveBalance, emp.empLeaveBalance)) {
-      return true;
-    }
-    if (Objects.equals(empDoj, emp.empDoj)) {
+    if (Objects.equals(empId, emp.empId) && Objects.equals(empName, emp.empName)
+        && Objects.equals(empPh, emp.empPh) && Objects.equals(empEmail, emp.empEmail)
+        && Objects.equals(empDept, emp.empDept) && Objects.equals(empManagerId, emp.empManagerId)
+        && Objects.equals(empLeaveBalance, emp.empLeaveBalance) && Objects.equals(empDoj, emp.empDoj)) {
       return true;
     }
     return false;
   }
-
   @Override
   public final int hashCode() {
     return Objects.hash(empId, empName, empPh, empEmail, empDept, empManagerId, empLeaveBalance, empDoj);
@@ -97,7 +80,9 @@ public class Employee {
     this.empDept = argEmpDept;
     this.empManagerId = argEmpManagerId;
     this.empLeaveBalance = argEmpLeaveBalance;
-    this.empDoj = argEmpDoj;
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+    String empDojj = dateFormat.format(argEmpDoj);
+    this.empDoj = empDojj;
   }
   /**
    * Gets the EmployeeId.
@@ -206,7 +191,7 @@ public class Employee {
    * Gets the EmployeeDoj.
    * @return this Employee's Doj.
    */
-  public final Date getEmpDoj() {
+  public final String getEmpDoj() {
     return empDoj;
   }
 
@@ -214,7 +199,7 @@ public class Employee {
    *
    * @param argEmpDoj to set employee Doj.
    */
-  public final void setEmpDoj(final Date argEmpDoj) {
+  public final void setEmpDoj(final String argEmpDoj) {
     this.empDoj = argEmpDoj;
   }
   /**
@@ -256,7 +241,10 @@ public class Employee {
    * @param id to get employee details.
    * @return Employee
    */
-  public static Employee getLeaveBalance(final int id) {
-    return dao().getBalance(id);
+  public static int getLeaveBalance(final int id) {
+    Employee e = dao().getBalance(id);
+    int noOfday = 0;
+    noOfday = e.getEmpLeaveBalance();
+    return noOfday;
   }
 }
