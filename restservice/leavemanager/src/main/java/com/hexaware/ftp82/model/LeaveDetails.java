@@ -281,8 +281,15 @@ public class LeaveDetails {
   public static int applyLeave(final int empId, final String leaveType, final String startDate, final String endDate, final String leaveReason) {
     String leaveStatus = "Pending";
     int status=0;
+    int diffInDays = 0;
     try{
-      
+      Date appliedDate = Date.valueOf(java.time.LocalDate.now());
+      Date sDate = Date.valueOf(startDate);
+      Date eDate = Date.valueOf(endDate);
+      long diff = eDate.getTime() - sDate.getTime();
+      diffInDays = (int) diff / (1000 * 60 * 60 * 24);
+      diffInDays = diffInDays + 1;
+      System.out.println("\n number of days" + diffInDays + "\n");
       status = dao().insertLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveReason, appliedDate, leaveStatus, empId);
     }catch(Exception e){
       System.out.println(e.toString());
