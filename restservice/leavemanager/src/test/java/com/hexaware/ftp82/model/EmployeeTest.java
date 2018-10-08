@@ -221,8 +221,7 @@ public class EmployeeTest {
         return dao;
       }
     };
-    Employee e = Employee.getLeaveBalance(100);
-    int res = e.getEmpLeaveBalance();
+    int res = Employee.getLeaveBalance(100);
     assertEquals(res, 3);
   }
 }
