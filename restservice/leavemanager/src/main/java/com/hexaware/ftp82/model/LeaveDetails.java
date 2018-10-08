@@ -5,7 +5,6 @@ import java.util.List;
 import com.hexaware.ftp82.persistence.DbConnection;
 import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
 import java.text.SimpleDateFormat;
-import java.text.DateFormat; 
 /**
  * LeaveDetails class to process employee leave details.
  * @author hexaware
@@ -46,9 +45,11 @@ public class LeaveDetails {
    * @param argManagerComments to initialize employee table details.
    * @param argEmpId to initialize employee table details.
    */
-  public LeaveDetails(final int argLeaveId, final String argLeaveType, final Date argStartDate, final Date argEndDate, final int argNoOfDays, final String argLeaveStatus, final String argLeaveReason, final Date argLeaveAppliedOn, final String argManagerComments, final int argEmpId) {
-    try {
-      DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+  public LeaveDetails(final int argLeaveId, final String argLeaveType, final String argStartDate, 
+  final String argEndDate, final int argNoOfDays, final String argLeaveStatus, final String argLeaveReason, 
+  final String argLeaveAppliedOn, final String argManagerComments, final int argEmpId) {
+    try{
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
       this.leaveId = argLeaveId;
       this.leaveType = argLeaveType;
       String strtDate = dateFormat.format(argStartDate);
@@ -62,10 +63,11 @@ public class LeaveDetails {
       this.leaveAppliedOn = leaveApplied;
       this.managerComments = argManagerComments;
       this.empId = argEmpId;
-    } catch (Exception e)  {
+    }catch(Exception e){
       System.out.println(e.toString());
     }
   }
+
   @Override
   public final boolean equals(final Object obj) {
     if (obj == null) {
@@ -75,11 +77,34 @@ public class LeaveDetails {
       return false;
     }
     LeaveDetails ld = (LeaveDetails) obj;
-    if (Objects.equals(leaveId, ld.leaveId) && Objects.equals(leaveType, ld.leaveType)
-        && Objects.equals(startDate, ld.startDate) && Objects.equals(endDate, ld.endDate)
-        && Objects.equals(noOfDays, ld.noOfDays) && Objects.equals(leaveStatus, ld.leaveStatus)
-        && Objects.equals(leaveReason, ld.leaveReason) && Objects.equals(leaveAppliedOn, ld.leaveAppliedOn)
-        && Objects.equals(managerComments, ld.managerComments) && Objects.equals(empId, ld.empId)) {
+    if (Objects.equals(leaveId, ld.leaveId)) {
+      return true;
+    }
+    if (Objects.equals(leaveType, ld.leaveType)) {
+      return true;
+    }
+    if (Objects.equals(startDate, ld.startDate)) {
+      return true;
+    }
+    if (Objects.equals(endDate, ld.endDate)) {
+      return true;
+    }
+    if (Objects.equals(noOfDays, ld.noOfDays)) {
+      return true;
+    }
+    if (Objects.equals(leaveStatus, ld.leaveStatus)) {
+      return true;
+    }
+    if (Objects.equals(leaveReason, ld.leaveReason)) {
+      return true;
+    }
+    if (Objects.equals(leaveAppliedOn, ld.leaveAppliedOn)) {
+      return true;
+    }
+    if (Objects.equals(managerComments, ld.managerComments)) {
+      return true;
+    }
+    if (Objects.equals(empId, ld.empId)) {
       return true;
     }
     return false;
@@ -255,18 +280,11 @@ public class LeaveDetails {
    */
   public static int applyLeave(final int empId, final String leaveType, final String startDate, final String endDate, final String leaveReason) {
     String leaveStatus = "Pending";
-    int status = 0;
-    int diffInDays = 0;
-    try {
-      Date appliedDate = Date.valueOf(java.time.LocalDate.now());
-      Date sDate = Date.valueOf(startDate);
-      Date eDate = Date.valueOf(endDate);
-      long diff = eDate.getTime() - sDate.getTime();
-      diffInDays = (int) diff / (1000 * 60 * 60 * 24);
-      diffInDays = diffInDays + 1;
-      System.out.println("\n number of days"+diffInDays+"\n");
+    int status=0;
+    try{
+      
       status = dao().insertLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveReason, appliedDate, leaveStatus, empId);
-    } catch (Exception e) {
+    }catch(Exception e){
       System.out.println(e.toString());
     }
     return status;
@@ -314,7 +332,7 @@ public class LeaveDetails {
     int appliedNoOfLeaves = l1.getNoOfDays();
     String statusOfEmp = l1.getLeaveStatus();
     if (argApproveStatus.equalsIgnoreCase("approve")) {
-      if (statusOfEmp.equals(LeaveStatus.PENDING.toString())) {
+      if (statusOfEmp.equals("PENDING")) {
         statusOfEmp = "APPROVED";
         int approvedLeaves = leaveBalance - appliedNoOfLeaves;
         int leaves = dao().updateEmployee(approvedLeaves, argApplyEmpId);
