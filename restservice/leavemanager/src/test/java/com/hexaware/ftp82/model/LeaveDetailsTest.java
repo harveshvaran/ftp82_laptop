@@ -7,8 +7,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.text.DateFormat; 
 import mockit.Expectations;
 import mockit.MockUp;
 import mockit.Mocked;
@@ -33,10 +31,9 @@ public class LeaveDetailsTest {
   */
   @Test
   public final void testLeaveDetails() {
-    //DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    String StrtDate = "2018-08-27";
-    String EndDate = "2018-08-27";
-    String AppliedDate = "2018-08-27";
+    String strtDate = "2018-08-27";
+    String endDate = "2018-08-27";
+    String appliedDate = "2018-08-27";
     Date sDate = Date.valueOf(StrtDate);
     Date eDate = Date.valueOf(EndDate);
     Date adate = Date.valueOf(AppliedDate);
@@ -128,12 +125,17 @@ public class LeaveDetailsTest {
         try {
           Date appliedDate = Date.valueOf(java.time.LocalDate.now());
           Date sDate = Date.valueOf("2018-08-26");
-          Date eDate = Date.valueOf("2018-08-26");
-          dao.insertLeaveDetails("EL", sDate, eDate, 0, "SICK", appliedDate, "Pending", 100);
+          Date eDate = Date.valueOf("2018-08-28");
+          dao.insertLeaveDetails("EL", sDate, eDate, 2, "SICK", appliedDate, "PENDING", 100);
+          result = 1;
+          Date appliedDate1 = Date.valueOf(java.time.LocalDate.now());
+          Date sDate1 = Date.valueOf("2018-08-26");
+          Date eDate1 = Date.valueOf("2018-08-28");
+          dao.insertLeaveDetails("EL", sDate1, eDate1, 2, "SICK", appliedDate1, "APPROVED", 1000);
+          result = 1;
         } catch (Exception e) {
           System.out.println(e.toString());
         }
-        result = 1;
       }
     };
     new MockUp<LeaveDetails>() {
@@ -142,7 +144,9 @@ public class LeaveDetailsTest {
         return dao;
       }
     };
-    int e = LeaveDetails.applyLeave(100, "EL", "2018-08-26", "2018-08-26", "SICK");
+    int e = LeaveDetails.applyLeave(100, "EL", "2018-08-26", "2018-08-28", "SICK");
+    assertEquals(1, e);
+    int e1 = LeaveDetails.applyLeave(1000, "EL", "2018-08-26", "2018-08-28", "SICK");
     assertEquals(1, e);
   }
   /**
@@ -282,7 +286,6 @@ public class LeaveDetailsTest {
 
     final LeaveDetails lea = new LeaveDetails();
     final LeaveDetails lea1 = new LeaveDetails();
-    
     new Expectations() {
       {
         List<LeaveDetails> lshs = new ArrayList();

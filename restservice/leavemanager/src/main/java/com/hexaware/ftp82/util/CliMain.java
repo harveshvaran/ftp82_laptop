@@ -1,7 +1,6 @@
 package com.hexaware.ftp82.util;
 import com.hexaware.ftp82.model.LeaveDetails;
 import com.hexaware.ftp82.model.Employee;
-//import com.hexaware.ftp82.excep.MyException;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
@@ -33,6 +32,10 @@ public class CliMain {
     } while (menuOption == 0);
     mainMenuDetails(menuOption);
   }
+  /**
+   * The main entry point.
+   * @param selectedOption the list of arguments
+   */
   private void mainMenuDetails(final int selectedOption) {
     switch (selectedOption) {
       case 1:
@@ -132,7 +135,7 @@ public class CliMain {
       }
     } while (i == 0);
     overlap = LeaveDetails.overLapCheck(startDate, empId);
-    if(overlap == 1) {
+    if (overlap == 1) {
       System.out.println("Leave Type : ");
       String leaveType = option.next();
       System.out.println("Leave Reason : ");
@@ -140,11 +143,11 @@ public class CliMain {
       int status = LeaveDetails.applyLeave(empId, leaveType, startDate, endDate, leaveReason);
       if (status > 0) {
         System.out.print("leave applied");
+        Employee.sendMail(empId);
       } else {
         System.out.print("unable to insert record");
       }
-    }
-    else {
+    } else {
       System.out.print("<<<<<<<<<<<<<<<<<<Dates are overlaping ! try again>>>>>>>>>>>>>>>>>>");
       mainMenu();
     }

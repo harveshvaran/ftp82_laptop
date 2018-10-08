@@ -5,7 +5,8 @@ import java.util.List;
 import com.hexaware.ftp82.persistence.DbConnection;
 import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
 import java.text.SimpleDateFormat;
-import java.text.DateFormat; 
+import java.text.DateFormat;
+
 /**
  * LeaveDetails class to process employee leave details.
  * @author hexaware
@@ -254,7 +255,12 @@ public class LeaveDetails {
    *@return status of the application
    */
   public static int applyLeave(final int empId, final String leaveType, final String startDate, final String endDate, final String leaveReason) {
-    String leaveStatus = "Pending";
+    String leaveStatus = "";
+    if (empId == 1000) {
+      leaveStatus = "APPROVED";
+    } else {
+      leaveStatus = "PENDING";
+    }
     int status = 0;
     int diffInDays = 0;
     try {
@@ -263,7 +269,6 @@ public class LeaveDetails {
       Date eDate = Date.valueOf(endDate);
       long diff = eDate.getTime() - sDate.getTime();
       diffInDays = (int) diff / (1000 * 60 * 60 * 24);
-      System.out.println("\n number of days"+diffInDays+"\n");
       status = dao().insertLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveReason, appliedDate, leaveStatus, empId);
     } catch (Exception e) {
       System.out.println(e.toString());
@@ -314,7 +319,7 @@ public class LeaveDetails {
     String statusOfEmp = l1.getLeaveStatus();
     if (argApproveStatus.equalsIgnoreCase("approve")) {
       if (statusOfEmp.equals(LeaveStatus.PENDING.toString())) {
-        statusOfEmp = "APPROVED";
+        statusOfEmp = LeaveStatus.APPROVED.toString();
         int approvedLeaves = leaveBalance - appliedNoOfLeaves;
         int leaves = dao().updateEmployee(approvedLeaves, argApplyEmpId);
         int applyEmpStatus = dao().updateApproveOrDenial(statusOfEmp, argMgrComments, argApplyLeaveId);
@@ -325,7 +330,7 @@ public class LeaveDetails {
         return 102;
       }
     } else if (argApproveStatus.equalsIgnoreCase("deny")) {
-      statusOfEmp = "DENIED";
+      statusOfEmp = LeaveStatus.DENIED.toString();
       dao().updateApproveOrDenial(statusOfEmp, argMgrComments, argApplyLeaveId);
       return 100;
     } else {
@@ -348,27 +353,24 @@ public class LeaveDetails {
   }
    /**
    * list employee details by id.
-   * @param StrtDate to get employee details.
-   * @param EndDate to get employee details.
+   * @param strtDate to get employee details.
    * @param emID to get employee details.
    * @return Employee
    */
-  public static int overLapCheck(final String StrtDate, final int emID) {
+  public static int overLapCheck(final String strtDate, final int emID) {
     try {
-    Date sDate = Date.valueOf(StrtDate);
-    //Date eDate = Date.valueOf(EndDate); 
+      Date sDate = Date.valueOf(strtDate);
 
-    List<LeaveDetails> lshs = dao().leaveHistory(emID);
+      List<LeaveDetails> lshs = dao().leaveHistory(emID);
 
-    for(LeaveDetails ls : lshs) {
-      Date sd = Date.valueOf(ls.getStartDate());
-      Date ed = Date.valueOf(ls.getEndDate());
-      
-      if( sDate.after(sd) && sDate.before(ed) ) {
+      for (LeaveDetails ls : lshs) {
+        Date sd = Date.valueOf(ls.getStartDate());
+        Date ed = Date.valueOf(ls.getEndDate());
+        if (sDate.after(sd) && sDate.before(ed)) {
           return 0;
+        }
       }
-    }
-    }catch (IllegalArgumentException e) {
+    } catch (IllegalArgumentException e) {
       System.out.println(e);
     }
     return 1;
