@@ -132,7 +132,7 @@ public class CliMain {
       }
     } while (i == 0);
     overlap = LeaveDetails.overLapCheck(startDate, empId);
-    if(overlap == 1) {
+    if  (overlap == 1) {
       System.out.println("Leave Type : ");
       String leaveType = option.next();
       System.out.println("Leave Reason : ");
@@ -143,8 +143,7 @@ public class CliMain {
       } else {
         System.out.print("unable to insert record");
       }
-    }
-    else {
+    } else {
       System.out.print("<<<<<<<<<<<<<<<<<<Dates are overlaping ! try again>>>>>>>>>>>>>>>>>>");
       mainMenu();
     }

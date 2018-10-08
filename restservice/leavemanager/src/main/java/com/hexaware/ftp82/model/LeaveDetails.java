@@ -5,7 +5,7 @@ import java.util.List;
 import com.hexaware.ftp82.persistence.DbConnection;
 import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
 import java.text.SimpleDateFormat;
-import java.text.DateFormat; 
+import java.text.DateFormat;
 /**
  * LeaveDetails class to process employee leave details.
  * @author hexaware
@@ -264,7 +264,7 @@ public class LeaveDetails {
       long diff = eDate.getTime() - sDate.getTime();
       diffInDays = (int) diff / (1000 * 60 * 60 * 24);
       diffInDays = diffInDays + 1;
-      System.out.println("\n number of days"+diffInDays+"\n");
+      System.out.println("\n number of days" + diffInDays + "\n");
       status = dao().insertLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveReason, appliedDate, leaveStatus, empId);
     } catch (Exception e) {
       System.out.println(e.toString());
@@ -349,27 +349,23 @@ public class LeaveDetails {
   }
    /**
    * list employee details by id.
-   * @param StrtDate to get employee details.
-   * @param EndDate to get employee details.
+   * @param strtDate to get employee details.
    * @param emID to get employee details.
    * @return Employee
    */
-  public static int overLapCheck(final String StrtDate, final int emID) {
+  public static int overLapCheck(final String strtDate, final int emID) {
     try {
-    Date sDate = Date.valueOf(StrtDate);
-    //Date eDate = Date.valueOf(EndDate); 
-
-    List<LeaveDetails> lshs = dao().leaveHistory(emID);
-
-    for(LeaveDetails ls : lshs) {
-      Date sd = Date.valueOf(ls.getStartDate());
-      Date ed = Date.valueOf(ls.getEndDate());
-      
-      if( sDate.after(sd) && sDate.before(ed) ) {
+      Date sDate = Date.valueOf(strtDate);
+    //Date eDate = Date.valueOf(EndDate);
+      List<LeaveDetails> lshs = dao().leaveHistory(emID);
+      for (LeaveDetails ls : lshs) {
+        Date sd = Date.valueOf(ls.getStartDate());
+        Date ed = Date.valueOf(ls.getEndDate());
+        if  (sDate.after(sd) && sDate.before(ed)) {
           return 0;
+        }
       }
-    }
-    }catch (IllegalArgumentException e) {
+    } catch  (IllegalArgumentException e) {
       System.out.println(e);
     }
     return 1;
