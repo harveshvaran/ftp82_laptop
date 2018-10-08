@@ -1,7 +1,7 @@
 package com.hexaware.ftp82.persistence;
 
 import org.skife.jdbi.v2.DBI;
-import org.skife.jdbi.v2.logging.PrintStreamLog;;
+//import org.skife.jdbi.v2.logging.PrintStreamLog;;
 
 /**
  */
@@ -15,10 +15,10 @@ public class DbConnection {
       Class.forName("com.mysql.jdbc.Driver");
       String dbc = System.getenv("DB_CONNECTION");
       if (dbc == null || dbc.equals("")) {
-        dbc = "localhost:3306";
+        dbc = "localhost:3307";
       }
-      DBI dbi = new DBI("jdbc:mysql://" + dbc + "/ftp82", "ftp82", "ftp82");
-      dbi.setSQLLog(new PrintStreamLog());
+      DBI dbi = new DBI("jdbc:mysql://" + dbc + "/ftp82", "root", "Password123");
+      //dbi.setSQLLog(new PrintStreamLog());
       return dbi;
     } catch (ClassNotFoundException e) {
       throw new RuntimeException(e);

@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.ListIterator;
-import java.sql.Date;
+//import java.sql.Date;
 //import com.hexaware.ftp82.model.persistence.EmployeeDAO;
 //import com.hexaware.ftp82.model.persistence.LeaveDetailsDAO;
 //import java.util.*;
@@ -27,7 +27,6 @@ public class CliMain {
     System.out.println("6. Apply / Deny leave");
     System.out.println("7. Exit");
     System.out.println("-----------------------");
-    LeaveDetails.sendMail();
     System.out.println("Enter your choice:");
     int menuOption = 0;
     do {
@@ -123,19 +122,6 @@ public class CliMain {
         applyLeave();
       }
     } while (i == 1);
-    LeaveDetails[] ls = LeaveDetails.history(empId);
-    for (LeaveDetails[] l : ls) {
-    Date sDate = Date.valueOf(startDate);
-    String sd1 = l.getStartDate();
-    Date d1 = Date.valueOf(sd1);
-    String ed1 = l.getEndDate();
-    Date d2 = Date.valueOf(ed1);
-    int flag = LeaveDetails.overlapCheck(sDate, d1, d2);
-    if (flag == 0) {
-      System.out.print("You have already applied leave on this date!");
-      return;
-    }
-    }
     System.out.println("End Date : YYYY-MM-DD");
     String endDate = option.next();
     do {
@@ -154,7 +140,7 @@ public class CliMain {
       System.out.print("leave applied");
       LeaveDetails.sendMail();
     } else {
-      System.out.print("unable to insert record");
+      System.out.print("<<<<<<<<<<<<<<<< UNABLE TO APPLY FOR LEAVE >>>>>>>>>>>>>>>>>>>\n");
     }
   }
    /**
