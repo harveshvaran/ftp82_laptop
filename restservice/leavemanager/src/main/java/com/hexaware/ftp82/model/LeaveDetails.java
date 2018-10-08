@@ -263,7 +263,6 @@ public class LeaveDetails {
       Date eDate = Date.valueOf(endDate);
       long diff = eDate.getTime() - sDate.getTime();
       diffInDays = (int) diff / (1000 * 60 * 60 * 24);
-      diffInDays = diffInDays + 1;
       System.out.println("\n number of days"+diffInDays+"\n");
       status = dao().insertLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveReason, appliedDate, leaveStatus, empId);
     } catch (Exception e) {
