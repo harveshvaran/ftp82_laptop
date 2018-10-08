@@ -97,11 +97,7 @@ public class EmployeeTest {
    * tests that empty employee list is handled correctly.
    * @param dao mocking the dao class
    */
-<<<<<<< HEAD
   @Test
-=======
-  //@Test
->>>>>>> 1ae0273fcaaf9178086823d92cfce6bcdaf8857f
   public final void testListAllEmpty(@Mocked final EmployeeDAO dao) {
     new Expectations() {
       {

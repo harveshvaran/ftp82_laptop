@@ -241,7 +241,10 @@ public class Employee {
    * @param id to get employee details.
    * @return Employee
    */
-  public static Employee getLeaveBalance(final int id) {
-    return dao().getBalance(id);
+  public static int getLeaveBalance(final int id) {
+    Employee e = dao().getBalance(id);
+    int noOfday = 0;
+    noOfday = e.getEmpLeaveBalance();
+    return noOfday;
   }
 }

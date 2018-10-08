@@ -6,7 +6,6 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.ListIterator;
-import java.sql.Date;
 //import com.hexaware.ftp82.model.persistence.EmployeeDAO;
 //import com.hexaware.ftp82.model.persistence.LeaveDetailsDAO;
 //import java.util.*;
@@ -110,6 +109,7 @@ public class CliMain {
     int i = 1;
     System.out.println("Employee Id : ");
     int empId = 0;
+    int overlap = 0;
     do {
       empId = getInteger();
     } while (empId == 0);
@@ -122,19 +122,6 @@ public class CliMain {
         applyLeave();
       }
     } while (i == 1);
-    LeaveDetails[] ls = LeaveDetails.history(empId);
-    for (LeaveDetails[] l : ls) {
-    Date sDate = Date.valueOf(startDate);
-    String sd1 = l.getStartDate();
-    Date d1 = Date.valueOf(sd1);
-    String ed1 = l.getEndDate();
-    Date d2 = Date.valueOf(ed1);
-    int flag = LeaveDetails.overlapCheck(sDate, d1, d2);
-    if (flag == 0) {
-      System.out.print("You have already applied leave on this date!");
-      return;
-    }
-    }
     System.out.println("End Date : YYYY-MM-DD");
     String endDate = option.next();
     do {
@@ -144,15 +131,22 @@ public class CliMain {
         applyLeave();
       }
     } while (i == 0);
-    System.out.println("Leave Type : ");
-    String leaveType = option.next();
-    System.out.println("Leave Reason : ");
-    String leaveReason = option.next();
-    int status = LeaveDetails.applyLeave(empId, leaveType, startDate, endDate, leaveReason);
-    if (status > 0) {
-      System.out.print("leave applied");
-    } else {
-      System.out.print("unable to insert record");
+    overlap = LeaveDetails.overLapCheck(startDate, empId);
+    if(overlap == 1) {
+      System.out.println("Leave Type : ");
+      String leaveType = option.next();
+      System.out.println("Leave Reason : ");
+      String leaveReason = option.next();
+      int status = LeaveDetails.applyLeave(empId, leaveType, startDate, endDate, leaveReason);
+      if (status > 0) {
+        System.out.print("leave applied");
+      } else {
+        System.out.print("unable to insert record");
+      }
+    }
+    else {
+      System.out.print("<<<<<<<<<<<<<<<<<<Dates are overlaping ! try again>>>>>>>>>>>>>>>>>>");
+      mainMenu();
     }
   }
    /**
