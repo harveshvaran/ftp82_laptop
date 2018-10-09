@@ -360,9 +360,7 @@ public class LeaveDetails {
   public static int overLapCheck(final String strtDate, final int emID) {
     try {
       Date sDate = Date.valueOf(strtDate);
-
       List<LeaveDetails> lshs = dao().leaveHistory(emID);
-
       for (LeaveDetails ls : lshs) {
         Date sd = Date.valueOf(ls.getStartDate());
         Date ed = Date.valueOf(ls.getEndDate());

@@ -34,9 +34,9 @@ public class LeaveDetailsTest {
     String strtDate = "2018-08-27";
     String endDate = "2018-08-27";
     String appliedDate = "2018-08-27";
-    Date sDate = Date.valueOf(StrtDate);
-    Date eDate = Date.valueOf(EndDate);
-    Date adate = Date.valueOf(AppliedDate);
+    Date sDate = Date.valueOf(strtDate);
+    Date eDate = Date.valueOf(endDate);
+    Date adate = Date.valueOf(appliedDate);
     final LeaveDetails ld = new LeaveDetails(1, "EL", sDate, eDate, 2, "PENDING", "SICK", adate, "OK", 1000);
     final LeaveDetails ld1 = new LeaveDetails();
     assertNotEquals(ld, null);
@@ -154,7 +154,7 @@ public class LeaveDetailsTest {
    */
   @Test
   public final void testDateMethod() {
-    int res = LeaveDetails.dateExpiryOfsdate("2018-10-08");
+    int res = LeaveDetails.dateExpiryOfsdate("2018-10-29");
     assertEquals(0, res);
     int res1 = LeaveDetails.dateExpiryOfsdate("2018-10-02");
     assertEquals(1, res1);
