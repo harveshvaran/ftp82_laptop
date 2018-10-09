@@ -258,7 +258,6 @@ public class Employee {
   }
   /**
    * @param argsEmpID to get employee details.
-   */
   public static void sendMail(final int argsEmpID) {
     final String from = "harveshvaran96@gmail.com";
     final String to = getMailId(argsEmpID);
@@ -290,6 +289,7 @@ public class Employee {
       throw new RuntimeException(e);
     }
   }
+  */
   /**
    * @param empId to get employee details.
    * @return dfs

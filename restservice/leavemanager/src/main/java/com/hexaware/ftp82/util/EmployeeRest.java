@@ -38,7 +38,8 @@ public class EmployeeRest {
   public final Employee employeeListById(@PathParam("id") final int id) {
     final Employee empl = Employee.listById(id);
     if (empl == null) {
-      throw new NotFoundException("No such Employee ID: " + id);
+      String es = "no such Employee ID found !";
+      empl = emp.es;
     }
     return empl;
   }

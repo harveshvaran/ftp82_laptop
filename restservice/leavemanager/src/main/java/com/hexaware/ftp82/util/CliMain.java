@@ -143,7 +143,7 @@ public class CliMain {
       int status = LeaveDetails.applyLeave(empId, leaveType, startDate, endDate, leaveReason);
       if (status > 0) {
         System.out.print("leave applied");
-        Employee.sendMail(empId);
+        //Employee.sendMail(empId);
       } else {
         System.out.print("unable to insert record");
       }
