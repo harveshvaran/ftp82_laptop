@@ -270,10 +270,9 @@ public class CliMain {
    * The main entry point.
    * @return the list of arguments
    */
-  public static int getInteger() {
+  private int getInteger() {
     try {
-      Scanner sc = new Scanner(System.in);
-      String msg = sc.next();
+      String msg = option.next();
       int num = Integer.parseInt(msg);
       return num;
     } catch (Exception e) {
