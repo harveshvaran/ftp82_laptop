@@ -137,8 +137,6 @@ public class CliMain {
       }
     } while (i == 0);
     overlap = LeaveDetails.overLapCheck(startDate, empId);
-    if (overlap == 1) {
-      System.out.println("Leave Type : ");
     if  (overlap == 1) {
       System.out.println(" LEAVE TYPE : 1.Earned/Privileged Leave(EL)  2.Sick Leave(SL)  3.Maternity/Paternity Leave(MPL) ");
       String leaveType = option.next();
@@ -153,7 +151,7 @@ public class CliMain {
         System.out.print("\n UNABLE TO INSERT RECORD ");
       }
     } else {
-      System.out.print("\n <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<----Dates are overlaping !..PLEASE try again----->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+      System.out.println("\n <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<----Dates are overlaping !..PLEASE try again----->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
       mainMenu();
     }
   }
@@ -260,9 +258,6 @@ public class CliMain {
           break;
         case 102:
           System.out.println("Leave process completed !");
-          break;
-        case 103:
-          System.out.println("process unsuccessful ! ");
           break;
         default:
           System.out.println("process unsuccessful !");

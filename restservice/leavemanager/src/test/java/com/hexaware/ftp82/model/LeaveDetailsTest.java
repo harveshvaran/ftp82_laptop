@@ -31,10 +31,7 @@ public class LeaveDetailsTest {
   */
   @Test
   public final void testLeaveDetails() {
-<<<<<<< HEAD
-=======
     //DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
->>>>>>> a4325360b02a4013bfaa8ee273e85ed1fb5a3839
     String strtDate = "2018-08-27";
     String endDate = "2018-08-27";
     String appliedDate = "2018-08-27";
@@ -127,21 +124,13 @@ public class LeaveDetailsTest {
     new Expectations() {
       {
         try {
-          Date appliedDate = Date.valueOf(java.time.LocalDate.now());
           Date sDate = Date.valueOf("2018-08-26");
-<<<<<<< HEAD
           Date eDate = Date.valueOf("2018-08-28");
-          dao.insertLeaveDetails("EL", sDate, eDate, 2, "SICK", appliedDate, "PENDING", 100);
+          Date appliedDate = Date.valueOf(java.time.LocalDate.now());
+          dao.insertLeaveDetails("EL", sDate, eDate, 3, "SICK", appliedDate, "PENDING", 100);
           result = 1;
-          Date appliedDate1 = Date.valueOf(java.time.LocalDate.now());
-          Date sDate1 = Date.valueOf("2018-08-26");
-          Date eDate1 = Date.valueOf("2018-08-28");
-          dao.insertLeaveDetails("EL", sDate1, eDate1, 2, "SICK", appliedDate1, "APPROVED", 1000);
+          dao.insertLeaveDetails("EL", sDate, eDate, 3, "SICK", appliedDate, "APPROVED", 1000);
           result = 1;
-=======
-          Date eDate = Date.valueOf("2018-08-26");
-          dao.insertLeaveDetails("EL", sDate, eDate, 1, "SICK", appliedDate, "PENDING", 100);
->>>>>>> a4325360b02a4013bfaa8ee273e85ed1fb5a3839
         } catch (Exception e) {
           System.out.println(e.toString());
         }
@@ -156,7 +145,7 @@ public class LeaveDetailsTest {
     int e = LeaveDetails.applyLeave(100, "EL", "2018-08-26", "2018-08-28", "SICK");
     assertEquals(1, e);
     int e1 = LeaveDetails.applyLeave(1000, "EL", "2018-08-26", "2018-08-28", "SICK");
-    assertEquals(1, e);
+    assertEquals(1, e1);
   }
   /**
    * Tests that a fetch of a specific employee works correctly.

@@ -267,7 +267,7 @@ public class Employee {
     final String from = "harveshvaran96@gmail.com";
     final String to = getMailId(argsEmpID);
     final String username = "harveshvaran96";
-    final String password = "Cse_1234";
+    final String password = "";
     String host = "smtp.gmail.com";
     Properties props = new Properties();
     props.put("mail.smtp.auth", "true");

@@ -5,7 +5,6 @@ import java.util.List;
 import com.hexaware.ftp82.persistence.DbConnection;
 import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
 import java.text.SimpleDateFormat;
-import java.text.DateFormat;
 import java.util.Calendar;
 /**
  * LeaveDetails class to process employee leave details.
@@ -283,11 +282,10 @@ public class LeaveDetails {
   public static int applyLeave(final int empId, final String leaveType, final String startDate, final String endDate, final String leaveReason) {
     String leaveStatus = "";
     if (empId == 1000) {
-      leaveStatus = "APPROVED";
+      leaveStatus = LeaveStatus.APPROVED.toString();
     } else {
-      leaveStatus = "PENDING";
+      leaveStatus = LeaveStatus.PENDING.toString();
     }
-    String leaveStatus = LeaveStatus.PENDING.toString();
     int status = 0;
     int diffInDays = 0;
     try {

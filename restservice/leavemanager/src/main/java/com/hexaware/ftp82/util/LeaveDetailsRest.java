@@ -1,6 +1,7 @@
 package com.hexaware.ftp82.util;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -43,5 +44,30 @@ public class LeaveDetailsRest {
       throw new NotFoundException("No such Employee ID: " + id);
     }
     return ls1;
+  }
+  /**
+   * Returns a specific employee's details.
+   * @param eid the id of the employee
+   * @param lid the id of the employee
+   * @param comments the id of the employee
+   * @param status the id of the employee
+   * @return the employee details
+   */
+  @POST
+  @Path("/approve/{eid}/{lid}/{comments}/{status}")
+  @Produces(MediaType.APPLICATION_JSON)
+  public final String postApproveOrDeny(@PathParam("eid")final int eid, @PathParam("lid")final int lid, @PathParam("comments")final String comments, @PathParam("status")final String status) {
+    LeaveDetails ls = new LeaveDetails();
+    int flag = ls.applyForLeave(eid, lid, comments, status);
+    switch (flag) {
+      case 1:
+        return "Leave approved !";
+      case 100:
+        return "Leave approval Denied !";
+      case 102:
+        return "Leave process completed !";
+      default:
+        return "process unsuccessful !";
+    }
   }
 }
