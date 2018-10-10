@@ -7,8 +7,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.text.DateFormat; 
+//import java.text.SimpleDateFormat;
+//import java.text.DateFormat;
 import mockit.Expectations;
 import mockit.MockUp;
 import mockit.Mocked;
@@ -34,12 +34,12 @@ public class LeaveDetailsTest {
   @Test
   public final void testLeaveDetails() {
     //DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    String StrtDate = "2018-08-27";
-    String EndDate = "2018-08-27";
-    String AppliedDate = "2018-08-27";
-    Date sDate = Date.valueOf(StrtDate);
-    Date eDate = Date.valueOf(EndDate);
-    Date adate = Date.valueOf(AppliedDate);
+    String strtDate = "2018-08-27";
+    String endDate = "2018-08-27";
+    String appliedDate = "2018-08-27";
+    Date sDate = Date.valueOf(strtDate);
+    Date eDate = Date.valueOf(endDate);
+    Date adate = Date.valueOf(appliedDate);
     final LeaveDetails ld = new LeaveDetails(1, "EL", sDate, eDate, 2, "PENDING", "SICK", adate, "OK", 1000);
     final LeaveDetails ld1 = new LeaveDetails();
     assertNotEquals(ld, null);
@@ -129,7 +129,7 @@ public class LeaveDetailsTest {
           Date appliedDate = Date.valueOf(java.time.LocalDate.now());
           Date sDate = Date.valueOf("2018-08-26");
           Date eDate = Date.valueOf("2018-08-26");
-          dao.insertLeaveDetails("EL", sDate, eDate, 0, "SICK", appliedDate, "Pending", 100);
+          dao.insertLeaveDetails("EL", sDate, eDate, 2, "SICK", appliedDate, "Pending", 100);
         } catch (Exception e) {
           System.out.println(e.toString());
         }
@@ -150,7 +150,7 @@ public class LeaveDetailsTest {
    */
   @Test
   public final void testDateMethod() {
-    int res = LeaveDetails.dateExpiryOfsdate("2018-10-08");
+    int res = LeaveDetails.dateExpiryOfsdate("2018-10-10");
     assertEquals(0, res);
     int res1 = LeaveDetails.dateExpiryOfsdate("2018-10-02");
     assertEquals(1, res1);
@@ -282,7 +282,6 @@ public class LeaveDetailsTest {
 
     final LeaveDetails lea = new LeaveDetails();
     final LeaveDetails lea1 = new LeaveDetails();
-    
     new Expectations() {
       {
         List<LeaveDetails> lshs = new ArrayList();
@@ -306,5 +305,19 @@ public class LeaveDetailsTest {
     int l2 = LeaveDetails.overLapCheck("2018-10-14", 300);
     assertEquals(1, l);
     assertEquals(1, l2);
+  }
+  /**
+   *
+   */
+  @Test
+  public final void testDateCheck() {
+    Date sDate = Date.valueOf("2018-10-12");
+    Date eDate = Date.valueOf("2018-10-16");
+    int res = LeaveDetails.dateCheck(sDate, eDate);
+    assertEquals(3, res);
+    Date sDate1 = Date.valueOf("2018-10-12");
+    Date eDate1 = Date.valueOf("2018-10-11");
+    int res1 = LeaveDetails.dateCheck(sDate1, eDate1);
+    assertEquals(1, res1);
   }
 }

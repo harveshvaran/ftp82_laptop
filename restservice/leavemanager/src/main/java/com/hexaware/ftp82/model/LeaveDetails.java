@@ -5,6 +5,7 @@ import java.util.List;
 import com.hexaware.ftp82.persistence.DbConnection;
 import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 /**
  * LeaveDetails class to process employee leave details.
  * @author hexaware
@@ -45,11 +46,11 @@ public class LeaveDetails {
    * @param argManagerComments to initialize employee table details.
    * @param argEmpId to initialize employee table details.
    */
-  public LeaveDetails(final int argLeaveId, final String argLeaveType, final String argStartDate, 
-  final String argEndDate, final int argNoOfDays, final String argLeaveStatus, final String argLeaveReason, 
-  final String argLeaveAppliedOn, final String argManagerComments, final int argEmpId) {
-    try{
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+  public LeaveDetails(final int argLeaveId, final String argLeaveType, final Date argStartDate,
+      final Date argEndDate, final int argNoOfDays, final String argLeaveStatus, final String argLeaveReason,
+      final Date argLeaveAppliedOn, final String argManagerComments, final int argEmpId) {
+    try {
+      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
       this.leaveId = argLeaveId;
       this.leaveType = argLeaveType;
       String strtDate = dateFormat.format(argStartDate);
@@ -63,7 +64,7 @@ public class LeaveDetails {
       this.leaveAppliedOn = leaveApplied;
       this.managerComments = argManagerComments;
       this.empId = argEmpId;
-    }catch(Exception e){
+    } catch (Exception e) {
       System.out.println(e.toString());
     }
   }
@@ -280,22 +281,17 @@ public class LeaveDetails {
    */
   public static int applyLeave(final int empId, final String leaveType, final String startDate, final String endDate, final String leaveReason) {
     String leaveStatus = "Pending";
-    int status=0;
+    int status = 0;
     int diffInDays = 0;
-    try{
+    try {
       Date appliedDate = Date.valueOf(java.time.LocalDate.now());
       Date sDate = Date.valueOf(startDate);
       Date eDate = Date.valueOf(endDate);
-      long diff = eDate.getTime() - sDate.getTime();
-      diffInDays = (int) diff / (1000 * 60 * 60 * 24);
-<<<<<<< HEAD
-      diffInDays = diffInDays + 1;
+      //long diff = eDate.getTime() - sDate.getTime();
+      diffInDays = dateCheck(sDate, eDate);
       System.out.println("\n number of days" + diffInDays + "\n");
-=======
-      System.out.println("\n number of days"+diffInDays+"\n");
->>>>>>> b348f222ca9c6de4e256da621a9d25320e1aa423
       status = dao().insertLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveReason, appliedDate, leaveStatus, empId);
-    }catch(Exception e){
+    } catch (Exception e) {
       System.out.println(e.toString());
     }
     return status;
@@ -378,29 +374,45 @@ public class LeaveDetails {
   }
    /**
    * list employee details by id.
-   * @param StrtDate to get employee details.
-   * @param EndDate to get employee details.
+   * @param strtDate to get employee details.
    * @param emID to get employee details.
    * @return Employee
    */
-  public static int overLapCheck(final String StrtDate, final int emID) {
+  public static int overLapCheck(final String strtDate, final int emID) {
     try {
-    Date sDate = Date.valueOf(StrtDate);
-    //Date eDate = Date.valueOf(EndDate); 
+      Date sDate = Date.valueOf(strtDate);
+      List<LeaveDetails> lshs = dao().leaveHistory(emID);
 
-    List<LeaveDetails> lshs = dao().leaveHistory(emID);
-
-    for(LeaveDetails ls : lshs) {
-      Date sd = Date.valueOf(ls.getStartDate());
-      Date ed = Date.valueOf(ls.getEndDate());
-      
-      if( sDate.after(sd) && sDate.before(ed) ) {
+      for (LeaveDetails ls : lshs) {
+        Date sd = Date.valueOf(ls.getStartDate());
+        Date ed = Date.valueOf(ls.getEndDate());
+        if (sDate.after(sd) && sDate.before(ed)) {
           return 0;
+        }
       }
-    }
-    }catch (IllegalArgumentException e) {
+    } catch (IllegalArgumentException e) {
       System.out.println(e);
     }
     return 1;
+  }
+  /**
+   * list employee details by id.
+   * @param startDate to get employee details.
+   * @param endDate to get employee details.
+   * @return Employee
+   */
+  public static int dateCheck(final Date startDate, final Date endDate) {
+    int noOfDays = 0;
+    Calendar sD = Calendar.getInstance();
+    Calendar eD = Calendar.getInstance();
+    sD.setTime(startDate);
+    eD.setTime(endDate);
+    do {
+      sD.add(Calendar.DAY_OF_MONTH, 1);
+      if (sD.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && sD.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY) {
+        ++noOfDays;
+      }
+    } while (sD.getTimeInMillis() < eD.getTimeInMillis());
+    return noOfDays + 1;
   }
 }
