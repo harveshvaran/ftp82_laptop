@@ -7,8 +7,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.sql.Date;
-//import java.text.SimpleDateFormat;
-//import java.text.DateFormat;
 import mockit.Expectations;
 import mockit.MockUp;
 import mockit.Mocked;
@@ -129,7 +127,7 @@ public class LeaveDetailsTest {
           Date appliedDate = Date.valueOf(java.time.LocalDate.now());
           Date sDate = Date.valueOf("2018-08-26");
           Date eDate = Date.valueOf("2018-08-26");
-          dao.insertLeaveDetails("EL", sDate, eDate, 2, "SICK", appliedDate, "Pending", 100);
+          dao.insertLeaveDetails("EL", sDate, eDate, 1, "SICK", appliedDate, "PENDING", 100);
         } catch (Exception e) {
           System.out.println(e.toString());
         }
@@ -151,7 +149,7 @@ public class LeaveDetailsTest {
   @Test
   public final void testDateMethod() {
     int res = LeaveDetails.dateExpiryOfsdate("2018-10-10");
-    assertEquals(0, res);
+    assertEquals(1, res);
     int res1 = LeaveDetails.dateExpiryOfsdate("2018-10-02");
     assertEquals(1, res1);
     int res2 = LeaveDetails.dateExpiryOfedate("2018-10-15", "2018-10-08");
@@ -279,7 +277,6 @@ public class LeaveDetailsTest {
    */
   @Test
   public final void testOverlap(@Mocked final LeaveDetailsDAO dao) {
-
     final LeaveDetails lea = new LeaveDetails();
     final LeaveDetails lea1 = new LeaveDetails();
     new Expectations() {

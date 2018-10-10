@@ -13,6 +13,8 @@ public class LeaveTypeTest {
  */
   @Test
     public final void testLeaveType() {
-    LeaveType lt = LeaveType.EL;
+    LeaveType lt1 = LeaveType.EL;
+    LeaveType lt2 = LeaveType.SL;
+    LeaveType lt3 = LeaveType.MPL;
   }
 }

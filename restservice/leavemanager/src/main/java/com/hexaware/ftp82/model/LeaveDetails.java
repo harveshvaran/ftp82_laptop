@@ -280,7 +280,7 @@ public class LeaveDetails {
    *@return status of the application
    */
   public static int applyLeave(final int empId, final String leaveType, final String startDate, final String endDate, final String leaveReason) {
-    String leaveStatus = "Pending";
+    String leaveStatus = LeaveStatus.PENDING.toString();
     int status = 0;
     int diffInDays = 0;
     try {
