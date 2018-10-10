@@ -8,14 +8,14 @@ import java.util.List;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import java.util.Properties;
-import javax.mail.Transport;
-import javax.mail.Session;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
+// import java.util.Properties;
+// import javax.mail.Transport;
+// import javax.mail.Session;
+// import javax.mail.internet.InternetAddress;
+// import javax.mail.internet.MimeMessage;
+// import javax.mail.Message;
+// import javax.mail.MessagingException;
+// import javax.mail.PasswordAuthentication;
 /**
  * Employee class to store employee personal details.
  * @author hexware
@@ -235,7 +235,12 @@ public class Employee {
    * @return Employee
    */
   public static Employee listById(final int empID) {
-    return dao().find(empID);
+    Employee e = dao().find(empID);
+    if (e == null) {
+      e = null;
+      return e;
+    }
+    return e;
   }
    /**
    * list employee details by id.
@@ -290,12 +295,13 @@ public class Employee {
     }
   }
   */
+  /*
   /**
    * @param empId to get employee details.
    * @return dfs
-   */
   public static String getMailId(final int empId) {
     Employee e = dao().getMail(empId);
     return e.getEmpEmail();
   }
+  */
 }

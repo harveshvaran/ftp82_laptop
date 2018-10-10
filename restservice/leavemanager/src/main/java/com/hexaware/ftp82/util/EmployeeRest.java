@@ -26,7 +26,6 @@ public class EmployeeRest {
     final Employee[] employees = Employee.listAll();
     return employees;
   }
-
   /**
    * Returns a specific employee's details.
    * @param id the id of the employee
@@ -38,8 +37,7 @@ public class EmployeeRest {
   public final Employee employeeListById(@PathParam("id") final int id) {
     final Employee empl = Employee.listById(id);
     if (empl == null) {
-      String es = "no such Employee ID found !";
-      empl = emp.es;
+      throw new NotFoundException();
     }
     return empl;
   }
