@@ -5,7 +5,7 @@ package com.hexaware.ftp82.model;
  */
 public enum LeaveType {
 /**
- *@param decalres EL as leave type
+ *@param decalres EL,SL,MPL as leave type
  */
-    EL;
+    EL, SL, MPL;
 }

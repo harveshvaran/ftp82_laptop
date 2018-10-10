@@ -31,6 +31,10 @@ public class LeaveDetailsTest {
   */
   @Test
   public final void testLeaveDetails() {
+<<<<<<< HEAD
+=======
+    //DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+>>>>>>> a4325360b02a4013bfaa8ee273e85ed1fb5a3839
     String strtDate = "2018-08-27";
     String endDate = "2018-08-27";
     String appliedDate = "2018-08-27";
@@ -125,6 +129,7 @@ public class LeaveDetailsTest {
         try {
           Date appliedDate = Date.valueOf(java.time.LocalDate.now());
           Date sDate = Date.valueOf("2018-08-26");
+<<<<<<< HEAD
           Date eDate = Date.valueOf("2018-08-28");
           dao.insertLeaveDetails("EL", sDate, eDate, 2, "SICK", appliedDate, "PENDING", 100);
           result = 1;
@@ -133,6 +138,10 @@ public class LeaveDetailsTest {
           Date eDate1 = Date.valueOf("2018-08-28");
           dao.insertLeaveDetails("EL", sDate1, eDate1, 2, "SICK", appliedDate1, "APPROVED", 1000);
           result = 1;
+=======
+          Date eDate = Date.valueOf("2018-08-26");
+          dao.insertLeaveDetails("EL", sDate, eDate, 1, "SICK", appliedDate, "PENDING", 100);
+>>>>>>> a4325360b02a4013bfaa8ee273e85ed1fb5a3839
         } catch (Exception e) {
           System.out.println(e.toString());
         }
@@ -283,7 +292,6 @@ public class LeaveDetailsTest {
    */
   @Test
   public final void testOverlap(@Mocked final LeaveDetailsDAO dao) {
-
     final LeaveDetails lea = new LeaveDetails();
     final LeaveDetails lea1 = new LeaveDetails();
     new Expectations() {
@@ -309,5 +317,19 @@ public class LeaveDetailsTest {
     int l2 = LeaveDetails.overLapCheck("2018-10-14", 300);
     assertEquals(1, l);
     assertEquals(1, l2);
+  }
+  /**
+   *
+   */
+  @Test
+  public final void testDateCheck() {
+    Date sDate = Date.valueOf("2018-10-12");
+    Date eDate = Date.valueOf("2018-10-16");
+    int res = LeaveDetails.dateCheck(sDate, eDate);
+    assertEquals(3, res);
+    Date sDate1 = Date.valueOf("2018-10-12");
+    Date eDate1 = Date.valueOf("2018-10-11");
+    int res1 = LeaveDetails.dateCheck(sDate1, eDate1);
+    assertEquals(1, res1);
   }
 }
