@@ -5,11 +5,7 @@ import java.util.List;
 import com.hexaware.ftp82.persistence.DbConnection;
 import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
 import java.text.SimpleDateFormat;
-<<<<<<< HEAD
-import java.text.DateFormat;
-=======
 import java.util.Calendar;
->>>>>>> 48cda4701cab3e36d3829c591fc4ee1b70530e8e
 /**
  * LeaveDetails class to process employee leave details.
  * @author hexaware
@@ -291,17 +287,8 @@ public class LeaveDetails {
       Date appliedDate = Date.valueOf(java.time.LocalDate.now());
       Date sDate = Date.valueOf(startDate);
       Date eDate = Date.valueOf(endDate);
-<<<<<<< HEAD
-      long diff = eDate.getTime() - sDate.getTime();
-      diffInDays = (int) diff / (1000 * 60 * 60 * 24);
-      diffInDays = diffInDays + 1;
-      System.out.println("\n number of days" + diffInDays + "\n");
-      System.out.println("\n number of days"+diffInDays+"\n");
-=======
-      //long diff = eDate.getTime() - sDate.getTime();
       diffInDays = dateCheck(sDate, eDate);
       System.out.println("\n number of days" + diffInDays + "\n");
->>>>>>> 48cda4701cab3e36d3829c591fc4ee1b70530e8e
       status = dao().insertLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveReason, appliedDate, leaveStatus, empId);
     } catch (Exception e) {
       System.out.println(e.toString());
@@ -393,20 +380,7 @@ public class LeaveDetails {
   public static int overLapCheck(final String strtDate, final int emID) {
     try {
       Date sDate = Date.valueOf(strtDate);
-<<<<<<< HEAD
-    //Date eDate = Date.valueOf(EndDate);
       List<LeaveDetails> lshs = dao().leaveHistory(emID);
-      for (LeaveDetails ls : lshs) {
-        Date sd = Date.valueOf(ls.getStartDate());
-        Date ed = Date.valueOf(ls.getEndDate());
-        if  (sDate.after(sd) && sDate.before(ed)) {
-          return 0;
-        }
-      }
-    } catch  (IllegalArgumentException e) {
-=======
-      List<LeaveDetails> lshs = dao().leaveHistory(emID);
-
       for (LeaveDetails ls : lshs) {
         Date sd = Date.valueOf(ls.getStartDate());
         Date ed = Date.valueOf(ls.getEndDate());
@@ -415,7 +389,6 @@ public class LeaveDetails {
         }
       }
     } catch (IllegalArgumentException e) {
->>>>>>> 48cda4701cab3e36d3829c591fc4ee1b70530e8e
       System.out.println(e);
     }
     return 1;
