@@ -69,6 +69,7 @@ public class LeaveDetailsRest {
       default:
         return "process unsuccessful !";
     }
+  }
   /**
    * @param iD of the employee
    * @param leaveType of the employee
