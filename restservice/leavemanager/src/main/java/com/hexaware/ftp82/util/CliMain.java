@@ -1,14 +1,10 @@
 package com.hexaware.ftp82.util;
 import com.hexaware.ftp82.model.LeaveDetails;
 import com.hexaware.ftp82.model.Employee;
-//import com.hexaware.ftp82.excep.MyException;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.ListIterator;
-//import com.hexaware.ftp82.model.persistence.EmployeeDAO;
-//import com.hexaware.ftp82.model.persistence.LeaveDetailsDAO;
-//import java.util.*;
 /**
  * Class CliMain provides the command line interface to the leavemanagement
  * application.
@@ -132,7 +128,7 @@ public class CliMain {
       }
     } while (i == 0);
     overlap = LeaveDetails.overLapCheck(startDate, empId);
-    if  (overlap == 1) {
+    if (overlap == 1) {
       System.out.println("Leave Type : ");
       String leaveType = option.next();
       System.out.println("Leave Reason : ");
