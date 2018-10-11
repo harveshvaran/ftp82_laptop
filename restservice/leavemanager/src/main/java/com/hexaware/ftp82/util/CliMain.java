@@ -21,7 +21,8 @@ public class CliMain {
     System.out.println("4. Leave history");
     System.out.println("5. Pending Leave Applications");
     System.out.println("6. Apply / Deny leave");
-    System.out.println("7. Exit");
+    System.out.println("7. Update exsisting leave");
+    System.out.println("8. Exit");
     System.out.println("-----------------------");
     System.out.println("Enter your choice:");
     int menuOption = 0;
@@ -55,6 +56,8 @@ public class CliMain {
         acceptOrDeny();
         break;
       case 7:
+        updateLeave();
+      case 8:
         // halt since normal exit throws a stacktrace due to jdbc threads not responding
         Runtime.getRuntime().halt(0);
       default:
@@ -281,6 +284,48 @@ public class CliMain {
     return 0;
   }
   /**
+  * The main entry point for updateLeave method.
+  */
+  private void updateLeave() {
+    int i = 1;
+    System.out.println("Employee Id : ");
+    int empID = 0;
+    do {
+      empID = getInteger();
+    } while (empID == 0);
+    System.out.println("Leave Id : ");
+    int leaveId = option.nextInt();
+    System.out.println("Start Date : YYYY-MM-DD");
+    String sDate = option.next();
+    do {
+      i = LeaveDetails.dateExpiryOfsdate(sDate);
+      if (i == 1) {
+        System.out.println("entered date is invalid");
+        applyLeave();
+      }
+    } while (i == 1);
+    System.out.println("End Date : YYYY-MM-DD");
+    String eDate = option.next();
+    do {
+      i = LeaveDetails.dateExpiryOfedate(eDate, sDate);
+      if (i == 0) {
+        System.out.println("entered date is invalid");
+        applyLeave();
+      }
+    } while (i == 0);
+    System.out.println(" LEAVE TYPE : 1.Earned/Privileged Leave(EL)  2.Sick Leave(SL)  3.Maternity/Paternity Leave(MPL) ");
+    String lType = option.next();
+    System.out.println("LEAVE REASON : ");
+    String lReason = option.next();
+    int status = LeaveDetails.editLeave(empID, lType, sDate, eDate, lReason, leaveId);
+    if (status > 0) {
+      System.out.print("\n LEAVE APPLIED ");
+    } else {
+      System.out.print("\n UNABLE TO INSERT RECORD ");
+    }
+    mainMenu();
+  }
+  /**
    * The main entry point.
    * @param ar the list of arguments
    */
@@ -289,51 +334,3 @@ public class CliMain {
     mainObj.mainMenu();
   }
 }
-/**
-  * The main entry point for updateLeave method.
-  */
-  private void updateLeave() {
-    int i = 1;
-    System.out.println("Employee Id : ");
-    System.out.println("Leave Id : ");
-    leaveId = getInteger();
-    int empId = 0;
-    int overlap = 0;
-    do {
-      empId = getInteger();
-    } while (empId == 0);
-    System.out.println("Start Date : YYYY-MM-DD");
-    String startDate = option.next();
-    do {
-      i = LeaveDetails.dateExpiryOfsdate(startDate);
-      if (i == 1) {
-        System.out.println("entered date is invalid");
-        applyLeave();
-      }
-    } while (i == 1);
-    System.out.println("End Date : YYYY-MM-DD");
-    String endDate = option.next();
-    do {
-      i = LeaveDetails.dateExpiryOfedate(endDate, startDate);
-      if (i == 0) {
-        System.out.println("entered date is invalid");
-        applyLeave();
-      }
-    } while (i == 0);
-    overlap = LeaveDetails.overLapCheck(startDate, empId);
-    if  (overlap == 1) {
-      System.out.println(" LEAVE TYPE : 1.Earned/Privileged Leave(EL)  2.Sick Leave(SL)  3.Maternity/Paternity Leave(MPL) ");
-      String leaveType = option.next();
-      System.out.println("LEAVE REASON : ");
-      String leaveReason = option.next();
-      int status = LeaveDetails.editLeave(empId, leaveType, startDate, endDate, leaveReason,leaveId);
-      if (status > 0) {
-        System.out.print("\n LEAVE APPLIED ");
-      } else {
-        System.out.print("\n UNABLE TO INSERT RECORD ");
-      }
-    } else {
-      System.out.print("\n <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<----Dates are overlaping !..PLEASE try again----->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-      mainMenu();
-    }
-  }

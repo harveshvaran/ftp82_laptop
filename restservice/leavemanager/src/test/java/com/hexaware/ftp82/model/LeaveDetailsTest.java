@@ -123,13 +123,10 @@ public class LeaveDetailsTest {
     new Expectations() {
       {
         try {
-          Date sDate = Date.valueOf("2018-08-26");
-          Date eDate = Date.valueOf("2018-08-28");
           Date appliedDate = Date.valueOf(java.time.LocalDate.now());
-          dao.insertLeaveDetails("EL", sDate, eDate, 3, "SICK", appliedDate, "PENDING", 100);
-          result = 1;
-          dao.insertLeaveDetails("EL", sDate, eDate, 3, "SICK", appliedDate, "APPROVED", 1000);
-          result = 1;
+          Date sDate = Date.valueOf("2018-08-26");
+          Date eDate = Date.valueOf("2018-08-26");
+          dao.insertLeaveDetails("EL", sDate, eDate, 2, "SICK", appliedDate, "PENDING", 100);
         } catch (Exception e) {
           System.out.println(e.toString());
         }
@@ -319,5 +316,33 @@ public class LeaveDetailsTest {
     Date eDate1 = Date.valueOf("2018-10-11");
     int res1 = LeaveDetails.dateCheck(sDate1, eDate1);
     assertEquals(1, res1);
+  }
+  /**
+   *
+   */
+   @Test
+  public final void testUpdateLeave(@Mocked final LeaveDetailsDAO dao) {
+    final LeaveDetails ld3 = new LeaveDetails();
+    new Expectations() {
+      {
+        try {
+          Date appliedDate = Date.valueOf(java.time.LocalDate.now());
+          Date sDate = Date.valueOf("2018-08-26");
+          Date eDate = Date.valueOf("2018-08-26");
+          dao.updateLeaveDetails("EL", sDate, eDate, 2, "PENDING", "SICK", appliedDate, 100, 20);
+        } catch (Exception e) {
+          System.out.println(e.toString());
+        }
+        result = 1;
+      }
+    };
+    new MockUp<LeaveDetails>() {
+      @Mock
+      LeaveDetailsDAO dao() {
+        return dao;
+      }
+    };
+    int e = LeaveDetails.editLeave(100, "EL", "2018-08-26", "2018-08-26", "SICK", 20);
+    assertEquals(1, e);
   }
 }

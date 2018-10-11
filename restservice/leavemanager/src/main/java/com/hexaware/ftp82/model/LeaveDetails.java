@@ -415,13 +415,13 @@ public class LeaveDetails {
     } while (sD.getTimeInMillis() < eD.getTimeInMillis());
     return noOfDays + 1;
   }
-}
 /**
    *@param leaveType leave pending details
    *@param startDate startdate of applied leave.
    *@param endDate enddate of applied leave.
    *@param empId employee ID
    *@param leaveReason leave reason of applied leave.
+   *@param leaveId leave Id
    *@return status of the leave application
    */
   public static int editLeave(final int empId, final String leaveType, final String startDate, final String endDate, final String leaveReason, final int leaveId) {
@@ -431,14 +431,14 @@ public class LeaveDetails {
     try {
       Date appliedDate = Date.valueOf(java.time.LocalDate.now());
       Date sDate = Date.valueOf(startDate);
-      
       Date eDate = Date.valueOf(endDate);
       diffInDays = dateCheck(sDate, eDate);
       System.out.println("\n number of days" + diffInDays + "\n");
-      status = dao().insertLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveReason, appliedDate, leaveStatus, empId, leaveId);
+      status = dao().updateLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveStatus, leaveReason, appliedDate, empId, leaveId);
     } catch (Exception e) {
       System.out.println(e.toString());
     }
     return status;
   }
+}
 
