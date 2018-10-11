@@ -148,7 +148,7 @@ public class LeaveDetailsTest {
    */
   @Test
   public final void testDateMethod() {
-    int res = LeaveDetails.dateExpiryOfsdate("2018-10-29");
+    int res = LeaveDetails.dateExpiryOfsdate("2018-10-11");
     assertEquals(0, res);
     int res1 = LeaveDetails.dateExpiryOfsdate("2018-10-02");
     assertEquals(1, res1);
