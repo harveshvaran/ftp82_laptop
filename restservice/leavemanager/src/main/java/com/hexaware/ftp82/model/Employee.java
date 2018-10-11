@@ -40,6 +40,10 @@ public class Employee {
   private int empManagerId;
   private int empLeaveBalance;
   private String empDoj;
+  /**
+   * Equals class to check employee details.
+   * @return true or false.
+   */
   @Override
   public final boolean equals(final Object obj) {
     if (obj == null) {
@@ -57,6 +61,16 @@ public class Employee {
     }
     return false;
   }
+  /**
+   * @return empId employee id.
+   * @return empName employee name.
+   * @return empPh employee phone number.
+   * @return empEmail employee email id.
+   * @return empDept department of employee.
+   * @return empManagerId employee id of the manager.
+   * @return empLeaveBalance leave balance of the employee.
+   * @return empDoj date of joining of the employee.
+   */
   @Override
   public final int hashCode() {
     return Objects.hash(empId, empName, empPh, empEmail, empDept, empManagerId, empLeaveBalance, empDoj);

@@ -94,6 +94,22 @@ public interface LeaveDetailsDAO  {
    */
   @SqlUpdate("Update leave_details set leave_status = :status , MANAGER_COMMENTS = :mgrcomments where Leave_id = :leaveId")
   int updateApproveOrDenial(@Bind("status")String status, @Bind("mgrcomments") String mgrcomments, @Bind("leaveId") int leaveId);
+    /**
+   * update contents in leavedetails table.
+   * @param leaveType the status
+   * @param sDate the start date
+   * @param eDate the end date
+   * @param diffInDays the no of days
+   * @param leaveStatus the leave status
+   * @param leaveReason the reason for leave
+   * @param appliedDate the leave applied date
+   * @param leaveId the leaveId
+   * @param empId the employee Id
+   * @return the employee array
+   */
+  @SqlUpdate("Update leave_details set Leave_TYPE = :leaveType, START_DATE = :sDate, END_DATE = :eDate, NO_OF_DAYS = :diffInDays, LEAVE_STATUS = :leaveStatus, LEAVE_REASON = :leaveReason, LEAVE_APPLIED_ON = :appliedDate WHERE LEAVE_ID = :leaveId AND EMP_ID = :empId")
+  int updateLeaveDetails(@Bind("leaveType") String leaveType, @Bind("sDate") Date sDate, @Bind("eDate") Date eDate, @Bind("diffInDays") int diffInDays,
+        @Bind("leaveStatus") String leaveStatus,  @Bind("leaveReason") String leaveReason, @Bind("appliedDate") Date appliedDate, @Bind("empId") int empId, @Bind("leaveId") int leaveId);
   /**
   * close with no args is used to close the connection.
   */

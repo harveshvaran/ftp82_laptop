@@ -1,6 +1,6 @@
 package com.hexaware.ftp82.model;
 /**
- * Employee class to store employee personal details.
+ * leave type class to store all leave types.
  * @author hexware
  */
 public enum LeaveType {
