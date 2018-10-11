@@ -318,9 +318,9 @@ public class LeaveDetailsTest {
     assertEquals(1, res1);
   }
   /**
-   *
+   *@param dao to access object
    */
-   @Test
+  @Test
   public final void testUpdateLeave(@Mocked final LeaveDetailsDAO dao) {
     final LeaveDetails ld3 = new LeaveDetails();
     new Expectations() {
