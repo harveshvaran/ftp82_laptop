@@ -73,6 +73,7 @@ public class LeaveDetailsRest {
   @POST
   @Path("/approve/{eid}/{lid}/{comments}/{status}")
   @Produces(MediaType.APPLICATION_JSON)
+<<<<<<< HEAD
   public final String postApproveOrDeny(@PathParam("eid")final int eid, @PathParam("lid")final int lid, @PathParam("comments")final String comments, @PathParam("status")final String status) {
     if (LeaveDetails.checkIds(eid, lid) == 1) {
       LeaveDetails ls = new LeaveDetails();
@@ -89,6 +90,24 @@ public class LeaveDetailsRest {
       }
     } else {
       return "Enter corresponding Employee ID and Leave ID !";
+=======
+  public final String applyLeaveRest(@PathParam("iD") final int iD, @PathParam("leaveType") final String leaveType, @PathParam("startDate") final String startDate, @PathParam("endDate") final String endDate, @PathParam("leaveReason") final String leaveReason) {
+    int res = LeaveDetails.dateExpiryOfsdate(startDate);
+    if (res == 0) {
+      int res1 = LeaveDetails.dateExpiryOfedate(endDate, startDate);
+      if (res1 == 1) {
+        int status = LeaveDetails.applyLeave(iD, leaveType, startDate, endDate, leaveReason);
+        if (status > 0) {
+          return "inserted sucessfully";
+        } else {
+          return "failed during insertion try again";
+        }
+      } else {
+        return "enter the endDate properly";
+      }
+    } else {
+      return "enter the Start Date properly";
+>>>>>>> 0fa20be... validations done
     }
   }
 }
