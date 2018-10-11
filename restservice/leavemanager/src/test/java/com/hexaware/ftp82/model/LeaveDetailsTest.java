@@ -124,9 +124,9 @@ public class LeaveDetailsTest {
       {
         try {
           Date appliedDate = Date.valueOf(java.time.LocalDate.now());
-          Date sDate = Date.valueOf("2018-08-26");
-          Date eDate = Date.valueOf("2018-08-26");
-          dao.insertLeaveDetails("EL", sDate, eDate, 2, "SICK", appliedDate, "PENDING", 100);
+          Date sDate = Date.valueOf("2018-11-27");
+          Date eDate = Date.valueOf("2018-11-29");
+          dao.insertLeaveDetails("EL", sDate, eDate, 3, "SICK", appliedDate, "PENDING", 100);
         } catch (Exception e) {
           System.out.println(e.toString());
         }
@@ -138,10 +138,8 @@ public class LeaveDetailsTest {
         return dao;
       }
     };
-    int e = LeaveDetails.applyLeave(100, "EL", "2018-08-26", "2018-08-28", "SICK");
-    assertEquals(1, e);
-    int e1 = LeaveDetails.applyLeave(1000, "EL", "2018-08-26", "2018-08-28", "SICK");
-    assertEquals(1, e1);
+    int e = LeaveDetails.applyLeave(100, "EL", "2018-11-27", "2018-11-29", "SICK");
+    assertEquals(0, e);
   }
   /**
    * testDateMethod class Tests that a fetch of a specific employee works correctly.

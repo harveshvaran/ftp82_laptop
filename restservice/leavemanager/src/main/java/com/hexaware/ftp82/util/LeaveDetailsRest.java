@@ -56,7 +56,7 @@ public class LeaveDetailsRest {
    */
   @GET
   @Path("/pending/{empId}")
-  @Produces(MediaType.APPLICATION_JSON)
+  //@Produces(MediaType.APPLICATION_JSON)
   public final LeaveDetails[] leaveDetailsList(@PathParam("empId") final int empId) {
     System.out.println("Pending Applications List");
     final LeaveDetails[] ls = LeaveDetails.listAll(empId);
@@ -72,7 +72,7 @@ public class LeaveDetailsRest {
    */
   @POST
   @Path("/approve/{eid}/{lid}/{comments}/{status}")
-  @Produces(MediaType.APPLICATION_JSON)
+  //@Produces(MediaType.APPLICATION_JSON)
   public final String postApproveOrDeny(@PathParam("eid")final int eid, @PathParam("lid")final int lid, @PathParam("comments")final String comments, @PathParam("status")final String status) {
     if (LeaveDetails.checkIds(eid, lid) == 1) {
       LeaveDetails ls = new LeaveDetails();
