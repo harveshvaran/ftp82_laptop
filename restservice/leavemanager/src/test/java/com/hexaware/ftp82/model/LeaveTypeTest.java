@@ -1,5 +1,4 @@
 package com.hexaware.ftp82.model;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import mockit.integration.junit4.JMockit;
@@ -9,7 +8,7 @@ import mockit.integration.junit4.JMockit;
 @RunWith(JMockit.class)
 public class LeaveTypeTest {
 /**
- * Test class for Employee.
+ * Test class to check leave type.
  */
   @Test
     public final void testLeaveType() {

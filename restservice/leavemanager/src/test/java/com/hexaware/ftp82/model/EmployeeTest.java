@@ -101,8 +101,8 @@ public class EmployeeTest {
   }
   */
   /**
-   * tests that empty employee list is handled correctly.
-   * @param dao mocking the dao class
+   * testListAllEmpty class tests that empty employee list is handled correctly.
+   * @param dao to mock the dao class.
    */
   @Test
   public final void testListAllEmpty(@Mocked final EmployeeDAO dao) {
@@ -122,8 +122,8 @@ public class EmployeeTest {
   }
 
   /**
-   * Tests that a list with some employees is handled correctly.
-   * @param dao mocking the dao class
+   * testListAllSome class Tests that a list with some employee details is handled correctly.
+   * @param dao to mock the dao class
    */
   @Test
   public final void testListAllSome(@Mocked final EmployeeDAO dao) {
@@ -163,8 +163,8 @@ public class EmployeeTest {
     }
   }
   /**
-   * Tests that a fetch of a specific employee works correctly.
-   * @param dao mocking the dao class
+   * testListById class Tests that a fetch of a specific employee works correctly.
+   * @param dao to mock the dao class
    */
   @Test
   public final void testListById(@Mocked final EmployeeDAO dao) {
@@ -187,7 +187,7 @@ public class EmployeeTest {
     assertNull(e);
   }
   /**
-   * tests that empty employee list is handled correctly.
+   * testSend class tests that empty employee list is handled correctly.
    * @param dao mocking the dao class
   @Test
   public final void testSend(@Mocked final EmployeeDAO dao) {
@@ -208,7 +208,7 @@ public class EmployeeTest {
     assertEquals(e100, e);
   }  */
   /**
-   * Tests that a fetch of a specific employee works correctly.
+   * testGetLeaveBalance class Tests that a fetch of a specific employee works correctly.
    * @param dao mocking the dao class
    */
   @Test

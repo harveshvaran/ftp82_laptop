@@ -5,7 +5,6 @@ import static org.junit.Assert.assertNotEquals;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import java.sql.Date;
 import mockit.Expectations;
 import mockit.MockUp;
@@ -148,7 +147,7 @@ public class LeaveDetailsTest {
     assertEquals(1, e1);
   }
   /**
-   * Tests that a fetch of a specific employee works correctly.
+   * testDateMethod class Tests that a fetch of a specific employee works correctly.
    */
   @Test
   public final void testDateMethod() {
@@ -162,7 +161,7 @@ public class LeaveDetailsTest {
     assertEquals(0, res3);
   }
   /**
-   * Tests that a fetch of a specific employee works correctly.
+   * testApplyOrDeny class Tests that a fetch of a specific employee works correctly.
    * @param dao mocking the dao class
    */
   @Test
@@ -202,7 +201,7 @@ public class LeaveDetailsTest {
     assertEquals(status2, 101);
   }
   /**
-   * Tests that a fetch of a specific employee works correctly.
+   * testLeaveHistory class Tests that a fetch of a specific employee works correctly.
    * @param dao mocking the dao class
    */
   @Test
@@ -222,7 +221,7 @@ public class LeaveDetailsTest {
     assertEquals(0, l.length);
   }
   /**
-   * Tests that a list with some employees is handled correctly.
+   * testListAll class Tests that a list with some employees is handled correctly.
    * @param dao mocking the dao class
    */
   @Test
@@ -247,7 +246,7 @@ public class LeaveDetailsTest {
     assertEquals(new LeaveDetails(200), lt[1]);
   }
   /**
-   * Tests that a fetch of a specific employee works correctly.
+   * testCheckIds class Tests that a fetch of a specific employee works correctly.
    * @param dao mocking the dao class
    */
   @Test
@@ -276,7 +275,7 @@ public class LeaveDetailsTest {
     assertEquals(l1, 0);
   }
  /**
-   * Tests that a fetch of a specific employee works correctly.
+   * testOverlap class Tests that a fetch of a specific employee works correctly.
    * @param dao mocking the dao class
    */
   @Test
