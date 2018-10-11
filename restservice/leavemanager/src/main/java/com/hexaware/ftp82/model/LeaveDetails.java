@@ -5,7 +5,7 @@ import java.util.List;
 import com.hexaware.ftp82.persistence.DbConnection;
 import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;\
+import java.util.Calendar;
 /**
  * LeaveDetails class to process employee leave details.
  * @author hexaware
@@ -416,3 +416,29 @@ public class LeaveDetails {
     return noOfDays + 1;
   }
 }
+/**
+   *@param leaveType leave pending details
+   *@param startDate startdate of applied leave.
+   *@param endDate enddate of applied leave.
+   *@param empId employee ID
+   *@param leaveReason leave reason of applied leave.
+   *@return status of the leave application
+   */
+  public static int editLeave(final int empId, final String leaveType, final String startDate, final String endDate, final String leaveReason, final int leaveId) {
+    String leaveStatus = LeaveStatus.PENDING.toString();
+    int status = 0;
+    int diffInDays = 0;
+    try {
+      Date appliedDate = Date.valueOf(java.time.LocalDate.now());
+      Date sDate = Date.valueOf(startDate);
+      
+      Date eDate = Date.valueOf(endDate);
+      diffInDays = dateCheck(sDate, eDate);
+      System.out.println("\n number of days" + diffInDays + "\n");
+      status = dao().insertLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveReason, appliedDate, leaveStatus, empId, leaveId);
+    } catch (Exception e) {
+      System.out.println(e.toString());
+    }
+    return status;
+  }
+
