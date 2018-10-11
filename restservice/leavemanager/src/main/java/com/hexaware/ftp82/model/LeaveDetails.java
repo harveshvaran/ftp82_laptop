@@ -78,39 +78,15 @@ public class LeaveDetails {
       return false;
     }
     LeaveDetails ld = (LeaveDetails) obj;
-    if (Objects.equals(leaveId, ld.leaveId)) {
-      return true;
-    }
-    if (Objects.equals(leaveType, ld.leaveType)) {
-      return true;
-    }
-    if (Objects.equals(startDate, ld.startDate)) {
-      return true;
-    }
-    if (Objects.equals(endDate, ld.endDate)) {
-      return true;
-    }
-    if (Objects.equals(noOfDays, ld.noOfDays)) {
-      return true;
-    }
-    if (Objects.equals(leaveStatus, ld.leaveStatus)) {
-      return true;
-    }
-    if (Objects.equals(leaveReason, ld.leaveReason)) {
-      return true;
-    }
-    if (Objects.equals(leaveAppliedOn, ld.leaveAppliedOn)) {
-      return true;
-    }
-    if (Objects.equals(managerComments, ld.managerComments)) {
-      return true;
-    }
-    if (Objects.equals(empId, ld.empId)) {
+    if (Objects.equals(leaveId, ld.leaveId) && Objects.equals(leaveType, ld.leaveType)
+        && Objects.equals(startDate, ld.startDate) && Objects.equals(endDate, ld.endDate)
+        && Objects.equals(noOfDays, ld.noOfDays) && Objects.equals(leaveStatus, ld.leaveStatus)
+        && Objects.equals(leaveReason, ld.leaveReason) && Objects.equals(leaveAppliedOn, ld.leaveAppliedOn)
+        && Objects.equals(managerComments, ld.managerComments) && Objects.equals(empId, ld.empId))  {
       return true;
     }
     return false;
   }
-
   @Override
   public final int hashCode() {
     return Objects.hash(leaveId, leaveType, startDate, endDate, noOfDays, leaveStatus, leaveReason, leaveAppliedOn, managerComments, empId);
