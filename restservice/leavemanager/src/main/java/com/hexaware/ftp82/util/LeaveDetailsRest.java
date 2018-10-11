@@ -16,25 +16,6 @@ import com.hexaware.ftp82.model.LeaveDetails;
 @Path("/LeaveDetails")
 public class LeaveDetailsRest {
   /**
-   * @param iD of the employee
-   * @param leaveType of the employee
-   * @param startDate of the employee
-   * @param endDate of the employee
-   * @param leaveReason of the employee
-   * @return the employee details
-   */
-  @POST
-  @Path("/applyleave/{iD}/{leaveType}/{startDate}/{endDate}/{leaveReason}")
-  @Produces(MediaType.APPLICATION_JSON)
-  public final String applyLeaveRest(@PathParam("iD") final int iD, @PathParam("leaveType") final String leaveType, @PathParam("startDate") final String startDate, @PathParam("endDate") final String endDate, @PathParam("leaveReason") final String leaveReason) {
-    int status = LeaveDetails.applyLeave(iD, leaveType, startDate, endDate, leaveReason);
-    if (status > 0) {
-      return "inserted sucessfully";
-    } else {
-      return "failed during insertion try again";
-    }
-  }
-  /**
    * Returns a specific employee's details.
    * @param id the id of the employee
    * @return the employee details
@@ -64,33 +45,16 @@ public class LeaveDetailsRest {
   }
   /**
    * Returns a specific employee's details.
-   * @param eid the id of the employee
-   * @param lid the id of the employee
-   * @param comments the id of the employee
-   * @param status the id of the employee
+   * @param iD the id of the employee
+   * @param leaveType the id of the employee
+   * @param startDate the id of the employee
+   * @param endDate the id of the employee
+   * @param leaveReason the id of the employee
    * @return the employee details
    */
   @POST
-  @Path("/approve/{eid}/{lid}/{comments}/{status}")
+  @Path("/applyleave/{iD}/{leaveType}/{startDate}/{endDate}/{leaveReason}")
   @Produces(MediaType.APPLICATION_JSON)
-<<<<<<< HEAD
-  public final String postApproveOrDeny(@PathParam("eid")final int eid, @PathParam("lid")final int lid, @PathParam("comments")final String comments, @PathParam("status")final String status) {
-    if (LeaveDetails.checkIds(eid, lid) == 1) {
-      LeaveDetails ls = new LeaveDetails();
-      int flag = ls.applyForLeave(eid, lid, comments, status);
-      switch (flag) {
-        case 1:
-          return "Leave approved !";
-        case 100:
-          return "Leave approval Denied !";
-        case 102:
-          return "Leave process completed !";
-        default:
-          return "process unsuccessful !";
-      }
-    } else {
-      return "Enter corresponding Employee ID and Leave ID !";
-=======
   public final String applyLeaveRest(@PathParam("iD") final int iD, @PathParam("leaveType") final String leaveType, @PathParam("startDate") final String startDate, @PathParam("endDate") final String endDate, @PathParam("leaveReason") final String leaveReason) {
     int res = LeaveDetails.dateExpiryOfsdate(startDate);
     if (res == 0) {
@@ -107,7 +71,35 @@ public class LeaveDetailsRest {
       }
     } else {
       return "enter the Start Date properly";
->>>>>>> 0fa20be... validations done
+    }
+  }
+  /**
+   * Returns a specific employee's details.
+   * @param eid the id of the employee
+   * @param lid the id of the employee
+   * @param comments the id of the employee
+   * @param status the id of the employee
+   * @return the employee details
+   */
+  @POST
+  @Path("/approve/{eid}/{lid}/{comments}/{status}")
+  @Produces(MediaType.APPLICATION_JSON)
+  public final String postApproveOrDeny(@PathParam("eid")final int eid, @PathParam("lid")final int lid, @PathParam("comments")final String comments, @PathParam("status")final String status) {
+    if (LeaveDetails.checkIds(eid, lid) == 1) {
+      LeaveDetails ls = new LeaveDetails();
+      int flag = ls.applyForLeave(eid, lid, comments, status);
+      switch (flag) {
+        case 1:
+          return "Leave approved !";
+        case 100:
+          return "Leave approval Denied !";
+        case 102:
+          return "Leave process completed !";
+        default:
+          return "process unsuccessful !";
+      }
+    } else {
+      return "Enter corresponding Employee ID and Leave ID !";
     }
   }
 }
