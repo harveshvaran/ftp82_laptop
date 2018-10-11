@@ -16,25 +16,6 @@ import com.hexaware.ftp82.model.LeaveDetails;
 @Path("/LeaveDetails")
 public class LeaveDetailsRest {
   /**
-   * @param iD of the employee
-   * @param leaveType of the employee
-   * @param startDate of the employee
-   * @param endDate of the employee
-   * @param leaveReason of the employee
-   * @return the employee details
-   */
-  @POST
-  @Path("/applyleave/{iD}/{leaveType}/{startDate}/{endDate}/{leaveReason}")
-  @Produces(MediaType.APPLICATION_JSON)
-  public final String applyLeaveRest(@PathParam("iD") final int iD, @PathParam("leaveType") final String leaveType, @PathParam("startDate") final String startDate, @PathParam("endDate") final String endDate, @PathParam("leaveReason") final String leaveReason) {
-    int status = LeaveDetails.applyLeave(iD, leaveType, startDate, endDate, leaveReason);
-    if (status > 0) {
-      return "inserted sucessfully";
-    } else {
-      return "failed during insertion try again";
-    }
-  }
-  /**
    * Returns a specific employee's details.
    * @param id the id of the employee
    * @return the employee details
@@ -61,6 +42,36 @@ public class LeaveDetailsRest {
     System.out.println("Pending Applications List");
     final LeaveDetails[] ls = LeaveDetails.listAll(empId);
     return ls;
+  }
+  /**
+   * Returns a specific employee's details.
+   * @param iD the id of the employee
+   * @param leaveType the id of the employee
+   * @param startDate the id of the employee
+   * @param endDate the id of the employee
+   * @param leaveReason the id of the employee
+   * @return the employee details
+   */
+  @POST
+  @Path("/applyleave/{iD}/{leaveType}/{startDate}/{endDate}/{leaveReason}")
+  @Produces(MediaType.APPLICATION_JSON)
+  public final String applyLeaveRest(@PathParam("iD") final int iD, @PathParam("leaveType") final String leaveType, @PathParam("startDate") final String startDate, @PathParam("endDate") final String endDate, @PathParam("leaveReason") final String leaveReason) {
+    int res = LeaveDetails.dateExpiryOfsdate(startDate);
+    if (res == 0) {
+      int res1 = LeaveDetails.dateExpiryOfedate(endDate, startDate);
+      if (res1 == 1) {
+        int status = LeaveDetails.applyLeave(iD, leaveType, startDate, endDate, leaveReason);
+        if (status > 0) {
+          return "inserted sucessfully";
+        } else {
+          return "failed during insertion try again";
+        }
+      } else {
+        return "enter the endDate properly";
+      }
+    } else {
+      return "enter the Start Date properly";
+    }
   }
   /**
    * Returns a specific employee's details.
