@@ -138,7 +138,7 @@ public class CliMain {
     } while (i == 0);
     overlap = LeaveDetails.overLapCheck(startDate, empId);
     if  (overlap == 1) {
-      System.out.println(" LEAVE TYPE : 1.Earned/Privileged Leave(EL)  2.Sick Leave(SL)  3.Maternity/Paternity Leave(MPL) ");
+      System.out.println("LEAVE TYPE : 1.Earned/Privileged Leave(EL)  2.Sick Leave(SL)  3.Maternity/Paternity Leave(MPL) ");
       String leaveType = option.next();
       System.out.println("LEAVE REASON : ");
       String leaveReason = option.next();
