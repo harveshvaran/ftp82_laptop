@@ -24,12 +24,12 @@ public class LeaveDetails {
    */
   private int leaveId;
   private String leaveType;
-  private Date startDate;
-  private Date endDate;
+  private String startDate;
+  private String endDate;
   private int noOfDays;
   private String leaveStatus;
   private String leaveReason;
-  private Date leaveAppliedOn;
+  private String leaveAppliedOn;
   private String managerComments;
   private int empId;
   /**
@@ -59,9 +59,9 @@ public class LeaveDetails {
       final Date leaveAppliedOn, final String managerComments, final int empId) {
     try {
       SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-      this.leaveId = argLeaveId;
-      this.leaveType = argLeaveType;
-      String strtDate = dateFormat.format(argStartDate);
+      this.leaveId = leaveId;
+      this.leaveType = leaveType;
+      String strtDate = dateFormat.format(startDate);
       this.startDate = strtDate;
       String edDate = dateFormat.format(endDate);
       this.endDate = edDate;
@@ -143,27 +143,27 @@ public class LeaveDetails {
    * Gets the StartDate.
    * @return this StartDate.
    */
-  public final Date getStartDate() {
+  public final String getStartDate() {
     return startDate;
   }
   /**
    *
    * @param argstartDate to set start date.
    */
-  public final void setStartDate(final Date startDate) {
+  public final void setStartDate(final String startDate) {
     this.startDate = startDate;
   }
   /**
    *@return this End date.
    */
-  public final Date getEndDate() {
+  public final String getEndDate() {
     return endDate;
   }
   /**
    *
    * @param argendDate to set End date.
    */
-  public final void setEndDate(final Date endDate) {
+  public final void setEndDate(final String endDate) {
     this.endDate = endDate;
   }
   /**
@@ -202,13 +202,13 @@ public class LeaveDetails {
    *
    * @param argleaveReason to set leave reason.
    */
-  public final void setLeaveReason(final Date leaveReason) {
+  public final void setLeaveReason(final String leaveReason) {
     this.leaveReason = leaveReason;
   }
   /**
    * @return this leave applied on
    */
-  public final Date getLeaveAppliedOn() {
+  public final String getLeaveAppliedOn() {
     return leaveAppliedOn;
   }
   /**

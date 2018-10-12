@@ -111,7 +111,6 @@ public class LeaveDetails {
           throw new RuntimeException(e);
       }
     }
-}
 /** 
    * Gets the LeaveId.
    * @return this LeaveId.

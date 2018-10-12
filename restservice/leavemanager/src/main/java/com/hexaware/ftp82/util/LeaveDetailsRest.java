@@ -4,7 +4,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.DELETE;
-//import javax.ws.rs.NotFoundException;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -65,8 +65,8 @@ public class LeaveDetailsRest {
    */
   @POST
   @Path("/applyleave/{iD}/{leaveType}/{startDate}/{endDate}/{leaveReason}")
- // @Produces(MediaType.APPLICATION_JSON)
-  public final String applyLeaveRest(@PathParam("iD") final int iD, @PathParam("leaveType") final String leaveType, @PathParam("startDate") final String startDate, @PathParam("endDate") final String endDate, @PathParam("leaveReason") final String leaveReason) {
+ @Produces(MediaType.TEXT_PLAIN)
+public final String applyLeaveRest(@PathParam("iD") final int iD, @PathParam("leaveType") final String leaveType, @PathParam("startDate") final String startDate, @PathParam("endDate") final String endDate, @PathParam("leaveReason") final String leaveReason) {
     int res = LeaveDetails.dateExpiryOfsdate(startDate);
     if (res == 0) {
       int res1 = LeaveDetails.dateExpiryOfedate(endDate, startDate);
@@ -94,9 +94,9 @@ public class LeaveDetailsRest {
    */
   @POST
   @Path("/approve/{eid}/{lid}/{comments}/{status}")
-  //@Produces(MediaType.APPLICATION_JSON)
+  @Produces(MediaType.TEXT_PLAIN)
   public final String postApproveOrDeny(@PathParam("eid")final int eid, @PathParam("lid")final int lid, @PathParam("comments")final String comments, @PathParam("status")final String status) {
-    if (LeaveDetails.checkIds(eid, lid) == 1) {
+    if (LeaveDetails.checkIds(eid, lid) == 0) {
       LeaveDetails ls = new LeaveDetails();
       int flag = ls.applyForLeave(eid, lid, comments, status);
       switch (flag) {
@@ -125,7 +125,7 @@ public class LeaveDetailsRest {
    */
   @PUT
   @Path("/updateleave/{iD}/{leaveType}/{startDate}/{endDate}/{leaveReason}/{leaveId}")
-  @Produces(MediaType.APPLICATION_JSON)
+  @Produces(MediaType.TEXT_PLAIN)
   public final String updateLeaveRest(@PathParam("iD") final int iD, @PathParam("leaveType") final String leaveType, @PathParam("startDate") final String startDate, @PathParam("endDate") final String endDate, @PathParam("leaveReason") final String leaveReason, @PathParam("leaveId") final int leaveId) {
     int res = LeaveDetails.dateExpiryOfsdate(startDate);
     if (res == 0) {
@@ -152,6 +152,7 @@ public class LeaveDetailsRest {
    */
   @DELETE
   @Path("/delete/{lId}/{empId}")
+  @Produces(MediaType.TEXT_PLAIN)
   public final String deleteLeaveRest(@PathParam("lId") final int lId, @PathParam("empId") final int empId) {
     int res1 = LeaveDetails.removeLeaveRequest(lId, empId);
     if (res1 > 0) {
