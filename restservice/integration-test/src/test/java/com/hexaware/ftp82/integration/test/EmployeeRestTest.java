@@ -42,8 +42,7 @@ public class EmployeeRestTest {
 			}
 		}
 	}
-
-	//@Test
+ //@Test
 	public void testEmployeeById() throws AssertionError, URISyntaxException {
 		Employee res = given().accept(ContentType.JSON).when()
 				.get(CommonUtil.getURI("/api/employees/1000")).getBody().as(Employee.class);

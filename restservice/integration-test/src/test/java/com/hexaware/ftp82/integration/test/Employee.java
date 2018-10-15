@@ -1,7 +1,6 @@
 package com.hexaware.ftp82.integration.test;
 
 import com.hexaware.ftp82.integration.test.CommonUtil;
-//import com.hexaware.ftp82.integration.test.EmployeeRestTest;
 import java.util.Objects;
 
 import javax.management.RuntimeErrorException;
