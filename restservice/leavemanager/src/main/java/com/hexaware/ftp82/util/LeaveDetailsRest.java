@@ -9,6 +9,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.hexaware.ftp82.model.LeaveDetails;
+import com.hexaware.ftp82.exceptions.NotFoundException;
 
 /**
  * This class provides a REST interface for the employee entity.
@@ -26,7 +27,7 @@ public class LeaveDetailsRest {
   public final LeaveDetails[] employeeLeaveHistory(@PathParam("id") final int id) {
     final LeaveDetails[] ls1 = LeaveDetails.history(id);
     if (ls1 == null) {
-      throw new NotFoundException("No such Employee ID: " + id);
+      throw new NotFoundException("SORRY..There is NO such Employee ID: " + id);
     }
     return ls1;
   }
@@ -54,7 +55,7 @@ public class LeaveDetailsRest {
    */
   @POST
   @Path("/applyleave/{iD}/{leaveType}/{startDate}/{endDate}/{leaveReason}")
-  @Produces(MediaType.APPLICATION_JSON)
+ // @Produces(MediaType.APPLICATION_JSON)
   public final String applyLeaveRest(@PathParam("iD") final int iD, @PathParam("leaveType") final String leaveType, @PathParam("startDate") final String startDate, @PathParam("endDate") final String endDate, @PathParam("leaveReason") final String leaveReason) {
     int res = LeaveDetails.dateExpiryOfsdate(startDate);
     if (res == 0) {
@@ -83,7 +84,7 @@ public class LeaveDetailsRest {
    */
   @POST
   @Path("/approve/{eid}/{lid}/{comments}/{status}")
-  @Produces(MediaType.APPLICATION_JSON)
+  //@Produces(MediaType.APPLICATION_JSON)
   public final String postApproveOrDeny(@PathParam("eid")final int eid, @PathParam("lid")final int lid, @PathParam("comments")final String comments, @PathParam("status")final String status) {
     if (LeaveDetails.checkIds(eid, lid) == 1) {
       LeaveDetails ls = new LeaveDetails();

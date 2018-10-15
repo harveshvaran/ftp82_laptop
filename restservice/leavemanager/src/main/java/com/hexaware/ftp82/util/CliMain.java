@@ -107,6 +107,7 @@ public class CliMain {
       System.out.print("Employee Manager ID = " + e.getEmpManagerId() + " | ");
       System.out.print("Employee Leave Balance = " + e.getEmpLeaveBalance() + " | ");
       System.out.print("Employee Date of Joining = " + e.getEmpDoj() + " ");
+      System.out.println("\n");
     }
     System.out.println("\n------------------------------------------------------------------------------------------------------------------------------------\n");
   }
@@ -245,9 +246,9 @@ public class CliMain {
     do {
       applyLeaveId = getInteger();
     } while (applyLeaveId == 0);
-    System.out.println("Enter Comments ");
+    System.out.println("Enter Comments: ");
     String applyMgrComments = option.nextLine();
-    System.out.println("Approve / Deny ");
+    System.out.println("Approve / Deny: ");
     String approveStatus = option.nextLine();
     //System.out.println(LeaveDetails.checkIds(applyEmpId, applyLeaveId));
     if (LeaveDetails.checkIds(applyEmpId, applyLeaveId) == 1) {

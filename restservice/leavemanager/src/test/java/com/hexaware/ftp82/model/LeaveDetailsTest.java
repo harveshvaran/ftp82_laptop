@@ -138,10 +138,10 @@ public class LeaveDetailsTest {
         return dao;
       }
     };
-    int e = LeaveDetails.applyLeave(100, "EL", "2018-08-26", "2018-08-28", "SICK");
-    assertEquals(1, e);
-    int e1 = LeaveDetails.applyLeave(1000, "EL", "2018-08-26", "2018-08-28", "SICK");
-    assertEquals(1, e1);
+    int e = LeaveDetails.applyLeave(100, "EL", "2018-08-26", "2018-08-26", "SICK");
+    assertEquals(0, e);
+    int e1 = LeaveDetails.applyLeave(1000, "EL", "2018-08-26", "2018-08-26", "SICK");
+    assertEquals(0, e1);
   }
   /**
    * testDateMethod class Tests that a fetch of a specific employee works correctly.
@@ -149,7 +149,7 @@ public class LeaveDetailsTest {
   @Test
   public final void testDateMethod() {
     int res = LeaveDetails.dateExpiryOfsdate("2018-10-11");
-    assertEquals(0, res);
+    assertEquals(1, res);
     int res1 = LeaveDetails.dateExpiryOfsdate("2018-10-02");
     assertEquals(1, res1);
     int res2 = LeaveDetails.dateExpiryOfedate("2018-10-15", "2018-10-08");
