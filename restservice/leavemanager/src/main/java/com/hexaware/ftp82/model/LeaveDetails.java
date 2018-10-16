@@ -6,6 +6,7 @@ import com.hexaware.ftp82.persistence.DbConnection;
 import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.text.DateFormat;
 /**
  * LeaveDetails class to process employee leave details.
  * @author hexaware
@@ -57,8 +58,8 @@ public class LeaveDetails {
   public LeaveDetails(final int argLeaveId, final String argLeaveType, final Date argStartDate,
       final Date argEndDate, final int argNoOfDays, final String argLeaveStatus, final String argLeaveReason,
       final Date argLeaveAppliedOn, final String argManagerComments, final int argEmpId) {
-    try {
-      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+    // try {
+      DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
       this.leaveId = argLeaveId;
       this.leaveType = argLeaveType;
       String strtDate = dateFormat.format(argStartDate);
@@ -72,9 +73,9 @@ public class LeaveDetails {
       this.leaveAppliedOn = leaveApplied;
       this.managerComments = argManagerComments;
       this.empId = argEmpId;
-    } catch (Exception e) {
-      System.out.println(e.toString());
-    }
+    // } catch (Exception e) {
+    //   System.out.println(e.toString());
+    // }
   }
 
   @Override
@@ -440,5 +441,42 @@ public class LeaveDetails {
     }
     return status;
   }
+  /**
+   * view the employee's details of given id.
+   * @param id the id of the employee.
+   * @return the employee details
+   */
+  public static LeaveDetails[] listAl(final int id) {
+    List<LeaveDetails> ls = dao().listal(id);
+    return ls.toArray(new LeaveDetails[ls.size()]);
+  }
+  /**
+   * view the employee's details of given id.
+   * @param argsLeaveId the id of the employee
+   * @param reEditStatus the id of the employee
+   * @param reEditMgrCmts the id of the employee
+   * @return the employee details
+   */
+  public static int editPermis(final int argsLeaveId, final String reEditStatus, final String reEditMgrCmts) {
+    LeaveDetails lsStatus = dao().checkStatus(argsLeaveId);
+    Date sDate = Date.valueOf(lsStatus.getStartDate());
+    Date curDate = Date.valueOf(java.time.LocalDate.now());
+    if(sDate.after(curDate)) {
+      String editStatus = "";
+      if(reEditStatus.equalsIgnoreCase("approve")) {
+        editStatus = LeaveStatus.APPROVED.toString();
+      } else {
+        editStatus = LeaveStatus.DENIED.toString();
+      }
+      if (editStatus.equals(lsStatus.getLeaveStatus())) {
+        return -1;
+      } else {
+        int reEditStts = dao().reEditApproveOrDenial(argsLeaveId, editStatus, reEditMgrCmts);
+        if(reEditStts > 0) {
+          return 1;
+        }
+      }
+    }
+    return 0;
+  }
 }
-

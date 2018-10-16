@@ -5,6 +5,7 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.ListIterator;
+import java.sql.Date;
 /**
  * Class CliMain provides the command line interface to the leavemanagement
  * application.
@@ -22,7 +23,8 @@ public class CliMain {
     System.out.println("5. Pending Leave Applications");
     System.out.println("6. Apply / Deny leave");
     System.out.println("7. Update exsisting leave");
-    System.out.println("8. Exit");
+    System.out.println("8. Edit permission (only Manager)");
+    System.out.println("9. Exit");
     System.out.println("-----------------------");
     System.out.println("Enter your choice:");
     int menuOption = 0;
@@ -57,7 +59,11 @@ public class CliMain {
         break;
       case 7:
         updateLeave();
+        break;
       case 8:
+        editPermission();
+        break;
+      case 9:
         // halt since normal exit throws a stacktrace due to jdbc threads not responding
         Runtime.getRuntime().halt(0);
       default:
@@ -324,6 +330,84 @@ public class CliMain {
       System.out.print("\n UNABLE TO INSERT RECORD ");
     }
     mainMenu();
+  }
+  /*
+   *
+   */
+  private void editPermission() {
+    int empID = 0;
+    System.out.println("Manager Id : ");
+    do {
+      empID = getInteger();
+    } while (empID == 0);
+    Employee emp = Employee.send(empID);
+    LeaveDetails[] leave = LeaveDetails.listAl(empID);
+    if (emp == null) {
+        System.out.println("You Are not a MANAGER");
+    } else {
+        System.out.println("\n--------------------------PEOCESS COMPLETED LEAVE APPLICATIONS------------------------\n");
+        int count = 0;
+        for (LeaveDetails ll : leave) {
+          try {
+            Date sDate = Date.valueOf(ll.getStartDate());
+            Date curDate = Date.valueOf(java.time.LocalDate.now());
+
+            if(sDate.after(curDate)) {
+              System.out.print("EmployeeId = " + ll.getEmpId() + " | ");
+              System.out.println("LeaveID = " + ll.getLeaveId() + " | ");
+              System.out.print("LeaveType = " + ll.getLeaveType() + " | ");
+              System.out.print("StartDate = " + ll.getStartDate() + " | ");
+              System.out.print("EndDate = " + ll.getEndDate() + " | ");
+              System.out.print("Numberofdays = " + ll.getNoOfDays() + " | ");
+              System.out.print("LeaveStatus = " + ll.getLeaveStatus() + " | ");
+              System.out.print("LeaveReason = " + ll.getLeaveReason() + " | ");
+              System.out.print("LeaveAppliedOn = " + ll.getLeaveAppliedOn() + " | ");
+              System.out.print("ManagerComments = " + ll.getManagerComments() + "\n\n");
+              count = 0;
+            } else {
+              count = 1;
+            }
+          } catch (Exception e) {
+            System.out.println(e.toString());
+          }
+        }
+        if(count == 1) {
+          System.out.println("\n<<<<<<<<<<< No Applications found ! >>>>>>>>>>>>>\n");
+          mainMenu();
+        } else {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------------------------" + "\n");
+        System.out.println("Enter Employee ID: ");
+        int appEmpId = 0;
+        do {
+          appEmpId = getInteger();
+        } while (appEmpId == 0);
+        System.out.println("Enter Leave ID: ");
+        int appLeaveId = 0;
+        do {
+          appLeaveId = getInteger();
+        } while (appLeaveId == 0);
+        System.out.println("Approve / Deny ");
+        option.nextLine();
+        String approveStatus = option.nextLine();
+        System.out.println("Enter Comments ");
+        String applyMgrComments = option.nextLine();
+        if (LeaveDetails.checkIds(appEmpId, appLeaveId) == 0) {
+          int editStatus = LeaveDetails.editPermis(appLeaveId, approveStatus, applyMgrComments);
+          switch (editStatus) {
+            case 1:
+              System.out.println("Leave has been Re-Edited");
+              break;
+            case -1:
+              System.out.println("Enter correct Status to update !");
+              break;
+            default:
+              System.out.println("Re-Editing is not processed enter valid id!");
+          }
+        } else {
+          System.out.println("Enter corresponding Employee Id and leave ID ");
+        }
+      }
+    }
   }
   /**
    * The main entry point.

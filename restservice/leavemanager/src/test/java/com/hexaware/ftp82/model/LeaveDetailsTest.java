@@ -146,7 +146,7 @@ public class LeaveDetailsTest {
    */
   @Test
   public final void testDateMethod() {
-    int res = LeaveDetails.dateExpiryOfsdate("2018-10-11");
+    int res = LeaveDetails.dateExpiryOfsdate("2018-10-28");
     assertEquals(0, res);
     int res1 = LeaveDetails.dateExpiryOfsdate("2018-10-02");
     assertEquals(1, res1);
@@ -342,5 +342,33 @@ public class LeaveDetailsTest {
     };
     int e = LeaveDetails.editLeave(100, "EL", "2018-08-26", "2018-08-26", "SICK", 20);
     assertEquals(1, e);
+  }
+  /**
+   *@param dao to access object
+   */
+  @Test
+  public final void testReEditPermission(@Mocked final LeaveDetailsDAO dao) {
+    final LeaveDetails lsStatus = new LeaveDetails();
+    new Expectations() {
+      {
+        //try {
+        dao.checkStatus(1);
+        lsStatus.setStartDate("2018/11/12");
+        lsStatus.setLeaveStatus("APPROVED");
+        dao.reEditApproveOrDenial(1, "DENIED", "okk");
+        //} catch (Exception e) {
+         // System.out.println(e.toString());
+        //}
+        result = 1;
+      }
+    };
+    new MockUp<LeaveDetails>() {
+      @Mock
+      LeaveDetailsDAO dao() {
+        return dao;
+      }
+    };
+    int e = LeaveDetails.editPermis(1, "approve", "okk");
+    assertEquals(0, e);
   }
 }

@@ -37,7 +37,7 @@ public class LeaveDetailsRest {
    */
   @GET
   @Path("/pending/{empId}")
-  //@Produces(MediaType.APPLICATION_JSON)
+  @Produces(MediaType.APPLICATION_JSON)
   public final LeaveDetails[] leaveDetailsList(@PathParam("empId") final int empId) {
     System.out.println("Pending Applications List");
     final LeaveDetails[] ls = LeaveDetails.listAll(empId);
@@ -54,7 +54,7 @@ public class LeaveDetailsRest {
    */
   @POST
   @Path("/applyleave/{iD}/{leaveType}/{startDate}/{endDate}/{leaveReason}")
-  @Produces(MediaType.APPLICATION_JSON)
+  //@Produces(MediaType.APPLICATION_JSON)
   public final String applyLeaveRest(@PathParam("iD") final int iD, @PathParam("leaveType") final String leaveType, @PathParam("startDate") final String startDate, @PathParam("endDate") final String endDate, @PathParam("leaveReason") final String leaveReason) {
     int res = LeaveDetails.dateExpiryOfsdate(startDate);
     if (res == 0) {
