@@ -344,20 +344,14 @@ public class LeaveDetails {
       if (statusOfEmp.equals(LeaveStatus.PENDING.toString())) {
         statusOfEmp = LeaveStatus.APPROVED.toString();
         int approvedLeaves = leaveBalance - appliedNoOfLeaves;
-        int leaves = dao().updateEmployee(approvedLeaves, argApplyEmpId);
-        int applyEmpStatus = dao().updateApproveOrDenial(statusOfEmp, argMgrComments, argApplyLeaveId);
-        if (leaves > 0 && applyEmpStatus > 0) {
-          return 1;
-        }
-      } else {
-        return 102;
+        dao().updateEmployee(approvedLeaves, argApplyEmpId);
+        dao().updateApproveOrDenial(statusOfEmp, argMgrComments, argApplyLeaveId);
+        return 1;
       }
     } else if (argApproveStatus.equalsIgnoreCase("deny")) {
       statusOfEmp = LeaveStatus.DENIED.toString();
       dao().updateApproveOrDenial(statusOfEmp, argMgrComments, argApplyLeaveId);
       return 100;
-    } else {
-      return 101;
     }
     return 101;
   }
@@ -457,25 +451,36 @@ public class LeaveDetails {
    * @param reEditMgrCmts the id of the employee
    * @return the employee details
    */
-  public static int editPermis(final int argsLeaveId, final String reEditStatus, final String reEditMgrCmts) {
+  public static int editPermis(final int agrsEmpId, final int argsLeaveId, final String reEditStatus, final String reEditMgrCmts) {
+    Employee eStatus = dao().getLeaveBalance(agrsEmpId);
     LeaveDetails lsStatus = dao().checkStatus(argsLeaveId);
-    Date sDate = Date.valueOf(lsStatus.getStartDate());
-    Date curDate = Date.valueOf(java.time.LocalDate.now());
-    if(sDate.after(curDate)) {
-      String editStatus = "";
-      if(reEditStatus.equalsIgnoreCase("approve")) {
-        editStatus = LeaveStatus.APPROVED.toString();
-      } else {
-        editStatus = LeaveStatus.DENIED.toString();
-      }
-      if (editStatus.equals(lsStatus.getLeaveStatus())) {
-        return -1;
-      } else {
-        int reEditStts = dao().reEditApproveOrDenial(argsLeaveId, editStatus, reEditMgrCmts);
-        if(reEditStts > 0) {
-          return 1;
+
+    int leaveBalance = eStatus.getEmpLeaveBalance();
+    int appliedNoOfLeaves = lsStatus.getNoOfDays();
+    try {
+      Date sDate = Date.valueOf(lsStatus.getStartDate());
+      if(sDate.after(Date.valueOf(java.time.LocalDate.now()))) {
+        String editStatus = "";
+        int approvedLeaves = 0;
+        if(reEditStatus.equalsIgnoreCase("approve")) {
+          editStatus = LeaveStatus.APPROVED.toString();
+          approvedLeaves = leaveBalance - appliedNoOfLeaves;
+        } else if (reEditStatus.equalsIgnoreCase("deny")){
+          editStatus = LeaveStatus.DENIED.toString();
+          approvedLeaves = leaveBalance + appliedNoOfLeaves;
+        } else {
+          return -1;
+        }
+        if (editStatus.equals(lsStatus.getLeaveStatus())) {
+          return -1;
+        } else {
+            dao().updateEmployee(approvedLeaves, agrsEmpId);
+            dao().reEditApproveOrDenial(argsLeaveId, editStatus, reEditMgrCmts);
+            return 1;
         }
       }
+    } catch(Exception e) {
+      System.out.println(e.toString());
     }
     return 0;
   }

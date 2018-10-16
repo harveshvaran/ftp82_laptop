@@ -37,9 +37,9 @@ public class EmployeeRest {
   @Produces(MediaType.APPLICATION_JSON)
   public final Employee employeeListById(@PathParam("id") final int id) throws NotFoundException {
     final Employee empl = Employee.listById(id);
-    //if (empl == null) {
-      //throw new NotFoundException("SORRY..There is NO such Employee ID: " + id);
-    //}
-    //return empl;
+    if (empl == null) {
+      throw new NotFoundException("SORRY..There is NO such Employee ID: " + id);
+    }
+    return empl;
   }
 }

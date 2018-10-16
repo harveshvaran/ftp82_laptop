@@ -266,7 +266,7 @@ public class CliMain {
         case 100:
           System.out.println("Leave approval Denied !");
           break;
-        case 102:
+        case 101:
           System.out.println("Leave process completed !");
           break;
         default:
@@ -332,7 +332,7 @@ public class CliMain {
     }
     mainMenu();
   }
-  /*
+  /**
    *
    */
   private void editPermission() {
@@ -393,7 +393,7 @@ public class CliMain {
         System.out.println("Enter Comments ");
         String applyMgrComments = option.nextLine();
         if (LeaveDetails.checkIds(appEmpId, appLeaveId) == 0) {
-          int editStatus = LeaveDetails.editPermis(appLeaveId, approveStatus, applyMgrComments);
+          int editStatus = LeaveDetails.editPermis(appEmpId, appLeaveId, approveStatus, applyMgrComments);
           switch (editStatus) {
             case 1:
               System.out.println("Leave has been Re-Edited");

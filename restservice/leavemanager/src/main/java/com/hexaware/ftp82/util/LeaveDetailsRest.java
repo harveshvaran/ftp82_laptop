@@ -26,10 +26,10 @@ public class LeaveDetailsRest {
   @Produces(MediaType.APPLICATION_JSON)
   public final LeaveDetails[] employeeLeaveHistory(@PathParam("id") final int id) throws NotFoundException {
     final LeaveDetails[] ls1 = LeaveDetails.history(id);
-    //if (ls1 == null) {
-    //throw new NotFoundException("SORRY..There is NO such Employee ID: " + id);
-    //}
-    //return ls1;
+    if (ls1 == null) {
+      throw new NotFoundException("SORRY..There is NO such Employee ID: " + id);
+    }
+    return ls1;
   }
   /**
    * Returns a list of all the employees.
