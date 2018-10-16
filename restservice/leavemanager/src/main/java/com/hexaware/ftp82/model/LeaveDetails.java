@@ -58,7 +58,7 @@ public class LeaveDetails {
       final Date argEndDate, final int argNoOfDays, final String argLeaveStatus, final String argLeaveReason,
       final Date argLeaveAppliedOn, final String argManagerComments, final int argEmpId) {
     try {
-      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
       this.leaveId = argLeaveId;
       this.leaveType = argLeaveType;
       String strtDate = dateFormat.format(argStartDate);
@@ -290,8 +290,12 @@ public class LeaveDetails {
       Date sDate = Date.valueOf(startDate);
       Date eDate = Date.valueOf(endDate);
       diffInDays = dateCheck(sDate, eDate);
-      System.out.println("\n number of days" + diffInDays + "\n");
-      status = dao().insertLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveReason, appliedDate, leaveStatus, empId);
+      if (diffInDays > 0) {
+        System.out.println("\n number of days" + diffInDays + "\n");
+        status = dao().insertLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveReason, appliedDate, leaveStatus, empId);
+      } else {
+        System.out.println("Cannot apply leave on saturday and sunday");
+      }
     } catch (Exception e) {
       System.out.println(e.toString());
     }
@@ -407,12 +411,16 @@ public class LeaveDetails {
     Calendar eD = Calendar.getInstance();
     sD.setTime(startDate);
     eD.setTime(endDate);
-    do {
-      sD.add(Calendar.DAY_OF_MONTH, 1);
-      if (sD.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && sD.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY) {
-        ++noOfDays;
-      }
-    } while (sD.getTimeInMillis() < eD.getTimeInMillis());
+    if (sD.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && sD.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY) {
+      do {
+        sD.add(Calendar.DAY_OF_MONTH, 1);
+        if (sD.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && sD.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY) {
+          ++noOfDays;
+        }
+      } while (sD.getTimeInMillis() < eD.getTimeInMillis());
+    } else {
+      return noOfDays;
+    }
     return noOfDays + 1;
   }
 /**
@@ -440,5 +448,36 @@ public class LeaveDetails {
     }
     return status;
   }
+  /**
+   * to cancel applied leave.
+   * @param leaveID to get leave details.
+   * @param empID to get the employee details.
+   * @return status.
+   */
+  public static int removeLeaveRequest(final int leaveID, final int empID) {
+    int status = 0;
+    try {
+      Employee e2 = dao().getLeaveBalance(empID);
+      LeaveDetails l2 = dao().getStatus(leaveID);
+      int appliedNoOfLeaves = l2.getNoOfDays();
+      int leaveBalance = e2.getEmpLeaveBalance();
+      String statusOfEmp = l2.getLeaveStatus();
+      Date sd = Date.valueOf(l2.getStartDate());
+      System.out.println("start date:" + sd);
+      if (statusOfEmp.equals("APPROVED")) {
+        if (sd.before(Date.valueOf(java.time.LocalDate.now()))) {
+          int balance = leaveBalance + appliedNoOfLeaves;
+          dao().updateEmployee(balance, empID);
+          status = dao().deleteLeaveRequest(leaveID);
+          return status;
+        }
+      } else {
+        status = dao().deleteLeaveRequest(leaveID);
+        return status;
+      }
+    } catch (Exception e) {
+      System.out.println(e.toString());
+    }
+    return status;
+  }
 }
-

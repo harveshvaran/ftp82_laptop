@@ -124,9 +124,9 @@ public class LeaveDetailsTest {
       {
         try {
           Date appliedDate = Date.valueOf(java.time.LocalDate.now());
-          Date sDate = Date.valueOf("2018-08-26");
-          Date eDate = Date.valueOf("2018-08-26");
-          dao.insertLeaveDetails("EL", sDate, eDate, 2, "SICK", appliedDate, "PENDING", 100);
+          Date sDate = Date.valueOf("2018-10-26");
+          Date eDate = Date.valueOf("2018-10-26");
+          dao.insertLeaveDetails("EL", sDate, eDate, 1, "SICK", appliedDate, "PENDING", 100);
         } catch (Exception e) {
           System.out.println(e.toString());
         }
@@ -138,7 +138,7 @@ public class LeaveDetailsTest {
         return dao;
       }
     };
-    int e = LeaveDetails.applyLeave(100, "EL", "2018-08-26", "2018-08-26", "SICK");
+    int e = LeaveDetails.applyLeave(100, "EL", "2018-10-26", "2018-10-26", "SICK");
     assertEquals(0, e);
   }
   /**
@@ -146,8 +146,8 @@ public class LeaveDetailsTest {
    */
   @Test
   public final void testDateMethod() {
-    int res = LeaveDetails.dateExpiryOfsdate("2018-10-11");
-    assertEquals(1, res);
+    int res = LeaveDetails.dateExpiryOfsdate("2018-10-15");
+    assertEquals(0, res);
     int res1 = LeaveDetails.dateExpiryOfsdate("2018-10-02");
     assertEquals(1, res1);
     int res2 = LeaveDetails.dateExpiryOfedate("2018-10-15", "2018-10-08");
@@ -306,14 +306,14 @@ public class LeaveDetailsTest {
    */
   @Test
   public final void testDateCheck() {
-    Date sDate = Date.valueOf("2018-10-12");
+    Date sDate = Date.valueOf("2018-10-15");
     Date eDate = Date.valueOf("2018-10-16");
     int res = LeaveDetails.dateCheck(sDate, eDate);
-    assertEquals(3, res);
-    Date sDate1 = Date.valueOf("2018-10-12");
+    assertEquals(2, res);
+    Date sDate1 = Date.valueOf("2018-10-15");
     Date eDate1 = Date.valueOf("2018-10-11");
     int res1 = LeaveDetails.dateCheck(sDate1, eDate1);
-    assertEquals(1, res1);
+    assertEquals(2, res1);
   }
   /**
    *@param dao to access object
@@ -325,9 +325,9 @@ public class LeaveDetailsTest {
       {
         try {
           Date appliedDate = Date.valueOf(java.time.LocalDate.now());
-          Date sDate = Date.valueOf("2018-08-26");
-          Date eDate = Date.valueOf("2018-08-26");
-          dao.updateLeaveDetails("EL", sDate, eDate, 2, "PENDING", "SICK", appliedDate, 100, 20);
+          Date sDate = Date.valueOf("2018-10-26");
+          Date eDate = Date.valueOf("2018-10-26");
+          dao.updateLeaveDetails("EL", sDate, eDate, 1, "PENDING", "SICK", appliedDate, 100, 20);
         } catch (Exception e) {
           System.out.println(e.toString());
         }
@@ -340,7 +340,51 @@ public class LeaveDetailsTest {
         return dao;
       }
     };
-    int e = LeaveDetails.editLeave(100, "EL", "2018-08-26", "2018-08-26", "SICK", 20);
+    int e = LeaveDetails.editLeave(100, "EL", "2018-10-26", "2018-10-26", "SICK", 20);
     assertEquals(1, e);
+  }
+   /**
+   *@param dao to access object
+   */
+  @Test
+  public final void testDeleteLeave(@Mocked final LeaveDetailsDAO dao) {
+    final LeaveDetails ld4 = new LeaveDetails();
+    final Employee e100 = new Employee();
+    new Expectations() {
+      {
+        try {
+      Employee e2 = dao.getLeaveBalance(100);
+      LeaveDetails l2 = dao.getStatus(10);
+      int appliedNoOfLeaves = l2.getNoOfDays();
+      int leaveBalance = e2.getEmpLeaveBalance();
+      String statusOfEmp = l2.getLeaveStatus();
+      Date sd = Date.valueOf(l2.getStartDate());
+      System.out.println("start date:" + sd);
+      if (statusOfEmp.equals("APPROVED")) {
+        if (sd.before(Date.valueOf(java.time.LocalDate.now()))) {
+          int balance = leaveBalance + appliedNoOfLeaves;
+          dao.updateEmployee(15, 100);
+          dao.deleteLeaveRequest(10);
+        result = 0;
+        }
+      } else {
+        dao.deleteLeaveRequest(10);
+        result = 1;
+      }
+    } catch (Exception e) {
+      System.out.println(e.toString());
+    }
+    result = 3;
+       
+      }
+    };
+    new MockUp<LeaveDetails>() {
+      @Mock
+      LeaveDetailsDAO dao() {
+        return dao;
+      }
+    };
+    int e = LeaveDetails.removeLeaveRequest(10, 100);
+    assertEquals(0, e);
   }
 }

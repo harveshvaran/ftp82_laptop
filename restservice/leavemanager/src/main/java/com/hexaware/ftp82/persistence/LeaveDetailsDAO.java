@@ -4,6 +4,7 @@ import com.hexaware.ftp82.model.LeaveDetails;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
+//import org.skife.jdbi.v2.sqlobject.SQLDelete;
 import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
 import java.sql.Date;
 import java.util.List;
@@ -110,6 +111,13 @@ public interface LeaveDetailsDAO  {
   @SqlUpdate("Update leave_details set Leave_TYPE = :leaveType, START_DATE = :sDate, END_DATE = :eDate, NO_OF_DAYS = :diffInDays, LEAVE_STATUS = :leaveStatus, LEAVE_REASON = :leaveReason, LEAVE_APPLIED_ON = :appliedDate WHERE LEAVE_ID = :leaveId AND EMP_ID = :empId")
   int updateLeaveDetails(@Bind("leaveType") String leaveType, @Bind("sDate") Date sDate, @Bind("eDate") Date eDate, @Bind("diffInDays") int diffInDays,
         @Bind("leaveStatus") String leaveStatus,  @Bind("leaveReason") String leaveReason, @Bind("appliedDate") Date appliedDate, @Bind("empId") int empId, @Bind("leaveId") int leaveId);
+  /**
+   * update contents in leavedetails table.
+   * @param leaveId the status
+   * @return leaveId the status
+   */
+  @SqlUpdate("DELETE FROM LEAVE_DETAILS WHERE LEAVE_ID = :leaveId")
+  int deleteLeaveRequest(@Bind("leaveId") final int leaveId);
   /**
   * close with no args is used to close the connection.
   */

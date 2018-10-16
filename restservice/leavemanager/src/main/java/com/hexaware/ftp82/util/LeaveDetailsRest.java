@@ -3,7 +3,9 @@ package com.hexaware.ftp82.util;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
-import javax.ws.rs.NotFoundException;
+import javax.ws.rs.DELETE;
+//import javax.ws.rs.NotFoundException;
+import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -31,6 +33,10 @@ public class LeaveDetailsRest {
     //throw new NotFoundException("SORRY..There is NO such Employee ID: " + id);
     //}
     //return ls1;
+    if (ls1 == null) {
+      throw new NotAuthorizedException("No such Employee ID: " + id);
+    }
+    return ls1;
   }
   /**
    * Returns a list of all the employees.
@@ -43,6 +49,9 @@ public class LeaveDetailsRest {
   public final LeaveDetails[] leaveDetailsList(@PathParam("empId") final int empId) {
     System.out.println("Pending Applications List");
     final LeaveDetails[] ls = LeaveDetails.listAll(empId);
+    if (ls == null) {
+      throw new NotAuthorizedException("No such Employee ID: " + empId);
+    }
     return ls;
   }
   /**
@@ -133,6 +142,22 @@ public class LeaveDetailsRest {
       }
     } else {
       return "enter the Start Date properly";
+    }
+  }
+  /**
+   * Returns a specific employee's details.
+   * @param lId the id of the employee
+   * @param empId the id of the employee
+   * @return the status
+   */
+  @DELETE
+  @Path("/delete/{lId}/{empId}")
+  public final String deleteLeaveRest(@PathParam("lId") final int lId, @PathParam("empId") final int empId) {
+    int res1 = LeaveDetails.removeLeaveRequest(lId, empId);
+    if (res1 > 0) {
+      return "leave request deleted";
+    } else {
+      return "error occured during deletion";
     }
   }
 }
