@@ -470,6 +470,7 @@ public class LeaveDetails {
           dao().updateEmployee(balance, empID);
           status = dao().deleteLeaveRequest(leaveID);
           return status;
+          
         }
       } else {
         status = dao().deleteLeaveRequest(leaveID);

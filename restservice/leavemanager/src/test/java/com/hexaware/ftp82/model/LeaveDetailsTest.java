@@ -353,29 +353,28 @@ public class LeaveDetailsTest {
     new Expectations() {
       {
         try {
-      Employee e2 = dao.getLeaveBalance(100);
-      LeaveDetails l2 = dao.getStatus(10);
-      int appliedNoOfLeaves = l2.getNoOfDays();
-      int leaveBalance = e2.getEmpLeaveBalance();
-      String statusOfEmp = l2.getLeaveStatus();
-      Date sd = Date.valueOf(l2.getStartDate());
-      System.out.println("start date:" + sd);
-      if (statusOfEmp.equals("APPROVED")) {
-        if (sd.before(Date.valueOf(java.time.LocalDate.now()))) {
-          int balance = leaveBalance + appliedNoOfLeaves;
-          dao.updateEmployee(15, 100);
-          dao.deleteLeaveRequest(10);
-        result = 0;
+          Employee e2 = dao.getLeaveBalance(100);
+          LeaveDetails l2 = dao.getStatus(10);
+          int appliedNoOfLeaves = l2.getNoOfDays();
+          int leaveBalance = e2.getEmpLeaveBalance();
+          String statusOfEmp = l2.getLeaveStatus();
+          Date sd = Date.valueOf(l2.getStartDate());
+          System.out.println("start date:" + sd);
+          if (statusOfEmp.equals("APPROVED")) {
+            if (sd.before(Date.valueOf(java.time.LocalDate.now()))) {
+              int balance = leaveBalance + appliedNoOfLeaves;
+              dao.updateEmployee(15, 100);
+              dao.deleteLeaveRequest(10);
+              result = 0;
+            }
+          } else {
+            dao.deleteLeaveRequest(10);
+            result = 1;
+          }
+        } catch (Exception e) {
+          System.out.println(e.toString());
         }
-      } else {
-        dao.deleteLeaveRequest(10);
-        result = 1;
-      }
-    } catch (Exception e) {
-      System.out.println(e.toString());
-    }
-    result = 3;
-       
+        result = 3;
       }
     };
     new MockUp<LeaveDetails>() {
