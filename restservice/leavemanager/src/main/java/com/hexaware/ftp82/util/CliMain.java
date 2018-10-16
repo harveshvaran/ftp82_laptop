@@ -24,7 +24,8 @@ public class CliMain {
     System.out.println("6. Apply / Deny leave");
     System.out.println("7. Update exsisting leave");
     System.out.println("8. Edit permission (only Manager)");
-    System.out.println("9. Exit");
+    System.out.println("9. delete the leave request");
+    System.out.println("10. Exit");
     System.out.println("-----------------------");
     System.out.println("Enter your choice:");
     int menuOption = 0;
@@ -62,8 +63,10 @@ public class CliMain {
         break;
       case 8:
         editPermission();
-        break;
       case 9:
+        deleteLeave();
+        break;
+      case 10:
         // halt since normal exit throws a stacktrace due to jdbc threads not responding
         Runtime.getRuntime().halt(0);
       default:
@@ -331,6 +334,21 @@ public class CliMain {
       System.out.print("\n UNABLE TO INSERT RECORD ");
     }
     mainMenu();
+  }
+  /**
+   *
+   */
+  private void deleteLeave() {
+    System.out.println("Enter the leaveId:");
+    int leaveId = getInteger();
+    System.out.println("Enter the Employee ID:");
+    int empId = getInteger();
+    int res = LeaveDetails.removeLeaveRequest(leaveId, empId);
+    if (res > 0) {
+      System.out.println("deleted sucessfully");
+    } else {
+      System.out.println("error occured during deletion try again");
+    }
   }
   /**
    *

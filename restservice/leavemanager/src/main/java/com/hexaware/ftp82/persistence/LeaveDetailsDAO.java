@@ -4,6 +4,7 @@ import com.hexaware.ftp82.model.LeaveDetails;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
+//import org.skife.jdbi.v2.sqlobject.SQLDelete;
 import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
 import java.sql.Date;
 import java.util.List;
@@ -135,6 +136,13 @@ public interface LeaveDetailsDAO  {
    */
   @SqlUpdate("Update leave_details set leave_status = :status , MANAGER_COMMENTS = :mgrcomments where Leave_id = :leaveId")
   int reEditApproveOrDenial(@Bind("leaveId") int leaveId, @Bind("status")String status, @Bind("mgrcomments") String mgrcomments);
+  /**
+   * update contents in leavedetails table.
+   * @param leaveId the status
+   * @return leaveId the status
+   */
+  @SqlUpdate("DELETE FROM LEAVE_DETAILS WHERE LEAVE_ID = :leaveId")
+  int deleteLeaveRequest(@Bind("leaveId") final int leaveId);
   /**
   * close with no args is used to close the connection.
   */
