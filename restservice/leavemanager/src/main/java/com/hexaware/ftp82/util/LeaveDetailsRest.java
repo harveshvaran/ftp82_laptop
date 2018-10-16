@@ -2,6 +2,7 @@ package com.hexaware.ftp82.util;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -101,6 +102,37 @@ public class LeaveDetailsRest {
       }
     } else {
       return "Enter corresponding Employee ID and Leave ID !";
+    }
+  }
+  /**
+   * Returns a specific employee's details.
+   * @param iD the id of the employee
+   * @param leaveType the id of the employee
+   * @param startDate the id of the employee
+   * @param endDate the id of the employee
+   * @param leaveReason the id of the employee
+    * @param leaveId the id of the employee
+   * @return the employee details
+   */
+  @PUT
+  @Path("/updateleave/{iD}/{leaveType}/{startDate}/{endDate}/{leaveReason}/{leaveId}")
+  @Produces(MediaType.APPLICATION_JSON)
+  public final String updateLeaveRest(@PathParam("iD") final int iD, @PathParam("leaveType") final String leaveType, @PathParam("startDate") final String startDate, @PathParam("endDate") final String endDate, @PathParam("leaveReason") final String leaveReason, @PathParam("leaveId") final int leaveId) {
+    int res = LeaveDetails.dateExpiryOfsdate(startDate);
+    if (res == 0) {
+      int res1 = LeaveDetails.dateExpiryOfedate(endDate, startDate);
+      if (res1 == 1) {
+        int status = LeaveDetails.editLeave(iD, leaveType, startDate, endDate, leaveReason, leaveId);
+        if (status > 0) {
+          return "updated sucessfully";
+        } else {
+          return "failed during updation try again";
+        }
+      } else {
+        return "enter the endDate properly";
+      }
+    } else {
+      return "enter the Start Date properly";
     }
   }
 }

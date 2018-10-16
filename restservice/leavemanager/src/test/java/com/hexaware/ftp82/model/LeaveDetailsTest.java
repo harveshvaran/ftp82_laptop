@@ -140,8 +140,6 @@ public class LeaveDetailsTest {
     };
     int e = LeaveDetails.applyLeave(100, "EL", "2018-08-26", "2018-08-26", "SICK");
     assertEquals(0, e);
-    int e1 = LeaveDetails.applyLeave(1000, "EL", "2018-08-26", "2018-08-26", "SICK");
-    assertEquals(0, e1);
   }
   /**
    * testDateMethod class Tests that a fetch of a specific employee works correctly.
