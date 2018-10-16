@@ -8,6 +8,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.hexaware.ftp82.model.Employee;
+//import com.hexaware.ftp82.exceptions.NotFoundException;
 
 /**
  * This class provides a REST interface for the employee entity.
@@ -34,11 +35,11 @@ public class EmployeeRest {
   @GET
   @Path("{id}")
   @Produces(MediaType.APPLICATION_JSON)
-  public final Employee employeeListById(@PathParam("id") final int id) {
+  public final Employee employeeListById(@PathParam("id") final int id) throws NotFoundException {
     final Employee empl = Employee.listById(id);
-    if (empl == null) {
-      throw new NotFoundException();
-    }
-    return empl;
+    //if (empl == null) {
+      //throw new NotFoundException("SORRY..There is NO such Employee ID: " + id);
+    //}
+    //return empl;
   }
 }
