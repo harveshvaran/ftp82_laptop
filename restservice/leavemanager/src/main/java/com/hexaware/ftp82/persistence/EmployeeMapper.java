@@ -18,7 +18,7 @@ public class EmployeeMapper implements ResultSetMapper<Employee> {
    * @return the mapped employee object
    * @throws SQLException in case there is an error in fetching data from the resultset
    */
-  public final Employee map(final int idx, final ResultSet rs, final      StatementContext ctx) throws SQLException {
+  public final Employee map(final int idx, final ResultSet rs, final StatementContext ctx) throws SQLException {
     /**
      * @return Employee
      */

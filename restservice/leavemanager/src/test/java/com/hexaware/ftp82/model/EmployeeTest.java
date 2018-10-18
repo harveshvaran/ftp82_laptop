@@ -93,9 +93,16 @@ public class EmployeeTest {
       e.printStackTrace();
     }
   }
+ /**
+  * Tests that a fetch of a specific employee works correctly.
+  @Test
+  public final void testSendEmail() {
+    Employee.sendMail(1000);
+  }
+  */
   /**
-   * tests that empty employee list is handled correctly.
-   * @param dao mocking the dao class
+   * testListAllEmpty class tests that empty employee list is handled correctly.
+   * @param dao to mock the dao class.
    */
   @Test
   public final void testListAllEmpty(@Mocked final EmployeeDAO dao) {
@@ -115,8 +122,8 @@ public class EmployeeTest {
   }
 
   /**
-   * Tests that a list with some employees is handled correctly.
-   * @param dao mocking the dao class
+   * testListAllSome class Tests that a list with some employee details is handled correctly.
+   * @param dao to mock the dao class
    */
   @Test
   public final void testListAllSome(@Mocked final EmployeeDAO dao) {
@@ -156,8 +163,8 @@ public class EmployeeTest {
     }
   }
   /**
-   * Tests that a fetch of a specific employee works correctly.
-   * @param dao mocking the dao class
+   * testListById class Tests that a fetch of a specific employee works correctly.
+   * @param dao to mock the dao class
    */
   @Test
   public final void testListById(@Mocked final EmployeeDAO dao) {
@@ -180,9 +187,8 @@ public class EmployeeTest {
     assertNull(e);
   }
   /**
-   * tests that empty employee list is handled correctly.
+   * testSend class tests that empty employee list is handled correctly.
    * @param dao mocking the dao class
-   */
   @Test
   public final void testSend(@Mocked final EmployeeDAO dao) {
     final Employee e100 = new Employee();
@@ -200,9 +206,9 @@ public class EmployeeTest {
     };
     Employee e = Employee.send(100);
     assertEquals(e100, e);
-  }
+  }  */
   /**
-   * Tests that a fetch of a specific employee works correctly.
+   * testGetLeaveBalance class Tests that a fetch of a specific employee works correctly.
    * @param dao mocking the dao class
    */
   @Test
@@ -224,4 +230,26 @@ public class EmployeeTest {
     int res = Employee.getLeaveBalance(100);
     assertEquals(res, 3);
   }
+  /**
+   * Tests that a fetch of a specific employee works correctly.
+   * @param dao mocking the dao class
+  @Test
+  public final void testGetMail(@Mocked final EmployeeDAO dao) {
+    final Employee e10 = new Employee(100);
+    new Expectations() {
+      {
+        dao.getMail(100);
+        e10.setEmpEmail("harveshvaran96@gmail.com");
+        result = e10;
+      }
+    };
+    new MockUp<Employee>() {
+      @Mock
+      EmployeeDAO dao() {
+        return dao;
+      }
+    };
+    String mailId  = Employee.getMailId(100);
+    assertEquals(mailId, "harveshvaran96@gmail.com");
+  }  */
 }

@@ -16,14 +16,23 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import java.text.DateFormat; 
+import java.util.Calendar;
 /**
  * LeaveDetails class to process employee leave details.
  * @author hexaware
  */
 public class LeaveDetails {
-/**
- *
- */
+ /**
+   * leaveId to store leave id.
+   * leaveType to store leaveType.
+   * startDate to store leave startDate.
+   * endDate to store leave endDate.
+   * noOfDays to calculate no of days leave applied.
+   * leaveReason to store reason for leave.
+   * leaveAppliedOn to store applied date of leave.
+   * managerComments to store comments from manager.
+   * empId to store employee id.
+   */
   private int leaveId;
   private String leaveType;
   private String startDate;
@@ -39,43 +48,46 @@ public class LeaveDetails {
    */
   public LeaveDetails() { }
   /**
-   *@param argEmpId to set manager comments
+   *@param argEmpId to set empId
    */
   public LeaveDetails(final int argEmpId) {
     this.empId = argEmpId;
   }
   /**
-   * @param argLeaveId to initialize employee table details.
-   * @param argLeaveType to initialize employee table details.
-   * @param argStartDate to initialize employee table details.
-   * @param argEndDate to initialize employee table details.
-   * @param argNoOfDays to initialize employee table details.
-   * @param argLeaveStatus to initialize employee table details.
-   * @param argLeaveReason to initialize employee table details.
-   * @param argLeaveAppliedOn to initialize employee table details.
-   * @param argManagerComments to initialize employee table details.
-   * @param argEmpId to initialize employee table details.
+   * @param argLeaveId to initialize Leave Id in leave details table.
+   * @param argLeaveType to initialize leave type in leave details table.
+   * @param argStartDate to initialize start date in leave details table.
+   * @param argEndDate to initialize end date in leave details table.
+   * @param argNoOfDays to initialize No of days in leave details table.
+   * @param argLeaveStatus to initialize leave status in leave details table.
+   * @param argLeaveReason to initialize leave reason in leave details table.
+   * @param argLeaveAppliedOn to initialize date leave appliedon in leave details table.
+   * @param argManagerComments to initialize manager comments in leave details table.
+   * @param argEmpId to initialize employee id in leave details table.
    */
-  public LeaveDetails(final int argLeaveId, final String argLeaveType, final Date argStartDate, final Date argEndDate, final int argNoOfDays, final String argLeaveStatus, final String argLeaveReason, final Date argLeaveAppliedOn, final String argManagerComments, final int argEmpId) {
+  public LeaveDetails(final int leaveId, final String leaveType, final Date startDate,
+      final Date endDate, final int noOfDays, final String leaveStatus, final String leaveReason,
+      final Date leaveAppliedOn, final String managerComments, final int empId) {
     try {
-      DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-      this.leaveId = argLeaveId;
-      this.leaveType = argLeaveType;
-      String strtDate = dateFormat.format(argStartDate);
+      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+      this.leaveId = leaveId;
+      this.leaveType = leaveType;
+      String strtDate = dateFormat.format(startDate);
       this.startDate = strtDate;
-      String edDate = dateFormat.format(argEndDate);
+      String edDate = dateFormat.format(endDate);
       this.endDate = edDate;
-      this.noOfDays = argNoOfDays;
-      this.leaveStatus = argLeaveStatus;
-      this.leaveReason = argLeaveReason;
-      String leaveApplied = dateFormat.format(argLeaveAppliedOn);
+      this.noOfDays = noOfDays;
+      this.leaveStatus = leaveStatus;
+      this.leaveReason = leaveReason;
+      String leaveApplied = dateFormat.format(leaveAppliedOn);
       this.leaveAppliedOn = leaveApplied;
-      this.managerComments = argManagerComments;
-      this.empId = argEmpId;
-    } catch (Exception e)  {
+      this.managerComments = managerComments;
+      this.empId = empId;
+    } catch (Exception e) {
       System.out.println(e.toString());
     }
   }
+
   @Override
   public final boolean equals(final Object obj) {
     if (obj == null) {
@@ -89,12 +101,24 @@ public class LeaveDetails {
         && Objects.equals(startDate, ld.startDate) && Objects.equals(endDate, ld.endDate)
         && Objects.equals(noOfDays, ld.noOfDays) && Objects.equals(leaveStatus, ld.leaveStatus)
         && Objects.equals(leaveReason, ld.leaveReason) && Objects.equals(leaveAppliedOn, ld.leaveAppliedOn)
-        && Objects.equals(managerComments, ld.managerComments) && Objects.equals(empId, ld.empId)) {
+        && Objects.equals(managerComments, ld.managerComments) && Objects.equals(empId, ld.empId))  {
       return true;
     }
     return false;
   }
-
+ /**
+   * hashcode class.
+   * @return this LeaveId.
+   * @return this LeaveType.
+   * @return this startDate.
+   * @return this endDate.
+   * @return this noOfDays.
+   * @return this leaveStatus.
+   * @return this leaveReason.
+   * @return this leaveAppliedOn.
+   * @return this managerComments.
+   * @return this empId.
+   */
   @Override
   public final int hashCode() {
     return Objects.hash(leaveId, leaveType, startDate, endDate, noOfDays, leaveStatus, leaveReason, leaveAppliedOn, managerComments, empId);
@@ -110,8 +134,8 @@ public class LeaveDetails {
    *
    * @param argleaveId to set leave id.
    */
-  public final void setLeaveId(final int argleaveId) {
-    this.leaveId = argleaveId;
+  public final void setLeaveId(final int leaveId) {
+    this.leaveId = leaveId;
   }
   /**
   @return this Leave Type.
@@ -123,8 +147,8 @@ public class LeaveDetails {
    *
    * @param argleaveType to set leave type.
    */
-  public final void setLeaveType(final String argleaveType) {
-    this.leaveType = argleaveType;
+  public final void setLeaveType(final String leaveType) {
+    this.leaveType = leaveType;
   }
   /**
    * Gets the StartDate.
@@ -137,8 +161,8 @@ public class LeaveDetails {
    *
    * @param argstartDate to set start date.
    */
-  public final void setStartDate(final String argstartDate) {
-    this.startDate = argstartDate;
+  public final void setStartDate(final String startDate) {
+    this.startDate = startDate;
   }
   /**
    *@return this End date.
@@ -150,8 +174,8 @@ public class LeaveDetails {
    *
    * @param argendDate to set End date.
    */
-  public final void setEndDate(final String argendDate) {
-    this.endDate = argendDate;
+  public final void setEndDate(final String endDate) {
+    this.endDate = endDate;
   }
   /**
    * @return this number of days
@@ -163,8 +187,8 @@ public class LeaveDetails {
    *
    * @param argnoOfDays to set number of days.
    */
-  public final void setNoOfDays(final int argnoOfDays) {
-    this.noOfDays = argnoOfDays;
+  public final void setNoOfDays(final int noOfDays) {
+    this.noOfDays = noOfDays;
   }
   /**
    *@return this leave status
@@ -176,8 +200,8 @@ public class LeaveDetails {
    *
    * @param argleaveStatus to set leave status.
    */
-  public final void setLeaveStatus(final String argleaveStatus) {
-    this.leaveStatus = argleaveStatus;
+  public final void setLeaveStatus(final String leaveStatus) {
+    this.leaveStatus = leaveStatus;
   }
   /**
    *@return this leave reason
@@ -187,10 +211,10 @@ public class LeaveDetails {
   }
   /**
    *
-   * @param argleaveReason to set leave status.
+   * @param argleaveReason to set leave reason.
    */
-  public final void setLeaveReason(final String argleaveReason) {
-    this.leaveReason = argleaveReason;
+  public final void setLeaveReason(final String leaveReason) {
+    this.leaveReason = leaveReason;
   }
   /**
    * @return this leave applied on
@@ -200,10 +224,10 @@ public class LeaveDetails {
   }
   /**
    *
-   * @param argleaveAppliedOn to set leave status.
+   * @param argleaveAppliedOn to set applied.
    */
-  public final void setLeaveAppliedOn(final String argleaveAppliedOn) {
-    this.leaveAppliedOn = argleaveAppliedOn;
+  public final void setLeaveAppliedOn(final String leaveAppliedOn) {
+    this.leaveAppliedOn = leaveAppliedOn;
   }
   /**
    * @return this manager comments
@@ -215,8 +239,8 @@ public class LeaveDetails {
    *
    * @param argmanagerComments to set manager comments.
    */
-  public final void setManagerComments(final String argmanagerComments) {
-    this.managerComments = argmanagerComments;
+  public final void setManagerComments(final String managerComments) {
+    this.managerComments = managerComments;
   }
   /**
    * @return this Employee ID
@@ -228,8 +252,8 @@ public class LeaveDetails {
    *
    * @param argempId to set manager comments.
    */
-  public final void setEmpId(final int argempId) {
-    this.empId = argempId;
+  public final void setEmpId(final int empId) {
+    this.empId = empId;
   }
   /**
    *
@@ -239,8 +263,8 @@ public class LeaveDetails {
     return db.getConnect().onDemand(LeaveDetailsDAO.class);
   }
   /**
-   * Returns a specific employee's details.
-   * @param id the id of the employee
+   * view the employee's details of given id.
+   * @param id the id of the employee.
    * @return the employee details
    */
   public static LeaveDetails[] listAll(final int id) {
@@ -257,24 +281,32 @@ public class LeaveDetails {
   }
   /**
    *@param leaveType leave pending details
-   *@param startDate startdate
-   *@param endDate enddate
+   *@param startDate startdate of applied leave.
+   *@param endDate enddate of applied leave.
    *@param empId employee ID
-   *@param leaveReason leave reason
-   *@return status of the application
+   *@param leaveReason leave reason of applied leave.
+   *@return status of the leave application
    */
   public static int applyLeave(final int empId, final String leaveType, final String startDate, final String endDate, final String leaveReason) {
-    String leaveStatus = "Pending";
+    String leaveStatus = "";
+    if (empId == 1000) {
+      leaveStatus = LeaveStatus.APPROVED.toString();
+    } else {
+      leaveStatus = LeaveStatus.PENDING.toString();
+    }
     int status = 0;
     int diffInDays = 0;
     try {
       Date appliedDate = Date.valueOf(java.time.LocalDate.now());
       Date sDate = Date.valueOf(startDate);
       Date eDate = Date.valueOf(endDate);
-      long diff = eDate.getTime() - sDate.getTime();
-      diffInDays = (int) diff / (1000 * 60 * 60 * 24);
-      System.out.println("\n number of days"+diffInDays+"\n");
-      status = dao().insertLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveReason, appliedDate, leaveStatus, empId);
+      diffInDays = dateCheck(sDate, eDate);
+      if (diffInDays > 0) {
+        System.out.println("\n number of days" + diffInDays + "\n");
+        status = dao().insertLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveReason, appliedDate, leaveStatus, empId);
+      } else {
+        System.out.println("Cannot apply leave on saturday and sunday");
+      }
     } catch (Exception e) {
       System.out.println(e.toString());
     }
@@ -282,7 +314,7 @@ public class LeaveDetails {
   }
   /**
    * @param sDate to initialize start date.
-   * @return values of leave date.
+   * @return values about valid leave date.
    */
   public static int dateExpiryOfsdate(final String sDate) {
     Date startDate = Date.valueOf(sDate);
@@ -297,7 +329,7 @@ public class LeaveDetails {
   /**
    * @param eDate to initialize end date.
    * @param sDate to initialize end date.
-   * @return values of leave date.
+   * @return values about valid leave date.
    */
   public static int dateExpiryOfedate(final String eDate, final String sDate) {
     Date endDate = Date.valueOf(eDate);
@@ -323,10 +355,10 @@ public class LeaveDetails {
     return a;
   }
   /**
-   * @param argApplyEmpId to check manager Id.
-   * @param argApplyLeaveId to check manager Id.
-   * @param argMgrComments to check manager Id.
-   * @param argApproveStatus to check manager Id.
+   * @param argApplyEmpId to initialize employee id.
+   * @param argApplyLeaveId to initialize leave id.
+   * @param argMgrComments to  initialize manager comments.
+   * @param argApproveStatus to  initialize leave status.
    * @return return statusId;
    */
   public final int applyForLeave(final int argApplyEmpId, final int argApplyLeaveId, final String argMgrComments, final String argApproveStatus) {
@@ -337,7 +369,7 @@ public class LeaveDetails {
     String statusOfEmp = l1.getLeaveStatus();
     if (argApproveStatus.equalsIgnoreCase("approve")) {
       if (statusOfEmp.equals(LeaveStatus.PENDING.toString())) {
-        statusOfEmp = "APPROVED";
+        statusOfEmp = LeaveStatus.APPROVED.toString();
         int approvedLeaves = leaveBalance - appliedNoOfLeaves;
         int leaves = dao().updateEmployee(approvedLeaves, argApplyEmpId);
         int applyEmpStatus = dao().updateApproveOrDenial(statusOfEmp, argMgrComments, argApplyLeaveId);
@@ -348,7 +380,7 @@ public class LeaveDetails {
         return 102;
       }
     } else if (argApproveStatus.equalsIgnoreCase("deny")) {
-      statusOfEmp = "DENIED";
+      statusOfEmp = LeaveStatus.DENIED.toString();
       dao().updateApproveOrDenial(statusOfEmp, argMgrComments, argApplyLeaveId);
       return 100;
     } else {
@@ -357,10 +389,10 @@ public class LeaveDetails {
     return 101;
   }
   /**
-   * list employee details by id.
+   * list employee details by employee id.
    * @param empId to get employee details.
-   * @param leaveId to get employee details.
-   * @return Employee
+   * @param leaveId to get leave details.
+   * @return values.
    */
   public static int checkIds(final int empId, final int leaveId) {
     LeaveDetails lsId = dao().checkIdss(empId);
@@ -369,65 +401,108 @@ public class LeaveDetails {
     }
     return 0;
   }
-  /**
-   *
-   */
-  public static void sendMail() {
-    final String from = "harveshvaran96@gmail.com";
-    final String to = "harveshvaran96@gmail.com";
-    final String username = "harveshvaran96";//change accordingly
-    final String password = "Cse_1234";//change accordingly
-    String host = "smtp.gmail.com";
-    Properties props = new Properties();
-    props.put("mail.smtp.auth", "true");
-    props.put("mail.smtp.starttls.enable", "true");
-    props.put("mail.smtp.host", host);
-    props.put("mail.smtp.port", "587");
-    Session session = Session.getInstance(props,
-    new javax.mail.Authenticator() {
-      protected PasswordAuthentication getPasswordAuthentication() {
-      return new PasswordAuthentication(username, password);
-      }
-    });
-    try {
-      Message message = new MimeMessage(session);
-      message.setFrom(new InternetAddress(from));
-      message.setRecipients(Message.RecipientType.TO,
-      InternetAddress.parse(to));
-      message.setSubject("Testing Subject");
-      message.setText("Hello, this is sample for to check send "+ "email using JavaMailAPI ");
-      Transport.send(message);
-      System.out.println("Sent message successfully....");
-    } catch (MessagingException e) {
-      throw new RuntimeException(e);
-    }
-  }
-    
    /**
-   * list employee details by id.
-   * @param StrtDate to get employee details.
-   * @param EndDate to get employee details.
-   * @param emID to get employee details.
-   * @return Employee
+   * list employee details by employee id.
+   * @param strtDate to initialize start date.
+   * @param emID to initialize employee id.
+   * @return values.
    */
-  public static int overLapCheck(final String StrtDate, final int emID) {
+  public static int overLapCheck(final String strtDate, final int emID) {
     try {
-    Date sDate = Date.valueOf(StrtDate);
-    //Date eDate = Date.valueOf(EndDate); 
-
-    List<LeaveDetails> lshs = dao().leaveHistory(emID);
-
-    for(LeaveDetails ls : lshs) {
-      Date sd = Date.valueOf(ls.getStartDate());
-      Date ed = Date.valueOf(ls.getEndDate());
-      
-      if( sDate.after(sd) && sDate.before(ed) ) {
+      Date sDate = Date.valueOf(strtDate);
+      List<LeaveDetails> lshs = dao().leaveHistory(emID);
+      for (LeaveDetails ls : lshs) {
+        Date sd = Date.valueOf(ls.getStartDate());
+        Date ed = Date.valueOf(ls.getEndDate());
+        if (sDate.after(sd) && sDate.before(ed)) {
           return 0;
+        }
       }
-    }
-    }catch (IllegalArgumentException e) {
+    } catch (IllegalArgumentException e) {
       System.out.println(e);
     }
     return 1;
+  }
+  /**
+   * list employee details by id.
+   * @param startDate to get employee details.
+   * @param endDate to get employee details.
+   * @return Employee
+   */
+  public static int dateCheck(final Date startDate, final Date endDate) {
+    int noOfDays = 0;
+    Calendar sD = Calendar.getInstance();
+    Calendar eD = Calendar.getInstance();
+    sD.setTime(startDate);
+    eD.setTime(endDate);
+    if (sD.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && sD.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY) {
+      do {
+        sD.add(Calendar.DAY_OF_MONTH, 1);
+        if (sD.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && sD.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY) {
+          ++noOfDays;
+        }
+      } while (sD.getTimeInMillis() < eD.getTimeInMillis());
+    } else {
+      return noOfDays;
+    }
+    return noOfDays + 1;
+  }
+/**
+   *@param leaveType leave pending details
+   *@param startDate startdate of applied leave.
+   *@param endDate enddate of applied leave.
+   *@param empId employee ID
+   *@param leaveReason leave reason of applied leave.
+   *@param leaveId leave Id
+   *@return status of the leave application
+   */
+  public static int editLeave(final int empId, final String leaveType, final String startDate, final String endDate, final String leaveReason, final int leaveId) {
+    String leaveStatus = LeaveStatus.PENDING.toString();
+    int status = 0;
+    int diffInDays = 0;
+    try {
+      Date appliedDate = Date.valueOf(java.time.LocalDate.now());
+      Date sDate = Date.valueOf(startDate);
+      Date eDate = Date.valueOf(endDate);
+      diffInDays = dateCheck(sDate, eDate);
+      System.out.println("\n number of days" + diffInDays + "\n");
+      status = dao().updateLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveStatus, leaveReason, appliedDate, empId, leaveId);
+    } catch (Exception e) {
+      System.out.println(e.toString());
+    }
+    return status;
+  }
+  /**
+   * to cancel applied leave.
+   * @param leaveID to get leave details.
+   * @param empID to get the employee details.
+   * @return status.
+   */
+  public static int removeLeaveRequest(final int leaveID, final int empID) {
+    int status = 0;
+    try {
+      Employee e2 = dao().getLeaveBalance(empID);
+      LeaveDetails l2 = dao().getStatus(leaveID);
+      int appliedNoOfLeaves = l2.getNoOfDays();
+      int leaveBalance = e2.getEmpLeaveBalance();
+      String statusOfEmp = l2.getLeaveStatus();
+      Date sd = Date.valueOf(l2.getStartDate());
+      System.out.println("start date:" + sd);
+      if (statusOfEmp.equals("APPROVED")) {
+        if (sd.before(Date.valueOf(java.time.LocalDate.now()))) {
+          int balance = leaveBalance + appliedNoOfLeaves;
+          dao().updateEmployee(balance, empID);
+          status = dao().deleteLeaveRequest(leaveID);
+          return status;
+          
+        }
+      } else {
+        status = dao().deleteLeaveRequest(leaveID);
+        return status;
+      }
+    } catch (Exception e) {
+      System.out.println(e.toString());
+    }
+    return status;
   }
 }

@@ -7,6 +7,15 @@ import java.util.List;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+// import java.util.Properties;
+// import javax.mail.Transport;
+// import javax.mail.Session;
+// import javax.mail.internet.InternetAddress;
+// import javax.mail.internet.MimeMessage;
+// import javax.mail.Message;
+// import javax.mail.MessagingException;
+// import javax.mail.PasswordAuthentication;
 /**
  * Employee class to store employee personal details.
  * @author hexware
@@ -32,6 +41,10 @@ public class Employee {
   private int empLeaveBalance;
   private String empDoj;
   private String empImage;
+  /**
+   * Equals class to check employee details.
+   * @return true or false.
+   */
   @Override
   public final boolean equals(final Object obj) {
     if (obj == null) {
@@ -50,6 +63,16 @@ public class Employee {
     }
     return false;
   }
+  /**
+   * @return empId employee id.
+   * @return empName employee name.
+   * @return empPh employee phone number.
+   * @return empEmail employee email id.
+   * @return empDept department of employee.
+   * @return empManagerId employee id of the manager.
+   * @return empLeaveBalance leave balance of the employee.
+   * @return empDoj date of joining of the employee.
+   */
   @Override
   public final int hashCode() {
     return Objects.hash(empId, empName, empPh, empEmail, empDept, empManagerId, empLeaveBalance, empDoj, empImage);
@@ -245,7 +268,12 @@ public class Employee {
    * @return Employee
    */
   public static Employee listById(final int empID) {
-    return dao().find(empID);
+    Employee e = dao().find(empID);
+    if (e == null) {
+      e = null;
+      return e;
+    }
+    return e;
   }
    /**
    * list employee details by id.
@@ -276,4 +304,47 @@ public class Employee {
     final String img_link = e.getEmpImage();
     System.out.println("Image Address" + img_link);
   }
+  /*
+   * @param argsEmpID to get employee details.
+  public static void sendMail(final int argsEmpID) {
+    final String from = "harveshvaran96@gmail.com";
+    final String to = getMailId(argsEmpID);
+    final String username = "harveshvaran96";
+    final String password = "";
+    String host = "smtp.gmail.com";
+    Properties props = new Properties();
+    props.put("mail.smtp.auth", "true");
+    props.put("mail.smtp.starttls.enable", "true");
+    props.put("mail.smtp.host", host);
+    props.put("mail.smtp.port", "587");
+    Session session = Session.getInstance(props,
+        new javax.mail.Authenticator() {
+        protected PasswordAuthentication getPasswordAuthentication() {
+          return new PasswordAuthentication(username, password);
+        }
+      });
+    try {
+      Message message = new MimeMessage(session);
+      message.setFrom(new InternetAddress(from));
+      message.setRecipients(Message.RecipientType.TO,
+          InternetAddress.parse(to));
+      message.setSubject("Applied for Leave!");
+      message.setText("We are glad to inform that your leave aplication "
+          + "is applied on corresponding dates are schudeled! ");
+      Transport.send(message);
+      System.out.println("Sent message successfully....");
+    } catch (MessagingException e) {
+      throw new RuntimeException(e);
+    }
+  }
+  */
+  /*
+  /**
+   * @param empId to get employee details.
+   * @return dfs
+  public static String getMailId(final int empId) {
+    Employee e = dao().getMail(empId);
+    return e.getEmpEmail();
+  }
+  */
 }

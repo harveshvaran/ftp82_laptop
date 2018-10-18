@@ -10,7 +10,7 @@ import mockit.integration.junit4.JMockit;
 @RunWith(JMockit.class)
 public class LeaveStatusTest {
   /**
-   * Tests the equals/hashcode methods of the employee class.
+   * testLeaveStatus class tests the equals/hashcode methods of the employee class.
    */
   @Test
     public final void testLeaveStatus() {

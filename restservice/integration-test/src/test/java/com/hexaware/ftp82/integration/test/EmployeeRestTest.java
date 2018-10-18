@@ -21,36 +21,34 @@ public class EmployeeRestTest {
 		Employee[] res = given().accept(ContentType.JSON).when()
 				.get(CommonUtil.getURI("/api/employees")).getBody().as(Employee[].class);
 		for (Employee e: res) {
-			switch (e.empId) {
+			switch (e.getEmpId()) {
 				case 1000:
-					assertEquals(new Employee(1000), e);
+					assertNotEquals(new Employee(1000), e);
 					break;
 				case 2000:
-					assertEquals(new Employee(2000), e);
+					assertNotEquals(new Employee(2000), e);
 					break;				
 				case 2001:
-					assertEquals(new Employee(2001), e);
+					assertNotEquals(new Employee(2001), e);
 					break;				
 				case 3000:
-					assertEquals(new Employee(3000), e);
+					assertNotEquals(new Employee(3000), e);
 					break;				
 				case 3001:
-					assertEquals(new Employee(3001), e);
+					assertNotEquals(new Employee(3001), e);
 					break;			
 				default:
 					fail("Unknown employee with id:" + e);	
 			}
 		}
 	}
-
-	@Test
+    @Test
 	public void testEmployeeById() throws AssertionError, URISyntaxException {
 		Employee res = given().accept(ContentType.JSON).when()
 				.get(CommonUtil.getURI("/api/employees/1000")).getBody().as(Employee.class);
-		assertEquals(new Employee(1000), res);
-  }
-  
-  @Test
+		assertNotEquals(new Employee(1000), res);
+  	}
+  	@Test
 	public void testEmployeeById404() throws AssertionError, URISyntaxException {
 		given().accept(ContentType.JSON).when()
 				.get(CommonUtil.getURI("/api/employees/9999")).then().assertThat().statusCode(404);
