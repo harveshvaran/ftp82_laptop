@@ -20,7 +20,8 @@ public class CliMain {
     System.out.println("4. Leave history");
     System.out.println("5. Pending Leave Applications");
     System.out.println("6. Apply / Deny leave");
-    System.out.println("7. Exit");
+    System.out.println("7. View Employee Image");
+    System.out.println("8. Exit");
     System.out.println("-----------------------");
     System.out.println("Enter your choice:");
     int menuOption = 0;
@@ -50,6 +51,9 @@ public class CliMain {
         acceptOrDeny();
         break;
       case 7:
+        disEmpImage();
+        break;
+      case 8:
         // halt since normal exit throws a stacktrace due to jdbc threads not responding
         Runtime.getRuntime().halt(0);
       default:
@@ -274,6 +278,18 @@ public class CliMain {
       System.out.println("Enter integer !");
     }
     return 0;
+  }
+  /**
+   * The main entry point.
+   * @return the list of arguments
+   */
+  public void disEmpImage() {
+    System.out.println("Enter Employee ID: ");
+    int applyEmpId = 0;
+    do {
+      applyEmpId = getInteger();
+    } while (applyEmpId == 0);
+    Employee.displayEmpImage(applyEmpId);
   }
   /**
    * The main entry point.

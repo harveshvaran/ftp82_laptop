@@ -17,7 +17,7 @@ public class DbConnection {
       if (dbc == null || dbc.equals("")) {
         dbc = "localhost:3307";
       }
-      DBI dbi = new DBI("jdbc:mysql://" + dbc + "/ftp82", "root", "Password123");
+      DBI dbi = new DBI("jdbc:mysql://" + dbc + "/ftp82", "root", "");
       //dbi.setSQLLog(new PrintStreamLog());
       return dbi;
     } catch (ClassNotFoundException e) {

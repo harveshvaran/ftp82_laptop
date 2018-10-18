@@ -51,6 +51,14 @@ public interface EmployeeDAO  {
   @Mapper(EmployeeMapper.class)
   List<Employee> displayEmployee(@Bind("mgrId") int mgrId);
   /**
+   * return all the details of the selected employee.
+   * @param empId the id of the employee
+   * @return the employee object
+   */
+  @SqlQuery("SELECT * FROM Employee WHERE EMP_ID = :empId ")
+  @Mapper(EmployeeMapper.class)
+  Employee getImage(@Bind("empId") int empId);
+  /**
   * close with no args is used to close the connection.
   */
   void close();

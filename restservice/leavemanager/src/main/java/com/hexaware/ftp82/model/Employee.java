@@ -31,6 +31,7 @@ public class Employee {
   private int empManagerId;
   private int empLeaveBalance;
   private String empDoj;
+  private String empImage;
   @Override
   public final boolean equals(final Object obj) {
     if (obj == null) {
@@ -43,14 +44,15 @@ public class Employee {
     if (Objects.equals(empId, emp.empId) && Objects.equals(empName, emp.empName)
         && Objects.equals(empPh, emp.empPh) && Objects.equals(empEmail, emp.empEmail)
         && Objects.equals(empDept, emp.empDept) && Objects.equals(empManagerId, emp.empManagerId)
-        && Objects.equals(empLeaveBalance, emp.empLeaveBalance) && Objects.equals(empDoj, emp.empDoj)) {
+        && Objects.equals(empLeaveBalance, emp.empLeaveBalance) && Objects.equals(empDoj, emp.empDoj)
+        && Objects.equals(empImage, emp.empImage)) {
       return true;
     }
     return false;
   }
   @Override
   public final int hashCode() {
-    return Objects.hash(empId, empName, empPh, empEmail, empDept, empManagerId, empLeaveBalance, empDoj);
+    return Objects.hash(empId, empName, empPh, empEmail, empDept, empManagerId, empLeaveBalance, empDoj, empImage);
   }
   /**
    *
@@ -71,8 +73,9 @@ public class Employee {
    * @param argEmpManagerId to initialize employee table details.
    * @param argEmpLeaveBalance to initialize employee table details.
    * @param argEmpDoj to initialize employee table details.
+   * @param argEmpImage to initialize employee table details.
    */
-  public Employee(final int argEmpId, final String argEmpName, final long argEmpPh, final String argEmpEmail, final String argEmpDept, final int argEmpManagerId, final int argEmpLeaveBalance, final Date argEmpDoj) {
+  public Employee(final int argEmpId, final String argEmpName, final long argEmpPh, final String argEmpEmail, final String argEmpDept, final int argEmpManagerId, final int argEmpLeaveBalance, final Date argEmpDoj, final String argEmpImage) {
     this.empId = argEmpId;
     this.empName = argEmpName;
     this.empPh = argEmpPh;
@@ -83,6 +86,7 @@ public class Employee {
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
     String empDojj = dateFormat.format(argEmpDoj);
     this.empDoj = empDojj;
+    this.empImage = argEmpImage;
   }
   /**
    * Gets the EmployeeId.
@@ -203,6 +207,21 @@ public class Employee {
     this.empDoj = argEmpDoj;
   }
   /**
+   * Gets the EmployeeImage.
+   * @return this Employee's Image.
+   */
+  public final String getEmpImage() {
+    return empImage;
+  }
+
+  /**
+   *
+   * @param argEmpImage to set employee email.
+   */
+  public final void setEmpImage(final String argEmpImage) {
+    this.empImage = argEmpImage;
+  }
+  /**
    * The dao for employee.
    */
   private static EmployeeDAO dao() {
@@ -246,5 +265,15 @@ public class Employee {
     int noOfday = 0;
     noOfday = e.getEmpLeaveBalance();
     return noOfday;
+  }
+  /**
+   * list employee details by id.
+   * @param id to get employee details.
+   * @return Employee
+   */
+  public static void displayEmpImage(final int id) {
+    Employee e = dao().getImage(id);
+    final String img_link = e.getEmpImage();
+    System.out.println("Image Address" + img_link);
   }
 }
