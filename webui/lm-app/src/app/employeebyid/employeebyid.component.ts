@@ -18,7 +18,7 @@ export class EmployeebyidComponent implements OnInit {
 
   displayEmployeeById(obj:any): void{
     console.log(obj)
-    this.emp.getdisplayEmployeeById(obj).subscribe(data=>this.EmployeeByIddetails=data,err=>console.log(err));
+    this.emp.getdisplayEmployeeById(obj).subscribe(data=>this.empById=data,err=>console.log(err));
 
   }
 }

@@ -29,10 +29,10 @@ import { ApplyleaveComponent } from './applyleave/applyleave.component';
     UpdateComponent,
     ApproveDenyComponent,
     EditApproveDenyComponent,
+    ApplyleaveComponent
   ],
   imports: [
     BrowserModule,HttpClientModule,FormsModule,
-    ApplyleaveComponent
   ],
   providers: [LeaveDetailsService,EmployeeService],
   bootstrap: [AppComponent]
