@@ -6,7 +6,6 @@ import { LeaveDetails } from './LeaveDetails';
 @Injectable()
 export class LeaveDetailsService {
     constructor(private httpClient:HttpClient) {}
-
     
     load(obj):Observable<LeaveDetails[]>{
         console.log(obj);
@@ -48,7 +47,10 @@ export class LeaveDetailsService {
         console.log(obj)
         let url="http://localhost:8080/ftp82/api/LeaveDetails/delete/"+obj.lId+"/"+obj.empId;
         return this.httpClient.delete(url, {responseType:'text'} );   
-
+    }
+    leaveApply(apply:any):Observable<string> {
+        let url = "http://localhost:8080/ftp82/api/LeaveDetails/applyleave/"+apply.empId+"/"+apply.type+"/"+apply.sDate+"/"+apply.eDate+"/"+apply.reason;
+        return this.httpClient.post(url,{ },{responseType:'text'});
     }
     
     putUpdate(emp:any):Observable<String>{

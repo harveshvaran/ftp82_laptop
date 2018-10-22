@@ -3,18 +3,21 @@
     Welcome to {{title}}!
   </h1>
 </div>
+<form>
+<input type ="button" value = "enter into table" (click) = "getEmployees()">
+</form>
 <div>
     <table border="1">
         <thead>
             <tr>
                 <th>Employee Id</th>
                 <th>Employee Name</th>
-                <th>Employee Number</th>
-                <th>Employee Mail</th>
+                <th>Employee phone</th>
+                <th>Employe Email</th>
                 <th>Employee Dept</th>
-                <th>Employee Mgr Id</th>
-                <th>Employee Leave</th>
-                <th>Employee DOJ</th>
+                <th>Manager ID</th>
+                <th>Leave Balance</th>
+                <th>Date Of Joining</th>
             </tr>
         </thead>
         <tbody class="employees">
@@ -57,5 +60,5 @@
     <app-employeebyid></app-employeebyid>
     <br/><br/>
     <br/><br/>
-    
+    <app-applyleave></app-applyleave>         
 </div>

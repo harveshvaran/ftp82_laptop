@@ -16,6 +16,8 @@ import { UpdateComponent } from './update/update.component';
 
 import { ApproveDenyComponent } from './approveOrDeny/approveOrDeny.component';
 import { EditApproveDenyComponent } from './editPermission/editPermission.component';
+import { ApplyleaveComponent } from './applyleave/applyleave.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { EditApproveDenyComponent } from './editPermission/editPermission.compon
     EditApproveDenyComponent,
   ],
   imports: [
-    BrowserModule,HttpClientModule,FormsModule
+    BrowserModule,HttpClientModule,FormsModule,
+    ApplyleaveComponent
   ],
   providers: [LeaveDetailsService,EmployeeService],
   bootstrap: [AppComponent]
