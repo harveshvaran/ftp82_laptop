@@ -17,21 +17,19 @@ public class LeaveDetailsRestTest {
 	@Test
 	public void testemployeeLeaveHistory() throws AssertionError, URISyntaxException {
 		LeaveDetails[] res = given().accept(ContentType.JSON).when()
-				.get(CommonUtil.getURI("/api/LeaveDetails/history/3000")).getBody().as(LeaveDetails[].class);
-					assertEquals(1, res.length);
+				.get(CommonUtil.getURI("/api/LeaveDetails/history/2000")).getBody().as(LeaveDetails[].class);
+					assertEquals(2, res.length);
 					LeaveDetails l1 = res[0];
-					assertEquals(10, l1.getLeaveId());
+					assertEquals(1, l1.getLeaveId());
 	}
 
 	@Test
 	public void testleaveDetailsList() throws AssertionError, URISyntaxException {
 		LeaveDetails[] res = given().accept(ContentType.JSON).when()
-				.get(CommonUtil.getURI("/api/LeaveDetails/pending/2001")).getBody().as(LeaveDetails[].class);
-					assertEquals(11, res.length);
+				.get(CommonUtil.getURI("/api/LeaveDetails/pending/1000")).getBody().as(LeaveDetails[].class);
+					assertEquals(2, res.length);
 					LeaveDetails ld1 = res[0];
 					assertEquals("PENDING", ld1.getLeaveStatus());
-					LeaveDetails ld2 = res[1];
-					assertEquals("PENDING", ld2.getLeaveStatus());
 					//assertEquals(new LeaveDetails(1000), res);
 	}
 
@@ -42,14 +40,14 @@ public class LeaveDetailsRestTest {
 		assertEquals("inserted sucessfully", res);
   	}		
   
-  	@Test
+    @Test
 	public void testpostApproveOrDeny() throws AssertionError, URISyntaxException {
 		String res = given().accept(ContentType.TEXT).when()
-				.post(CommonUtil.getURI("/api/LeaveDetails/approve/3001/23/Okay/approved")).getBody().asString();
-				assertEquals("process unsuccessful !", res);
+				.post(CommonUtil.getURI("/api/LeaveDetails/approve/3000/2/Okay/approved")).getBody().asString();
+				assertEquals("Enter corresponding Employee ID and Leave ID !", res);
   	}
 	  
-   	@Test
+  @Test
 	public void testLeaveDetailsList404() throws AssertionError, URISyntaxException {
 		given().accept(ContentType.JSON).when()
 				.get(CommonUtil.getURI("/api/LeaveDetails/9999")).then().assertThat().statusCode(404);
@@ -57,13 +55,13 @@ public class LeaveDetailsRestTest {
 	@Test
 	public void testupdateLeaveRest() throws AssertionError, URISyntaxException {
 		String res = given().accept(ContentType.TEXT).when()
-				.put(CommonUtil.getURI("/api/LeaveDetails/updateleave/3001/EL/2018-10-17/2018-10-18/goingtonative/30")).getBody().asString();
+				.put(CommonUtil.getURI("/api/LeaveDetails/updateleave/3001/EL/2018-10-17/2018-10-18/goingtonative/5")).getBody().asString();
 				assertEquals("updated sucessfully", res);
   	}
 	@Test
 	public void testdeleteLeaveRest() throws AssertionError, URISyntaxException {
 		String res = given().accept(ContentType.TEXT).when()
-				.delete(CommonUtil.getURI("/api/LeaveDetails/delete/32/3001")).getBody().asString();
+				.delete(CommonUtil.getURI("/api/LeaveDetails/delete/10/3001")).getBody().asString();
 				assertEquals("leave request deleted", res);
   	}
 }

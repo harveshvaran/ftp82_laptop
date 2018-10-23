@@ -43,35 +43,35 @@ public class LeaveDetails {
     this.empId = argEmpId;
   }
   /**
-   * @param argLeaveId to initialize Leave Id in leave details table.
-   * @param argLeaveType to initialize leave type in leave details table.
-   * @param argStartDate to initialize start date in leave details table.
-   * @param argEndDate to initialize end date in leave details table.
-   * @param argNoOfDays to initialize No of days in leave details table.
-   * @param argLeaveStatus to initialize leave status in leave details table.
-   * @param argLeaveReason to initialize leave reason in leave details table.
-   * @param argLeaveAppliedOn to initialize date leave appliedon in leave details table.
-   * @param argManagerComments to initialize manager comments in leave details table.
-   * @param argEmpId to initialize employee id in leave details table.
+   * @param argsLeaveId to initialize Leave Id in leave details table.
+   * @param argsLeaveType to initialize leave type in leave details table.
+   * @param argsStartDate to initialize start date in leave details table.
+   * @param argsEndDate to initialize end date in leave details table.
+   * @param argsNoOfDays to initialize No of days in leave details table.
+   * @param argsLeaveStatus to initialize leave status in leave details table.
+   * @param argsLeaveReason to initialize leave reason in leave details table.
+   * @param argsLeaveAppliedOn to initialize date leave appliedon in leave details table.
+   * @param argsManagerComments to initialize manager comments in leave details table.
+   * @param argsEmpId to initialize employee id in leave details table.
    */
-  public LeaveDetails(final int leaveId, final String leaveType, final Date startDate,
-      final Date endDate, final int noOfDays, final String leaveStatus, final String leaveReason,
-      final Date leaveAppliedOn, final String managerComments, final int empId) {
+  public LeaveDetails(final int argsLeaveId, final String argsLeaveType, final Date argsStartDate, final Date argsEndDate,
+       final int argsNoOfDays, final String argsLeaveStatus, final String argsLeaveReason,
+       final Date argsLeaveAppliedOn, final String argsManagerComments, final int argsEmpId) {
     try {
       SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-      this.leaveId = leaveId;
-      this.leaveType = leaveType;
-      String strtDate = dateFormat.format(startDate);
+      this.leaveId = argsLeaveId;
+      this.leaveType = argsLeaveType;
+      String strtDate = dateFormat.format(argsStartDate);
       this.startDate = strtDate;
-      String edDate = dateFormat.format(endDate);
+      String edDate = dateFormat.format(argsEndDate);
       this.endDate = edDate;
-      this.noOfDays = noOfDays;
-      this.leaveStatus = leaveStatus;
-      this.leaveReason = leaveReason;
-      String leaveApplied = dateFormat.format(leaveAppliedOn);
+      this.noOfDays = argsNoOfDays;
+      this.leaveStatus = argsLeaveStatus;
+      this.leaveReason = argsLeaveReason;
+      String leaveApplied = dateFormat.format(argsLeaveAppliedOn);
       this.leaveAppliedOn = leaveApplied;
-      this.managerComments = managerComments;
-      this.empId = empId;
+      this.managerComments = argsManagerComments;
+      this.empId = argsEmpId;
     } catch (Exception e) {
       System.out.println(e.toString());
     }
@@ -121,10 +121,10 @@ public class LeaveDetails {
   }
   /**
    *
-   * @param argleaveId to set leave id.
+   * @param argLeaveId to set leave id.
    */
-  public final void setLeaveId(final int leaveId) {
-    this.leaveId = leaveId;
+  public final void setLeaveId(final int argLeaveId) {
+    this.leaveId = argLeaveId;
   }
   /**
   @return this Leave Type.
@@ -134,10 +134,10 @@ public class LeaveDetails {
   }
   /**
    *
-   * @param argleaveType to set leave type.
+   * @param argLeaveType to set leave type.
    */
-  public final void setLeaveType(final String leaveType) {
-    this.leaveType = leaveType;
+  public final void setLeaveType(final String argLeaveType) {
+    this.leaveType = argLeaveType;
   }
   /**
    * Gets the StartDate.
@@ -148,10 +148,10 @@ public class LeaveDetails {
   }
   /**
    *
-   * @param argstartDate to set start date.
+   * @param argStartDate to set start date.
    */
-  public final void setStartDate(final String startDate) {
-    this.startDate = startDate;
+  public final void setStartDate(final String argStartDate) {
+    this.startDate = argStartDate;
   }
   /**
    *@return this End date.
@@ -161,10 +161,10 @@ public class LeaveDetails {
   }
   /**
    *
-   * @param argendDate to set End date.
+   * @param argEndDate to set End date.
    */
-  public final void setEndDate(final String endDate) {
-    this.endDate = endDate;
+  public final void setEndDate(final String argEndDate) {
+    this.endDate = argEndDate;
   }
   /**
    * @return this number of days
@@ -174,10 +174,10 @@ public class LeaveDetails {
   }
   /**
    *
-   * @param argnoOfDays to set number of days.
+   * @param argNoOfDays to set number of days.
    */
-  public final void setNoOfDays(final int noOfDays) {
-    this.noOfDays = noOfDays;
+  public final void setNoOfDays(final int argNoOfDays) {
+    this.noOfDays = argNoOfDays;
   }
   /**
    *@return this leave status
@@ -187,10 +187,10 @@ public class LeaveDetails {
   }
   /**
    *
-   * @param argleaveStatus to set leave status.
+   * @param argLeaveStatus to set leave status.
    */
-  public final void setLeaveStatus(final String leaveStatus) {
-    this.leaveStatus = leaveStatus;
+  public final void setLeaveStatus(final String argLeaveStatus) {
+    this.leaveStatus = argLeaveStatus;
   }
   /**
    *@return this leave reason
@@ -200,10 +200,10 @@ public class LeaveDetails {
   }
   /**
    *
-   * @param argleaveReason to set leave reason.
+   * @param argLeaveReason to set leave reason.
    */
-  public final void setLeaveReason(final String leaveReason) {
-    this.leaveReason = leaveReason;
+  public final void setLeaveReason(final String argLeaveReason) {
+    this.leaveReason = argLeaveReason;
   }
   /**
    * @return this leave applied on
@@ -213,10 +213,10 @@ public class LeaveDetails {
   }
   /**
    *
-   * @param argleaveAppliedOn to set applied.
+   * @param argLeaveAppliedOn to set applied.
    */
-  public final void setLeaveAppliedOn(final String leaveAppliedOn) {
-    this.leaveAppliedOn = leaveAppliedOn;
+  public final void setLeaveAppliedOn(final String argLeaveAppliedOn) {
+    this.leaveAppliedOn = argLeaveAppliedOn;
   }
   /**
    * @return this manager comments
@@ -226,10 +226,10 @@ public class LeaveDetails {
   }
   /**
    *
-   * @param argmanagerComments to set manager comments.
+   * @param argManagerComments to set manager comments.
    */
-  public final void setManagerComments(final String managerComments) {
-    this.managerComments = managerComments;
+  public final void setManagerComments(final String argManagerComments) {
+    this.managerComments = argManagerComments;
   }
   /**
    * @return this Employee ID
@@ -239,10 +239,10 @@ public class LeaveDetails {
   }
   /**
    *
-   * @param argempId to set manager comments.
+   * @param argEmpId to set manager comments.
    */
-  public final void setEmpId(final int empId) {
-    this.empId = empId;
+  public final void setEmpId(final int argEmpId) {
+    this.empId = argEmpId;
   }
   /**
    *
@@ -470,7 +470,6 @@ public class LeaveDetails {
           dao().updateEmployee(balance, empID);
           status = dao().deleteLeaveRequest(leaveID);
           return status;
-          
         }
       } else {
         status = dao().deleteLeaveRequest(leaveID);
