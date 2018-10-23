@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { LeaveDetailsService } from 'src/app/leaveDetailsService';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,HttpClientModule
   ],
-  providers: [],
+  providers: [LeaveDetailsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
