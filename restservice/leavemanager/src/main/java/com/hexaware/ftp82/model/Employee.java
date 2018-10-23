@@ -41,6 +41,8 @@ public class Employee {
   private int empLeaveBalance;
   private String empDoj;
   private String empImage;
+  // private String empMailUser;
+  // private String empMailPass;
   /**
    * Equals class to check employee details.
    * @return true or false.
@@ -58,7 +60,9 @@ public class Employee {
         && Objects.equals(empPh, emp.empPh) && Objects.equals(empEmail, emp.empEmail)
         && Objects.equals(empDept, emp.empDept) && Objects.equals(empManagerId, emp.empManagerId)
         && Objects.equals(empLeaveBalance, emp.empLeaveBalance) && Objects.equals(empDoj, emp.empDoj)
-        && Objects.equals(empImage, emp.empImage)) {
+        && Objects.equals(empImage, emp.empImage)
+        // && Objects.equals(empMailUser, emp.empMailUser)&& Objects.equals(empMailPass, emp.empMailPass)
+        ) {
       return true;
     }
     return false;
@@ -72,6 +76,8 @@ public class Employee {
    * @return empManagerId employee id of the manager.
    * @return empLeaveBalance leave balance of the employee.
    * @return empDoj date of joining of the employee.
+   * @return empMailUser date of joining of the employee.
+   * @return empMailPass date of joining of the employee.
    */
   @Override
   public final int hashCode() {
@@ -97,19 +103,25 @@ public class Employee {
    * @param argEmpLeaveBalance to initialize employee table details.
    * @param argEmpDoj to initialize employee table details.
    * @param argEmpImage to initialize employee table details.
+  //  * @param argEmpMailUser to initialize employee table details.
+  //  * @param argEmpMailPass to initialize employee table details.
    */
-  public Employee(final int argEmpId, final String argEmpName, final long argEmpPh, final String argEmpEmail, final String argEmpDept, final int argEmpManagerId, final int argEmpLeaveBalance, final Date argEmpDoj, final String argEmpImage) {
-    this.empId = argEmpId;
-    this.empName = argEmpName;
-    this.empPh = argEmpPh;
-    this.empEmail = argEmpEmail;
-    this.empDept = argEmpDept;
-    this.empManagerId = argEmpManagerId;
-    this.empLeaveBalance = argEmpLeaveBalance;
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-    String empDojj = dateFormat.format(argEmpDoj);
-    this.empDoj = empDojj;
-    this.empImage = argEmpImage;
+  public Employee(final int argEmpId, final String argEmpName, final long argEmpPh, final String argEmpEmail, final String argEmpDept, final int argEmpManagerId, final int argEmpLeaveBalance, final Date argEmpDoj
+    , final String argEmpImage) {
+      // , final String argEmpMailUser, final String argEmpMailPass
+      this.empId = argEmpId;
+      this.empName = argEmpName;
+      this.empPh = argEmpPh;
+      this.empEmail = argEmpEmail;
+      this.empDept = argEmpDept;
+      this.empManagerId = argEmpManagerId;
+      this.empLeaveBalance = argEmpLeaveBalance;
+      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+      String empDojj = dateFormat.format(argEmpDoj);
+      this.empDoj = empDojj;
+      this.empImage = argEmpImage;
+      // this.empMailUser = argEmpMailUser;
+      // this.empMailPass = argEmpMailPass;
   }
   /**
    * Gets the EmployeeId.
@@ -221,7 +233,6 @@ public class Employee {
   public final String getEmpDoj() {
     return empDoj;
   }
-
   /**
    *
    * @param argEmpDoj to set employee Doj.
@@ -236,14 +247,27 @@ public class Employee {
   public final String getEmpImage() {
     return empImage;
   }
-
   /**
    *
-   * @param argEmpImage to set employee email.
+   * @param argEmpImage to set employee Doj.
    */
   public final void setEmpImage(final String argEmpImage) {
     this.empImage = argEmpImage;
   }
+  // /**
+  //  * Gets the EmployeeImage.
+  //  * @return this Employee's Image.
+  //  */
+  // public final String getMailUser() {
+  //   return empMailUser;
+  // }
+  // /**
+  //  * Gets the EmployeeImage.
+  //  * @return this Employee's Image.
+  //  */
+  // public final String getMailPass() {
+  //   return empMailPass;
+  // }
   /**
    * The dao for employee.
    */
@@ -299,18 +323,18 @@ public class Employee {
    * @param id to get employee details.
    * @return Employee
    */
-  public static void displayEmpImage(final int id) {
+  public static String displayEmpImage(final int id) {
     Employee e = dao().getImage(id);
-    final String img_link = e.getEmpImage();
-    System.out.println("Image Address" + img_link);
+    return e.getEmpImage();
   }
   /*
    * @param argsEmpID to get employee details.
-  public static void sendMail(final int argsEmpID) {
-    final String from = "harveshvaran96@gmail.com";
-    final String to = getMailId(argsEmpID);
-    final String username = "harveshvaran96";
-    final String password = "";
+    public static void sendMail(final int argsFromId, final int argsToId, final String argsMessage) {
+    final String from = getMailId(argsFromId);
+    final String to = getMailId(argsToId);
+    Employee e = dao().getCredentials(argsFromId);
+    final String username = e.getMailUser();
+    final String password = e.getMailPass();
     String host = "smtp.gmail.com";
     Properties props = new Properties();
     props.put("mail.smtp.auth", "true");
@@ -329,8 +353,7 @@ public class Employee {
       message.setRecipients(Message.RecipientType.TO,
           InternetAddress.parse(to));
       message.setSubject("Applied for Leave!");
-      message.setText("We are glad to inform that your leave aplication "
-          + "is applied on corresponding dates are schudeled! ");
+      message.setText(argsMessage);
       Transport.send(message);
       System.out.println("Sent message successfully....");
     } catch (MessagingException e) {

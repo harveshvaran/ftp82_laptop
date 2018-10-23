@@ -5,6 +5,7 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.ListIterator;
+import java.sql.Date;
 /**
  * Class CliMain provides the command line interface to the leavemanagement
  * application.
@@ -25,6 +26,7 @@ public class CliMain {
     System.out.println("8. Update exsisting leave");
     System.out.println("9. delete the leave request");
     System.out.println("10. Exit");
+    System.out.println(Date.valueOf(java.time.LocalDate.now()));
     System.out.println("-----------------------");
     System.out.println("Enter your choice:");
     int menuOption = 0;
@@ -268,8 +270,8 @@ public class CliMain {
         case 100:
           System.out.println("Leave approval Denied !");
           break;
-        case 102:
-          System.out.println("Leave process completed !");
+        case 101:
+          System.out.println("Leave cannot be processed !");
           break;
         default:
           System.out.println("process unsuccessful !");
@@ -356,7 +358,7 @@ public class CliMain {
     do {
       applyEmpId = getInteger();
     } while (applyEmpId == 0);
-    Employee.displayEmpImage(applyEmpId);
+    System.out.println(Employee.displayEmpImage(applyEmpId));
   }
   /**
    * The main entry point.

@@ -147,7 +147,7 @@ public class LeaveDetailsTest {
   @Test
   public final void testDateMethod() {
     int res = LeaveDetails.dateExpiryOfsdate("2018-10-15");
-    assertEquals(0, res);
+    assertEquals(1, res);
     int res1 = LeaveDetails.dateExpiryOfsdate("2018-10-02");
     assertEquals(1, res1);
     int res2 = LeaveDetails.dateExpiryOfedate("2018-10-15", "2018-10-08");
@@ -286,7 +286,7 @@ public class LeaveDetailsTest {
         lea1.setEndDate("2018-10-08");
         lshs.add(lea);
         lshs.add(lea1);
-        lshs = dao.leaveHistory(300);
+        dao.leaveHistory(300);
         result = lshs;
       }
     };
@@ -314,6 +314,14 @@ public class LeaveDetailsTest {
     Date eDate1 = Date.valueOf("2018-10-11");
     int res1 = LeaveDetails.dateCheck(sDate1, eDate1);
     assertEquals(2, res1);
+    Date sDate2 = Date.valueOf("2018-10-20");
+    Date eDate2 = Date.valueOf("2018-10-21");
+    int res2 = LeaveDetails.dateCheck(sDate2, eDate2);
+    assertEquals(0, res2);
+    Date sDate3 = Date.valueOf("2018-10-21");
+    Date eDate3 = Date.valueOf("2018-10-21");
+    int res3 = LeaveDetails.dateCheck(sDate3, eDate3);
+    assertEquals(0, res3);
   }
   /**
    *@param dao to access object
@@ -358,8 +366,9 @@ public class LeaveDetailsTest {
           int appliedNoOfLeaves = l2.getNoOfDays();
           int leaveBalance = e2.getEmpLeaveBalance();
           String statusOfEmp = l2.getLeaveStatus();
-          Date sd = Date.valueOf(l2.getStartDate());
-          System.out.println("start date:" + sd);
+          Date sDate= Date.valueOf(l2.getStartDate());
+          long ex = sDate.getTime();
+          Date sd = new Date(ex);
           if (statusOfEmp.equals("APPROVED")) {
             if (sd.before(Date.valueOf(java.time.LocalDate.now()))) {
               int balance = leaveBalance + appliedNoOfLeaves;

@@ -46,24 +46,24 @@ public class EmployeeTest {
       Date date1 = dateFormat.parse(sDate1);
       Employee e100 = new Employee(100);
       Employee e101 = new Employee();
-      Employee e102 = new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1);
+      Employee e102 = new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1, "C:/Users/Harvesh/workspace/FTP82/empImg/emp1.jpg");
       Employee e103 = new Employee();
       assertNotEquals(e100, null);
       assertNotEquals(e101, null);
       assertNotEquals(e102, null);
       assertNotEquals(e103, null);
-      assertNotEquals(e103, new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1));
-      assertEquals(new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1).equals(e102), true);
+      assertNotEquals(e103, new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1, "C:/Users/Harvesh/workspace/FTP82/empImg/emp1.jpg"));
+      assertEquals(new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1, "C:/Users/Harvesh/workspace/FTP82/empImg/emp1.jpg").equals(e102), true);
       assertEquals(e100.hashCode(), new Employee(100).hashCode());
       assertEquals(e101.hashCode(), new Employee().hashCode());
-      assertEquals(e102.hashCode(), new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1).hashCode());
-      assertNotEquals(e103.hashCode(), new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1).hashCode());
+      assertEquals(e102.hashCode(), new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1, "C:/Users/Harvesh/workspace/FTP82/empImg/emp1.jpg").hashCode());
+      assertNotEquals(e103.hashCode(), new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1, "C:/Users/Harvesh/workspace/FTP82/empImg/emp1.jpg").hashCode());
       assertNotEquals(e100, new Integer(100));
       assertNotEquals(e101, new Integer(100));
       assertNotEquals(e102, new Integer(100));
       assertNotEquals(e103, new Integer(100));
       assertEquals(e100, new Employee(100));
-      assertEquals(e102, new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1));
+      assertEquals(e102, new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1, "C:/Users/Harvesh/workspace/FTP82/empImg/emp1.jpg"));
       assertEquals(e100.getEmpId(), new Employee(100).getEmpId());
       assertEquals(e102.getEmpId(), 100);
       assertEquals(e102.getEmpName(), "harvesh");
@@ -73,6 +73,7 @@ public class EmployeeTest {
       assertEquals(e102.getEmpManagerId(), 2000);
       assertEquals(e102.getEmpLeaveBalance(), 3);
       assertEquals(e102.getEmpDoj(), "2018-11-09");
+      assertEquals(e102.getEmpImage(), "C:/Users/Harvesh/workspace/FTP82/empImg/emp1.jpg");
       e103.setEmpId(100);
       e103.setEmpName("harvesh");
       e103.setEmpPh(8220645161L);
@@ -134,7 +135,7 @@ public class EmployeeTest {
           String sDate1 = "2018-11-09";
           Date date1 = dateFormat.parse(sDate1);
           ArrayList<Employee> es = new ArrayList<Employee>();
-          es.add(new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1));
+          es.add(new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1, "C:/Users/Harvesh/workspace/FTP82/empImg/emp1.jpg"));
           es.add(new Employee(10));
           es.add(new Employee(100));
           dao.list(); result = es;
@@ -155,7 +156,7 @@ public class EmployeeTest {
       Date date1 = dateFormat.parse(sDate1);
       Employee[] es = Employee.listAll();
       assertEquals(3, es.length);
-      assertEquals(new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1), es[0]);
+      assertEquals(new Employee(100, "harvesh", 8220645161L, "harveshvaran@gmail.com", "cse", 2000, 3, date1 ,"C:/Users/Harvesh/workspace/FTP82/empImg/emp1.jpg"), es[0]);
       assertEquals(new Employee(10), es[1]);
       assertEquals(new Employee(100), es[2]);
     } catch (ParseException e) {
@@ -189,6 +190,7 @@ public class EmployeeTest {
   /**
    * testSend class tests that empty employee list is handled correctly.
    * @param dao mocking the dao class
+   */
   @Test
   public final void testSend(@Mocked final EmployeeDAO dao) {
     final Employee e100 = new Employee();
@@ -206,7 +208,7 @@ public class EmployeeTest {
     };
     Employee e = Employee.send(100);
     assertEquals(e100, e);
-  }  */
+  } 
   /**
    * testGetLeaveBalance class Tests that a fetch of a specific employee works correctly.
    * @param dao mocking the dao class
@@ -252,4 +254,27 @@ public class EmployeeTest {
     String mailId  = Employee.getMailId(100);
     assertEquals(mailId, "harveshvaran96@gmail.com");
   }  */
+  /**
+   * testSend class tests that empty employee list is handled correctly.
+   * @param dao mocking the dao class
+   */
+  @Test
+  public final void testDisplayEmpImage(@Mocked final EmployeeDAO dao) {
+    final Employee e100 = new Employee();
+    new Expectations() {
+      {
+        dao.getImage(100);
+        e100.setEmpImage("C:/Users/Harvesh/workspace/FTP82/empImg/emp1.jpg");
+        result = e100;
+      }
+    };
+    new MockUp<Employee>() {
+      @Mock
+      EmployeeDAO dao() {
+        return dao;
+      }
+    };
+    String img = Employee.displayEmpImage(100);
+    assertEquals(img, "C:/Users/Harvesh/workspace/FTP82/empImg/emp1.jpg");
+  } 
 }

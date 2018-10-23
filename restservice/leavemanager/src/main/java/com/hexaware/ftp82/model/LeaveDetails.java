@@ -6,16 +6,6 @@ import java.text.SimpleDateFormat;
 import java.sql.Date;
 import java.util.Objects;
 import java.util.List;
-
-import java.util.Properties;
-import javax.mail.Transport;
-import javax.mail.Session;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import java.text.DateFormat; 
 import java.util.Calendar;
 /**
  * LeaveDetails class to process employee leave details.
@@ -68,7 +58,7 @@ public class LeaveDetails {
   public LeaveDetails(final int leaveId, final String leaveType, final Date startDate,
       final Date endDate, final int noOfDays, final String leaveStatus, final String leaveReason,
       final Date leaveAppliedOn, final String managerComments, final int empId) {
-    try {
+    //try {
       SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
       this.leaveId = leaveId;
       this.leaveType = leaveType;
@@ -83,9 +73,9 @@ public class LeaveDetails {
       this.leaveAppliedOn = leaveApplied;
       this.managerComments = managerComments;
       this.empId = empId;
-    } catch (Exception e) {
-      System.out.println(e.toString());
-    }
+    // } catch (Exception e) {
+    //   System.out.println(e.toString());
+    // }
   }
 
   @Override
@@ -302,8 +292,8 @@ public class LeaveDetails {
       Date eDate = Date.valueOf(endDate);
       diffInDays = dateCheck(sDate, eDate);
       if (diffInDays > 0) {
-        System.out.println("\n number of days" + diffInDays + "\n");
         status = dao().insertLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveReason, appliedDate, leaveStatus, empId);
+        //Employee.sendMail(argApplyEmpId, e1.getEmpManagerId(argApplyEmpId));
       } else {
         System.out.println("Cannot apply leave on saturday and sunday");
       }
@@ -341,19 +331,6 @@ public class LeaveDetails {
       return 0;
     }
   }
- /**
-  * list employee details by id.
-  * @param empId to get employee details.
-  * @param leaveId to get employee details.
-  * @return Employee
-  */
-  public static int overlapCheck(final Date startDate, final Date SD, final Date ED) {
-    int a=-1;
-    if (startDate.getTime() >= SD.getTime()&&startDate.getTime() <= ED.getTime() || startDate.getTime() == SD.getTime() || startDate.getTime() == ED.getTime()) {
-      a=0;
-    }
-    return a;
-  }
   /**
    * @param argApplyEmpId to initialize employee id.
    * @param argApplyLeaveId to initialize leave id.
@@ -368,23 +345,19 @@ public class LeaveDetails {
     int appliedNoOfLeaves = l1.getNoOfDays();
     String statusOfEmp = l1.getLeaveStatus();
     if (argApproveStatus.equalsIgnoreCase("approve")) {
-      if (statusOfEmp.equals(LeaveStatus.PENDING.toString())) {
-        statusOfEmp = LeaveStatus.APPROVED.toString();
-        int approvedLeaves = leaveBalance - appliedNoOfLeaves;
-        int leaves = dao().updateEmployee(approvedLeaves, argApplyEmpId);
-        int applyEmpStatus = dao().updateApproveOrDenial(statusOfEmp, argMgrComments, argApplyLeaveId);
-        if (leaves > 0 && applyEmpStatus > 0) {
-          return 1;
-        }
-      } else {
-        return 102;
-      }
+      statusOfEmp = LeaveStatus.APPROVED.toString();
+      int approvedLeaves = leaveBalance - appliedNoOfLeaves;
+      //String message="Your leave has been approved !";
+      dao().updateEmployee(approvedLeaves, argApplyEmpId);
+      dao().updateApproveOrDenial(statusOfEmp, argMgrComments, argApplyLeaveId);
+      //Employee.sendMail(e1.getEmpManagerId(argApplyEmpId), argApplyEmpId, message);
+        return 1;
     } else if (argApproveStatus.equalsIgnoreCase("deny")) {
       statusOfEmp = LeaveStatus.DENIED.toString();
+      //String message="Your leave has been denied !";
+      //Employee.sendMail(e1.getEmpManagerId(argApplyEmpId), argApplyEmpId, message);
       dao().updateApproveOrDenial(statusOfEmp, argMgrComments, argApplyLeaveId);
       return 100;
-    } else {
-      return 101;
     }
     return 101;
   }
@@ -408,7 +381,7 @@ public class LeaveDetails {
    * @return values.
    */
   public static int overLapCheck(final String strtDate, final int emID) {
-    try {
+    //try {
       Date sDate = Date.valueOf(strtDate);
       List<LeaveDetails> lshs = dao().leaveHistory(emID);
       for (LeaveDetails ls : lshs) {
@@ -418,9 +391,9 @@ public class LeaveDetails {
           return 0;
         }
       }
-    } catch (IllegalArgumentException e) {
-      System.out.println(e);
-    }
+    // } catch (IllegalArgumentException e) {
+    //   System.out.println(e);
+    // }
     return 1;
   }
   /**
@@ -460,16 +433,18 @@ public class LeaveDetails {
     String leaveStatus = LeaveStatus.PENDING.toString();
     int status = 0;
     int diffInDays = 0;
-    try {
       Date appliedDate = Date.valueOf(java.time.LocalDate.now());
-      Date sDate = Date.valueOf(startDate);
-      Date eDate = Date.valueOf(endDate);
+
+      Date sdt = Date.valueOf(startDate);
+      long ex = sdt.getTime();
+      Date sDate = new Date(ex);
+
+      Date edt = Date.valueOf(endDate);
+      long ex1 = edt.getTime();
+      Date eDate = new Date(ex1);
+
       diffInDays = dateCheck(sDate, eDate);
-      System.out.println("\n number of days" + diffInDays + "\n");
       status = dao().updateLeaveDetails(leaveType, sDate, eDate, diffInDays, leaveStatus, leaveReason, appliedDate, empId, leaveId);
-    } catch (Exception e) {
-      System.out.println(e.toString());
-    }
     return status;
   }
   /**
@@ -486,7 +461,11 @@ public class LeaveDetails {
       int appliedNoOfLeaves = l2.getNoOfDays();
       int leaveBalance = e2.getEmpLeaveBalance();
       String statusOfEmp = l2.getLeaveStatus();
-      Date sd = Date.valueOf(l2.getStartDate());
+
+      Date sDate= Date.valueOf(l2.getStartDate());
+      long ex = sDate.getTime();
+      Date sd = new Date(ex);
+
       System.out.println("start date:" + sd);
       if (statusOfEmp.equals("APPROVED")) {
         if (sd.before(Date.valueOf(java.time.LocalDate.now()))) {

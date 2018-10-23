@@ -67,6 +67,14 @@ public interface EmployeeDAO  {
   @Mapper(EmployeeMapper.class)
   Employee getMail(@Bind("empId") int empId); */
   /**
+   * return manager Id's.
+   * @param empId the employee array
+   * @return the manager Id
+   */ /*
+  @SqlQuery("select * from employee where EMP_ID = :empId ")
+  @Mapper(EmployeeMapper.class)
+  Employee getCredentials(@Bind("empId") int empId); */
+  /**
   * close with no args is used to close the connection.
   */
   void close();
