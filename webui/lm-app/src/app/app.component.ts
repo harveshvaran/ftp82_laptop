@@ -6,7 +6,7 @@ import { Employee } from './employee';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [ EmployeeService ]
+  providers: [ EmployeeService]
 })
 export class AppComponent implements OnInit {
   constructor(private employeeService: EmployeeService) { }
@@ -24,7 +24,6 @@ export class AppComponent implements OnInit {
       this.employeeService.getEmployees().subscribe(data=>this.employees=data,err=>console.log(err));
     
   }
-
   ngOnInit(): void {
     this.getEmployees();
   }
