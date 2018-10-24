@@ -1,11 +1,9 @@
-<h2>Employee Details</h2>
-<br/><div>
-  <form (submit)= "displayEmployeeById(obj.value)" #obj="ngForm">
+<div>
+    <h2>Employee Details</h2>
+    <form (submit)= "displayEmployeeById(obj.value)" #obj="ngForm">
       <input type ="text" placeholder="Enter Employee Id" name="id" ngModel/>
       <input type="submit" value="Display Employee details"/>
-  </form>
-</div>
-<br/><div>
+    </form><br/>
     <table border="1">
             <tr>
                 <th>Employee ID</th>
@@ -18,30 +16,14 @@
                 <th>Date Of Joining</th>
             </tr>
             <tr>
-                <td>
-                    {{EmployeeByIddetails.empId}}
-                </td>
-                <td>
-                    <b>{{EmployeeByIddetails.empName}}</b>
-                </td>
-                <td>
-                    {{EmployeeByIddetails.empPh}}
-                </td>
-                <td>
-                    {{EmployeeByIddetails.empEmail}}
-                </td>
-                <td>
-                  {{EmployeeByIddetails.empDept}}
-                </td>
-                <td>
-                  {{EmployeeByIddetails.empManagerId}}
-                </td>
-                <td>
-                  {{EmployeeByIddetails.empLeaveBalance}}
-                </td>
-                <td>
-                  {{EmployeeByIddetails.empDoj}}
-                </td>               
+                <td>{{empById.empId}}</td>
+                <td><b>{{empById.empName}}</b></td>
+                <td>{{empById.empPh}}</td>
+                <td>{{empById.empEmail}}</td>
+                <td>{{empById.empDept}}</td>
+                <td>{{empById.empManagerId}}</td>
+                <td>{{empById.empLeaveBalance}}</td>
+                <td>{{empById.empDoj}}</td>               
             </tr>
     </table>
 </div>
