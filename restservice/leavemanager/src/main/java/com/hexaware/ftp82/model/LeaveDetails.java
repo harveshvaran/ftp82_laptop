@@ -59,7 +59,7 @@ public class LeaveDetails {
        final int argsNoOfDays, final String argsLeaveStatus, final String argsLeaveReason,
        final Date argsLeaveAppliedOn, final String argsManagerComments, final int argsEmpId) {
     try {
-      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
       this.leaveId = argsLeaveId;
       this.leaveType = argsLeaveType;
       String strtDate = dateFormat.format(argsStartDate);

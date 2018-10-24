@@ -103,7 +103,7 @@ public class Employee {
     this.empDept = argEmpDept;
     this.empManagerId = argEmpManagerId;
     this.empLeaveBalance = argEmpLeaveBalance;
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     String empDojj = dateFormat.format(argEmpDoj);
     this.empDoj = empDojj;
   }
