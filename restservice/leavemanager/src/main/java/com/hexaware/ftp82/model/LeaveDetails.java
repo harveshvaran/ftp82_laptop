@@ -6,7 +6,7 @@ import com.hexaware.ftp82.persistence.DbConnection;
 import com.hexaware.ftp82.persistence.LeaveDetailsDAO;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.text.DateFormat;
+//import java.text.DateFormat;
 /**
  * LeaveDetails class to process employee leave details.
  * @author hexaware
@@ -59,7 +59,7 @@ public class LeaveDetails {
        final int argsNoOfDays, final String argsLeaveStatus, final String argsLeaveReason,
        final Date argsLeaveAppliedOn, final String argsManagerComments, final int argsEmpId) {
     try {
-      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
       this.leaveId = argsLeaveId;
       this.leaveType = argsLeaveType;
       String strtDate = dateFormat.format(argsStartDate);
@@ -454,6 +454,7 @@ public class LeaveDetails {
   }
   /**
    * view the employee's details of given id.
+   * @param agrsEmpId the id of the employee
    * @param argsLeaveId the id of the employee
    * @param reEditStatus the id of the employee
    * @param reEditMgrCmts the id of the employee

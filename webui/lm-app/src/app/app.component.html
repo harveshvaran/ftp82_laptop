@@ -7,11 +7,14 @@
     <table border="1">
         <thead>
             <tr>
-                <th>Employee ID</th>
+                <th>Employee Id</th>
                 <th>Employee Name</th>
-                <th>Email</th>
-                <th>Phone Number</th>
-                <th>Manager ID</th>
+                <th>Employee Number</th>
+                <th>Employee Mail</th>
+                <th>Employee Dept</th>
+                <th>Employee Mgr Id</th>
+                <th>Employee Leave</th>
+                <th>Employee DOJ</th>
             </tr>
         </thead>
         <tbody class="employees">
@@ -20,17 +23,26 @@
                     <h5>{{employee.empId}}</h5>
                 </td>
                 <td>
-                    <h5>{{employee.name}}</h5>
+                    <h5>{{employee.empName}}</h5>
                 </td>
                 <td>
-                    <h5>{{employee.email}}</h5>
+                    <h5>{{employee.empPh}}</h5>
                 </td>
                 <td>
-                    <h5>{{employee.phoneNumber}}</h5>
+                    <h5>{{employee.empEmail}}</h5>
                 </td>
                 <td>
-                    <h5>{{employee.mgrId}}</h5>
-                </td>                
+                    <h5>{{employee.empDept}}</h5>
+                </td>
+                <td>
+                    <h5>{{employee.empManagerId}}</h5>
+                </td>
+                <td>
+                    <h5>{{employee.empManagerId}}</h5>
+                </td>
+                <td>
+                    <h5>{{employee.empDoj}}</h5>
+                </td>           
             </tr>
         </tbody>
     </table>

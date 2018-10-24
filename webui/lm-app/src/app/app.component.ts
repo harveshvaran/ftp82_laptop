@@ -9,22 +9,22 @@ import { Employee } from './employee';
   providers: [ EmployeeService]
 })
 export class AppComponent implements OnInit {
-  constructor(private employeeService: EmployeeService) { }
+  constructor(private employeeService: EmployeeService) { 
+    this.employeeService.getEmployees().subscribe(data=>console.log(data),err=>console.log(err));
+  }
 
   title = 'Leave Management Application';
   employees: Employee[];
-
+  /*
   getEmployees(): void {
-      /*this.employeeService.getEmployees().then(employees => {
+      this.employeeService.getEmployees().then(employees => {
         console.log('getEmployees promise resolved : ' + employees.length);
         this.employees = employees;
       }
       );
-      */
-      this.employeeService.getEmployees().subscribe(data=>this.employees=data,err=>console.log(err));
+      
     
-  }
+  }*/
   ngOnInit(): void {
-    this.getEmployees();
   }
 }
