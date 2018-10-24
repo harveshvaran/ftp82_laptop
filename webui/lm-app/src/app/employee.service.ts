@@ -31,4 +31,7 @@ getEmployees(): Observable<Employee[]> {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     }
+getdisplayEmployeeById(obj:any): Observable<Employee> {
+    return this.http.get<Employee>('http://localhost:8080/ftp82/api/employees/'+obj.id);   
+}
 }
