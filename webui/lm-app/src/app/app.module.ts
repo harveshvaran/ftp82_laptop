@@ -1,20 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { PendingComponent } from './pending.component';
 import { AppComponent } from './app.component';
 import { LeaveDetailsService } from 'src/app/leaveDetailsService';
-import { PendingComponent } from './pending.component';
+import { EmployeeService } from './employee.service';
+import { FormsModule } from '@angular/forms'
+import { EmployeebyidComponent } from './employeebyid/employeebyid.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PendingComponent
+    PendingComponent,
+    EmployeebyidComponent
   ],
   imports: [
     BrowserModule,HttpClientModule,FormsModule
   ],
-  providers: [LeaveDetailsService],
+  providers: [LeaveDetailsService,EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,7 +10,7 @@ import { Employee } from './employee';
 })
 export class AppComponent implements OnInit {
   constructor(private employeeService: EmployeeService) { 
-    this.employeeService.getEmployees().subscribe(data=>console.log(data),err=>console.log(err));
+    this.employeeService.getEmployees().subscribe(data=>this.employees=data,err=>console.log(err));
   }
 
   title = 'Leave Management Application';

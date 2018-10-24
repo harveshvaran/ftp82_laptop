@@ -1,9 +1,5 @@
 import { Employee } from './employee';
-
 import { Observable } from 'rxjs';
-//import 'rxjs/add/operator/toPromise';
-
-//import { Http } from '@angular/http';
 import {HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -11,7 +7,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class EmployeeService {
     constructor(private http: HttpClient) {
-        
+
     }
 /*
     getEmployees(): Promise<Employee[]> {
@@ -24,9 +20,11 @@ export class EmployeeService {
 */
 
 getEmployees(): Observable<Employee[]> {
-    console.log('getEmployees called on employee.service');
     return this.http.get<Employee[]>('http://localhost:8080/ftp82/api/employees');
-   
+}
+
+getdisplayEmployeeById(obj:any): Observable<Employee> {
+    return this.http.get<Employee>('http://localhost:8080/ftp82/api/employees/'+obj.id);   
 }
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error); // for demo purposes only
