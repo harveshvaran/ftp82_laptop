@@ -44,16 +44,16 @@ public class LeaveDetails {
     this.empId = empId;
   }
   /**
-   * @param argLeaveId to initialize Leave Id in leave details table.
-   * @param argLeaveType to initialize leave type in leave details table.
-   * @param argStartDate to initialize start date in leave details table.
-   * @param argEndDate to initialize end date in leave details table.
-   * @param argNoOfDays to initialize No of days in leave details table.
-   * @param argLeaveStatus to initialize leave status in leave details table.
-   * @param argLeaveReason to initialize leave reason in leave details table.
-   * @param argLeaveAppliedOn to initialize date leave appliedon in leave details table.
-   * @param argManagerComments to initialize manager comments in leave details table.
-   * @param argEmpId to initialize employee id in leave details table.
+   * @param leaveId to initialize Leave Id in leave details table.
+   * @param leaveType to initialize leave type in leave details table.
+   * @param startDate to initialize start date in leave details table.
+   * @param endDate to initialize end date in leave details table.
+   * @param noOfDays to initialize No of days in leave details table.
+   * @param leaveStatus to initialize leave status in leave details table.
+   * @param leaveReason to initialize leave reason in leave details table.
+   * @param leaveAppliedOn to initialize date leave appliedon in leave details table.
+   * @param managerComments to initialize manager comments in leave details table.
+   * @param empId to initialize employee id in leave details table.
    */
   public LeaveDetails(final int argLeaveId, final String argLeaveType, final Date argStartDate,
       final Date argEndDate, final int argNoOfDays, final String argLeaveStatus, final String argLeaveReason,
