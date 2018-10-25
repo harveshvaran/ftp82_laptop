@@ -5,7 +5,6 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.ListIterator;
-import java.sql.Date;
 /**
  * Class CliMain provides the command line interface to the leavemanagement
  * application.
@@ -364,31 +363,24 @@ public class CliMain {
     if (emp == null) {
         System.out.println("You Are not a MANAGER");
     } else {
-        System.out.println("\n--------------------------PEOCESS COMPLETED LEAVE APPLICATIONS------------------------\n");
+        System.out.println("\n--------------------------PROCESS COMPLETED LEAVE APPLICATIONS------------------------\n");
         int count = 0;
-        for (LeaveDetails ll : leave) {
-          try {
-            Date sDate = Date.valueOf(ll.getStartDate());
-            Date curDate = Date.valueOf(java.time.LocalDate.now());
-
-            if(sDate.after(curDate)) {
-              System.out.print("EmployeeId = " + ll.getEmpId() + " | ");
-              System.out.println("LeaveID = " + ll.getLeaveId() + " | ");
-              System.out.print("LeaveType = " + ll.getLeaveType() + " | ");
-              System.out.print("StartDate = " + ll.getStartDate() + " | ");
-              System.out.print("EndDate = " + ll.getEndDate() + " | ");
-              System.out.print("Numberofdays = " + ll.getNoOfDays() + " | ");
-              System.out.print("LeaveStatus = " + ll.getLeaveStatus() + " | ");
-              System.out.print("LeaveReason = " + ll.getLeaveReason() + " | ");
-              System.out.print("LeaveAppliedOn = " + ll.getLeaveAppliedOn() + " | ");
-              System.out.print("ManagerComments = " + ll.getManagerComments() + "\n\n");
-              count = 0;
-            } else {
-              count = 1;
-            }
-          } catch (Exception e) {
-            System.out.println(e.toString());
+        if(leave != null) {
+          for (LeaveDetails ll : leave) {
+            System.out.print("EmployeeId = " + ll.getEmpId() + " | ");
+            System.out.println("LeaveID = " + ll.getLeaveId() + " | ");
+            System.out.print("LeaveType = " + ll.getLeaveType() + " | ");
+            System.out.print("StartDate = " + ll.getStartDate() + " | ");
+            System.out.print("EndDate = " + ll.getEndDate() + " | ");
+            System.out.print("Numberofdays = " + ll.getNoOfDays() + " | ");
+            System.out.print("LeaveStatus = " + ll.getLeaveStatus() + " | ");
+            System.out.print("LeaveReason = " + ll.getLeaveReason() + " | ");
+            System.out.print("LeaveAppliedOn = " + ll.getLeaveAppliedOn() + " | ");
+            System.out.print("ManagerComments = " + ll.getManagerComments() + "\n\n");
+            count = 0;
           }
+        } else {
+          count = 1;
         }
         if(count == 1) {
           System.out.println("\n<<<<<<<<<<< No Applications found ! >>>>>>>>>>>>>\n");

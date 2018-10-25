@@ -1,0 +1,8 @@
+ <div align ="center">
+   <form (submit)="validate(obj.value)" #obj="ngForm">
+     Username :<input type = "text" name = "user" ngModel/><br>
+     Password :<input type = "text" name = "pass" ngModel/><br>
+     <input type = "submit" value = "Submit" />
+     <input type = "reset" value = "Reset" />
+   </form>
+ </div>

@@ -3,7 +3,7 @@ import { LeaveDetailsService } from './leaveDetailsService';
 import { LeaveDetails } from './LeaveDetails';
 
 @Component({
-  selector: 'pending',
+  selector: 'app-pending',
   templateUrl: './pending.component.html',
   providers: [LeaveDetailsService]
 })

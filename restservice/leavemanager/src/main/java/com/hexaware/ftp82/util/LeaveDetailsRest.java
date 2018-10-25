@@ -161,4 +161,44 @@ public class LeaveDetailsRest {
       return "error occured during deletion";
     }
   }
+  /**
+   * Returns a specific employee's details.
+   * @param eid the id of the employee
+   * @param lid the id of the employee
+   * @param comments the id of the employee
+   * @param status the id of the employee
+   * @return the employee details
+   */
+  @GET
+  @Path("/reedit/{eid}")
+  @Produces(MediaType.APPLICATION_JSON)
+  public final LeaveDetails[] reeditPermission(@PathParam("eid") final int eid) {
+    LeaveDetails[] leave = LeaveDetails.listAl(eid);
+    if (leave == null) {
+      throw new NotFoundException("SORRY..There are no records " );
+    }
+    return leave;
+  }
+  /**
+   * Returns a specific employee's details.
+   * @param eid the id of the employee
+   * @param lid the id of the employee
+   * @param comments the id of the employee
+   * @param status the id of the employee
+   * @return the employee details
+   */
+  @POST
+  @Path("/reedit/re/{eid}/{lid}/{comments}/{status}")
+  @Produces(MediaType.TEXT_PLAIN)
+  public final String reEditing(@PathParam("eid")final int eid, @PathParam("lid")final int lid, @PathParam("comments")final String comments, @PathParam("status")final String status) {
+      int editStatus = LeaveDetails.editPermis(eid, lid, comments, status);
+        switch (editStatus) {
+          case 1:
+            return "Leave has been Re-Edited";
+          case -1:
+            return "Enter correct Status to update !";
+          default:
+            return "Re-Editing is not processed enter valid id!";
+        }
+  }
 }

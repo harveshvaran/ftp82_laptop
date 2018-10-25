@@ -22,8 +22,6 @@ export class AppComponent implements OnInit {
         this.employees = employees;
       }
       );
-      
-    
   }*/
   ngOnInit(): void {
   }

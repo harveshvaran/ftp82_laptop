@@ -116,7 +116,7 @@ public interface LeaveDetailsDAO  {
    * @param id the id of the employee
    * @return the employee object
    */
-  @SqlQuery("SELECT * FROM leave_details WHERE LEAVE_STATUS!='PENDING' AND EMP_ID IN (SELECT E2.EMP_ID FROM EMPLOYEE E1,EMPLOYEE E2 WHERE E2.EMP_MANAGER_ID=E1.EMP_ID AND E1.EMP_ID= :empId)")
+  @SqlQuery("SELECT * FROM leave_details WHERE LEAVE_STATUS!='PENDING' AND START_DATE > CURDATE() AND EMP_ID IN (SELECT E2.EMP_ID FROM EMPLOYEE E1,EMPLOYEE E2 WHERE E2.EMP_MANAGER_ID=E1.EMP_ID AND E1.EMP_ID= :empId)")
   @Mapper(LeaveDetailsMapper.class)
   List<LeaveDetails> listal(@Bind("empId") int id);
   /**
