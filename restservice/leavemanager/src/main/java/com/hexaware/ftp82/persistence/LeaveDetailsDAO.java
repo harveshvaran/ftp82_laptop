@@ -121,7 +121,7 @@ public interface LeaveDetailsDAO  {
   List<LeaveDetails> listal(@Bind("empId") int id);
   /**
    * update leave balance in employee table.
-   * @param empId the manager Id
+   * @param leaveId the manager Id
    * @return the employee array
    */
   @SqlQuery("SELECT * FROM leave_details WHERE LEAVE_ID = :leaveId ")

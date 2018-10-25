@@ -1,0 +1,26 @@
+<div>
+  <br/><br/>
+  <h2>Update Leave</h2>
+  <form (submit)="updateInfo(obj.value)" #obj="ngForm">
+  <table border="1">
+  <th><label>EmployeeID</label><br/><br/>
+    <input type="number" name="empid" placeholder="Enter the EmployeeID" ngModel/></th>
+  <th><label>LeaveID</label><br/><br/>
+    <input type="number" name="leaveid" placeholder="Enter the LeaveID" ngModel/></th> 
+  <th><label>LeaveType</label><br/><br/>
+  <select name="leaveType" ngModel>
+    <option value="EL" >EL</option>
+    <option value="SL" >SL</option>
+    <option value="MPL">MPL</option>
+  </select></th>
+  <th><label>StartDate</label><br/><br/>
+    <input type="date" name="sdate" placeholder="yyyy/mm/dd" ngModel/></th>
+  <th><label>EndDate</label><br/><br/>
+    <input type="date" name="edate" placeholder="yyyy/mm/dd" ngModel/></th>
+  <th><label>LeaveReason</label><br/><br/>
+    <input type="text" name="lreason" ngModel/></th><br/><br/>
+  <th>LeaveUpdate<br/><br/><input type="submit" value="UPDATE"/></th>
+</table>
+</form>
+{{leaveUpdate}}
+</div>

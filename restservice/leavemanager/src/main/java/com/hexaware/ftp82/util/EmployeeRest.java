@@ -37,10 +37,10 @@ public class EmployeeRest {
   @Path("{id}")
   @Produces(MediaType.APPLICATION_JSON)
   public final Employee employeeListById(@PathParam("id") final int id) {
-    final Employee empl = Employee.listById(id);
-    if (empl == null) {
+    final Employee emp = Employee.listById(id);
+    if (emp == null) {
       throw new NotFoundException("SORRY..There is NO such Employee ID: " + id);
     }
-    return emp1;
+    return emp;
   }
 }

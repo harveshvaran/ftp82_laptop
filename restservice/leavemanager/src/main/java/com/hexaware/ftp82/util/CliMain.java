@@ -363,38 +363,37 @@ public class CliMain {
     Employee emp = Employee.send(empID);
     LeaveDetails[] leave = LeaveDetails.listAl(empID);
     if (emp == null) {
-        System.out.println("You Are not a MANAGER");
+      System.out.println("You Are not a MANAGER");
     } else {
-        System.out.println("\n--------------------------PEOCESS COMPLETED LEAVE APPLICATIONS------------------------\n");
-        int count = 0;
-        for (LeaveDetails ll : leave) {
-          try {
-            Date sDate = Date.valueOf(ll.getStartDate());
-            Date curDate = Date.valueOf(java.time.LocalDate.now());
-
-            if(sDate.after(curDate)) {
-              System.out.print("EmployeeId = " + ll.getEmpId() + " | ");
-              System.out.println("LeaveID = " + ll.getLeaveId() + " | ");
-              System.out.print("LeaveType = " + ll.getLeaveType() + " | ");
-              System.out.print("StartDate = " + ll.getStartDate() + " | ");
-              System.out.print("EndDate = " + ll.getEndDate() + " | ");
-              System.out.print("Numberofdays = " + ll.getNoOfDays() + " | ");
-              System.out.print("LeaveStatus = " + ll.getLeaveStatus() + " | ");
-              System.out.print("LeaveReason = " + ll.getLeaveReason() + " | ");
-              System.out.print("LeaveAppliedOn = " + ll.getLeaveAppliedOn() + " | ");
-              System.out.print("ManagerComments = " + ll.getManagerComments() + "\n\n");
-              count = 0;
-            } else {
-              count = 1;
-            }
-          } catch (Exception e) {
-            System.out.println(e.toString());
+      System.out.println("\n--------------------------PEOCESS COMPLETED LEAVE APPLICATIONS------------------------\n");
+      int count = 0;
+      for (LeaveDetails ll : leave) {
+        try {
+          Date sDate = Date.valueOf(ll.getStartDate());
+          Date curDate = Date.valueOf(java.time.LocalDate.now());
+          if (sDate.after(curDate)) {
+            System.out.print("EmployeeId = " + ll.getEmpId() + " | ");
+            System.out.println("LeaveID = " + ll.getLeaveId() + " | ");
+            System.out.print("LeaveType = " + ll.getLeaveType() + " | ");
+            System.out.print("StartDate = " + ll.getStartDate() + " | ");
+            System.out.print("EndDate = " + ll.getEndDate() + " | ");
+            System.out.print("Numberofdays = " + ll.getNoOfDays() + " | ");
+            System.out.print("LeaveStatus = " + ll.getLeaveStatus() + " | ");
+            System.out.print("LeaveReason = " + ll.getLeaveReason() + " | ");
+            System.out.print("LeaveAppliedOn = " + ll.getLeaveAppliedOn() + " | ");
+            System.out.print("ManagerComments = " + ll.getManagerComments() + "\n\n");
+            count = 0;
+          } else  {
+            count = 1;
           }
+        } catch (Exception e) {
+          System.out.println(e.toString());
         }
-        if(count == 1) {
-          System.out.println("\n<<<<<<<<<<< No Applications found ! >>>>>>>>>>>>>\n");
-          mainMenu();
-        } else {
+      }
+      if (count == 1) {
+        System.out.println("\n<<<<<<<<<<< No Applications found ! >>>>>>>>>>>>>\n");
+        mainMenu();
+      } else {
         System.out.print("\n--------------------------------------------------------------------------------------------------------------------------------------" + "\n");
         System.out.println("Enter Employee ID: ");
         int appEmpId = 0;

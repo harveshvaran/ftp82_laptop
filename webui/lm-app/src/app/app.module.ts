@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms'
 import { EmployeebyidComponent } from './employeebyid/employeebyid.component';
 import { DeleteComponent } from './delete/delete.component';
 import { HistoryComponent } from './history.component';
+import { UpdateComponent } from './update/update.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HistoryComponent } from './history.component';
     PendingComponent,
     EmployeebyidComponent,
     DeleteComponent,
-    HistoryComponent
+    HistoryComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,HttpClientModule,FormsModule

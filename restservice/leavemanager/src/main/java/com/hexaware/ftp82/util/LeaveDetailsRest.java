@@ -51,7 +51,6 @@ public class LeaveDetailsRest {
     final LeaveDetails[] ls = LeaveDetails.listAll(empId);
     if (ls == null) {
       throw new NotAuthorizedException("No such Employee ID: " + empId);
-      
     }
     return ls;
   }

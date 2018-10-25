@@ -62,14 +62,14 @@ public class LeaveDetails {
       DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
       this.leaveId = argLeaveId;
       this.leaveType = argLeaveType;
-      String strtDate = dateFormat.format(argStartDate);
+      Date strtDate = dateFormat.format(argStartDate);
       this.startDate = strtDate;
-      String edDate = dateFormat.format(argEndDate);
+      Date edDate = dateFormat.format(argEndDate);
       this.endDate = edDate;
       this.noOfDays = argNoOfDays;
       this.leaveStatus = argLeaveStatus;
       this.leaveReason = argLeaveReason;
-      String leaveApplied = dateFormat.format(argLeaveAppliedOn);
+      Date leaveApplied = dateFormat.format(argLeaveAppliedOn);
       this.leaveAppliedOn = leaveApplied;
       this.managerComments = argManagerComments;
       this.empId = argEmpId;
@@ -144,27 +144,27 @@ public class LeaveDetails {
    * Gets the StartDate.
    * @return this StartDate.
    */
-  public final String getStartDate() {
+  public final Date getStartDate() {
     return startDate;
   }
   /**
    *
    * @param startDate to set start date.
    */
-  public final void setStartDate(final String startDate) {
+  public final void setStartDate(final Date startDate) {
     this.startDate = startDate;
   }
   /**
    *@return this End date.
    */
-  public final String getEndDate() {
+  public final Date getEndDate() {
     return endDate;
   }
   /**
    *
    * @param endDate to set End date.
    */
-  public final void setEndDate(final String endDate) {
+  public final void setEndDate(final Date endDate) {
     this.endDate = endDate;
   }
   /**
@@ -209,14 +209,14 @@ public class LeaveDetails {
   /**
    * @return this leave applied on
    */
-  public final String getLeaveAppliedOn() {
+  public final Date getLeaveAppliedOn() {
     return leaveAppliedOn;
   }
   /**
    *
    * @param leaveAppliedOn to set applied.
    */
-  public final void setLeaveAppliedOn(final String leaveAppliedOn) {
+  public final void setLeaveAppliedOn(final Date leaveAppliedOn) {
     this.leaveAppliedOn = leaveAppliedOn;
   }
   /**

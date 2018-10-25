@@ -379,7 +379,7 @@ public class LeaveDetails {
    */
   public static int overLapCheck(final String strtDate, final int emID) {
     try {
-      Date sDate = Date.valueOf(startDate);
+      Date sDate = Date.valueOf(strtDate);
       List<LeaveDetails> lshs = dao().leaveHistory(emID);
       for (LeaveDetails ls : lshs) {
         Date sd = Date.valueOf(ls.getStartDate());
@@ -467,13 +467,13 @@ public class LeaveDetails {
     int appliedNoOfLeaves = lsStatus.getNoOfDays();
     try {
       Date sDate = Date.valueOf(lsStatus.getStartDate());
-      if(sDate.after(Date.valueOf(java.time.LocalDate.now()))) {
+      if (sDate.after(Date.valueOf(java.time.LocalDate.now()))) {
         String editStatus = "";
         int approvedLeaves = 0;
-        if(reEditStatus.equalsIgnoreCase("approve")) {
+        if (reEditStatus.equalsIgnoreCase("approve")) {
           editStatus = LeaveStatus.APPROVED.toString();
           approvedLeaves = leaveBalance - appliedNoOfLeaves;
-        } else if (reEditStatus.equalsIgnoreCase("deny")){
+        } else if (reEditStatus.equalsIgnoreCase("deny")) {
           editStatus = LeaveStatus.DENIED.toString();
           approvedLeaves = leaveBalance + appliedNoOfLeaves;
         } else {
@@ -482,12 +482,12 @@ public class LeaveDetails {
         if (editStatus.equals(lsStatus.getLeaveStatus())) {
           return -1;
         } else {
-            dao().updateEmployee(approvedLeaves, agrsEmpId);
-            dao().reEditApproveOrDenial(argsLeaveId, editStatus, reEditMgrCmts);
-            return 1;
+          dao().updateEmployee(approvedLeaves, agrsEmpId);
+          dao().reEditApproveOrDenial(argsLeaveId, editStatus, reEditMgrCmts);
+          return 1;
         }
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println(e.toString());
     }
     return 0;
