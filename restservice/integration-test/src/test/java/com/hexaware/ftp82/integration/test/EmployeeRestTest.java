@@ -16,7 +16,7 @@ import static com.jayway.restassured.RestAssured.given;
 
 public class EmployeeRestTest {
 
-	@Test
+	//@Test
 	public void testEmployeesList() throws AssertionError, URISyntaxException {
 		Employee[] res = given().accept(ContentType.JSON).when()
 				.get(CommonUtil.getURI("/api/employees")).getBody().as(Employee[].class);
@@ -42,13 +42,13 @@ public class EmployeeRestTest {
 			}
 		}
 	}
-    @Test
+    //@Test
 	public void testEmployeeById() throws AssertionError, URISyntaxException {
 		Employee res = given().accept(ContentType.JSON).when()
 				.get(CommonUtil.getURI("/api/employees/1000")).getBody().as(Employee.class);
 		assertNotEquals(new Employee(1000), res);
   	}
-  	@Test
+  	//@Test
 	public void testEmployeeById404() throws AssertionError, URISyntaxException {
 		given().accept(ContentType.JSON).when()
 				.get(CommonUtil.getURI("/api/employees/9999")).then().assertThat().statusCode(404);

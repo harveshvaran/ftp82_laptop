@@ -29,14 +29,14 @@ public class EmployeeRest {
   }
   /**
    * Returns a specific employee's details.
-   * @param id the id of the employee
-   * @return the employee details
-   * @throws NotFoundException
+   * @param id the id of the employee.
+   * @return the employee details.
+   * @throws NotFoundException in employeerest.
    */
   @GET
   @Path("{id}")
   @Produces(MediaType.APPLICATION_JSON)
-  public final Employee employeeListById(@PathParam("id") final int id) throws NotFoundException{
+  public final Employee employeeListById(@PathParam("id") final int id) throws NotFoundException {
     final Employee emp1 = Employee.listById(id);
     if (emp1 == null) {
       throw new NotFoundException("SORRY..There is NO such Employee ID: " + id);

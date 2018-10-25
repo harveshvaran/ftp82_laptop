@@ -1,14 +1,18 @@
 package com.hexaware.ftp82.exceptions;
- 
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-import javax.ws.rs.ext.ExceptionMapper;
-import javax.ws.rs.ext.Provider;
- 
-@Provider
-public class NotFoundException implements ExceptionMapper<NotFoundException> {
-    @Override
-    public Response toResponse(NotFoundException exception) {
-        return Response.status(Status.BAD_REQUEST).entity(exception.getMessage()).build(); 
-    }
+/**
+ * Notfoundexception class.
+ */
+public class NotFoundException extends Exception {
+/**
+ * String value for exception class.
+ */
+  public NotFoundException() {
+    super();
+  }
+/**
+ *@param name as the string message.
+ */
+  public NotFoundException(final String name) {
+    super(name);
+  }
 }
