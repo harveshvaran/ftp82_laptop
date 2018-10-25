@@ -3,9 +3,8 @@ import { LeaveDetailsService } from '../leaveDetailsService';
 
 @Component({
   selector: 'app-appOrDeny',
-  templateUrl: './approveOrDeny.component.html',
-  providers: [LeaveDetailsService]
-})
+  templateUrl: './approveOrDeny.component.html'
+  })
 export class ApproveDenyComponent implements OnInit {
   constructor(private leaveDetailsService:LeaveDetailsService) {
 

@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { LeaveDetails } from './LeaveDetails';
-import { LeaveDetailsService } from './leaveDetailsService';
+import { LeaveDetails } from '../LeaveDetails';
+import { LeaveDetailsService } from '../leaveDetailsService';
 
 @Component({
     selector: 'history',
-    templateUrl: './history.component.html',
-    styleUrls: ['./app.component.css'],
-    providers: [ LeaveDetailsService ]
+    templateUrl: './history.component.html'
   })
 
 export class HistoryComponent {

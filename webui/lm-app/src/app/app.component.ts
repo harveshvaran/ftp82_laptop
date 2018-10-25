@@ -9,12 +9,13 @@ import { Employee } from './employee';
   providers: [ EmployeeService]
 })
 export class AppComponent implements OnInit {
+  employees: Employee[];
   constructor(private employeeService: EmployeeService) { 
     this.employeeService.getEmployees().subscribe(data=>this.employees=data,err=>console.log(err));
   }
 
   title = 'Leave Management Application';
-  employees: Employee[];
+
   /*
   getEmployees(): void {
       this.employeeService.getEmployees().then(employees => {
