@@ -8,6 +8,11 @@ export class LeaveDetailsService {
     constructor(private httpClient:HttpClient) {}
 
     
+    load(obj):Observable<LeaveDetails[]>{
+        console.log(obj);
+        return this.httpClient.get<LeaveDetails[]>("http://localhost:8080/ftp82/api/LeaveDetails/history/"+obj.empid);
+    }
+
     getPendingById(obj:any): Observable<LeaveDetails[]> {
 
         console.log('getEmployees called on leaveDetails.service');
@@ -19,10 +24,6 @@ export class LeaveDetailsService {
         console.log(obj)
         let url="http://localhost:8080/ftp82/api/LeaveDetails/delete/"+obj.lId+"/"+obj.empId;
         return this.httpClient.delete(url, {responseType:'text'} );   
-    }
-    load(obj):Observable<LeaveDetails[]>{
-        console.log(obj);
-        return this.httpClient.get<LeaveDetails[]>("http://localhost:8080/ftp82/api/LeaveDetails/history/"+obj.empid);
     }
     
     putUpdate(emp:any):Observable<String>{
