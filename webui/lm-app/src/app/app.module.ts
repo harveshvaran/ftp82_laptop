@@ -17,13 +17,14 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { SuccessComponent } from './success/success.component';
 import { FailureComponent } from './failure/failure.component';
-
+import { DeleteComponent } from './delete/delete.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     PendingComponent,
     EmployeebyidComponent,
+
     ApproveDenyComponent,
     EditApproveDenyComponent,
     LoginComponent,
@@ -32,6 +33,8 @@ import { FailureComponent } from './failure/failure.component';
     NotfoundComponent,
     SuccessComponent,
     FailureComponent,
+    DeleteComponent
+
   ],
   imports: [
     BrowserModule,HttpClientModule,FormsModule

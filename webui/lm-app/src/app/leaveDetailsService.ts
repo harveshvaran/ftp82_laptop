@@ -1,11 +1,12 @@
 import {HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {LeaveDetails} from './LeaveDetails';
+import { LeaveDetails } from './LeaveDetails';
 
 @Injectable()
 export class LeaveDetailsService {
     constructor(private httpClient:HttpClient) {}
+
     
     getPendingById(obj:any): Observable<LeaveDetails[]> {
 
@@ -36,6 +37,13 @@ export class LeaveDetailsService {
         console.log(obj);
         let url:string ='http://localhost:8080/ftp82/api/LeaveDetails/reedit/re/'+obj.eid+"/"+obj.lid+"/"+obj.comments+"/"+obj.status;
         return this.httpClient.post(url ,{}, {responseType:'text'} );
+
+    }
+
+    deleteLeaveDetails(obj:any): Observable<string> {
+        console.log(obj)
+        let url="http://localhost:8080/ftp82/api/LeaveDetails/delete/"+obj.lId+"/"+obj.empId;
+        return this.httpClient.delete(url, {responseType:'text'} );   
 
     }
 }

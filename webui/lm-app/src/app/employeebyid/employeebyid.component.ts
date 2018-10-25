@@ -8,14 +8,17 @@ import { Employee} from 'src/app/employee';
 })
 @Injectable()
 export class EmployeebyidComponent implements OnInit {
-
+  EmployeeByIddetails: Employee;
   constructor(private emp:EmployeeService) { }
 
   ngOnInit(): void {
+
   }
   empById: Employee;
 
   displayEmployeeById(obj:any): void{
-    this.emp.getdisplayEmployeeById(obj).subscribe(data=>this.empById=data,err=>console.log(err));
+    console.log(obj)
+    this.emp.getdisplayEmployeeById(obj).subscribe(data=>this.EmployeeByIddetails=data,err=>console.log(err));
+
   }
 }
