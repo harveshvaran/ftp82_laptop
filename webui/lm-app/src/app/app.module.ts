@@ -7,14 +7,17 @@ import { LeaveDetailsService } from 'src/app/leaveDetailsService';
 import { EmployeeService } from './employee.service';
 import { FormsModule } from '@angular/forms'
 import { EmployeebyidComponent } from './employeebyid/employeebyid.component';
-import { DeleteComponent } from './delete/delete.component'
+import { DeleteComponent } from './delete/delete.component';
+import { HistoryComponent } from './history.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     PendingComponent,
     EmployeebyidComponent,
-    DeleteComponent
+    DeleteComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,HttpClientModule,FormsModule

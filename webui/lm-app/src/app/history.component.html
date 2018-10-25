@@ -1,0 +1,34 @@
+<div>
+    
+    <form (submit)="getHistory(ob.value)" #ob="ngForm">
+        <label>EmpID:</label><input type="text" name="empid" ngModel/><br/>
+        <input type="submit" value="HISTORY"/>    
+    </form>
+
+    <table border="1">
+          <tr>
+            <th>leaveId</th>
+            <th>leaveType</th>
+            <th>startDate</th>
+            <th>endDate</th>
+            <th>noOfDays</th>
+            <th>leaveStatus</th>
+            <th>leaveReason</th>
+            <th>leaveAppliedOn</th>
+            <th>managerComments</th>
+            <th>empId</th>
+          </tr>
+          <tr *ngFor="let lh of lea">
+            <td>{{lh.leaveId}}</td>
+            <td>{{lh.leaveType}}</td>
+            <td>{{lh.startDate}}</td>
+            <td>{{lh.endDate}}</td>
+            <td>{{lh.noOfDays}}</td>
+            <td>{{lh.leaveStatus}}</td>
+            <td>{{lh.leaveReason}}</td>
+            <td>{{lh.leaveAppliedOn}}</td>
+            <td>{{lh.managerComments}}</td>
+            <td>{{lh.empId}}</td>
+          </tr>
+    </table>
+</div>    

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from './employee.service';
 import { Employee } from './employee';
+import { LeaveDetails } from 'src/app/LeaveDetails';
+import { LeaveDetailsService } from './leaveDetailsService';
 
 @Component({
   selector: 'app-root',

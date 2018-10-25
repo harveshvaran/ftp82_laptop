@@ -21,4 +21,9 @@ export class LeaveDetailsService {
         let url="http://localhost:8080/ftp82/api/LeaveDetails/delete/"+obj.lId+"/"+obj.empId;
         return this.httpClient.delete(url, {responseType:'text'} );   
     }
+    load(obj):Observable<LeaveDetails[]>{
+        console.log(obj);
+        return this.httpClient.get<LeaveDetails[]>("http://localhost:8080/ftp82/api/LeaveDetails/history/"+obj.empid);
+    }
+    
 }
