@@ -41,7 +41,7 @@ public class EmployeeTest {
   @Test
   public final void testEmployee() {
     try {
-      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
       String sDate1 = "2018-11-09";
       Date date1 = dateFormat.parse(sDate1);
       Employee e100 = new Employee(100);

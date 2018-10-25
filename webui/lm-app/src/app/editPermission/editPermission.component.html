@@ -1,0 +1,48 @@
+<div>
+        <h2>Re-Edit Approve / Deny</h2>
+        
+        
+        <form (submit)="editDetails(obj.value)" #obj="ngForm">
+        Enter manager ID :<input type ="text" name="eid" ngModel/>
+        <input type ="submit"value ="SUBMIT!"/>
+        </form>
+        {{message}}
+        <table>
+            <tr *ngFor = "let lea of eD">
+                <td>{{lea.leaveId}}</td>
+                <td>{{lea.leaveType}}</td>
+                <td>{{lea.startDate}}</td>
+                <td>{{lea.endDate}}</td>
+                <td>{{lea.noOfDays}}</td>
+                <td>{{lea.leaveStatus}}</td>
+                <td>{{lea.leaveReason}}</td>
+                <td>{{lea.leaveAppliedOn}}</td>
+                <td>{{lea.managerComments}}</td>
+                <td>{{lea.empId}}</td>
+            </tr>
+        </table>
+
+
+        <form (submit)="editPer(obj1.value)" #obj1="ngForm">
+            <table>
+                <tr>
+                    <td>Employee ID :</td><td><input type ="text" name ="eid" placeholder="Enter Employee Id" ngModel/></td>
+                </tr>
+                <tr>
+                    <td>Leave ID :</td><td><input type ="text" name ="lid" placeholder="Enter leave Id" ngModel/></td>
+                </tr>
+                <tr>
+                    <td>Manager Comments :</td><td><input type ="text" name ="comments" placeholder="Enter manager comments" ngModel/></td>
+                </tr>
+                <tr>
+                    <td>Status :</td><td><input type ="radio" name ="status" value = "approve" ngModel/>Approve<input type ="radio" name ="status" value = "deny" ngModel/>Deny</td>
+                </tr>
+                <tr>
+                    <td><input type ="reset" value ="Reset!" /></td>
+                    <td><input type ="submit"value ="SUBMIT!"/></td>
+                </tr>            
+            </table>
+        </form>
+        <br/>
+        {{msg}}
+    </div>

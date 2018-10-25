@@ -15,15 +15,40 @@ export class LeaveDetailsService {
 
     getPendingById(obj:any): Observable<LeaveDetails[]> {
 
-        console.log('getEmployees called on leaveDetails.service');
+        console.log('pending called on leaveDetails.service');
         console.log(obj);
         return this.httpClient.get<LeaveDetails[]>("http://localhost:8080/ftp82/api/LeaveDetails/pending/"+obj.id);
+ 
+    }
+    getAppOrDeny(obj:any): Observable<string> {
+
+        console.log('appOrDeny called on leaveDetails.service');
+        console.log(obj);
+        let url:string ='http://localhost:8080/ftp82/api/LeaveDetails/approve/'+obj.eid+"/"+obj.lid+"/"+obj.comments+"/"+obj.status;
+        return this.httpClient.post(url ,{}, {responseType:'text'} );
+
+    }
+    getEdit(obj:any): Observable<LeaveDetails[]> {
+
+        console.log('appOrDeny called on leaveDetails.service');
+        console.log(obj);
+        let url:string ='http://localhost:8080/ftp82/api/LeaveDetails/reedit/'+obj.eid;
+        return this.httpClient.get<LeaveDetails[]>(url);
+
+    }
+    getEditPer(obj:any): Observable<string> {
+
+        console.log('appOrDeny called on leaveDetails.service');
+        console.log(obj);
+        let url:string ='http://localhost:8080/ftp82/api/LeaveDetails/reedit/re/'+obj.eid+"/"+obj.lid+"/"+obj.comments+"/"+obj.status;
+        return this.httpClient.post(url ,{}, {responseType:'text'} );
     }
 
     deleteLeaveDetails(obj:any): Observable<string> {
         console.log(obj)
         let url="http://localhost:8080/ftp82/api/LeaveDetails/delete/"+obj.lId+"/"+obj.empId;
         return this.httpClient.delete(url, {responseType:'text'} );   
+
     }
     
     putUpdate(emp:any):Observable<String>{

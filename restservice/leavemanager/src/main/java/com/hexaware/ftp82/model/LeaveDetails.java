@@ -459,7 +459,7 @@ public class LeaveDetails {
    * @param reEditMgrCmts the id of the employee
    * @return the employee details
    */
-  public static int editPermis(final int agrsEmpId, final int argsLeaveId, final String reEditStatus, final String reEditMgrCmts) {
+  public static int editPermis(final int agrsEmpId, final int argsLeaveId, final String reEditMgrCmts, final String reEditStatus) {
     Employee eStatus = dao().getLeaveBalance(agrsEmpId);
     LeaveDetails lsStatus = dao().checkStatus(argsLeaveId);
 
