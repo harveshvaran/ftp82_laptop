@@ -17,8 +17,8 @@ public class LeaveDetailsRestTest {
 	@Test
 	public void testemployeeLeaveHistory() throws AssertionError, URISyntaxException {
 		LeaveDetails[] res = given().accept(ContentType.JSON).when()
-				.get(CommonUtil.getURI("/api/LeaveDetails/history/2000")).getBody().as(LeaveDetails[].class);
-					assertEquals(2, res.length);
+				.get(CommonUtil.getURI("/api/LeaveDetails/history/3000")).getBody().as(LeaveDetails[].class);
+					assertEquals(res.length, 4);
 					LeaveDetails l1 = res[0];
 					assertEquals(1, l1.getLeaveId());
 	}

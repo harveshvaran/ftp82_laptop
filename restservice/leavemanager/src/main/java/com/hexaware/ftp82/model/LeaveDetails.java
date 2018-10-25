@@ -44,32 +44,32 @@ public class LeaveDetails {
     this.empId = argEmpId;
   }
   /**
-   * @param argsLeaveId to initialize Leave Id in leave details table.
-   * @param argsLeaveType to initialize leave type in leave details table.
-   * @param argsStartDate to initialize start date in leave details table.
-   * @param argsEndDate to initialize end date in leave details table.
-   * @param argsNoOfDays to initialize No of days in leave details table.
-   * @param argsLeaveStatus to initialize leave status in leave details table.
-   * @param argsLeaveReason to initialize leave reason in leave details table.
-   * @param argsLeaveAppliedOn to initialize date leave appliedon in leave details table.
-   * @param argsManagerComments to initialize manager comments in leave details table.
-   * @param argsEmpId to initialize employee id in leave details table.
+   * @param leaveId to initialize Leave Id in leave details table.
+   * @param leaveType to initialize leave type in leave details table.
+   * @param startDate to initialize start date in leave details table.
+   * @param endDate to initialize end date in leave details table.
+   * @param noOfDays to initialize No of days in leave details table.
+   * @param leaveStatus to initialize leave status in leave details table.
+   * @param leaveReason to initialize leave reason in leave details table.
+   * @param leaveAppliedOn to initialize date leave appliedon in leave details table.
+   * @param managerComments to initialize manager comments in leave details table.
+   * @param empId to initialize employee id in leave details table.
    */
-  public LeaveDetails(final int argsLeaveId, final String argsLeaveType, final Date argsStartDate, final Date argsEndDate,
-       final int argsNoOfDays, final String argsLeaveStatus, final String argsLeaveReason,
-       final Date argsLeaveAppliedOn, final String argsManagerComments, final int argsEmpId) {
+  public LeaveDetails(final int leaveId, final String leaveType, final Date startDate,
+      final Date endDate, final int noOfDays, final String leaveStatus, final String leaveReason,
+      final Date leaveAppliedOn, final String managerComments, final int empId) {
     try {
-      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-      this.leaveId = argsLeaveId;
-      this.leaveType = argsLeaveType;
-      String strtDate = dateFormat.format(argsStartDate);
-      this.startDate = strtDate;
-      String edDate = dateFormat.format(argsEndDate);
-      this.endDate = edDate;
-      this.noOfDays = argsNoOfDays;
-      this.leaveStatus = argsLeaveStatus;
-      this.leaveReason = argsLeaveReason;
-      String leaveApplied = dateFormat.format(argsLeaveAppliedOn);
+      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+      this.leaveId = leaveId;
+      this.leaveType = leaveType;
+      String startDate = dateFormat.format(startDate);
+      this.startDate = startDate;
+      String endDate = dateFormat.format(endDate);
+      this.endDate = endDate;
+      this.noOfDays = noOfDays;
+      this.leaveStatus = leaveStatus;
+      this.leaveReason = leaveReason;
+      String leaveApplied = dateFormat.format(leaveAppliedOn);
       this.leaveAppliedOn = leaveApplied;
       this.managerComments = argsManagerComments;
       this.empId = argsEmpId;
@@ -380,7 +380,7 @@ public class LeaveDetails {
    */
   public static int overLapCheck(final String strtDate, final int emID) {
     try {
-      Date sDate = Date.valueOf(strtDate);
+      Date sDate = Date.valueOf(startDate);
       List<LeaveDetails> lshs = dao().leaveHistory(emID);
       for (LeaveDetails ls : lshs) {
         Date sd = Date.valueOf(ls.getStartDate());
