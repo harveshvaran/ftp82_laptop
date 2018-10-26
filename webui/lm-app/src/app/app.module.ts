@@ -9,11 +9,11 @@ import { EmployeeService } from './employee.service';
 import { AppComponent } from './app.component';
 
 import { LoginComponent } from './login/login.component';
-// import { ContactusComponent } from './contactus/contactus.component';
-// import { NotfoundComponent } from './notfound/notfound.component';
-// import { SuccessComponent } from './success/success.component';
-// import { FailureComponent } from './failure/failure.component';
-// import { AboutusComponent } from './aboutus/aboutus.component';
+import { ContactusComponent } from './contactus/contactus.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { SuccessComponent } from './success/success.component';
+import { FailureComponent } from './failure/failure.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HomeComponent } from './home/home.component';
@@ -40,11 +40,11 @@ import { ApplyleaveComponent } from './applyleave/applyleave.component';
     ApproveDenyComponent,
     EditApproveDenyComponent,
     LoginComponent,
-    // AboutusComponent,
-    // ContactusComponent,
-    // NotfoundComponent,
-    // SuccessComponent,
-    // FailureComponent,
+    AboutusComponent,
+    ContactusComponent,
+    NotfoundComponent,
+    SuccessComponent,
+    FailureComponent,
     DeleteComponent,
     HomeComponent,
     DashboardComponent,
