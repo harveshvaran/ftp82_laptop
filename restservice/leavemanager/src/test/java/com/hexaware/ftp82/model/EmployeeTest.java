@@ -72,7 +72,7 @@ public class EmployeeTest {
       assertEquals(e102.getEmpDept(), "cse");
       assertEquals(e102.getEmpManagerId(), 2000);
       assertEquals(e102.getEmpLeaveBalance(), 3);
-      assertEquals(e102.getEmpDoj(), "2018-01-09");
+      assertEquals(e102.getEmpDoj(), "2018-11-09");
       e103.setEmpId(100);
       e103.setEmpName("harvesh");
       e103.setEmpPh(8220645161L);
