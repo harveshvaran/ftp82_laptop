@@ -10,6 +10,7 @@ import javax.management.RuntimeErrorException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+//import java.text.DateFormat;
 
 public class LeaveDetails {
  /**
@@ -25,12 +26,12 @@ public class LeaveDetails {
    */
   private int leaveId;
   private String leaveType;
-  private Date startDate;
-  private Date endDate;
+  private String startDate;
+  private String endDate;
   private int noOfDays;
   private String leaveStatus;
   private String leaveReason;
-  private Date leaveAppliedOn;
+  private String leaveAppliedOn;
   private String managerComments;
   private int empId;
   /**
@@ -55,21 +56,21 @@ public class LeaveDetails {
    * @param managerComments to initialize manager comments in leave details table.
    * @param empId to initialize employee id in leave details table.
    */
-  public LeaveDetails(final int argLeaveId, final String argLeaveType, final Date argStartDate,
-      final Date argEndDate, final int argNoOfDays, final String argLeaveStatus, final String argLeaveReason,
-      final Date argLeaveAppliedOn, final String argManagerComments, final int argEmpId) {
+  public LeaveDetails(final int argLeaveId, final String argLeaveType, final String argStartDate,
+      final String argEndDate, final int argNoOfDays, final String argLeaveStatus, final String argLeaveReason,
+      final String argLeaveAppliedOn, final String argManagerComments, final int argEmpId) {
      try {
-      DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
       this.leaveId = argLeaveId;
       this.leaveType = argLeaveType;
-      Date strtDate = dateFormat.format(argStartDate);
+      String strtDate = dateFormat.format(argStartDate);
       this.startDate = strtDate;
-      Date edDate = dateFormat.format(argEndDate);
+      String edDate = dateFormat.format(argEndDate);
       this.endDate = edDate;
       this.noOfDays = argNoOfDays;
       this.leaveStatus = argLeaveStatus;
       this.leaveReason = argLeaveReason;
-      Date leaveApplied = dateFormat.format(argLeaveAppliedOn);
+      String leaveApplied = dateFormat.format(argLeaveAppliedOn);
       this.leaveAppliedOn = leaveApplied;
       this.managerComments = argManagerComments;
       this.empId = argEmpId;
@@ -144,27 +145,27 @@ public class LeaveDetails {
    * Gets the StartDate.
    * @return this StartDate.
    */
-  public final Date getStartDate() {
+  public final String getStartDate() {
     return startDate;
   }
   /**
    *
    * @param startDate to set start date.
    */
-  public final void setStartDate(final Date startDate) {
+  public final void setStartDate(final String startDate) {
     this.startDate = startDate;
   }
   /**
    *@return this End date.
    */
-  public final Date getEndDate() {
+  public final String getEndDate() {
     return endDate;
   }
   /**
    *
    * @param endDate to set End date.
    */
-  public final void setEndDate(final Date endDate) {
+  public final void setEndDate(final String endDate) {
     this.endDate = endDate;
   }
   /**
@@ -209,14 +210,14 @@ public class LeaveDetails {
   /**
    * @return this leave applied on
    */
-  public final Date getLeaveAppliedOn() {
+  public final String getLeaveAppliedOn() {
     return leaveAppliedOn;
   }
   /**
    *
    * @param leaveAppliedOn to set applied.
    */
-  public final void setLeaveAppliedOn(final Date leaveAppliedOn) {
+  public final void setLeaveAppliedOn(final String leaveAppliedOn) {
     this.leaveAppliedOn = leaveAppliedOn;
   }
   /**
