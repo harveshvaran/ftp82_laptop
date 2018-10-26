@@ -29,6 +29,7 @@ import { UpdateComponent } from './update/update.component';
 import { ApproveDenyComponent } from './approveOrDeny/approveOrDeny.component';
 import { EditApproveDenyComponent } from './editPermission/editPermission.component';
 import { ApplyleaveComponent } from './applyleave/applyleave.component';
+import { SharedService } from './sharedservice';
 
 
 @NgModule({
@@ -55,7 +56,7 @@ import { ApplyleaveComponent } from './applyleave/applyleave.component';
   imports: [
     BrowserModule,HttpClientModule,FormsModule,AppRoutingModule
   ],
-  providers: [LeaveDetailsService,EmployeeService],
+  providers: [LeaveDetailsService,EmployeeService,SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

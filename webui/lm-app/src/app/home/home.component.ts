@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../employee';
+import { SharedService } from '../sharedservice';
 
 @Component({
   selector: 'app-home',
@@ -10,17 +11,23 @@ import { Employee } from '../employee';
 })
 export class HomeComponent implements OnInit {
   employees: Employee[];
-  constructor(private router:Router, private employeeService: EmployeeService) {
+  empId:number;
+  constructor(private router:Router, 
+    private employeeService: EmployeeService,
+    private activateRouter:ActivatedRoute,
+    private sharedService:SharedService) {
+
+    this.activateRouter.params.subscribe(param=>this.empId=param.id);
+
     this.employeeService.getEmployees().subscribe(data=>this.employees=data,err=>console.log(err));
+    
    }
-
   ngOnInit() {
+    this.empId=this.sharedService.getId();
   }
-  addItem(empId):void {
-    console.log(empId);
-
-    localStorage.setItem( "Sid" , empId );
-
+  addItem(empIdRef):void {
+    this.sharedService.setId(empIdRef);
+    this.empId=this.sharedService.getId();
     this.router.navigate(['/login']);
   }
 }

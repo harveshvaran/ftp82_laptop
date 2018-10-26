@@ -7,9 +7,9 @@ import { LeaveDetails } from './LeaveDetails';
 export class LeaveDetailsService {
     constructor(private httpClient:HttpClient) {}
     
-    load(obj):Observable<LeaveDetails[]>{
-        console.log(obj);
-        return this.httpClient.get<LeaveDetails[]>("http://localhost:8080/ftp82/api/LeaveDetails/history/"+obj.empid);
+    load(empId):Observable<LeaveDetails[]>{
+        console.log(empId+" in services");
+        return this.httpClient.get<LeaveDetails[]>("http://localhost:8080/ftp82/api/LeaveDetails/history/"+empId);
     }
 
     getPendingById(obj:any): Observable<LeaveDetails[]> {
