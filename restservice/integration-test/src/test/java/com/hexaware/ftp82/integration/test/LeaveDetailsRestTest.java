@@ -17,8 +17,8 @@ public class LeaveDetailsRestTest {
 	@Test
 	public void testemployeeLeaveHistory() throws AssertionError, URISyntaxException {
 		LeaveDetails[] res = given().accept(ContentType.JSON).when()
-				.get(CommonUtil.getURI("/api/LeaveDetails/history/2000")).getBody().as(LeaveDetails[].class);
-					assertEquals(2, res.length);
+				.get(CommonUtil.getURI("/api/LeaveDetails/history/3000")).getBody().as(LeaveDetails[].class);
+					assertEquals(1, res.length);
 					LeaveDetails l1 = res[0];
 					assertEquals(1, l1.getLeaveId());
 	}
@@ -36,18 +36,18 @@ public class LeaveDetailsRestTest {
 	@Test
 	public void testapplyLeaveRest() throws AssertionError, URISyntaxException {
 		String res = given().accept(ContentType.TEXT).when()
-				.post(CommonUtil.getURI("/api/LeaveDetails/applyleave/3001/EL/2018-10-16/2018-10-17/fever")).getBody().asString();
+				.post(CommonUtil.getURI("/api/LeaveDetails/applyleave/3000/EL/2018-10-11/2018-10-16/sick")).getBody().asString();
 		assertEquals("inserted sucessfully", res);
   	}		
   
     @Test
 	public void testpostApproveOrDeny() throws AssertionError, URISyntaxException {
 		String res = given().accept(ContentType.TEXT).when()
-				.post(CommonUtil.getURI("/api/LeaveDetails/approve/3000/2/Okay/approved")).getBody().asString();
-				assertEquals("Enter corresponding Employee ID and Leave ID !", res);
+				.post(CommonUtil.getURI("/api/LeaveDetails/approve/3001/6/Ok/approved")).getBody().asString();
+				assertEquals("Leave Approved", res);
   	}
 	  
-  @Test
+  	@Test
 	public void testLeaveDetailsList404() throws AssertionError, URISyntaxException {
 		given().accept(ContentType.JSON).when()
 				.get(CommonUtil.getURI("/api/LeaveDetails/9999")).then().assertThat().statusCode(404);

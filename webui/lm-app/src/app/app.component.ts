@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   }
 
   title = 'Leave Management Application';
+
   /*
   getEmployees(): void {
       this.employeeService.getEmployees().then(employees => {
@@ -23,5 +24,6 @@ export class AppComponent implements OnInit {
       );
   }*/
   ngOnInit(): void {
+    //this.getEmployees();
   }
 }

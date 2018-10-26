@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { LeaveDetailsService} from '../leaveDetailsService';
+import {LeaveDetailsService} from '../leaveDetailsService';
 import {LeaveDetails} from '../LeaveDetails';
 @Component({
   selector: 'app-delete',
   templateUrl: './delete.component.html',
-  styleUrls: ['./delete.component.css']
+  styleUrls: ['./delete.component.css'],
+  providers:[LeaveDetailsService]
 })
 export class DeleteComponent implements OnInit {
   deleteLeaveDetails:LeaveDetails;

@@ -5,6 +5,8 @@ import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.NotFoundException;
+//import javax.ws.rs.NotFoundException;
+
 import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -23,13 +25,12 @@ public class LeaveDetailsRest {
    * Returns a specific employee's details.
    * @param id the id of the employee
    * @return the employee details
-   * @throws NotAuthorizedException
    * @throws NotFoundException
    */
   @GET
   @Path("/history/{id}")
   @Produces(MediaType.APPLICATION_JSON)
-  public final LeaveDetails[] employeeLeaveHistory(@PathParam("id") final int id) {
+  public final LeaveDetails[] employeeLeaveHistory(@PathParam("id") final int id)  {
     final LeaveDetails[] ls1 = LeaveDetails.history(id);
     if (ls1 == null) {
       throw new NotFoundException("SORRY..There is NO such Employee ID: " + id);
@@ -39,18 +40,17 @@ public class LeaveDetailsRest {
   /**
    * Returns a list of all the employees.
    * @param empId as parameter
-   * @return a list of all the employees
+   * @return a list of all the employees.
    * @throws NotAuthorizedException
    */
   @GET
   @Path("/pending/{empId}")
   @Produces(MediaType.APPLICATION_JSON)
-  public final LeaveDetails[] leaveDetailsList(@PathParam("empId") final int empId) {
+  public final LeaveDetails[] leaveDetailsList(@PathParam("empId") final int empId)  {
     System.out.println("Pending Applications List");
     final LeaveDetails[] ls = LeaveDetails.listAll(empId);
     if (ls == null) {
       throw new NotAuthorizedException("No such Employee ID: " + empId);
-      
     }
     return ls;
   }

@@ -4,8 +4,7 @@ import { LeaveDetails } from '../LeaveDetails';
 
 @Component({
   selector: 'app-reEdit',
-  templateUrl: './editPermission.component.html',
-  providers: [LeaveDetailsService]
+  templateUrl: './editPermission.component.html'
 })
 export class EditApproveDenyComponent implements OnInit {
   constructor(private leaveDetailsService:LeaveDetailsService) {

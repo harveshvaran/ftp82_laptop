@@ -13,9 +13,9 @@ import mockit.Mock;
 import mockit.integration.junit4.JMockit;
 import java.util.List;
 import java.util.ArrayList;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.text.DateFormat;
+//import java.text.SimpleDateFormat;
+//import java.util.Calendar;
+//import java.text.DateFormat;
 /**
   * setup method.
   */
@@ -149,8 +149,8 @@ public class LeaveDetailsTest {
    */
   @Test
   public final void testDateMethod() {
-    int res = LeaveDetails.dateExpiryOfsdate("2018-10-28");
-    assertEquals(0, res);
+    int res = LeaveDetails.dateExpiryOfsdate("2018-10-15");
+    assertEquals(1, res);
     int res1 = LeaveDetails.dateExpiryOfsdate("2018-10-02");
     assertEquals(1, res1);
     int res2 = LeaveDetails.dateExpiryOfedate("2018-10-15", "2018-10-08");
@@ -386,8 +386,7 @@ public class LeaveDetailsTest {
           dao.updateEmployee(25, 100);
           dao.reEditApproveOrDenial(1, "approve", "okk");
           result = 1;
-
-        } catch(Exception e) {
+        } catch (Exception e) {
           System.out.println(e.toString());
         }
       }
@@ -424,7 +423,6 @@ public class LeaveDetailsTest {
   //       try {
   //         System.out.println("sd "+lsStat.getStartDate());
   //         Date sDate = Date.valueOf(lsStat.getStartDate());
-          
   //         System.out.println("cd "+Date.valueOf(java.time.LocalDate.now()));
   //         if(sDate.after(Date.valueOf(java.time.LocalDate.now()))) {
   //           String editStatus = "";
@@ -490,7 +488,7 @@ public class LeaveDetailsTest {
             result = 1;
           }
         } catch (Exception e) {
-          System.out.println(e.toString()+" hii");
+          System.out.println(e.toString() + " hii");
         }
         result = 3;
       }

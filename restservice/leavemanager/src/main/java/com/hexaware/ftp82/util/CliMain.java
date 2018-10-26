@@ -5,6 +5,7 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.ListIterator;
+import java.sql.Date;
 /**
  * Class CliMain provides the command line interface to the leavemanagement
  * application.
@@ -150,6 +151,7 @@ public class CliMain {
     } while (i == 0);
     overlap = LeaveDetails.overLapCheck(startDate, empId);
     if  (overlap == 1) {
+      System.out.println("\n------------------------------------------------------------------------------------------------------------------------------------\n");
       System.out.println("LEAVE TYPE : 1.Earned/Privileged Leave(EL)  2.Sick Leave(SL)  3.Maternity/Paternity Leave(MPL) ");
       String leaveType = option.next();
       System.out.println("LEAVE REASON : ");
@@ -361,12 +363,16 @@ public class CliMain {
     Employee emp = Employee.send(empID);
     LeaveDetails[] leave = LeaveDetails.listAl(empID);
     if (emp == null) {
-        System.out.println("You Are not a MANAGER");
+      System.out.println("You Are not a MANAGER");
     } else {
-        System.out.println("\n--------------------------PROCESS COMPLETED LEAVE APPLICATIONS------------------------\n");
-        int count = 0;
-        if(leave != null) {
-          for (LeaveDetails ll : leave) {
+
+      System.out.println("\n--------------------------PEOCESS COMPLETED LEAVE APPLICATIONS------------------------\n");
+      int count = 0;
+      for (LeaveDetails ll : leave) {
+        try {
+          Date sDate = Date.valueOf(ll.getStartDate());
+          Date curDate = Date.valueOf(java.time.LocalDate.now());
+          if (sDate.after(curDate)) {
             System.out.print("EmployeeId = " + ll.getEmpId() + " | ");
             System.out.println("LeaveID = " + ll.getLeaveId() + " | ");
             System.out.print("LeaveType = " + ll.getLeaveType() + " | ");
@@ -378,14 +384,17 @@ public class CliMain {
             System.out.print("LeaveAppliedOn = " + ll.getLeaveAppliedOn() + " | ");
             System.out.print("ManagerComments = " + ll.getManagerComments() + "\n\n");
             count = 0;
+          } else  {
+            count = 1;
           }
-        } else {
-          count = 1;
+        } catch (Exception e) {
+          System.out.println(e.toString());
         }
-        if(count == 1) {
-          System.out.println("\n<<<<<<<<<<< No Applications found ! >>>>>>>>>>>>>\n");
-          mainMenu();
-        } else {
+      }
+      if (count == 1) {
+        System.out.println("\n<<<<<<<<<<< No Applications found ! >>>>>>>>>>>>>\n");
+        mainMenu();
+      } else {
         System.out.print("\n--------------------------------------------------------------------------------------------------------------------------------------" + "\n");
         System.out.println("Enter Employee ID: ");
         int appEmpId = 0;

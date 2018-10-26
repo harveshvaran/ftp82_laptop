@@ -23,19 +23,19 @@ public class EmployeeRestTest {
 		for (Employee e: res) {
 			switch (e.getEmpId()) {
 				case 1000:
-					assertNotEquals(new Employee(1000), e);
+					assertEquals(new Employee(1000), e);
 					break;
 				case 2000:
-					assertNotEquals(new Employee(2000), e);
+					assertEquals(new Employee(2000), e);
 					break;				
 				case 2001:
-					assertNotEquals(new Employee(2001), e);
+					assertEquals(new Employee(2001), e);
 					break;				
 				case 3000:
-					assertNotEquals(new Employee(3000), e);
+					assertEquals(new Employee(3000), e);
 					break;				
 				case 3001:
-					assertNotEquals(new Employee(3001), e);
+					assertEquals(new Employee(3001), e);
 					break;			
 				default:
 					fail("Unknown employee with id:" + e);	
@@ -45,8 +45,8 @@ public class EmployeeRestTest {
     @Test
 	public void testEmployeeById() throws AssertionError, URISyntaxException {
 		Employee res = given().accept(ContentType.JSON).when()
-				.get(CommonUtil.getURI("/api/employees/1000")).getBody().as(Employee.class);
-		assertNotEquals(new Employee(1000), res);
+				.get(CommonUtil.getURI("/api/employees/3000")).getBody().as(Employee.class);
+		assertEquals(new Employee(1000), res);
   	}
   	@Test
 	public void testEmployeeById404() throws AssertionError, URISyntaxException {
