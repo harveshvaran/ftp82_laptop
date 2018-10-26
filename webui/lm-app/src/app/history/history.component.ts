@@ -8,17 +8,19 @@ import { LeaveDetailsService } from '../leaveDetailsService';
   })
 
 export class HistoryComponent {
-    constructor(private history: LeaveDetailsService) { }
+    constructor(private history: LeaveDetailsService) {
+
+     }
     lea:LeaveDetails[];
-      title = 'Leave Management Application';
-      leavehistory: LeaveDetails[]; 
-      getHistory(obj1:any) {
-          this.history.load(obj1).
-          subscribe(
-              data=>this.lea=data,
-              error=>console.log(error),
-              ()=>console.log("Success!!")
-          );
-      }
+    title = 'Leave Management Application';
+    leavehistory: LeaveDetails[]; 
+
+    getHistory(obj1:any) {
+        this.history.load(obj1).subscribe(
+            data=>this.lea=data,
+            error=>console.log(error),
+            ()=>console.log("Success!!")
+        );
+    }
 
 }

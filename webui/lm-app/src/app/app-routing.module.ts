@@ -8,16 +8,19 @@ import { FailureComponent } from './failure/failure.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HistoryComponent } from './history/history.component';
 
 const routes: Routes = [
   {path:"login", component:LoginComponent},
-   {path:"aboutus", component:AboutusComponent},
-   {path:"contactus", component:ContactusComponent},
-   {path:'success', component:SuccessComponent},
-   {path:'failure', component:FailureComponent},
-   {path:'', component:HomeComponent},
-   {path:'dashboard', component:DashboardComponent},
-   {path:"**", component:NotfoundComponent}
+  {path:"aboutus", component:AboutusComponent},
+  {path:"contactus", component:ContactusComponent},
+  {path:'success', component:SuccessComponent},
+  {path:'failure', component:FailureComponent},
+  {path:'', component:HomeComponent},
+  {path:'dashboard', component:DashboardComponent ,children: [
+    {path:"history", component:HistoryComponent}
+  ] },
+  {path:"**", component:NotfoundComponent}
 ];
 
 @NgModule({
