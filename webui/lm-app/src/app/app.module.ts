@@ -7,24 +7,27 @@ import { LeaveDetailsService } from 'src/app/leaveDetailsService';
 import { EmployeeService } from './employee.service';
 
 import { AppComponent } from './app.component';
-import { PendingComponent } from './pending.component';
 import { EmployeebyidComponent } from './employeebyid/employeebyid.component';
 import { ApproveDenyComponent } from './approveOrDeny/approveOrDeny.component';
 import { EditApproveDenyComponent } from './editPermission/editPermission.component';
 import { LoginComponent } from './login/login.component';
-import { AboutusComponent } from './aboutus/aboutus.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { SuccessComponent } from './success/success.component';
 import { FailureComponent } from './failure/failure.component';
-import { DeleteComponent } from './delete/delete.component'
+import { DeleteComponent } from './delete/delete.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { HomeComponent } from './home/home.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { PendingComponent } from './pending/pending.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+
     PendingComponent,
     EmployeebyidComponent,
-
     ApproveDenyComponent,
     EditApproveDenyComponent,
     LoginComponent,
@@ -33,11 +36,13 @@ import { DeleteComponent } from './delete/delete.component'
     NotfoundComponent,
     SuccessComponent,
     FailureComponent,
-    DeleteComponent
+    DeleteComponent,
+    HomeComponent,
+    DashboardComponent
 
   ],
   imports: [
-    BrowserModule,HttpClientModule,FormsModule
+    BrowserModule,HttpClientModule,FormsModule,AppRoutingModule
   ],
   providers: [LeaveDetailsService,EmployeeService],
   bootstrap: [AppComponent]

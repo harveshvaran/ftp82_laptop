@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LeaveDetailsService } from './leaveDetailsService';
-import { LeaveDetails } from './LeaveDetails';
+import { LeaveDetailsService } from '../leaveDetailsService';
+import { LeaveDetails } from '../LeaveDetails';
 
 @Component({
   selector: 'app-pending',

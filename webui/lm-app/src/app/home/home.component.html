@@ -1,0 +1,53 @@
+<div style="text-align:center">
+  <h1>
+    Welcome to Leave Management System !
+  </h1>
+</div>
+<div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Employee Id</th>
+                <th>Employee Name</th>
+                <th>Employee Number</th>
+                <th>Employee Mail</th>
+                <th>Employee Dept</th>
+                <th>Employee Mgr Id</th>
+                <th>Employee Leave</th>
+                <th>Employee DOJ</th>
+            </tr>
+        </thead>
+        <tbody class="employees">
+            <tr *ngFor="let employee of employees">
+                <td>
+                    <h5>{{employee.empId}}</h5>
+                </td>
+                <td>
+                    <h5>{{employee.empName}}</h5>
+                </td>
+                <td>
+                    <h5>{{employee.empPh}}</h5>
+                </td>
+                <td>
+                    <h5>{{employee.empEmail}}</h5>
+                </td>
+                <td>
+                    <h5>{{employee.empDept}}</h5>
+                </td>
+                <td>
+                    <h5>{{employee.empManagerId}}</h5>
+                </td>
+                <td>
+                    <h5>{{employee.empManagerId}}</h5>
+                </td>
+                <td>
+                    <h5>{{employee.empDoj}}</h5>
+                </td>
+                <td>
+                    <button (click)="addItem(employee.empId)">Login</button>
+                </td>         
+            </tr>
+        </tbody>
+    </table>
+    <br/><br/>
+</div>

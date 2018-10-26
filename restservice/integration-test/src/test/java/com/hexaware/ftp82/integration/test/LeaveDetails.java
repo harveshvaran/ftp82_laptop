@@ -25,12 +25,12 @@ public class LeaveDetails {
    */
   private int leaveId;
   private String leaveType;
-  private Date startDate;
-  private Date endDate;
+  private String startDate;
+  private String endDate;
   private int noOfDays;
   private String leaveStatus;
   private String leaveReason;
-  private Date leaveAppliedOn;
+  private String leaveAppliedOn;
   private String managerComments;
   private int empId;
   /**
@@ -59,7 +59,7 @@ public class LeaveDetails {
       final Date argEndDate, final int argNoOfDays, final String argLeaveStatus, final String argLeaveReason,
       final Date argLeaveAppliedOn, final String argManagerComments, final int argEmpId) {
      try {
-      DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
       this.leaveId = argLeaveId;
       this.leaveType = argLeaveType;
       String strtDate = dateFormat.format(argStartDate);
