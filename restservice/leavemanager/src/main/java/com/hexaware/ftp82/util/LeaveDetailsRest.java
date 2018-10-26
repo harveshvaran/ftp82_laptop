@@ -11,6 +11,10 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
+
 import com.hexaware.ftp82.model.LeaveDetails;
 //import com.hexaware.ftp82.exceptions.NotFoundException;
 
@@ -18,6 +22,8 @@ import com.hexaware.ftp82.model.LeaveDetails;
  * This class provides a REST interface for the employee entity.
  */
 @Path("/LeaveDetails")
+@Api("/LeaveDetails")
+@SwaggerDefinition(tags={@Tag(name="LeaveDetails", description="REST Enpoint")})
 public class LeaveDetailsRest {
   /**
    * Returns a specific employee's details.
