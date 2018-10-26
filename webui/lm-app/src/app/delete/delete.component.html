@@ -1,0 +1,9 @@
+<br/><div>
+    <form (submit)= "delete(obj.value)" #obj="ngForm">
+        <input type ="text" placeholder="Enter Employee Id" name="empId" ngModel/><br>
+        <input type ="text" placeholder="Enter Leave Id" name="lId" ngModel/><br>
+        <input type="submit" value="Delete Leave"/>
+        <input type="reset" value="reset"/>
+    </form>
+    {{deleteLeaveDetails}}
+  </div>

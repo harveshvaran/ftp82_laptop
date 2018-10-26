@@ -1,0 +1,17 @@
+<div align ="center">
+  <h2>LOGIN</h2>
+  <form (submit)="validate(obj.value)" #obj="ngForm">
+    <table>
+      <tr>
+        <td>Username :</td><td><label >{{empId}}</label></td>
+      </tr>
+      <tr>
+        <td>Password :</td><td><input type = "text" name = "pass" placeholder = "Enter 123" ngModel/></td>
+      </tr>
+      <tr>
+        <td><input type = "submit" value = "Submit" /></td><td><input type = "reset" value = "Reset" /></td>
+      </tr>
+    </table>
+  </form>
+  {{msg}}
+</div>

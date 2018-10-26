@@ -13,6 +13,9 @@ import mockit.Mock;
 import mockit.integration.junit4.JMockit;
 import java.util.List;
 import java.util.ArrayList;
+//import java.text.SimpleDateFormat;
+//import java.util.Calendar;
+//import java.text.DateFormat;
 /**
   * setup method.
   */
@@ -124,9 +127,9 @@ public class LeaveDetailsTest {
       {
         try {
           Date appliedDate = Date.valueOf(java.time.LocalDate.now());
-          Date sDate = Date.valueOf("2018-10-26");
-          Date eDate = Date.valueOf("2018-10-26");
-          dao.insertLeaveDetails("EL", sDate, eDate, 1, "SICK", appliedDate, "PENDING", 100);
+          Date sDate = Date.valueOf("2018-11-27");
+          Date eDate = Date.valueOf("2018-11-29");
+          dao.insertLeaveDetails("EL", sDate, eDate, 3, "SICK", appliedDate, "PENDING", 100);
         } catch (Exception e) {
           System.out.println(e.toString());
         }
@@ -138,7 +141,7 @@ public class LeaveDetailsTest {
         return dao;
       }
     };
-    int e = LeaveDetails.applyLeave(100, "EL", "2018-10-26", "2018-10-26", "SICK");
+    int e = LeaveDetails.applyLeave(100, "EL", "2018-11-27", "2018-11-29", "SICK");
     assertEquals(0, e);
   }
   /**
@@ -163,15 +166,23 @@ public class LeaveDetailsTest {
   public final void testApplyOrDeny(@Mocked final LeaveDetailsDAO dao) {
     final Employee e100 = new Employee();
     final LeaveDetails l100 = new LeaveDetails();
+    final LeaveDetails l101 = new LeaveDetails();
     new Expectations() {
       {
         dao.getLeaveBalance(100);
         e100.setEmpLeaveBalance(30);
         result = e100;
+
         dao.getStatus(200);
         l100.setNoOfDays(5);
         l100.setLeaveStatus("PENDING");
         result = l100;
+
+        dao.getStatus(400);
+        l101.setNoOfDays(5);
+        l101.setLeaveStatus("APPROVE");
+        result = l101;
+
         dao.updateEmployee(25, 100);
         result = 1;
         dao.updateApproveOrDenial("APPROVED", "hi", 200);
@@ -187,13 +198,15 @@ public class LeaveDetailsTest {
       }
     };
     LeaveDetails ld = new LeaveDetails();
-    int status = ld.applyForLeave(100, 200, "hi", "approve");
-    int status1 = ld.applyForLeave(100, 300, "hi", "deny");
-    int status2 = ld.applyForLeave(100, 300, "hi", "oky");
+    int status = l100.applyForLeave(100, 200, "hi", "approve");
+    int status1 = l100.applyForLeave(100, 300, "hi", "deny");
+    int status2 = l100.applyForLeave(100, 300, "hi", "pending");
+    int status3 = l101.applyForLeave(100, 400, "hi", "approve");
     assertEquals(status, 1);
     assertNotEquals(status, 1000);
     assertEquals(status1, 100);
     assertEquals(status2, 101);
+    assertEquals(status3, 101);
   }
   /**
    * testLeaveHistory class Tests that a fetch of a specific employee works correctly.
@@ -247,12 +260,18 @@ public class LeaveDetailsTest {
   @Test
   public final void testCheckIds(@Mocked final LeaveDetailsDAO dao) {
     final LeaveDetails l100 = new LeaveDetails();
+    final LeaveDetails l101 = new LeaveDetails();
     new Expectations() {
       {
         dao.checkIdss(2000);
         l100.setEmpId(2000);
         l100.setLeaveId(1000);
         result = l100;
+
+        dao.checkIdss(4000);
+        l101.setEmpId(5000);
+        l101.setLeaveId(1000);
+        result = l101;
       }
     };
     new MockUp<LeaveDetails>() {
@@ -263,8 +282,10 @@ public class LeaveDetailsTest {
     };
     int l = LeaveDetails.checkIds(2000, 1000);
     int l1 = LeaveDetails.checkIds(3000, 1000);
+    int l2 = LeaveDetails.checkIds(4000, 1000);
     assertEquals(l100.getEmpId(), 2000);
     assertEquals(l100.getLeaveId(), 1000);
+    assertNotEquals(l101.getEmpId(), 4000);
     assertEquals(l, 1);
     assertNotEquals(l, 0);
     assertEquals(l1, 0);
@@ -328,7 +349,6 @@ public class LeaveDetailsTest {
    */
   @Test
   public final void testUpdateLeave(@Mocked final LeaveDetailsDAO dao) {
-    final LeaveDetails ld3 = new LeaveDetails();
     new Expectations() {
       {
         try {
@@ -351,6 +371,102 @@ public class LeaveDetailsTest {
     int e = LeaveDetails.editLeave(100, "EL", "2018-10-26", "2018-10-26", "SICK", 20);
     assertEquals(1, e);
   }
+  /**
+   *@param dao to access object
+   */
+  @Test
+  public final void testReEditPermission(@Mocked final LeaveDetailsDAO dao) {
+    final Employee eStatus = new Employee();
+    final LeaveDetails lsStatus = new LeaveDetails();
+    new Expectations() {
+      {
+        try {
+          dao.getLeaveBalance(100);
+          dao.checkStatus(1);
+          eStatus.setEmpLeaveBalance(30);
+          result = eStatus;
+
+          lsStatus.setNoOfDays(5);
+          lsStatus.setStartDate("2018-11-15");
+          lsStatus.setLeaveStatus("DENIED");
+          result = lsStatus;
+
+          dao.updateEmployee(25, 100);
+          dao.reEditApproveOrDenial(1, "approve", "okk");
+          result = 1;
+        } catch (Exception e) {
+          System.out.println(e.toString());
+        }
+      }
+    };
+    new MockUp<LeaveDetails>() {
+      @Mock
+      LeaveDetailsDAO dao() {
+        return dao;
+      }
+    };
+    int e = LeaveDetails.editPermis(100, 1, "approve", "okk");
+    assertEquals(0, e);
+  }
+  // /**
+  //  *@param dao to access object
+  //  */
+  // @Test
+  // public final void testReEditPermission(@Mocked final LeaveDetailsDAO dao) {
+  //   final Employee eStatus = new Employee();
+  //   final LeaveDetails lsStatus = new LeaveDetails();
+  //   new Expectations() {
+  //     {
+  //       dao.getLeaveBalance(100);
+  //       dao.checkStatus(1);
+  //       eStatus.setEmpLeaveBalance(30);
+
+  //       lsStatus.setNoOfDays(5);
+  //       lsStatus.setStartDate("2018-11-15");
+  //       lsStatus.setLeaveStatus("DENIED");
+  //       final Employee eStat = new Employee();
+  //       final LeaveDetails lsStat = new LeaveDetails();
+  //       int leaveBalance = eStat.getEmpLeaveBalance();
+  //       int appliedNoOfLeaves = lsStat.getNoOfDays();
+  //       try {
+  //         System.out.println("sd "+lsStat.getStartDate());
+  //         Date sDate = Date.valueOf(lsStat.getStartDate());
+  //         System.out.println("cd "+Date.valueOf(java.time.LocalDate.now()));
+  //         if(sDate.after(Date.valueOf(java.time.LocalDate.now()))) {
+  //           String editStatus = "";
+  //           int approvedLeaves = 0;
+  //           if("approve".equalsIgnoreCase("approve")) {
+  //             editStatus = LeaveStatus.APPROVED.toString();
+  //             approvedLeaves = leaveBalance - appliedNoOfLeaves;
+  //           } else if ("approve".equalsIgnoreCase("deny")){
+  //             editStatus = LeaveStatus.DENIED.toString();
+  //             approvedLeaves = leaveBalance + appliedNoOfLeaves;
+  //           } else {
+  //             result = -1;
+  //           }
+  //           if (editStatus.equals(lsStat.getLeaveStatus())) {
+  //             result = -1;
+  //           } else {
+  //               dao.updateEmployee(approvedLeaves, 100);
+  //               dao.reEditApproveOrDenial(1, editStatus, "okk");
+  //               result = 1;
+  //           }
+  //         }
+  //       } catch(Exception e) {
+  //         System.out.println(e.toString()+" hi");
+  //       }
+  //       result = 0;
+  //     }
+  //   };
+  //   new MockUp<LeaveDetails>() {
+  //     @Mock
+  //     LeaveDetailsDAO dao() {
+  //       return dao;
+  //     }
+  //   };
+  //   int e = LeaveDetails.editPermis(100, 1, "approve", "okk");
+  //   assertEquals(0, e);
+  // }
    /**
    *@param dao to access object
    */
@@ -381,7 +497,7 @@ public class LeaveDetailsTest {
             result = 1;
           }
         } catch (Exception e) {
-          System.out.println(e.toString());
+          System.out.println(e.toString() + " hii");
         }
         result = 3;
       }

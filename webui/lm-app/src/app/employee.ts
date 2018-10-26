@@ -1,10 +1,6 @@
 export class Employee {
-    empId: number;
-    name: String;
-    email: String;
-    phoneNumber: number;
-    mgrId: number;
-    constructor(id: number) {
-      this.empId = id;
-    }
+        constructor(private empId:number,private empName:String,
+                private empPh:number,private empEmail:String,
+                private empDept:String,private empManagerId:String,
+                private empDoj:Date){}
 }

@@ -1,0 +1,23 @@
+<div>
+  <h3>Apply Leave</h3>
+  <form method="get" name="myForm" action="submit.php" (submit) = applyLeave(app.value) #app="ngForm" (submit)="submitForm()">
+      
+    EmpId:<input type = "text" name = "empId" onfocus="this.value=''" placeholder = "EmployeeId" ngModel><br><br>
+    
+    LeaveType:<select name ="type" ngModel>
+        <option value="EL">EL</option>
+        <option value="SL">SL</option>
+        <option value="MPL">MPL</option>
+      </select><br><br>
+    
+    StartDate:<input type = "date" name = "sDate" onfocus="this.value=''" placeholder = "YYYY-MM-DD" ngModel><br><br> 
+    
+    EndDate<input type = "date" name = "eDate" onfocus="this.value=''" placeholder = "YYYY-MM-DD" ngModel><br><br>
+    
+    LeaveReason:<input type = "text" name = "reason" onfocus="this.value=''" placeholder = "REASON" ngModel><br><br>  
+     
+    <input type ="submit"><br>
+    </form>
+    <script type="text/javascript" src="form_submit_script.js"></script>
+    {{apply}}
+</div>

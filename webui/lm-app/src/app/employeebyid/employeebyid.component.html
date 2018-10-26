@@ -1,0 +1,32 @@
+<h2>Employee Details</h2>
+<br/><div>
+  <form (submit)= "displayEmployeeById(obj.value)" #obj="ngForm">
+      <p><input type ="text" placeholder="Enter Employee Id" name="id" ngModel/></p>
+      <p><input type="submit" value="Display Employee details"/></p>
+  </form>
+</div>
+<br/>
+<div>
+    <table border="1">
+            <tr>
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Phone Number</th>
+                <th>Email ID</th>
+                <th>Department</th>
+                <th>Manager ID</th>
+                <th>Leave Balance</th>
+                <th>Date Of Joining</th>
+            </tr>
+            <tr>
+                <td>{{empById?.empId}}</td>
+                <td><b>{{empById?.empName}}</b></td>
+                <td>{{empById?.empPh}}</td>
+                <td>{{empById?.empEmail}}</td>
+                <td>{{empById?.empDept}}</td>
+                <td>{{empById?.empManagerId}}</td>
+                <td>{{empById?.empLeaveBalance}}</td>
+                <td>{{empById?.empDoj}}</td>               
+            </tr>
+    </table>
+</div>

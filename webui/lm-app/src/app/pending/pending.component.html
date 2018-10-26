@@ -1,0 +1,34 @@
+<div>
+    <h2>Pending Details</h2>
+    <form (submit)="pending(obj.value)" #obj="ngForm">
+        <input type ="text" name ="id" placeholder="Enter Employee Id" ngModel/>
+        <input type ="submit"value ="Load Pending Details"/>
+    </form>
+    <br/>
+    <table border="1">
+        <tr>
+            <th>Leave Id</th>
+            <th>Leave Type</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Number of Days</th>
+            <th>Leave Status</th>
+            <th>Leave reason</th>
+            <th>Leave Applied on</th>
+            <th>Manager Comments</th>
+            <th>Employee Id</th>
+        </tr>
+        <tr *ngFor = "let lea of pendingDetails">
+            <td>{{lea.leaveId}}</td>
+            <td>{{lea.leaveType}}</td>
+            <td>{{lea.startDate}}</td>
+            <td>{{lea.endDate}}</td>
+            <td>{{lea.noOfDays}}</td>
+            <td>{{lea.leaveStatus}}</td>
+            <td>{{lea.leaveReason}}</td>
+            <td>{{lea.leaveAppliedOn}}</td>
+            <td>{{lea.managerComments}}</td>
+            <td>{{lea.empId}}</td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,35 @@
+<div>
+    <br/><br/>
+    <h2>Employee Leave History</h2>
+<!--    <form (submit)="getHistory(ob.value)" #ob="ngForm">
+        <input type="text" name="empid" placeholder="Enter the Employee ID" ngModel/>
+        <input type="submit" value="LEAVE HISTORY"/><br/>
+    </form><br/>>
+  -->
+    <table border="1">
+          <tr>
+            <th>LeaveID</th>
+            <th>LeaveType</th>
+            <th>StartDate</th>
+            <th>EndDate</th>
+            <th>NoOfDays</th>
+            <th>LeaveStatus</th>
+            <th>LeaveReason</th>
+            <th>LeaveAppliedOn</th>
+            <th>ManagerComments</th>
+            <th>EmployeeId</th>
+          </tr>
+          <tr *ngFor="let lh of lea">
+            <td>{{lh.leaveId}}</td>
+            <td>{{lh.leaveType}}</td>
+            <td>{{lh.startDate}}</td>
+            <td>{{lh.endDate}}</td>
+            <td>{{lh.noOfDays}}</td>
+            <td>{{lh.leaveStatus}}</td>
+            <td>{{lh.leaveReason}}</td>
+            <td>{{lh.leaveAppliedOn}}</td>
+            <td>{{lh.managerComments}}</td>
+            <td>{{lh.empId}}</td>
+          </tr>
+    </table>
+</div>    

@@ -24,8 +24,9 @@ public class CliMain {
     System.out.println("6. Apply / Deny leave");
     System.out.println("7. View Employee Image");
     System.out.println("8. Update exsisting leave");
-    System.out.println("9. delete the leave request");
-    System.out.println("10. Exit");
+    System.out.println("9. Edit permission (only Manager)");
+    System.out.println("10. delete the leave request");
+    System.out.println("11. Exit");
     System.out.println(Date.valueOf(java.time.LocalDate.now()));
     System.out.println("-----------------------");
     System.out.println("Enter your choice:");
@@ -66,9 +67,11 @@ public class CliMain {
         updateLeave();
         break;
       case 9:
+        editPermission();
+      case 10:
         deleteLeave();
         break;
-      case 10:
+      case 11:
         // halt since normal exit throws a stacktrace due to jdbc threads not responding
         Runtime.getRuntime().halt(0);
       default:
@@ -153,6 +156,7 @@ public class CliMain {
     } while (i == 0);
     overlap = LeaveDetails.overLapCheck(startDate, empId);
     if  (overlap == 1) {
+      System.out.println("\n------------------------------------------------------------------------------------------------------------------------------------\n");
       System.out.println("LEAVE TYPE : 1.Earned/Privileged Leave(EL)  2.Sick Leave(SL)  3.Maternity/Paternity Leave(MPL) ");
       String leaveType = option.next();
       System.out.println("LEAVE REASON : ");
@@ -271,7 +275,7 @@ public class CliMain {
           System.out.println("Leave approval Denied !");
           break;
         case 101:
-          System.out.println("Leave cannot be processed !");
+          System.out.println("Leave process completed !");
           break;
         default:
           System.out.println("process unsuccessful !");
@@ -336,6 +340,9 @@ public class CliMain {
     }
     mainMenu();
   }
+  /**
+   *
+   */
   private void deleteLeave() {
     System.out.println("Enter the leaveId:");
     int leaveId = getInteger();
@@ -346,6 +353,84 @@ public class CliMain {
       System.out.println("deleted sucessfully");
     } else {
       System.out.println("error occured during deletion try again");
+    }
+  }
+  /**
+   *
+   */
+  private void editPermission() {
+    int empID = 0;
+    System.out.println("Manager Id : ");
+    do {
+      empID = getInteger();
+    } while (empID == 0);
+    Employee emp = Employee.send(empID);
+    LeaveDetails[] leave = LeaveDetails.listAl(empID);
+    if (emp == null) {
+      System.out.println("You Are not a MANAGER");
+    } else {
+
+      System.out.println("\n--------------------------PEOCESS COMPLETED LEAVE APPLICATIONS------------------------\n");
+      int count = 0;
+      for (LeaveDetails ll : leave) {
+        try {
+          Date sDate = Date.valueOf(ll.getStartDate());
+          Date curDate = Date.valueOf(java.time.LocalDate.now());
+          if (sDate.after(curDate)) {
+            System.out.print("EmployeeId = " + ll.getEmpId() + " | ");
+            System.out.println("LeaveID = " + ll.getLeaveId() + " | ");
+            System.out.print("LeaveType = " + ll.getLeaveType() + " | ");
+            System.out.print("StartDate = " + ll.getStartDate() + " | ");
+            System.out.print("EndDate = " + ll.getEndDate() + " | ");
+            System.out.print("Numberofdays = " + ll.getNoOfDays() + " | ");
+            System.out.print("LeaveStatus = " + ll.getLeaveStatus() + " | ");
+            System.out.print("LeaveReason = " + ll.getLeaveReason() + " | ");
+            System.out.print("LeaveAppliedOn = " + ll.getLeaveAppliedOn() + " | ");
+            System.out.print("ManagerComments = " + ll.getManagerComments() + "\n\n");
+            count = 0;
+          } else  {
+            count = 1;
+          }
+        } catch (Exception e) {
+          System.out.println(e.toString());
+        }
+      }
+      if (count == 1) {
+        System.out.println("\n<<<<<<<<<<< No Applications found ! >>>>>>>>>>>>>\n");
+        mainMenu();
+      } else {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------------------------" + "\n");
+        System.out.println("Enter Employee ID: ");
+        int appEmpId = 0;
+        do {
+          appEmpId = getInteger();
+        } while (appEmpId == 0);
+        System.out.println("Enter Leave ID: ");
+        int appLeaveId = 0;
+        do {
+          appLeaveId = getInteger();
+        } while (appLeaveId == 0);
+        System.out.println("Approve / Deny ");
+        option.nextLine();
+        String approveStatus = option.nextLine();
+        System.out.println("Enter Comments ");
+        String applyMgrComments = option.nextLine();
+        if (LeaveDetails.checkIds(appEmpId, appLeaveId) == 0) {
+          int editStatus = LeaveDetails.editPermis(appEmpId, appLeaveId, approveStatus, applyMgrComments);
+          switch (editStatus) {
+            case 1:
+              System.out.println("Leave has been Re-Edited");
+              break;
+            case -1:
+              System.out.println("Enter correct Status to update !");
+              break;
+            default:
+              System.out.println("Re-Editing is not processed enter valid id!");
+          }
+        } else {
+          System.out.println("Enter corresponding Employee Id and leave ID ");
+        }
+      }
     }
   }
   /**

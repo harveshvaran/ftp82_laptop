@@ -112,6 +112,31 @@ public interface LeaveDetailsDAO  {
   int updateLeaveDetails(@Bind("leaveType") String leaveType, @Bind("sDate") Date sDate, @Bind("eDate") Date eDate, @Bind("diffInDays") int diffInDays,
         @Bind("leaveStatus") String leaveStatus,  @Bind("leaveReason") String leaveReason, @Bind("appliedDate") Date appliedDate, @Bind("empId") int empId, @Bind("leaveId") int leaveId);
   /**
+   * return all the details of the selected employee.
+   * @param id the id of the employee
+   * @return the employee object
+   */
+  @SqlQuery("SELECT * FROM leave_details WHERE LEAVE_STATUS!='PENDING' AND START_DATE > CURDATE() AND EMP_ID IN (SELECT E2.EMP_ID FROM EMPLOYEE E1,EMPLOYEE E2 WHERE E2.EMP_MANAGER_ID=E1.EMP_ID AND E1.EMP_ID= :empId)")
+  @Mapper(LeaveDetailsMapper.class)
+  List<LeaveDetails> listal(@Bind("empId") int id);
+  /**
+   * update leave balance in employee table.
+   * @param leaveId the manager Id
+   * @return the employee array
+   */
+  @SqlQuery("SELECT * FROM leave_details WHERE LEAVE_ID = :leaveId ")
+  @Mapper(LeaveDetailsMapper.class)
+  LeaveDetails checkStatus(@Bind("leaveId") int leaveId);
+  /**
+   * update contents in leavedetails table.
+   * @param status the status
+   * @param mgrcomments the manager comments
+   * @param leaveId the leaveId
+   * @return the employee array
+   */
+  @SqlUpdate("Update leave_details set leave_status = :status , MANAGER_COMMENTS = :mgrcomments where Leave_id = :leaveId")
+  int reEditApproveOrDenial(@Bind("leaveId") int leaveId, @Bind("status")String status, @Bind("mgrcomments") String mgrcomments);
+  /**
    * update contents in leavedetails table.
    * @param leaveId the status
    * @return leaveId the status

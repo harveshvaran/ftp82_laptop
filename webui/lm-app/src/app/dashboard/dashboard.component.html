@@ -1,0 +1,13 @@
+<div align="center">
+  <h2>Welcome {{employee.empName}} !</h2>
+</div>
+  <h5>{{employee.empId}}</h5>
+  <h5>{{employee.empName}}</h5>
+  <h5>{{employee.empPh}}</h5>
+  <h5>{{employee.empEmail}}</h5>
+  <h5>{{employee.empDept}}</h5>
+  <h5>{{employee.empManagerId}}</h5>
+  <h5>{{employee.empManagerId}}</h5>
+  <h5>{{employee.empDoj}}</h5>
+  <button class="ui primary button" (click)="getEmpHistory(employee.empId)" >View History</button>
+<router-outlet></router-outlet>
