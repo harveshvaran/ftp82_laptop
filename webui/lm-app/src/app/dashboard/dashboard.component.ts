@@ -29,5 +29,8 @@ export class DashboardComponent implements OnInit {
   getEmpHistory():void {
     this.router.navigate(['/dashboard/history']);
   }
+  applyLeave():void {
+    this.router.navigate(['/dashboard/applyleave']);
+  }
 
 }

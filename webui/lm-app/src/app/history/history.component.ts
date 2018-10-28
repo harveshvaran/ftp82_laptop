@@ -15,6 +15,7 @@ export class HistoryComponent {
     empId:number;
     ngOnInit() {
         this.empId=this.sharedService.getId();
+        this.getHistory(this.empId);
     }
     lea:LeaveDetails[];
     title = 'Leave Management Application';

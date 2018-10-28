@@ -9,6 +9,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HistoryComponent } from './history/history.component';
+import { ApplyleaveComponent } from './applyleave/applyleave.component';
 
 const routes: Routes = [
   {path:"login", component:LoginComponent},
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path:'failure', component:FailureComponent},
   {path:'', component:HomeComponent},
   {path:'dashboard', component:DashboardComponent ,children: [
-    {path:"history", component:HistoryComponent}
+    {path:"history", component:HistoryComponent},
+    {path:"applyleave", component:ApplyleaveComponent},
   ] },
   {path:"**", component:NotfoundComponent}
 ];

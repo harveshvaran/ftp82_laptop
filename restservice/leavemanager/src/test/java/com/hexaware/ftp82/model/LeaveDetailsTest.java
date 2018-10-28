@@ -206,7 +206,7 @@ public class LeaveDetailsTest {
     assertNotEquals(status, 1000);
     assertEquals(status1, 100);
     assertEquals(status2, 101);
-    assertEquals(status3, 101);
+    assertEquals(status3, 1);
   }
   /**
    * testLeaveHistory class Tests that a fetch of a specific employee works correctly.

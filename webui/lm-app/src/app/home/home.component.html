@@ -3,51 +3,131 @@
     Welcome to Leave Management System !
   </h1>
 </div>
-<div>
-    <table border="1">
+
+    
+<table class="ui celled table" >
         <thead>
             <tr>
-                <th>Employee Id</th>
+                <th>Employee ID</th>
                 <th>Employee Name</th>
-                <th>Employee Number</th>
-                <th>Employee Mail</th>
-                <th>Employee Dept</th>
-                <th>Employee Mgr Id</th>
-                <th>Employee Leave</th>
-                <th>Employee DOJ</th>
+                <th>Mobile Number</th>
+                <th>Email Id</th>
+                <th>Department</th>
+                <th>Available Leave</th>
+                <th>Manager ID</th>
+                <th>Date of joining</th>
             </tr>
         </thead>
         <tbody class="employees">
             <tr *ngFor="let employee of employees">
-                <td>
-                    <h5>{{employee.empId}}</h5>
+                <td ><div class="ui raised segment">
+                    <h4>{{employee.empId}}</h4>
+                    </div>
                 </td>
                 <td>
-                    <h5>{{employee.empName}}</h5>
+                    <div class="ui placeholder" align ="center">
+                    <p></p>
+                    <p><b>{{employee.empName}}</b></p>
+                    <p></p>
+                    </div>
                 </td>
-                <td>
+                <td><div class="line">
                     <h5>{{employee.empPh}}</h5>
+                </div>
                 </td>
-                <td>
+                <td><div class="line">
                     <h5>{{employee.empEmail}}</h5>
+                </div>
                 </td>
-                <td>
+                <td><div class="line">
                     <h5>{{employee.empDept}}</h5>
+                </div>
                 </td>
-                <td>
+                <td><div class="line">
+                    <h5>{{employee.empLeaveBalance}}</h5>
+                </div>
+                </td>
+                <td><div class="line">
                     <h5>{{employee.empManagerId}}</h5>
+                </div>
                 </td>
-                <td>
-                    <h5>{{employee.empManagerId}}</h5>
-                </td>
-                <td>
+                <td><div class="line">
                     <h5>{{employee.empDoj}}</h5>
+                </div>
                 </td>
                 <td>
                     <button class="ui primary button" (click)="addItem(employee.empId)" >Login</button>
-                </td>         
+                </td>       
             </tr>
         </tbody>
     </table>
     <br/><br/>
-</div>
+
+<br><br><div class="five wide column">
+    <div *ngFor="let employee of employees" class="ui divided demo items" >
+        <div class="item">
+          <div class="image">
+          </div>
+          
+          <div class="content" >
+
+                <div class="ui internally celled grid">
+                        
+                    <div class="four wide column">
+                            
+                            
+                            <b class="ui raised segment">{{employee.empName}}</b><br/><br>
+                            <b>Employee Number</b><br/>
+                            <b>Employee Email id</b><br/>
+                            <b>Department</b><br/>
+                            <b>Available Leave</b><br/>
+                            <b>Manager ID</b><br/>
+                            <b>Date of joining</b>
+                    </div>
+                    
+
+                    <div class="four wide column">
+                            <b class="ui " >{{employee.empId}}</b><br><br>
+                            {{employee.empPh}}<br/>
+                            {{employee.empEmail}}<br/>
+                            {{employee.empDept}}<br/>
+                            {{employee.empLeaveBalance}}<br/>
+                            {{employee.empManagerId}}<br/>
+                            {{employee.empDoj}}
+                    </div>
+                </div>
+            
+            <p></p>
+            <div class="ui primary button">Add Friend</div>
+            <div class="ui right floated button">View <i class="right chevron icon"></i></div>
+        </div>
+        </div>
+        </div>  
+    </div>
+<br><br>
+<br><br>
+<div class="ui attached stackable menu">
+    <div class="ui container">
+      <a class="item">
+        <i class="home icon"></i> Home
+      </a>
+      <a class="item">
+        <i class="grid layout icon"></i> Browse
+      </a>
+      <a class="item">
+        <i class="mail icon"></i> Messages
+      </a>
+      <div class="ui simple dropdown item">
+        More
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <a class="item"><i class="edit icon"></i> Edit Profile</a>
+          <a class="item"><i class="globe icon"></i> Choose Language</a>
+          <a class="item"><i class="settings icon"></i> Account Settings</a>
+        </div>
+      </div>
+      <div class="right item">
+        <div class="ui input"><input type="text" placeholder="Search..."></div>
+      </div>
+    </div>
+  </div>

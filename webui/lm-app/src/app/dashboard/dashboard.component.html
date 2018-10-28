@@ -9,5 +9,8 @@
   <h5>{{employee.empManagerId}}</h5>
   <h5>{{employee.empManagerId}}</h5>
   <h5>{{employee.empDoj}}</h5>
+  <button class="ui primary button" (click)="getEmpHistory()" >View History</button>
+  <button class="ui primary button" (click)="applyLeave()" >Apply Leave</button>
+  <button class="ui primary button" (click)="getEmpHistory(employee.empId)" >View History</button>
   <button class="ui primary button" (click)="getEmpHistory(employee.empId)" >View History</button>
 <router-outlet></router-outlet>

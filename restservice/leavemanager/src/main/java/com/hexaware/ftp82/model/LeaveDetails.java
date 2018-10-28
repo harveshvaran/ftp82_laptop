@@ -344,6 +344,7 @@ public class LeaveDetails {
     int leaveBalance = e1.getEmpLeaveBalance();
     int appliedNoOfLeaves = l1.getNoOfDays();
     String statusOfEmp = l1.getLeaveStatus();
+    
     if (argApproveStatus.equalsIgnoreCase("approve")) {
       statusOfEmp = LeaveStatus.APPROVED.toString();
       int approvedLeaves = leaveBalance - appliedNoOfLeaves;
