@@ -1,3 +1,1 @@
-welcome to
-_______============ GIT world!
-=================
+welcome to GIT world!
